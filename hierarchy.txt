@@ -1,0 +1,5 @@
+Main Camera
+Canvas
+  BackgroundPanel
+    WishTextFromMyDaughter
+EventSystem

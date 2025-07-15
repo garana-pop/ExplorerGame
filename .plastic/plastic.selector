@@ -1,0 +1,4 @@
+repository "ExplorerGame/ExplorerGame@15669539741791@cloud"
+  path "/"
+    br "/main"
+    co "/main"

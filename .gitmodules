@@ -1,0 +1,3 @@
+[submodule "Assets/Plugins/UnityMCP"]
+	path = Assets/Plugins/UnityMCP
+	url = https://github.com/Arodoid/UnityMCP.git
