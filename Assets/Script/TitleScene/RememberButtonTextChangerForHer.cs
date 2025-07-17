@@ -207,24 +207,12 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
                 yield return StartCoroutine(ChangeCharacter(i, targetText));
             }
 
-            // 効果音が有効な場合の再生
-            if (changeSound != null && audioSource != null)
-            {
-                audioSource.PlayOneShot(changeSound);
-            }
-
             yield return new WaitForSeconds(changeInterval);
         }
 
         // 最終的にテキストを完全に置き換え
         buttonText.text = targetText;
         currentText = targetText;
-
-        // 完了音を再生
-        if (completeSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(completeSound);
-        }
 
         isChanging = false;
 
@@ -358,11 +346,6 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
             if (debugMode) Debug.Log("RememberButtonTextChangerForHer: DataResetPanelControllerBootフラグがtrueのため、シーン遷移をスキップします");
             return; // 早期リターンでシーン遷移処理を停止CheckAfterChangeToLastFlagAndProceed
         }
-
-        //if (debugMode) Debug.Log($"RememberButtonTextChangerForHer: {targetSceneName}へ遷移します");
-
-        // シーン遷移の実行
-        //StartCoroutine(TransitionToMonologue());
 
         // 遅延してafterChangeToLastフラグをチェック
         StartCoroutine(CheckAfterChangeToLastFlagAndProceed());

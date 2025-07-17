@@ -166,7 +166,7 @@ public class TitleTextChangerForMonologueScene : MonoBehaviour
 
         isChanging = false;
 
-        // SoundEffectManagerを使用した完了音再生
+        //SoundEffectManagerを使用した完了音再生
         if (soundEnabled && SoundEffectManager.Instance != null)
         {
             SoundEffectManager.Instance.PlayCompletionSound();
