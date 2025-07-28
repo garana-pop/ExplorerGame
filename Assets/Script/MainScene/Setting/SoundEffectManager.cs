@@ -149,7 +149,6 @@ public class SoundEffectManager : MonoBehaviour
 
         // ‚Ü‚¸PlayerPrefs‚©‚ç“Ç‚İ‚İ
         loadedVolume = PlayerPrefs.GetFloat(seVolumePrefsKey, defaultVolume);
-        Debug.Log($"SoundEffectManager: PlayerPrefs‚©‚çSE‰¹—Ê“Ç‚İ‚İ: {loadedVolume}");
 
         // GameSaveManager‚©‚ç“Ç‚İ‚İ‚ğs
         if (GameSaveManager.Instance != null)
@@ -160,7 +159,7 @@ public class SoundEffectManager : MonoBehaviour
                 if (saveData?.audioSettings != null)
                 {
                     loadedVolume = saveData.audioSettings.seVolume;
-                    Debug.Log($"SoundEffectManager: game_save.json‚©‚çSE‰¹—Ê“Ç‚İ‚İ: {loadedVolume}");
+                    //Debug.Log($"SoundEffectManager: game_save.json‚©‚çSE‰¹—Ê“Ç‚İ‚İ: {loadedVolume}");
                 }
             }
             catch (System.Exception e)
@@ -173,7 +172,7 @@ public class SoundEffectManager : MonoBehaviour
         currentSEVolume = loadedVolume;
         ApplyVolume();
 
-        Debug.Log($"SoundEffectManager: ÅISE‰¹—Ê: {currentSEVolume}");
+        //Debug.Log($"SoundEffectManager: ÅISE‰¹—Ê: {currentSEVolume}");
     }
 
 
@@ -344,7 +343,7 @@ public class SoundEffectManager : MonoBehaviour
                     // game_save.json‚É•Û‘¶
                     GameSaveManager.Instance.UpdateAudioSettings(bgmVolume, currentSEVolume, masterVolume);
                     GameSaveManager.Instance.SaveAudioSettingsOnly();
-                    Debug.Log($"SoundEffectManager: SE‰¹—Ê‚ğgame_save.json‚É•Û‘¶: {currentSEVolume}");
+                    //Debug.Log($"SoundEffectManager: SE‰¹—Ê‚ğgame_save.json‚É•Û‘¶: {currentSEVolume}");
                 }
                 catch (System.Exception e)
                 {

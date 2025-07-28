@@ -81,7 +81,6 @@ public class DynamicVignetteEffect : MonoBehaviour
         // レイキャストをブロックしないように設定
         vignetteOverlay.raycastTarget = false;
 
-        Debug.Log("簡易ビネットオーバーレイを作成しました");
     }
 
     private void SetupAdvancedVignette()

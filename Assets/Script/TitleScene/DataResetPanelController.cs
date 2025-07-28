@@ -26,8 +26,6 @@ public class DataResetPanelController : MonoBehaviour
 
     private void Awake()
     {
-        if (debugMode) Debug.Log("DataResetPanelController: Awake実行");
-
         // パネルの初期状態を設定
         if (dataResetConfirmationPanel != null)
         {
@@ -37,7 +35,6 @@ public class DataResetPanelController : MonoBehaviour
 
     private void Start()
     {
-        if (debugMode) Debug.Log("DataResetPanelController: Start実行");
 
         // ボタンのクリックイベントに登録
         RegisterButtonListener();
@@ -82,7 +79,6 @@ public class DataResetPanelController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (debugMode) Debug.Log("DataResetPanelController: OnEnable実行");
 
         // OnEnableでも登録を試みる（後から有効化された場合の対策）
         RegisterButtonListener();
@@ -98,8 +94,6 @@ public class DataResetPanelController : MonoBehaviour
             // 既存のリスナーを一旦削除してから追加（重複防止）
             rememberButton.onClick.RemoveListener(OnRememberButtonClicked);
             rememberButton.onClick.AddListener(OnRememberButtonClicked);
-
-            if (debugMode) Debug.Log("DataResetPanelController: ボタンリスナー登録完了");
         }
         else
         {
@@ -112,7 +106,6 @@ public class DataResetPanelController : MonoBehaviour
     /// </summary>
     private void OnRememberButtonClicked()
     {
-        if (debugMode) Debug.Log("DataResetPanelController: 思い出すボタンがクリックされました");
 
         bool shouldShowPanel = false;
         string reason = "";

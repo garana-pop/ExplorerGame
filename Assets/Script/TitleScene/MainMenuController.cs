@@ -129,7 +129,6 @@ public class MainMenuController : MonoBehaviour
         if (backgroundAudioSource != null)
         {
             backgroundAudioSource.volume = volume;
-            Debug.Log($"MainMenuController: BGM音量更新 {volume}");
 
             // BGMが再生されていない場合は再生開始
             if (!backgroundAudioSource.isPlaying && backgroundAudioSource.clip != null)

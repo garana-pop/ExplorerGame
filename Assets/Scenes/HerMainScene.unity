@@ -3614,20 +3614,20 @@ MonoBehaviour:
   minVolume: 0
   maxVolume: 1
   seVolumePrefsKey: SEVolume
-  initialMuteDuration: 1.5
+  initialMuteDuration: 0
   soundCategories:
   - categoryName: Folder open Sound
     clips:
     - {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
   uiClickSound: {fileID: 8300000, guid: e7ac7d834dee1c34f973e6a8719d525d, type: 3}
-  revealSound: {fileID: 0}
-  progressCompletionSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
-  allRevealedSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
+  revealSound: {fileID: 8300000, guid: 6c5e3d130d1498b4ab4e7181e84a6284, type: 3}
+  progressCompletionSound: {fileID: 8300000, guid: 22d8b35160f396348b30dcde5074545f, type: 3}
+  allRevealedSound: {fileID: 8300000, guid: 6e22ecdab5909ee428e86a1af218bfa6, type: 3}
   fileOpenSound: {fileID: 0}
   fileCloseSound: {fileID: 0}
   errorSound: {fileID: 8300000, guid: 8eded24d8703272458ef742a54becfd6, type: 3}
-  typeSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
-  punctuationTypeSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
+  typeSound: {fileID: 8300000, guid: 199780ee8ef7fec4d8c81b37294d673f, type: 3}
+  punctuationTypeSound: {fileID: 8300000, guid: 68f3395d3d1a4bf44bb3d4b2de7560d8, type: 3}
 --- !u!82 &1194664093
 AudioSource:
   m_ObjectHideFlags: 0

@@ -68,7 +68,6 @@ public class TitleSceneSettingsManager : BaseSettingsManager
         if (mainMenuController != null && mainMenuController.backgroundAudioSource != null)
         {
             bgmAudioSource = mainMenuController.backgroundAudioSource;
-            Debug.Log("BGM AudioSource: MainMenuControllerのbackgroundAudioSourceを使用");
         }
         else
         {
@@ -80,12 +79,10 @@ public class TitleSceneSettingsManager : BaseSettingsManager
                 bgmAudioSource = bgmObj.AddComponent<AudioSource>();
                 bgmAudioSource.loop = true;
                 bgmAudioSource.playOnAwake = false;
-                Debug.Log("BGM AudioSource: 新規作成");
             }
             else
             {
                 bgmAudioSource = bgmObj.GetComponent<AudioSource>();
-                Debug.Log("BGM AudioSource: 既存のBGMAudioSourceを使用");
             }
         }
     }
@@ -95,14 +92,11 @@ public class TitleSceneSettingsManager : BaseSettingsManager
     /// </summary>
     private void LoadAndApplyVolumeSettings()
     {
-        Debug.Log("TitleSceneSettingsManager: 音量設定読み込み開始");
 
         // 段階的読み込み：PlayerPrefs -> game_save.json
         float loadedBgmVolume = PlayerPrefs.GetFloat("BGMVolume", 0.8f);
         float loadedSeVolume = PlayerPrefs.GetFloat("SEVolume", 0.8f);
         float loadedMasterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.8f);
-
-        Debug.Log($"PlayerPrefsから読み込み - BGM: {loadedBgmVolume}, SE: {loadedSeVolume}, Master: {loadedMasterVolume}");
 
         // GameSaveManagerから読み込みを試行
         if (GameSaveManager.Instance != null)
@@ -115,7 +109,6 @@ public class TitleSceneSettingsManager : BaseSettingsManager
                     loadedBgmVolume = saveData.audioSettings.bgmVolume;
                     loadedSeVolume = saveData.audioSettings.seVolume;
                     loadedMasterVolume = saveData.audioSettings.masterVolume;
-                    Debug.Log($"game_save.jsonから読み込み - BGM: {loadedBgmVolume}, SE: {loadedSeVolume}, Master: {loadedMasterVolume}");
                 }
                 else
                 {
@@ -132,7 +125,6 @@ public class TitleSceneSettingsManager : BaseSettingsManager
         if (SoundEffectManager.Instance != null)
         {
             SoundEffectManager.Instance.SetVolume(loadedSeVolume);
-            Debug.Log($"SoundEffectManagerにSE音量を設定: {loadedSeVolume}");
         }
 
         // 現在の音量として保存
@@ -144,7 +136,6 @@ public class TitleSceneSettingsManager : BaseSettingsManager
 
         // Master Volumeを適用
         AudioListener.volume = loadedMasterVolume;
-        Debug.Log($"AudioListener.volumeを設定: {loadedMasterVolume}");
 
         // MainMenuControllerにBGM音量を適用
         if (mainMenuController != null)
@@ -158,7 +149,6 @@ public class TitleSceneSettingsManager : BaseSettingsManager
             settingsMenuController.UpdateSliderValues(currentBgmVolume, currentSeVolume, loadedMasterVolume);
         }
 
-        Debug.Log($"最終音量設定 - BGM: {currentBgmVolume}, SE: {currentSeVolume}, Master: {AudioListener.volume}");
     }
 
     /// <summary>
@@ -169,7 +159,6 @@ public class TitleSceneSettingsManager : BaseSettingsManager
         if (bgmAudioSource != null)
         {
             bgmAudioSource.volume = currentBgmVolume;
-            Debug.Log($"BGM音量適用: {currentBgmVolume} (AudioSource: {bgmAudioSource.name})");
         }
         else
         {
@@ -180,7 +169,6 @@ public class TitleSceneSettingsManager : BaseSettingsManager
         if (mainMenuController != null && mainMenuController.backgroundAudioSource != null)
         {
             mainMenuController.backgroundAudioSource.volume = currentBgmVolume;
-            Debug.Log($"MainMenuController BGM音量適用: {currentBgmVolume}");
         }
     }
 
@@ -209,8 +197,6 @@ public class TitleSceneSettingsManager : BaseSettingsManager
         PlayerPrefs.SetFloat("SEVolume", seVolume);
         PlayerPrefs.SetFloat("MasterVolume", masterVolume);
         PlayerPrefs.Save();
-
-        Debug.Log($"音量設定更新: BGM={bgmVolume}, SE={seVolume}, Master={masterVolume}");
 
         // game_save.jsonに保存
         SaveVolumeToGameSave(masterVolume);
@@ -286,6 +272,5 @@ public class TitleSceneSettingsManager : BaseSettingsManager
     protected override void LoadSettings()
     {
         // 何もしない（LoadAndApplyVolumeSettingsで処理済み）
-        Debug.Log("TitleSceneSettingsManager: LoadSettings()をスキップ（LoadAndApplyVolumeSettingsで処理済み）");
     }
 }

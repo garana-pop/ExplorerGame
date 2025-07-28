@@ -30,6 +30,25 @@ public class SettingsMenuController : MonoBehaviour
     [Header("グラフィック設定")]
     [SerializeField] private TMP_Dropdown qualityDropdown;
 
+    [Header("解像度プリセット")]
+    // 16:9固定の解像度プリセット
+    private readonly Vector2Int[] resolutionPresets = new Vector2Int[]
+{
+    new Vector2Int(1920, 1080),  // フルHD
+    new Vector2Int(1600, 900),   // HD+
+    new Vector2Int(1280, 720),   // HD
+    new Vector2Int(960, 540)     // 小サイズ
+};
+
+    [Header("解像度ボタン")]
+    [SerializeField] private Button resolution1920x1080Button;
+    [SerializeField] private Button resolution1600x900Button;
+    [SerializeField] private Button resolution1280x720Button;
+    [SerializeField] private Button resolution960x540Button;
+
+    [Header("現在設定されている値の色設定")]
+    [SerializeField] private Color optionalColor;
+
     [Header("マネージャー参照")]
     private MainMenuController mainMenuController;
     private TitleSceneSettingsManager titleSceneSettingsManager;
@@ -52,6 +71,123 @@ public class SettingsMenuController : MonoBehaviour
 
         // 初期値をロード
         LoadInitialSettings();
+    }
+
+    private void SetupResolutionButtons()
+    {
+        // 解像度ボタンのリスナー設定
+        if (resolution1920x1080Button != null)
+            resolution1920x1080Button.onClick.AddListener(() => OnResolutionButtonClicked(0));
+
+        if (resolution1600x900Button != null)
+            resolution1600x900Button.onClick.AddListener(() => OnResolutionButtonClicked(1));
+
+        if (resolution1280x720Button != null)
+            resolution1280x720Button.onClick.AddListener(() => OnResolutionButtonClicked(2));
+
+        if (resolution960x540Button != null)
+            resolution960x540Button.onClick.AddListener(() => OnResolutionButtonClicked(3));
+    }
+
+    private void OnResolutionButtonClicked(int resolutionIndex)
+    {
+        if (resolutionIndex < 0 || resolutionIndex >= resolutionPresets.Length)
+        {
+            Debug.LogError($"無効な解像度インデックス: {resolutionIndex}");
+            return;
+        }
+
+        Vector2Int selectedResolution = resolutionPresets[resolutionIndex];
+
+        if (debugMode)
+        {
+            Debug.Log($"解像度選択: {selectedResolution.x}×{selectedResolution.y}");
+        }
+
+        // TODO: ステップ3で実際の解像度変更処理を実装
+        // 現時点では選択された解像度をログに出力するのみ
+    }
+
+    /// <summary>
+    /// GraphicsPanelの表示時に現在の解像度を確認する処理
+    /// </summary>
+    private void UpdateGraphicsPanel()
+    {
+        // 現在の解像度を取得
+        int currentWidth = Screen.width;
+        int currentHeight = Screen.height;
+
+        if (debugMode)
+        {
+            Debug.Log($"現在の解像度: {currentWidth}×{currentHeight}");
+        }
+
+        // 現在の解像度に対応するボタンのテキスト色を変更
+        UpdateResolutionButtonTextColors(currentWidth, currentHeight);
+    }
+
+    /// <summary>
+    /// 現在の解像度に対応するボタンのテキスト色を更新
+    /// </summary>
+    private void UpdateResolutionButtonTextColors(int width, int height)
+    {
+        // すべてのボタンのテキスト色をリセット
+        ResetAllButtonTextColors();
+
+        // 現在の解像度に一致するボタンを探してテキスト色を変更
+        for (int i = 0; i < resolutionPresets.Length; i++)
+        {
+            if (resolutionPresets[i].x == width && resolutionPresets[i].y == height)
+            {
+                SetButtonTextColor(GetResolutionButton(i), optionalColor);
+                break;
+            }
+        }
+    }
+
+    // すべてのボタンのテキスト色をリセット
+    private void ResetAllButtonTextColors()
+    {
+        SetButtonTextColor(resolution1920x1080Button, Color.white);
+        SetButtonTextColor(resolution1600x900Button, Color.white);
+        SetButtonTextColor(resolution1280x720Button, Color.white);
+        SetButtonTextColor(resolution960x540Button, Color.white);
+    }
+
+    // ボタンのテキスト色を設定
+    private void SetButtonTextColor(Button button, Color color)
+    {
+        if (button != null)
+        {
+            // ボタンの子オブジェクトからText (TMP)を探す
+            TextMeshProUGUI textComponent = button.GetComponentInChildren<TextMeshProUGUI>();
+            if (textComponent != null)
+            {
+                textComponent.color = color;
+            }
+            else if (debugMode)
+            {
+                Debug.LogWarning($"ボタン {button.name} にTextMeshProUGUIコンポーネントが見つかりません");
+            }
+        }
+    }
+
+    // インデックスから対応するボタンを取得
+    private Button GetResolutionButton(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return resolution1920x1080Button;
+            case 1:
+                return resolution1600x900Button;
+            case 2:
+                return resolution1280x720Button;
+            case 3:
+                return resolution960x540Button;
+            default:
+                return null;
+        }
     }
 
     /// <summary>
@@ -86,6 +222,9 @@ public class SettingsMenuController : MonoBehaviour
 
         if (backButton != null)
             backButton.onClick.AddListener(OnBackButtonClicked);
+
+        // 解像度ボタンの設定
+        SetupResolutionButtons();
     }
 
     private void SetupSliders()
@@ -202,6 +341,10 @@ public class SettingsMenuController : MonoBehaviour
         PlayClickSound();
         CloseSubPanels();
         graphicsPanel.SetActive(true);
+
+        // GraphicsPanelを開いた時に現在の解像度を確認
+        UpdateGraphicsPanel();
+
     }
 
     private void OnResetDataButtonClicked()

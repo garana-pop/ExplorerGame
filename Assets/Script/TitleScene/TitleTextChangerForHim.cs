@@ -312,6 +312,5 @@ public class TitleTextChangerForHim : MonoBehaviour
     public void SetSoundEnabled(bool enabled)
     {
         soundEnabled = enabled;
-        if (debugMode) Debug.Log($"TitleTextChangerForHim: 効果音を{(enabled ? "有効" : "無効")}にしました");
     }
 }

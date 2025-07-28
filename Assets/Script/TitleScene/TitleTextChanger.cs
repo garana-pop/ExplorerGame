@@ -567,6 +567,5 @@ public class TitleTextChanger : MonoBehaviour
     public void SetSoundEnabled(bool enabled)
     {
         soundEnabled = enabled;
-        if (debugMode) Debug.Log($"TitleTextChanger: Œø‰Ê‰¹‚ð{(enabled ? "—LŒø" : "–³Œø")}‚É‚µ‚Ü‚µ‚½");
     }
 }

@@ -129,11 +129,6 @@ public class RememberButtonAlphaAnimator : MonoBehaviour
 
         // 初期Alpha値を設定
         currentAlpha = targetCanvasGroup.alpha;
-
-        if (debugMode)
-        {
-            Debug.Log("RememberButtonAlphaAnimator: 初期化完了");
-        }
     }
 
     private void Start()
@@ -142,10 +137,6 @@ public class RememberButtonAlphaAnimator : MonoBehaviour
         lastAfterChangeFlag = GetAfterChangeToHerMemoryFlag();
         lastTextChangerFlag = GetTitleTextChangerFlag();
 
-        if (debugMode)
-        {
-            Debug.Log($"RememberButtonAlphaAnimator: 初期フラグ状態 - AfterChange: {lastAfterChangeFlag}, TextChanger: {lastTextChangerFlag}");
-        }
 
         // 強制開始またはすでにフラグがtrueの場合はアニメーション開始
         if (forceStart || lastAfterChangeFlag || lastTextChangerFlag)
