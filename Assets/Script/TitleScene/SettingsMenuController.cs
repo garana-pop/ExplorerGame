@@ -89,6 +89,9 @@ public class SettingsMenuController : MonoBehaviour
             resolution960x540Button.onClick.AddListener(() => OnResolutionButtonClicked(3));
     }
 
+    /// <summary>
+    /// 解像度ボタン押下後の処理
+    /// </summary>
     private void OnResolutionButtonClicked(int resolutionIndex)
     {
         if (resolutionIndex < 0 || resolutionIndex >= resolutionPresets.Length)
@@ -104,8 +107,61 @@ public class SettingsMenuController : MonoBehaviour
             Debug.Log($"解像度選択: {selectedResolution.x}×{selectedResolution.y}");
         }
 
-        // TODO: ステップ3で実際の解像度変更処理を実装
-        // 現時点では選択された解像度をログに出力するのみ
+        // エラーハンドリングと解像度変更処理
+        try
+        {
+            // ウィンドウモード固定で解像度を変更
+            Screen.SetResolution(selectedResolution.x, selectedResolution.y, false);
+
+            if (debugMode)
+            {
+                Debug.Log($"解像度を変更しました: {selectedResolution.x}×{selectedResolution.y} (ウィンドウモード)");
+            }
+
+            // 効果音再生
+            if (SoundEffectManager.Instance != null)
+            {
+                SoundEffectManager.Instance.PlayClickSound();
+            }
+        }
+        // 例外発生時
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"解像度変更エラー: {ex.Message}");
+
+            // フォールバック処理: デフォルト解像度(1280×720)で試行
+            try
+            {
+                Debug.LogWarning("デフォルト解像度(1280×720)にフォールバックします");
+
+                // ウィンドウモード固定で解像度を1280×720に設定
+                Screen.SetResolution(1280, 720, false);
+            }
+            catch (System.Exception fallbackEx)
+            {
+                Debug.LogError($"フォールバック解像度変更も失敗: {fallbackEx.Message}");
+            }
+        }
+
+        // UI更新処理を少し遅らせて実行（解像度変更が反映された後）
+        StartCoroutine(DelayedUIUpdate());
+    }
+
+    /// <summary>
+    /// 解像度変更後のUI更新を遅延実行
+    /// </summary>
+    private System.Collections.IEnumerator DelayedUIUpdate()
+    {
+        // 1フレーム待機して解像度変更が確実に反映されるのを待つ
+        yield return null;
+
+        // GraphicsPanel表示時の現在解像度確認処理
+        UpdateGraphicsPanel();
+
+        if (debugMode)
+        {
+            Debug.Log($"UI更新完了 - 現在の解像度: {Screen.width}×{Screen.height}");
+        }
     }
 
     /// <summary>
@@ -140,6 +196,12 @@ public class SettingsMenuController : MonoBehaviour
             if (resolutionPresets[i].x == width && resolutionPresets[i].y == height)
             {
                 SetButtonTextColor(GetResolutionButton(i), optionalColor);
+
+                if (debugMode)
+                {
+                    Debug.Log($"現在の解像度ボタンのテキスト色変更: {width}×{height}");
+                }
+
                 break;
             }
         }
