@@ -40,6 +40,9 @@ public class GameSaveData
     /// <summary>MonologueSceneから遷移したかのフラグ</summary>
     public bool fromMonologueScene = false;
 
+    /// <summary>選択された解像度のインデックス（0-3）</summary>
+    public int resolutionIndex = 2; // デフォルトは1280x720（インデックス2）
+
     /// <summary>
     /// デフォルト値で初期化する
     /// </summary>

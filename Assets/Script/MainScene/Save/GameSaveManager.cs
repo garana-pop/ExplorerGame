@@ -113,6 +113,37 @@ public class GameSaveManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 解像度インデックスを設定
+    /// </summary>
+    public void SetResolutionIndex(int index)
+    {
+        if (currentSaveData == null)
+        {
+            InitializeSaveData();
+        }
+
+        currentSaveData.resolutionIndex = index;
+
+        if (debugMode)
+        {
+            Debug.Log($"GameSaveManager: 解像度インデックスを {index} に設定しました");
+        }
+    }
+
+    /// <summary>
+    /// 保存された解像度インデックスを取得
+    /// </summary>
+    public int GetResolutionIndex()
+    {
+        if (currentSaveData == null)
+        {
+            return 2; // デフォルトは1280x720
+        }
+
+        return currentSaveData.resolutionIndex;
+    }
+
+    /// <summary>
     /// AfterChangeToHisFutureフラグを設定（新規追加）
     /// </summary>
     public void SetAfterChangeToHisFutureFlag(bool value)

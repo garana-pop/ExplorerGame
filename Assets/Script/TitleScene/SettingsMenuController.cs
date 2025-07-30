@@ -107,11 +107,33 @@ public class SettingsMenuController : MonoBehaviour
             Debug.Log($"解像度選択: {selectedResolution.x}×{selectedResolution.y}");
         }
 
+        // モニター解像度チェック
+        int adjustedIndex = CheckAndAdjustResolutionForMonitor(resolutionIndex);
+
+        // 調整が必要だった場合
+        if (adjustedIndex != resolutionIndex)
+        {
+            selectedResolution = resolutionPresets[adjustedIndex];
+            resolutionIndex = adjustedIndex;
+
+            if (debugMode)
+            {
+                Debug.LogWarning($"モニター解像度制限により、解像度を自動調整: {selectedResolution.x}×{selectedResolution.y}");
+            }
+        }
+
         // エラーハンドリングと解像度変更処理
         try
         {
             // ウィンドウモード固定で解像度を変更
             Screen.SetResolution(selectedResolution.x, selectedResolution.y, false);
+
+            // GameSaveManagerに解像度インデックスを保存
+            if (GameSaveManager.Instance != null)
+            {
+                GameSaveManager.Instance.SetResolutionIndex(resolutionIndex);
+                GameSaveManager.Instance.SaveGame();
+            }
 
             if (debugMode)
             {
@@ -136,6 +158,13 @@ public class SettingsMenuController : MonoBehaviour
 
                 // ウィンドウモード固定で解像度を1280×720に設定
                 Screen.SetResolution(1280, 720, false);
+
+                // デフォルトインデックスを保存
+                if (GameSaveManager.Instance != null)
+                {
+                    GameSaveManager.Instance.SetResolutionIndex(2);
+                    GameSaveManager.Instance.SaveGame();
+                }
             }
             catch (System.Exception fallbackEx)
             {
@@ -207,6 +236,36 @@ public class SettingsMenuController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// モニターサイズをチェックし、必要に応じて解像度インデックスを調整
+    /// </summary>
+    private int CheckAndAdjustResolutionForMonitor(int desiredIndex)
+    {
+        // 現在のモニター解像度を取得
+        int monitorWidth = Screen.currentResolution.width;
+        int monitorHeight = Screen.currentResolution.height;
+
+        if (debugMode)
+        {
+            Debug.Log($"モニター解像度: {monitorWidth}×{monitorHeight}");
+        }
+
+        // 選択された解像度がモニターサイズを超えているか確認
+        for (int i = desiredIndex; i < resolutionPresets.Length; i++)
+        {
+            Vector2Int resolution = resolutionPresets[i];
+
+            // タスクバーやウィンドウ枠の余裕を考慮
+            if (resolution.x <= monitorWidth && resolution.y <= monitorHeight)
+            {
+                return i;
+            }
+        }
+
+        // すべての解像度がモニターサイズを超える場合は最小解像度を返す
+        return resolutionPresets.Length - 1;
+    }
+
     // すべてのボタンのテキスト色をリセット
     private void ResetAllButtonTextColors()
     {
@@ -268,6 +327,9 @@ public class SettingsMenuController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// ボタンのリスナー設定
+    /// </summary>
     private void SetupButtonListeners()
     {
         if (languageButton != null)
@@ -289,6 +351,9 @@ public class SettingsMenuController : MonoBehaviour
         SetupResolutionButtons();
     }
 
+    /// <summary>
+    /// 音量スライダー設定
+    /// </summary>
     private void SetupSliders()
     {
         // BGMスライダーの設定
@@ -319,6 +384,9 @@ public class SettingsMenuController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 初期値（再ロード時）の設定：音量・解像度
+    /// </summary>
     private void LoadInitialSettings()
     {
         // 初期音量を設定
@@ -341,6 +409,32 @@ public class SettingsMenuController : MonoBehaviour
 
         if (masterVolumeSlider != null)
             masterVolumeSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MasterVolume", 0.8f));
+
+        // 解像度を設定：保存された解像度インデックスを取得して適用
+        if (GameSaveManager.Instance != null && GameSaveManager.Instance.SaveDataExists())
+        {
+            int savedResolutionIndex = GameSaveManager.Instance.GetResolutionIndex();
+
+            // 保存されたインデックスが有効な範囲内か確認
+            if (savedResolutionIndex >= 0 && savedResolutionIndex < resolutionPresets.Length)
+            {
+                Vector2Int savedResolution = resolutionPresets[savedResolutionIndex];
+
+                // 現在の解像度と異なる場合のみ変更
+                if (Screen.width != savedResolution.x || Screen.height != savedResolution.y)
+                {
+                    Screen.SetResolution(savedResolution.x, savedResolution.y, false);
+
+                    if (debugMode)
+                    {
+                        Debug.Log($"保存された解像度を適用: {savedResolution.x}×{savedResolution.y}");
+                    }
+                }
+
+                // UI更新
+                UpdateGraphicsPanel();
+            }
+        }
     }
 
     /// <summary>
@@ -369,6 +463,9 @@ public class SettingsMenuController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// パネルの初期化
+    /// </summary>
     private void CloseSubPanels()
     {
         if (languagePanel != null)
