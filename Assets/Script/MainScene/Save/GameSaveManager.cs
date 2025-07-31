@@ -144,6 +144,109 @@ public class GameSaveManager : MonoBehaviour
     }
 
     /// <summary>
+    /// ウィンドウ位置を設定
+    /// </summary>
+    public void SetWindowPosition(int x, int y)
+    {
+        if (currentSaveData == null)
+        {
+            InitializeSaveData();
+        }
+
+        if (currentSaveData.windowPosition == null)
+        {
+            currentSaveData.windowPosition = new WindowPosition();
+        }
+
+        currentSaveData.windowPosition.x = x;
+        currentSaveData.windowPosition.y = y;
+        currentSaveData.windowPosition.isValid = true;
+
+        if (debugMode)
+        {
+            Debug.Log($"{nameof(GameSaveManager)}: ウィンドウ位置を設定しました - ({x}, {y})");
+        }
+    }
+
+    /// <summary>
+    /// ウィンドウ位置を取得
+    /// </summary>
+    public WindowPosition GetWindowPosition()
+    {
+        if (currentSaveData == null || currentSaveData.windowPosition == null)
+        {
+            return new WindowPosition(); // 無効な位置を返す
+        }
+
+        return currentSaveData.windowPosition;
+    }
+
+    /// <summary>
+    /// ウィンドウ位置が有効かどうかを確認
+    /// </summary>
+    public bool HasValidWindowPosition()
+    {
+        if (currentSaveData == null || currentSaveData.windowPosition == null)
+        {
+            return false;
+        }
+
+        return currentSaveData.windowPosition.isValid;
+    }
+
+    /// <summary>
+    /// ウィンドウ位置のみを保存（軽量保存）
+    /// </summary>
+    public void SaveWindowPositionOnly()
+    {
+        try
+        {
+            // 既存のセーブデータがあれば読み込む
+            if (File.Exists(SaveFilePath))
+            {
+                string jsonData = File.ReadAllText(SaveFilePath);
+                GameSaveData loadedData = JsonUtility.FromJson<GameSaveData>(jsonData);
+
+                if (loadedData != null)
+                {
+                    // ウィンドウ位置のみを更新
+                    loadedData.windowPosition = currentSaveData.windowPosition;
+                    loadedData.saveTimestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+
+                    // 更新したデータを保存
+                    File.WriteAllText(SaveFilePath, JsonUtility.ToJson(loadedData, true));
+
+                    if (debugMode)
+                    {
+                        Debug.Log($"{nameof(GameSaveManager)}: ウィンドウ位置のみ保存しました - ({loadedData.windowPosition.x}, {loadedData.windowPosition.y})");
+                    }
+                    return;
+                }
+            }
+
+            // 既存のセーブデータがない場合は新規作成（最小限のデータ）
+            GameSaveData newData = new GameSaveData
+            {
+                gameVersion = gameVersion,
+                saveTimestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"),
+                windowPosition = currentSaveData.windowPosition,
+                resolutionIndex = currentSaveData.resolutionIndex
+            };
+
+            File.WriteAllText(SaveFilePath, JsonUtility.ToJson(newData, true));
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(GameSaveManager)}: ウィンドウ位置を新規保存しました");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"{nameof(GameSaveManager)}: ウィンドウ位置の保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
+        }
+    }
+
+    /// <summary>
     /// AfterChangeToHisFutureフラグを設定（新規追加）
     /// </summary>
     public void SetAfterChangeToHisFutureFlag(bool value)
@@ -465,10 +568,13 @@ public class GameSaveManager : MonoBehaviour
             audioSettings = new AudioSettings
             {
                 bgmVolume = 0.5f,
-                seVolume = 0.5f
+                seVolume = 0.5f,
+                masterVolume = 0.8f
             },
+            windowPosition = new WindowPosition(), // ウィンドウ位置の初期化を追加
             afterChangeToHerMemory = false,
-            endOpeningScene = false
+            endOpeningScene = false,
+            resolutionIndex = 2 // デフォルトは1280x720
         };
     }
 

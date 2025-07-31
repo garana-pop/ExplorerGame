@@ -43,6 +43,9 @@ public class GameSaveData
     /// <summary>選択された解像度のインデックス（0-3）</summary>
     public int resolutionIndex = 2; // デフォルトは1280x720（インデックス2）
 
+    /// <summary>ウィンドウ位置情報（オプション）</summary>
+    public WindowPosition windowPosition;
+
     /// <summary>
     /// デフォルト値で初期化する
     /// </summary>
@@ -53,6 +56,7 @@ public class GameSaveData
         folderState = new FolderState();
         fileProgress = new FileProgressData();
         audioSettings = new AudioSettings();
+        windowPosition = new WindowPosition();
         afterChangeToHerMemory = false;
         afterChangeToHisFuture = false;
         portraitDeleted = false;
@@ -98,11 +102,6 @@ public class FileProgressData
 
     /// <summary>PDFファイルの進捗（ファイル名 -> 進捗データ）</summary>
     public Dictionary<string, PdfFileData> pdf = new Dictionary<string, PdfFileData>();
-
-    //public static implicit operator FileProgressData(FileProgressData v)
-    //{
-    //    throw new NotImplementedException();
-    //}
 }
 
 [Serializable]
@@ -151,4 +150,40 @@ public class PdfFileData
 
     /// <summary>すべてのキーワードが見つかったかどうか</summary>
     public bool isCompleted = false;
+}
+
+/// <summary>
+/// ウィンドウ位置情報
+/// </summary>
+[Serializable]
+public class WindowPosition
+{
+    /// <summary>ウィンドウのX座標</summary>
+    public int x = -1; // -1は未設定を示す
+
+    /// <summary>ウィンドウのY座標</summary>
+    public int y = -1; // -1は未設定を示す
+
+    /// <summary>位置が有効かどうか</summary>
+    public bool isValid = false;
+
+    /// <summary>
+    /// デフォルトコンストラクタ
+    /// </summary>
+    public WindowPosition()
+    {
+        x = -1;
+        y = -1;
+        isValid = false;
+    }
+
+    /// <summary>
+    /// 位置を指定するコンストラクタ
+    /// </summary>
+    public WindowPosition(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+        this.isValid = true;
+    }
 }

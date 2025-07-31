@@ -28340,8 +28340,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1191983983}
   m_HandleRect: {fileID: 1191983982}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.60044557
+  m_Value: 0.99999976
+  m_Size: 0.60044545
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -39311,8 +39311,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 513497713}
   m_HandleRect: {fileID: 513497712}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.5064989
+  m_Value: 0.9999999
+  m_Size: 0.5064988
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -42260,8 +42260,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422776613}
   m_HandleRect: {fileID: 422776612}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.4346335
+  m_Value: 0.9999999
+  m_Size: 0.43463346
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -64803,8 +64803,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1754196685}
   m_HandleRect: {fileID: 1754196684}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.6397994
+  m_Value: 0.99999976
+  m_Size: 0.63979936
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -76326,8 +76326,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 321899461}
   m_HandleRect: {fileID: 321899460}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.6397994
+  m_Value: 0.99999976
+  m_Size: 0.63979936
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -77890,6 +77890,63 @@ MonoBehaviour:
   - {fileID: 1396603646}
   puzzlePanel: {fileID: 1215067156}
   debugMode: 0
+--- !u!1001 &1729619310
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3665908327908687068, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 635.46277
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665908327908687068, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 197.03464
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665908327908687068, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.599996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665908327908687068, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665908327908687068, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665908327908687068, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665908327908687068, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665908327908687068, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665908327908687068, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665908327908687068, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628358215763057206, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
+      propertyPath: m_Name
+      value: AspectRatioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 96f3e3b1a59ef7446b7327ad48be48fc, type: 3}
 --- !u!1 &1730262124
 GameObject:
   m_ObjectHideFlags: 0
@@ -81654,8 +81711,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 155549764}
   m_HandleRect: {fileID: 155549763}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.46387333
+  m_Value: 0.9999999
+  m_Size: 0.46387327
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -96473,3 +96530,4 @@ SceneRoots:
   - {fileID: 1458724188}
   - {fileID: 2130903189}
   - {fileID: 1842255216}
+  - {fileID: 1729619310}

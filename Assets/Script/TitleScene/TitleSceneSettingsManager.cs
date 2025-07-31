@@ -37,6 +37,9 @@ public class TitleSceneSettingsManager : BaseSettingsManager
         // BGM AudioSourceの統一設定
         SetupBGMAudioSource();
 
+        // 起動時の解像度適用処理を追加
+        ApplyStartupResolution();
+
         // 重要：SoundEffectManagerの初期化を待ってから基底クラスの初期化を実行
         StartCoroutine(DelayedInitialization());
     }
@@ -55,52 +58,57 @@ public class TitleSceneSettingsManager : BaseSettingsManager
             // 解像度プリセット配列を定義（SettingsMenuControllerと同じ設定）
             Vector2Int[] resolutionPresets = new Vector2Int[]
             {
-                new Vector2Int(1920, 1080),  // フルHD
-                new Vector2Int(1600, 900),   // 中間
-                new Vector2Int(1280, 720),   // HD
-                new Vector2Int(960, 540)     // 小サイズ
+            new Vector2Int(1920, 1080),  // フルHD
+            new Vector2Int(1600, 900),   // 中間
+            new Vector2Int(1280, 720),   // HD
+            new Vector2Int(960, 540)     // 小サイズ
             };
 
-            // インデックスが有効範囲内かチェック
+            // 有効なインデックスの場合は解像度を適用
             if (savedResolutionIndex >= 0 && savedResolutionIndex < resolutionPresets.Length)
             {
-                // モニターサイズをチェックし、必要に応じて調整
-                int adjustedIndex = CheckAndAdjustResolutionForMonitor(savedResolutionIndex, resolutionPresets);
+                Vector2Int resolution = resolutionPresets[savedResolutionIndex];
 
-                if (adjustedIndex != savedResolutionIndex)
+                // WindowResizeManagerを使用してウィンドウサイズを設定
+                if (WindowResizeManager.Instance != null)
                 {
-                    // 調整された解像度を保存
-                    GameSaveManager.Instance.SetResolutionIndex(adjustedIndex);
-                    GameSaveManager.Instance.SaveGame();
-
-                    Debug.LogWarning($"モニターサイズ制限により起動時解像度を調整: インデックス {savedResolutionIndex} → {adjustedIndex}");
+                    WindowResizeManager.Instance.SetWindowSize(resolution.x, resolution.y);
                 }
-
-                Vector2Int targetResolution = resolutionPresets[adjustedIndex];
-
-                // 現在の解像度と異なる場合のみ変更
-                if (Screen.width != targetResolution.x || Screen.height != targetResolution.y)
+                else
                 {
-                    Screen.SetResolution(targetResolution.x, targetResolution.y, false);
-                    Debug.Log($"起動時解像度を適用: {targetResolution.x}×{targetResolution.y}");
+                    // WindowResizeManagerがない場合は通常の方法で設定
+                    Screen.SetResolution(resolution.x, resolution.y, false);
 
-                    // AspectRatioManagerに最新のウィンドウサイズを通知
-                    if (AspectRatioManager.Instance != null)
+                    // すぐにWindowResizeManagerのインスタンスを作成
+                    var manager = WindowResizeManager.Instance;
+                    if (manager != null)
                     {
-                        AspectRatioManager.Instance.UpdateLastWindowSize();
+                        Debug.Log("WindowResizeManagerを作成し、リサイズを無効化しました");
                     }
                 }
-            }
-            else
-            {
-                // 無効なインデックスの場合はデフォルト解像度を適用
-                ApplyDefaultResolution();
+
+                Debug.Log($"保存された解像度を適用: {resolution.x}x{resolution.y}");
             }
         }
         else
         {
-            // セーブデータが存在しない場合はデフォルト解像度を適用
-            ApplyDefaultResolution();
+            // セーブデータがない場合はデフォルト解像度（1280x720）を設定
+            if (WindowResizeManager.Instance != null)
+            {
+                WindowResizeManager.Instance.SetWindowSize(1280, 720);
+            }
+            else
+            {
+                Screen.SetResolution(1280, 720, false);
+
+                // WindowResizeManagerのインスタンスを作成
+                var manager = WindowResizeManager.Instance;
+                if (manager != null)
+                {
+                    Debug.Log("WindowResizeManagerを作成し、リサイズを無効化しました");
+                }
+            }
+            Debug.Log("デフォルト解像度を適用: 1280x720");
         }
     }
 
@@ -124,11 +132,6 @@ public class TitleSceneSettingsManager : BaseSettingsManager
                 GameSaveManager.Instance.SaveGame();
             }
 
-            // AspectRatioManagerに最新のウィンドウサイズを通知
-            if (AspectRatioManager.Instance != null)
-            {
-                AspectRatioManager.Instance.UpdateLastWindowSize();
-            }
         }
     }
 

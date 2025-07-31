@@ -60,6 +60,12 @@ public class SettingsMenuController : MonoBehaviour
     {
         mainMenuController = GetComponentInParent<MainMenuController>();
 
+        // WindowResizeManagerが存在することを確認
+        if (WindowResizeManager.Instance == null)
+        {
+            Debug.LogWarning("WindowResizeManagerが見つかりません。自動的に作成します。");
+        }
+
         // パネルの初期化
         CloseSubPanels();
 
@@ -94,39 +100,35 @@ public class SettingsMenuController : MonoBehaviour
     /// </summary>
     private void OnResolutionButtonClicked(int resolutionIndex)
     {
-        if (resolutionIndex < 0 || resolutionIndex >= resolutionPresets.Length)
+        if (resolutionIndex >= 0 && resolutionIndex < resolutionPresets.Length)
         {
-            Debug.LogError($"無効な解像度インデックス: {resolutionIndex}");
-            return;
-        }
+            Vector2Int selectedResolution = resolutionPresets[resolutionIndex];
 
-        Vector2Int selectedResolution = resolutionPresets[resolutionIndex];
+            // WindowResizeManagerを使用してウィンドウサイズを変更
+            if (WindowResizeManager.Instance != null)
+            {
+                // SetWindowSizeメソッドがリサイズ無効化を自動的に再適用する
+                WindowResizeManager.Instance.SetWindowSize(selectedResolution.x, selectedResolution.y);
+            }
+            else
+            {
+                // WindowResizeManagerがない場合は通常の方法で設定
+                Screen.SetResolution(selectedResolution.x, selectedResolution.y, false);
 
-        if (debugMode)
-        {
-            Debug.Log($"解像度選択: {selectedResolution.x}×{selectedResolution.y}");
-        }
-
-        // モニター解像度チェック
-        int adjustedIndex = CheckAndAdjustResolutionForMonitor(resolutionIndex);
-
-        // 調整が必要だった場合
-        if (adjustedIndex != resolutionIndex)
-        {
-            selectedResolution = resolutionPresets[adjustedIndex];
-            resolutionIndex = adjustedIndex;
+                // WindowResizeManagerのインスタンスを作成して、リサイズを無効化
+                Debug.LogWarning("WindowResizeManagerが存在しないため、新規作成します");
+                var manager = WindowResizeManager.Instance;
+                if (manager != null)
+                {
+                    // インスタンス作成時に自動的にリサイズ無効化される
+                    Debug.Log("WindowResizeManagerを作成し、リサイズを無効化しました");
+                }
+            }
 
             if (debugMode)
             {
-                Debug.LogWarning($"モニター解像度制限により、解像度を自動調整: {selectedResolution.x}×{selectedResolution.y}");
+                Debug.Log($"解像度を {selectedResolution.x}x{selectedResolution.y} に変更");
             }
-        }
-
-        // エラーハンドリングと解像度変更処理
-        try
-        {
-            // ウィンドウモード固定で解像度を変更
-            Screen.SetResolution(selectedResolution.x, selectedResolution.y, false);
 
             // GameSaveManagerに解像度インデックスを保存
             if (GameSaveManager.Instance != null)
@@ -135,45 +137,9 @@ public class SettingsMenuController : MonoBehaviour
                 GameSaveManager.Instance.SaveGame();
             }
 
-            if (debugMode)
-            {
-                Debug.Log($"解像度を変更しました: {selectedResolution.x}×{selectedResolution.y} (ウィンドウモード)");
-            }
-
-            // 効果音再生
-            if (SoundEffectManager.Instance != null)
-            {
-                SoundEffectManager.Instance.PlayClickSound();
-            }
+            // ボタンの表示を更新
+            StartCoroutine(DelayedUIUpdate());
         }
-        // 例外発生時
-        catch (System.Exception ex)
-        {
-            Debug.LogError($"解像度変更エラー: {ex.Message}");
-
-            // フォールバック処理: デフォルト解像度(1280×720)で試行
-            try
-            {
-                Debug.LogWarning("デフォルト解像度(1280×720)にフォールバックします");
-
-                // ウィンドウモード固定で解像度を1280×720に設定
-                Screen.SetResolution(1280, 720, false);
-
-                // デフォルトインデックスを保存
-                if (GameSaveManager.Instance != null)
-                {
-                    GameSaveManager.Instance.SetResolutionIndex(2);
-                    GameSaveManager.Instance.SaveGame();
-                }
-            }
-            catch (System.Exception fallbackEx)
-            {
-                Debug.LogError($"フォールバック解像度変更も失敗: {fallbackEx.Message}");
-            }
-        }
-
-        // UI更新処理を少し遅らせて実行（解像度変更が反映された後）
-        StartCoroutine(DelayedUIUpdate());
     }
 
     /// <summary>
