@@ -63,6 +63,9 @@ public class OpeningSceneController : MonoBehaviour
     private bool skipRequested = false;
     private bool isSettingsOpen = false;  // 設定画面が開いているかのフラグ
 
+    // クラスのフィールドに以下を追加
+    private SpeakerNameTransitionController speakerNameController;
+
 
     private void Awake()
     {
@@ -106,6 +109,13 @@ public class OpeningSceneController : MonoBehaviour
                 Debug.Log("Exit Controllerが見つからなかったため、新しく追加しました。");
             }
         }
+
+        // SpeakerNameTransitionControllerの参照を取得
+        speakerNameController = FindFirstObjectByType<SpeakerNameTransitionController>();
+        if (speakerNameController == null)
+        {
+            Debug.LogWarning("SpeakerNameTransitionControllerが見つかりません。");
+        }
     }
 
     private void Update()
@@ -122,6 +132,10 @@ public class OpeningSceneController : MonoBehaviour
     {
         // 設定画面が開いている場合は入力を処理しない
         if (isSettingsOpen)
+            return;
+
+        // 話者名変更中は入力を処理しない
+        if (speakerNameController != null && speakerNameController.IsTransitioning)
             return;
 
         // On click or press enter/space

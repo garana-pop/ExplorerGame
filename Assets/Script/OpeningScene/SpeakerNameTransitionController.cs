@@ -55,6 +55,9 @@ public class SpeakerNameTransitionController : MonoBehaviour
     [Header("デバッグ")]
     [SerializeField] private bool debugMode = false;
 
+    // 話者名変更中フラグ
+    public bool IsTransitioning { get; private set; } = false;
+
     // 内部変数
     private AudioSource audioSource;
     private Color originalLeftNameColor;
@@ -240,6 +243,9 @@ public class SpeakerNameTransitionController : MonoBehaviour
     /// </summary>
     private IEnumerator AnimateNameChange(TextMeshProUGUI textComponent, string fromName, string toName, Color originalColor)
     {
+        // 話者名変更中フラグを立てる
+        IsTransitioning = true;
+
         // 変更開始前の待機
         yield return new WaitForSeconds(pauseBeforeTransition);
 
@@ -277,6 +283,9 @@ public class SpeakerNameTransitionController : MonoBehaviour
 
         if (debugMode)
             Debug.Log($"名前変更完了: {fromName} → {toName}");
+
+        // 話者名変更中フラグを下ろす
+        IsTransitioning = false;
     }
 
     /// <summary>
@@ -300,6 +309,9 @@ public class SpeakerNameTransitionController : MonoBehaviour
 
     private void OnDestroy()
     {
+        // 話者名変更中フラグをリセット
+        IsTransitioning = false;
+
         // イベントリスナーの登録解除
         DialogueEventNotifier.OnDialogueDisplayed -= OnDialogueDisplayed;
 
