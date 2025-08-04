@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Video;
 
 /// <summary>
 /// MonologueSceneのセリフ表示を管理するクラス
@@ -21,6 +22,10 @@ public class MonologueDisplayManager : MonoBehaviour
     [Header("入力設定")]
     [SerializeField] private KeyCode continueKey = KeyCode.Space;
     [SerializeField] private bool enableMouseClick = true;
+
+    [Header("アニメーション設定")]
+    [SerializeField] private VideoPlayer videoPlayer;
+    [SerializeField] private VideoClip[] monologueAnimations;
 
     [Header("シーン遷移設定")]
     [SerializeField] private string nextSceneName = "TitleScene";
