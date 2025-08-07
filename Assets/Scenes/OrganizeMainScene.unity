@@ -458,7 +458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -423.25253}
+  m_AnchoredPosition: {x: 0, y: -423.25278}
   m_SizeDelta: {x: 0, y: 846.5049}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &22361530
@@ -4186,6 +4186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &134521568
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6957,6 +6958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &225275251
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7453,7 +7455,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -300.56277}
+  m_AnchoredPosition: {x: 0, y: -300.56302}
   m_SizeDelta: {x: 0.000009536743, y: 601.1255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &227334148
@@ -9117,6 +9119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &285553600
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -9399,7 +9402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -289.0628}
+  m_AnchoredPosition: {x: 0, y: -289.06314}
   m_SizeDelta: {x: 0, y: 578.1257}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &292363321
@@ -10396,6 +10399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &303051890
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -11767,6 +11771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &340256719
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -13695,7 +13700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -565.06274}
+  m_AnchoredPosition: {x: 0, y: -565.06323}
   m_SizeDelta: {x: 0.000009536743, y: 1130.1255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &384699178
@@ -14111,6 +14116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &397304722
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -15727,7 +15733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -166.9949}
+  m_AnchoredPosition: {x: 0, y: -166.99538}
   m_SizeDelta: {x: 0, y: 333.9901}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &428678794
@@ -16559,7 +16565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -244.56284}
+  m_AnchoredPosition: {x: 0, y: -244.56308}
   m_SizeDelta: {x: 0, y: 489.1255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &447077752
@@ -16872,6 +16878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &457180100
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -17194,6 +17201,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1566202286}
   - {fileID: 1519389550}
   m_Father: {fileID: 1309483376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17547,6 +17555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &468570197
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -21437,8 +21446,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1191983983}
   m_HandleRect: {fileID: 1191983982}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.63888043
+  m_Value: 1.0000005
+  m_Size: 0.6388804
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -21888,15 +21897,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34bf568ca119cb45b0edda6d20232e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileScrollView: {fileID: 0}
-  fileContentPanel: {fileID: 0}
+  fileScrollView: {fileID: 960451939}
+  fileContentPanel: {fileID: 960451939}
   trashBinObject: {fileID: 0}
   messagePanel: {fileID: 0}
   messageText: {fileID: 0}
   confirmationPanel: {fileID: 0}
   confirmationText: {fileID: 0}
   commonSettingsPanel: {fileID: 1995164893}
-  fileItemPrefab: {fileID: 0}
   saveManager: {fileID: 1458724187}
   soundManager: {fileID: 457994791}
   returnSceneName: TitleScene
@@ -26252,6 +26260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &781600099
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -29639,7 +29648,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 513497713}
   m_HandleRect: {fileID: 513497712}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000002
   m_Size: 0.54715526
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -30728,6 +30737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &906156806
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -30862,8 +30872,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 673634949}
   m_HandleRect: {fileID: 673634948}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.38279513
+  m_Value: 1.0000001
+  m_Size: 0.3827951
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -32351,8 +32361,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422776613}
   m_HandleRect: {fileID: 422776612}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.47507447
+  m_Value: 1.0000005
+  m_Size: 0.47507453
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -39116,7 +39126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -502.06256}
+  m_AnchoredPosition: {x: 0, y: -502.06296}
   m_SizeDelta: {x: 0, y: 1004.1252}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1133867915
@@ -39265,6 +39275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &1135279526
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -41538,6 +41549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &1192700305
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -44558,6 +44570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &1280279525
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -44647,7 +44660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -244.56284}
+  m_AnchoredPosition: {x: 0, y: -244.56308}
   m_SizeDelta: {x: 0, y: 489.1255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281160937
@@ -48037,6 +48050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &1373222112
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -50315,8 +50329,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1754196685}
   m_HandleRect: {fileID: 1754196684}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.6764884
+  m_Value: 1.0000005
+  m_Size: 0.67648834
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -51589,6 +51603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &1477200857
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -54482,6 +54497,153 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564508801}
   m_CullTransparentMesh: 1
+--- !u!1 &1566202285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1566202286}
+  - component: {fileID: 1566202290}
+  - component: {fileID: 1566202289}
+  - component: {fileID: 1566202288}
+  - component: {fileID: 1566202291}
+  m_Layer: 5
+  m_Name: TrashBoxButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1566202286
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566202285}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.5396824, y: 2.5396824, z: 2.5396824}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 463437475}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -203, y: 187}
+  m_SizeDelta: {x: 102.444, y: 105.338}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1566202288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566202285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1566202289}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 457994791}
+        m_TargetAssemblyTypeName: SoundEffectManager, Assembly-CSharp
+        m_MethodName: PlayClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1566202289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566202285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a457f94f4901c7f41b1c8b73f5bf9113, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1566202290
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566202285}
+  m_CullTransparentMesh: 1
+--- !u!114 &1566202291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566202285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ad23684daef214b9208018b5335216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOverSprite: {fileID: 21300000, guid: 210cf408703c5444bb5135e5ce21ee65, type: 3}
+  ImageDisplayHeightValue: 12
 --- !u!1 &1567676492
 GameObject:
   m_ObjectHideFlags: 0
@@ -54756,6 +54918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &1570041097
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -55903,6 +56066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &1606000842
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -56095,7 +56259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -824.56274}
+  m_AnchoredPosition: {x: 0, y: -824.56323}
   m_SizeDelta: {x: 0.000009536743, y: 1649.1255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1606302523
@@ -59149,8 +59313,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 321899461}
   m_HandleRect: {fileID: 321899460}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.6764884
+  m_Value: 1.0000005
+  m_Size: 0.67648834
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -59966,8 +60130,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 199547236}
   m_HandleRect: {fileID: 199547235}
   m_Direction: 2
-  m_Value: 0.99999964
-  m_Size: 0.75383806
+  m_Value: 1.0000011
+  m_Size: 0.7538381
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -60303,6 +60467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &1729506667
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -63584,8 +63749,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 155549764}
   m_HandleRect: {fileID: 155549763}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.50460666
+  m_Value: 1.0000002
+  m_Size: 0.5046067
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -66033,7 +66198,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 69069101}
   m_HandleRect: {fileID: 69069100}
   m_Direction: 2
-  m_Value: 1.0000002
+  m_Value: 1.0000004
   m_Size: 0.6298319
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -67863,6 +68028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &1935878438
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -73239,6 +73405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c57c2e5a8fc76f41bf99ebbe7db19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileDragging: 0
 --- !u!225 &2092124232
 CanvasGroup:
   m_ObjectHideFlags: 0

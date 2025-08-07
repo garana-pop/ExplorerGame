@@ -45,8 +45,8 @@ public class OrganizeMainSceneController : MonoBehaviour
     #region インスペクター設定
 
     [Header("UI参照")]
-    [Tooltip("ファイル表示領域のScrollView")]
-    [SerializeField] private ScrollRect fileScrollView;
+    [Tooltip("ファイル表示領域")]
+    [SerializeField] private RectTransform fileScrollView;
 
     [Tooltip("ファイル一覧のコンテンツパネル")]
     [SerializeField] private RectTransform fileContentPanel;
@@ -68,10 +68,6 @@ public class OrganizeMainSceneController : MonoBehaviour
 
     [Tooltip("共通設定パネル")]
     [SerializeField] private GameObject commonSettingsPanel;
-
-    [Header("プレハブ参照")]
-    [Tooltip("ファイルアイテムのプレハブ")]
-    [SerializeField] private GameObject fileItemPrefab;
 
     [Header("マネージャー参照")]
     [Tooltip("ファイル管理マネージャー")]
@@ -203,9 +199,6 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         // セーブデータの読み込み
         LoadSaveData();
-
-        // ファイル一覧の生成
-        GenerateFileList();
 
         // 初期化完了
         isInitialized = true;
@@ -349,29 +342,6 @@ public class OrganizeMainSceneController : MonoBehaviour
     #region ファイル管理
 
     /// <summary>
-    /// ファイル一覧の生成
-    /// </summary>
-    private void GenerateFileList()
-    {
-        if (fileContentPanel == null || fileItemPrefab == null)
-        {
-            if (debugMode)
-            {
-                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: ファイル表示に必要なUIコンポーネントが設定されていません");
-            }
-            return;
-        }
-
-        // TODO: MainSceneで使用される全ファイルリストを取得して表示
-        // この処理はFileDataクラスとScriptableObject作成後に実装
-
-        if (debugMode)
-        {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: ファイル一覧生成完了");
-        }
-    }
-
-    /// <summary>
     /// ファイルの削除（非表示化）処理
     /// </summary>
     /// <param name="fileName">削除するファイル名</param>
@@ -445,7 +415,7 @@ public class OrganizeMainSceneController : MonoBehaviour
     }
 
     /// <summary>
-    /// メッセージを一定時間後に非表示にする
+    /// メッセージを指定時間後に非表示にする
     /// </summary>
     /// <param name="delay">遅延時間（秒）</param>
     /// <returns>コルーチン</returns>
@@ -582,7 +552,7 @@ public class OrganizeMainSceneController : MonoBehaviour
         // BGM変更処理（SoundEffectManagerに新BGM切り替えメソッドが実装された後に対応）
         // TODO: soundManager.ChangeToBGMForComplete();
 
-        // Steam実績解除（Steam連携実装後に対応）
+        // Steam実績解除（Steam API実装後に対応）
         // TODO: UnlockSteamAchievement("前へ");
 
         if (debugMode)

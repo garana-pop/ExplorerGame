@@ -269,7 +269,6 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
 
         float masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
         AudioListener.volume = masterVolume;
-        Debug.Log($"LoadSettings: PlayerPrefsから読み込み - Master: {masterVolume}");
 
         // AudioSourceに音量を適用
         ApplyVolumeSettings();
@@ -286,18 +285,15 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
         if (bgmAudioSource != null)
         {
             bgmAudioSource.volume = currentBgmVolume;
-            Debug.Log($"ApplyVolumeSettings: BGM音量を{currentBgmVolume}に設定");
         }
 
         if (soundEffectManager != null)
         {
             soundEffectManager.SetVolume(currentSeVolume);
-            Debug.Log($"ApplyVolumeSettings: SE音量を{currentSeVolume}に設定（SoundEffectManager経由）");
         }
         else if (sfxAudioSource != null)
         {
             sfxAudioSource.volume = currentSeVolume;
-            Debug.Log($"ApplyVolumeSettings: SE音量を{currentSeVolume}に設定（直接）");
         }
     }
 
@@ -619,8 +615,6 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
     /// </summary>
     private void LoadSettingsFromGameSave()
     {
-        Debug.Log("LoadSettingsFromGameSave: game_save.jsonから音量設定を読み込み開始");
-
         // GameSaveManagerから音量設定を読み込む
         if (GameSaveManager.Instance != null)
         {
@@ -634,10 +628,7 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
                 if (saveData.audioSettings.masterVolume > 0)
                 {
                     AudioListener.volume = saveData.audioSettings.masterVolume;
-                    Debug.Log($"LoadSettingsFromGameSave: masterVolume = {saveData.audioSettings.masterVolume}");
                 }
-
-                Debug.Log($"LoadSettingsFromGameSave: game_save.jsonから読み込み成功 - BGM: {currentBgmVolume}, SE: {currentSeVolume}");
 
                 // 音量を適用
                 ApplyVolumeSettings();
@@ -668,8 +659,6 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
             float masterVolume = AudioListener.volume;
             GameSaveManager.Instance.UpdateAudioSettings(currentBgmVolume, currentSeVolume, masterVolume);
             GameSaveManager.Instance.SaveAudioSettingsOnly();
-
-            Debug.Log($"SaveVolumeToGameSave: 音量設定をgame_save.jsonに保存 - Master: {masterVolume}, BGM: {currentBgmVolume}, SE: {currentSeVolume}");
         }
         else
         {

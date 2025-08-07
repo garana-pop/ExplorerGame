@@ -9,6 +9,10 @@ public class DraggableFile : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     private CanvasGroup canvasGroup;
     private Canvas draggingCanvas; // 最前面用Canvas
     public Vector3 GetOriginalPosition() { return originalPosition; }
+    public bool FileDragging = false; //ドラッグ中か判定
+
+    public delegate void FileDragEvent(bool isDragging);
+    public static event FileDragEvent OnFileDragging;
 
     private void Awake()
     {
@@ -22,6 +26,9 @@ public class DraggableFile : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        FileDragging = true;
+        OnFileDragging?.Invoke(true);
+
         originalPosition = transform.position;
         originalParent = transform.parent;
 
@@ -42,7 +49,8 @@ public class DraggableFile : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnEndDrag Called!");
+        FileDragging = false;
+        OnFileDragging?.Invoke(false);
 
         // Raycast ですべてのオブジェクトを取得
         PointerEventData pointerData = new PointerEventData(EventSystem.current)
