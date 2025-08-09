@@ -17065,9 +17065,12 @@ MonoBehaviour:
   seVolumePrefsKey: SEVolume
   initialMuteDuration: 0
   soundCategories:
-  - categoryName: Folder open Sound
+  - categoryName: FolderOpenSound
     clips:
     - {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
+  - categoryName: TrashDestroySound
+    clips:
+    - {fileID: 8300000, guid: aeae03b467f9b0045b7d3c954eaf7cc0, type: 3}
   uiClickSound: {fileID: 8300000, guid: e7ac7d834dee1c34f973e6a8719d525d, type: 3}
   revealSound: {fileID: 8300000, guid: 6c5e3d130d1498b4ab4e7181e84a6284, type: 3}
   progressCompletionSound: {fileID: 8300000, guid: 22d8b35160f396348b30dcde5074545f, type: 3}
@@ -17202,6 +17205,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1566202286}
+  - {fileID: 1827627730}
   - {fileID: 1519389550}
   m_Father: {fileID: 1309483376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21863,6 +21867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 594733858}
   - component: {fileID: 594733859}
+  - component: {fileID: 594733860}
   m_Layer: 0
   m_Name: OrganizeMainSceneController
   m_TagString: Untagged
@@ -21899,17 +21904,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileScrollView: {fileID: 960451939}
   fileContentPanel: {fileID: 960451939}
-  trashBinObject: {fileID: 0}
+  trashBinObject: {fileID: 1566202285}
   messagePanel: {fileID: 0}
   messageText: {fileID: 0}
   confirmationPanel: {fileID: 0}
   confirmationText: {fileID: 0}
   commonSettingsPanel: {fileID: 1995164893}
+  fileManager: {fileID: 594733860}
   saveManager: {fileID: 1458724187}
   soundManager: {fileID: 457994791}
   returnSceneName: TitleScene
   fadeSpeed: 1
-  debugMode: 0
+  debugMode: 1
+--- !u!114 &594733860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594733856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab4aa4c90e48e1478a8d3d4bc23ed75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutDuration: 0.5
+  useDeleteAnimation: 1
+  debugMode: 1
 --- !u!1 &604100095
 GameObject:
   m_ObjectHideFlags: 0
@@ -49628,6 +49649,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421022927}
   m_CullTransparentMesh: 1
+--- !u!1 &1422844773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1422844774}
+  - component: {fileID: 1422844776}
+  - component: {fileID: 1422844775}
+  m_Layer: 5
+  m_Name: TrashBoxTipsText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1422844774
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422844773}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1827627730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000027478, y: 183}
+  m_SizeDelta: {x: 1752.436, y: 156.058}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1422844775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422844773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: c70edee34563413409e14307e8f1024e, type: 2}
+  m_sharedMaterial: {fileID: 3882789679240245536, guid: c70edee34563413409e14307e8f1024e, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 70
+  m_fontSizeBase: 70
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1422844776
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422844773}
+  m_CullTransparentMesh: 1
 --- !u!1 &1428895149
 GameObject:
   m_ObjectHideFlags: 0
@@ -54510,6 +54667,9 @@ GameObject:
   - component: {fileID: 1566202289}
   - component: {fileID: 1566202288}
   - component: {fileID: 1566202291}
+  - component: {fileID: 1566202292}
+  - component: {fileID: 1566202293}
+  - component: {fileID: 1566202294}
   m_Layer: 5
   m_Name: TrashBoxButton
   m_TagString: Untagged
@@ -54644,6 +54804,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseOverSprite: {fileID: 21300000, guid: 210cf408703c5444bb5135e5ce21ee65, type: 3}
   ImageDisplayHeightValue: 12
+--- !u!114 &1566202292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566202285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e97a8ae6676a8e24eb13c5757aaca6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1566202293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566202285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f944d768fe214be49a539d2f7b804925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickMessage: "\u524A\u9664\u3057\u305F\u3044\u30D5\u30A1\u30A4\u30EB\u3092\u30C9\u30E9\u30C3\u30B0&\u30C9\u30ED\u30C3\u30D7\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+  messageDisplayTime: 3
+  fadeInTime: 0.5
+  fadeOutTime: 0.5
+  messagePanel: {fileID: 1827627729}
+  messageText: {fileID: 1422844775}
+  messagePanelColor: {r: 0, g: 0, b: 0, a: 0.7}
+  messageTextColor: {r: 1, g: 1, b: 1, a: 1}
+  messageFontSize: 30
+  useScaleAnimation: 1
+  scaleAnimationStart: 0.8
+  scaleAnimationEnd: 1
+  debugMode: 1
+--- !u!114 &1566202294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566202285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4170d321e77fa0f4495c845cd783b01f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileDeleteFadeTime: 0.8
+  useScaleAnimation: 1
+  deleteAnimationEndScale: 0.4
+  allFilesDeleteMessage: "\u3059\u3079\u3066\u306E\u30D5\u30A1\u30A4\u30EB\u3092\u5B8C\u5168\u306B\u524A\u9664\u3057\u307E\u3059\u304B\uFF1F"
+  enableFileRestore: 0
+  maxDeletedFilesCount: 50
+  debugMode: 1
 --- !u!1 &1567676492
 GameObject:
   m_ObjectHideFlags: 0
@@ -64079,6 +64295,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823114717}
+  m_CullTransparentMesh: 1
+--- !u!1 &1827627729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1827627730}
+  - component: {fileID: 1827627732}
+  - component: {fileID: 1827627731}
+  m_Layer: 5
+  m_Name: TrashBoxTipsPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1827627730
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827627729}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1422844774}
+  m_Father: {fileID: 463437475}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1827627731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827627729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1827627732
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827627729}
   m_CullTransparentMesh: 1
 --- !u!1 &1828984928
 GameObject:

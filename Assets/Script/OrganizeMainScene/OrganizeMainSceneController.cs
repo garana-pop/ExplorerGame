@@ -73,9 +73,6 @@ public class OrganizeMainSceneController : MonoBehaviour
     [Tooltip("ファイル管理マネージャー")]
     [SerializeField] private FileManager fileManager;
 
-    [Tooltip("ゴミ箱管理マネージャー")]
-    [SerializeField] private TrashBinManager trashBinManager;
-
     [Tooltip("セーブデータ管理マネージャー")]
     [SerializeField] private GameSaveManager saveManager;
 
@@ -125,11 +122,6 @@ public class OrganizeMainSceneController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(OrganizeMainSceneController)}: インスタンスを設定しました");
-            }
         }
         else if (instance != this)
         {
@@ -186,10 +178,6 @@ public class OrganizeMainSceneController : MonoBehaviour
     /// <returns>コルーチン</returns>
     private IEnumerator InitializeScene()
     {
-        if (debugMode)
-        {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: シーン初期化開始");
-        }
 
         // マネージャーの取得
         yield return InitializeManagers();
@@ -203,10 +191,6 @@ public class OrganizeMainSceneController : MonoBehaviour
         // 初期化完了
         isInitialized = true;
 
-        if (debugMode)
-        {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: シーン初期化完了");
-        }
     }
 
     /// <summary>
@@ -242,16 +226,6 @@ public class OrganizeMainSceneController : MonoBehaviour
             if (fileManager == null)
             {
                 //fileManager = FindFirstObjectByType<FileManager>();
-            }
-        }
-
-        // TrashBinManagerの取得（未実装の場合はスキップ）
-        if (trashBinManager == null)
-        {
-            trashBinManager = GetComponent<TrashBinManager>();
-            if (trashBinManager == null)
-            {
-                //trashBinManager = FindFirstObjectByType<TrashBinManager>();
             }
         }
 

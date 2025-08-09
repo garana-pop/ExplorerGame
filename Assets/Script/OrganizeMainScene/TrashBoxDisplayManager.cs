@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
-public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
     [Header("ゴミ箱が開いた時の画像")]
     public Sprite mouseOverSprite; // インスペクターで設定する、マウスカーソルが乗ったときの画像
@@ -11,23 +12,29 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
     [Tooltip("Rect TransformコンポーネントのHeightの値")]
     [SerializeField] private int ImageDisplayHeightValue = 10;
 
+    // UIコンポーネント
     private Image image;
     private Sprite originalSprite;
     private RectTransform rectTransform;
-    private bool FileDragging = false; //ドラッグ中か判定
-    private bool TrashBoxOpen = false; //ゴミ箱の蓋が開いたか判定
+
+    // 状態管理
+    private bool fileDragging = false; //ドラッグ中か判定
+    private bool trashBoxOpen = false; //ゴミ箱の蓋が開いたか判定
+    private bool waitingForMouseUp = false; //「開いていた後にマウスアップを検知する」用
+
+    // ゴミ箱上でマウスアップした際に発火するイベントを宣言
+    public event Action OnTrashBoxOpenedAndMouseReleased;
+
+    // 他のコンポーネント参照
+    private TrashBoxSoundSetting soundSetting;
+    //private TrashBoxTips tips;
+    //private TrashBoxDeletionManagement deletionManagement;
 
     /// <summary>
     /// Startメソッド - シーン開始時の処理
     /// </summary>
     private void Start()
     {
-        // 親オブジェクトのTransformを取得し、一番下に配置します。
-        if (transform.parent != null)
-        {
-            transform.SetAsLastSibling();
-        }
-
         // imageコンポーネントを取得します。
         image = GetComponent<Image>();
 
@@ -39,6 +46,12 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
         {
             originalSprite = image.sprite;
         }
+
+        // 他のコンポーネントを取得
+        soundSetting = GetComponent<TrashBoxSoundSetting>();
+        //tips = GetComponent<TrashBoxTips>();
+        //deletionManagement = GetComponent<TrashBoxDeletionManagement>();
+
     }
 
     /// <summary>
@@ -47,7 +60,7 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
     public void OnPointerEnter(PointerEventData eventData)
     {
         //imageに画像が設定されている　かつ、マウスカーソルがオブジェクト上にある　かつ、ドラック中である場合
-        if (image != null && mouseOverSprite != null && FileDragging) 
+        if (image != null && mouseOverSprite != null && fileDragging) 
         {
             //Rect TransformコンポーネントのHeightの値を+20
             if (rectTransform != null)
@@ -61,10 +74,25 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
             image.sprite = mouseOverSprite;
 
             //ゴミ箱の蓋が開いた
-            TrashBoxOpen = true;
+            trashBoxOpen = true;
 
-            Debug.Log("ゴミ箱の蓋を開ける");
+            //マウスアップ待機開始
+            waitingForMouseUp = true;
         }
+    }
+
+    /// <summary>
+    /// ドラッグアイテムがゴミ箱上でドロップされたときに呼ばれる（IDropHandler）
+    /// </summary>
+    /// <param name="eventData"></param>
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (waitingForMouseUp && trashBoxOpen)
+        {
+            //イベントを発火
+            OnTrashBoxOpenedAndMouseReleased?.Invoke();
+        }
+        waitingForMouseUp = false;
     }
 
     /// <summary>
@@ -73,7 +101,7 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
     public void OnPointerExit(PointerEventData eventData)
     {
         //imageに画像が設定されている場合　かつ、ゴミの蓋が開いているか
-        if (image != null && TrashBoxOpen)
+        if (image != null && trashBoxOpen)
         {
             //Rect TransformコンポーネントのHeightの値を-20
             if (rectTransform != null)
@@ -87,9 +115,7 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
             image.sprite = originalSprite;
 
             //ゴミ箱の蓋が閉まった
-            TrashBoxOpen = false;
-
-            Debug.Log("ゴミ箱の蓋を閉める");
+            trashBoxOpen = false;
         }
     }
     /// <summary>
@@ -98,7 +124,11 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
     /// <param name="eventData"></param>
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("クリックされたよ");
+        // ヒントメッセージ表示
+        //if (tips != null)
+        //{
+        //    tips.ShowClickMessage();
+        //}
     }
 
     /// <summary>
@@ -116,14 +146,35 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
     {
         DraggableFile.OnFileDragging -= HandleFileDragging; // イベントから解除
     }
+
     /// <summary>
     /// DraggableFileクラスからisDragging（ドラッグ判定フラグ）の値を取得
     /// </summary>
-    /// <param name="isDragging"></param>
+    /// <param name="isDragging">ドラッグ中かどうか</param>
     private void HandleFileDragging(bool isDragging)
     {
-        FileDragging = isDragging; // 状態を反映
-        Debug.Log("FileDragging" + FileDragging);
+        fileDragging = isDragging; // 状態を反映
     }
 
+    #region パブリックメソッド
+
+    /// <summary>
+    /// ゴミ箱が開いているかどうかを取得
+    /// </summary>
+    /// <returns>開いている場合はtrue</returns>
+    public bool IsTrashBoxOpen()
+    {
+        return trashBoxOpen;
+    }
+
+    /// <summary>
+    /// ファイルがドラッグ中かどうかを取得
+    /// </summary>
+    /// <returns>ドラッグ中の場合はtrue</returns>
+    public bool IsFileDragging()
+    {
+        return fileDragging;
+    }
+
+    #endregion
 }
