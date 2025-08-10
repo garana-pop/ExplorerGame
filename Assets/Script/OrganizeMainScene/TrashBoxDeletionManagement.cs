@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,10 +22,6 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
     [Tooltip("削除アニメーション終了時のスケール")]
     [SerializeField] private float deleteAnimationEndScale = 0.3f;
 
-    [Header("削除確認設定")]
-    [Tooltip("全ファイル削除時の確認メッセージ")]
-    [SerializeField] private string allFilesDeleteMessage = "すべてのファイルを完全に削除しますか？";
-
     [Header("ファイル管理設定")]
     [Tooltip("削除されたファイルを復元可能にするか")]
     [SerializeField] private bool enableFileRestore = false;
@@ -45,8 +42,8 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
     private List<GameObject> deletedFileObjects; // 削除されたファイルオブジェクトのリスト（復元用）
     private Dictionary<string, FileDeleteInfo> fileDeleteHistory; // ファイル削除履歴
 
-    // 現在表示中のファイル数
-    private int currentVisibleFileCount = 0;
+    // 全ファイル数
+    private int totalFileCount = 0;
 
     // アニメーション管理
     private List<Coroutine> activeDeleteAnimations;
@@ -62,6 +59,11 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
     private const float MAX_FADE_TIME = 3.0f;
     private const float MIN_SCALE = 0.0f;
     private const float MAX_SCALE = 2.0f;
+
+    private bool isAllFilesDeleted = false;
+
+    // イベントの宣言
+    public static event Action<bool> AllFilesDeleted; // 全ファイル削除
 
     #endregion
 
@@ -108,7 +110,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
     private void Start()
     {
         InitializeComponents();
-        CountVisibleFiles();
+        CountFiles();
     }
 
     #endregion
@@ -160,25 +162,24 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         }
     }
 
-    /// <summary>
-    /// 現在表示中のファイル数をカウント
-    /// </summary>
-    private void CountVisibleFiles()
-    {
-        DraggableFile[] allFiles = FindObjectsByType<DraggableFile>(FindObjectsSortMode.None);
-        currentVisibleFileCount = 0;
 
-        foreach (DraggableFile file in allFiles)
-        {
-            if (file.gameObject.activeInHierarchy)
-            {
-                currentVisibleFileCount++;
-            }
-        }
+    /// <summary>
+    /// 現在のファイル数をカウント
+    /// </summary>
+    private void CountFiles()
+    {
+        // シーン内の全 DraggableFile（アクティブ・非アクティブ問わず）を取得
+        DraggableFile[] allFiles = FindObjectsByType<DraggableFile>(
+            FindObjectsInactive.Include, // 非アクティブも含める
+            FindObjectsSortMode.None
+        );
+
+        // 総数をカウント
+        totalFileCount = allFiles.Length;
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxDeletionManagement)}: 現在の表示ファイル数 - {currentVisibleFileCount}");
+            Debug.Log($"総ファイル数（非アクティブ含む）: {totalFileCount}");
         }
     }
 
@@ -296,14 +297,23 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         ProcessFileRemoval(draggableFile);
 
         // 表示ファイル数を更新
-        currentVisibleFileCount--;
-
-        // 全ファイル削除チェック
-        CheckAllFilesDeleted();
+        totalFileCount--;
 
         if (debugMode)
         {
             Debug.Log($"{nameof(TrashBoxDeletionManagement)}: ファイル削除完了 - {fileName}");
+            Debug.Log($"{nameof(TrashBoxDeletionManagement)}: トータル ファイル数 - {totalFileCount}");
+        }
+
+        //全ファイル削除時、実行
+        if (totalFileCount == 0)
+        {
+            isAllFilesDeleted = true;
+
+            // イベント発火（nullチェックしてから呼び出す）
+            AllFilesDeleted?.Invoke(isAllFilesDeleted);
+
+            Debug.Log($"TrashBoxDeletionManagement: 発火しました → {isAllFilesDeleted}");
         }
     }
 
@@ -460,46 +470,11 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
     }
 
     /// <summary>
-    /// 全ファイル削除チェック
-    /// </summary>
-    private void CheckAllFilesDeleted()
-    {
-        if (currentVisibleFileCount <= 0)
-        {
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(TrashBoxDeletionManagement)}: 全ファイルが削除されました");
-            }
-
-            // 全ファイル削除確認ダイアログ表示
-            StartCoroutine(ShowAllFilesDeletedConfirmation());
-        }
-    }
-
-    /// <summary>
     /// 全ファイル削除確認ダイアログ表示
     /// </summary>
     /// <returns>コルーチン</returns>
     private IEnumerator ShowAllFilesDeletedConfirmation()
     {
-        // メッセージ表示
-        if (tips != null)
-        {
-            tips.ShowMessage(allFilesDeleteMessage);
-        }
-
-        // TODO: 確認ダイアログの実装
-        // bool userConfirmed = yield return ShowConfirmationDialog(allFilesDeleteMessage);
-        // if (userConfirmed)
-        // {
-        //     ExecuteCompleteFileDeletion();
-        // }
-
-        if (debugMode)
-        {
-            Debug.Log($"{nameof(TrashBoxDeletionManagement)}: 全ファイル削除確認ダイアログ表示");
-        }
-
         yield return null;
     }
 
@@ -569,7 +544,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
             fileDeleteHistory.Remove(fileName);
 
             // 表示ファイル数を更新
-            currentVisibleFileCount++;
+            totalFileCount++;
 
             if (debugMode)
             {
@@ -647,7 +622,8 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
     /// <returns>表示中のファイル数</returns>
     public int GetVisibleFileCount()
     {
-        return currentVisibleFileCount;
+        totalFileCount = sceneController.GetTotalFileCount();
+        return totalFileCount;
     }
 
     /// <summary>
@@ -720,7 +696,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
     /// </summary>
     public void RefreshVisibleFileCount()
     {
-        CountVisibleFiles();
+        CountFiles();
     }
 
     /// <summary>

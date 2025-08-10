@@ -61,6 +61,9 @@ public class TrashBoxTips : MonoBehaviour
     // シーンコントローラー参照
     private OrganizeMainSceneController sceneController;
 
+    // TrashBoxDisplayManager参照
+    private TrashBoxDisplayManager displayManager;
+
     // メッセージ表示状態管理
     private Coroutine messageCoroutine;
     private bool isMessageDisplaying = false;
@@ -78,6 +81,8 @@ public class TrashBoxTips : MonoBehaviour
     private const float MIN_FADE_TIME = 0.0f;
     private const float MAX_FADE_TIME = 2.0f;
 
+    private bool allFileDeletde_TrashBoxTips = false;
+
     #endregion
 
     #region Unity ライフサイクル
@@ -89,6 +94,9 @@ public class TrashBoxTips : MonoBehaviour
     {
         ValidateSettings();
         InitializeUI();
+
+        // TrashBoxDisplayManager参照を取得
+        displayManager = GetComponent<TrashBoxDisplayManager>();
 
         if (debugMode)
         {
@@ -110,6 +118,22 @@ public class TrashBoxTips : MonoBehaviour
 
         // メッセージパネルを初期状態で非表示に設定
         SetMessagePanelVisible(false);
+
+        // TrashBoxDisplayManagerのクリックイベントを監視
+        if (displayManager != null)
+        {
+            // コンポーネント間の連携を設定
+            SetupEventListeners();
+        }
+    }
+
+    /// <summary>
+    /// OnDestroyメソッド - オブジェクト破棄時の処理
+    /// </summary>
+    private void OnDestroy()
+    {
+        // イベントリスナーのクリーンアップ
+        CleanupEventListeners();
     }
 
     #endregion
@@ -179,16 +203,40 @@ public class TrashBoxTips : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// イベントリスナーの設定
+    /// </summary>
+    private void SetupEventListeners()
+    {
+        // TrashBoxDisplayManagerのクリックを検知するために
+        // OnPointerClickをフックする方法を実装
+        // ※TrashBoxDisplayManagerのOnPointerClickメソッドから直接呼び出される
+    }
+
+    /// <summary>
+    /// イベントリスナーのクリーンアップ
+    /// </summary>
+    private void CleanupEventListeners()
+    {
+        // 必要に応じてイベントリスナーをクリーンアップ
+    }
+
     #endregion
 
     #region メッセージ表示制御
 
     /// <summary>
-    /// クリック時のメッセージを表示
+    /// ゴミ箱クリック時のメッセージを表示
+    /// TrashBoxDisplayManagerのOnPointerClickから呼び出される
     /// </summary>
-    public void ShowClickMessage()
+    public void ShowTrashMessage()
     {
-        Debug.LogWarning($"{nameof(TrashBoxTips)}: Tipsメッセージ表示");
+        // 全ファイルを削除した後は、ゴミ箱のTipsメッセージは表示しない
+        if (allFileDeletde_TrashBoxTips == true)
+        {
+            return;
+        }
+
         ShowMessage(clickMessage);
     }
 
@@ -295,6 +343,34 @@ public class TrashBoxTips : MonoBehaviour
         {
             Debug.Log($"{nameof(TrashBoxTips)}: メッセージを強制非表示にしました");
         }
+    }
+
+    /// <summary>
+    /// 全ファイル削除イベント登録
+    /// </summary>
+    private void OnEnable()
+    {
+        TrashBoxDeletionManagement.AllFilesDeleted += AllFilesDeletedHandler;
+    }
+
+    /// <summary>
+    /// 全ファイル削除イベント登録解除
+    /// </summary>
+    private void OnDisable()
+    {
+        TrashBoxDeletionManagement.AllFilesDeleted -= AllFilesDeletedHandler;
+    }
+
+    /// <summary>
+    /// ：全ファイル削除イベントが発火
+    /// </summary>
+    /// <param name="isAllFilesDeleted"></param>
+    private void AllFilesDeletedHandler(bool isAllFilesDeleted)
+    {
+        Debug.Log($"{nameof(TrashBoxTips)}:全ファイル削除イベント受け取り成功");
+
+        // 全ファイル削除フラグを立てる
+        allFileDeletde_TrashBoxTips = true;
     }
 
     #endregion

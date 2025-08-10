@@ -11,7 +11,7 @@ public class DraggableFile : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     public bool FileDragging = false; // ドラッグ中か判定
     private bool isBeingDeleted = false; // 削除処理中フラグ
 
-    [SerializeField] private float draggingAlpha = 0.01f; // ドラッグ中の透明度（インスペクターで設定可能）
+    [SerializeField] private float draggingAlpha = 0.2f; // ドラッグ中の透明度（インスペクターで設定可能）
     private float originalAlpha; // 元の透明度を保存
 
     public delegate void FileDragEvent(bool isDragging);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using static WindowPosition;
 
 /// <summary>
 /// ゲームのセーブデータ構造クラス群
@@ -49,6 +50,10 @@ public class GameSaveData
     /// <summary>ウィンドウ位置情報（オプション）</summary>
     public WindowPosition windowPosition;
 
+    /// <summary>OrganizeMainSceneのデータ</summary>
+    public OrganizeSceneData organizeSceneData;
+
+
     /// <summary>
     /// デフォルト値で初期化する
     /// </summary>
@@ -60,6 +65,7 @@ public class GameSaveData
         fileProgress = new FileProgressData();
         audioSettings = new AudioSettings();
         windowPosition = new WindowPosition();
+        organizeSceneData = new OrganizeSceneData();
         afterChangeToHerMemory = false;
         afterChangeToHisFuture = false;
         portraitDeleted = false;
@@ -188,5 +194,100 @@ public class WindowPosition
         this.x = x;
         this.y = y;
         this.isValid = true;
+    }
+
+    /// <summary>
+    /// OrganizeMainSceneのセーブデータ構造
+    /// ファイル整理シーン専用のデータを管理
+    /// </summary>
+    [Serializable]
+    public class OrganizeSceneData
+    {
+        /// <summary>削除済みファイル名のリスト</summary>
+        public List<string> deletedFiles;
+
+        /// <summary>全ファイル完全削除フラグ</summary>
+        public bool allFilesCompletelyDeleted;
+
+        /// <summary>BGM変更済みフラグ</summary>
+        public bool bgmChanged;
+
+        /// <summary>Steam実績解除済みフラグ</summary>
+        public bool steamAchievementUnlocked;
+
+        /// <summary>最終更新日時</summary>
+        public string lastModified;
+
+        /// <summary>
+        /// デフォルトコンストラクタ
+        /// </summary>
+        public OrganizeSceneData()
+        {
+            deletedFiles = new List<string>();
+            allFilesCompletelyDeleted = false;
+            bgmChanged = false;
+            steamAchievementUnlocked = false;
+            lastModified = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+        }
+
+        /// <summary>
+        /// ファイルを削除済みリストに追加
+        /// </summary>
+        /// <param name="fileName">削除するファイル名</param>
+        public void AddDeletedFile(string fileName)
+        {
+            if (!string.IsNullOrEmpty(fileName) && !deletedFiles.Contains(fileName))
+            {
+                deletedFiles.Add(fileName);
+                lastModified = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+            }
+        }
+
+        /// <summary>
+        /// ファイルを削除済みリストから削除（復元）
+        /// </summary>
+        /// <param name="fileName">復元するファイル名</param>
+        /// <returns>削除成功時はtrue</returns>
+        public bool RemoveDeletedFile(string fileName)
+        {
+            if (!string.IsNullOrEmpty(fileName) && deletedFiles.Contains(fileName))
+            {
+                deletedFiles.Remove(fileName);
+                lastModified = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// ファイルが削除済みかチェック
+        /// </summary>
+        /// <param name="fileName">チェックするファイル名</param>
+        /// <returns>削除済みの場合true</returns>
+        public bool IsFileDeleted(string fileName)
+        {
+            return !string.IsNullOrEmpty(fileName) && deletedFiles.Contains(fileName);
+        }
+
+        /// <summary>
+        /// 削除済みファイル数を取得
+        /// </summary>
+        /// <returns>削除済みファイル数</returns>
+        public int GetDeletedFileCount()
+        {
+            return deletedFiles?.Count ?? 0;
+        }
+
+        /// <summary>
+        /// データをリセット
+        /// </summary>
+        public void Reset()
+        {
+            deletedFiles.Clear();
+            allFilesCompletelyDeleted = false;
+            bgmChanged = false;
+            steamAchievementUnlocked = false;
+            lastModified = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+        }
     }
 }

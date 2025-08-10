@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static WindowPosition;
 
 /// <summary>
 /// ゲームのセーブデータを管理するシングルトンクラス
@@ -2146,4 +2147,271 @@ public class GameSaveManager : MonoBehaviour
         Debug.Log($"セーブデータ afterChangeToHerMemory: {currentSaveData?.afterChangeToHerMemory}");
         Debug.Log($"================");
     }
+
+    #region OrganizeSceneData管理
+
+    /// <summary>
+    /// OrganizeSceneDataを取得
+    /// </summary>
+    /// <returns>OrganizeSceneData、存在しない場合は新規作成</returns>
+    public OrganizeSceneData GetOrganizeSceneData()
+    {
+        // currentSaveDataがnullの場合は初期化
+        if (currentSaveData == null)
+        {
+            InitializeSaveData();
+        }
+
+        // OrganizeSceneDataがnullの場合は新規作成
+        if (currentSaveData.organizeSceneData == null)
+        {
+            currentSaveData.organizeSceneData = new OrganizeSceneData();
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataを新規作成しました");
+            }
+        }
+
+        return currentSaveData.organizeSceneData;
+    }
+
+    /// <summary>
+    /// OrganizeSceneDataを保存
+    /// </summary>
+    /// <param name="data">保存するOrganizeSceneData</param>
+    public void SaveOrganizeSceneData(OrganizeSceneData data)
+    {
+        if (data == null)
+        {
+            Debug.LogError($"{nameof(GameSaveManager)}: 保存するOrganizeSceneDataがnullです");
+            return;
+        }
+
+        // currentSaveDataがnullの場合は初期化
+        if (currentSaveData == null)
+        {
+            InitializeSaveData();
+        }
+
+        // OrganizeSceneDataを更新
+        currentSaveData.organizeSceneData = data;
+
+        // タイムスタンプを更新
+        currentSaveData.saveTimestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+
+        // ファイルに保存
+        SaveOrganizeDataToFile();
+
+        if (debugMode)
+        {
+            Debug.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataを保存しました（削除ファイル数: {data.GetDeletedFileCount()}）");
+        }
+    }
+
+    /// <summary>
+    /// OrganizeSceneDataのみをファイルに保存
+    /// </summary>
+    private void SaveOrganizeDataToFile()
+    {
+        try
+        {
+            // メインのセーブファイルに保存
+            string jsonData = JsonUtility.ToJson(currentSaveData, true);
+            File.WriteAllText(SaveFilePath, jsonData);
+
+            // 別ファイルにOrganizeSceneDataのみを保存（バックアップ用）
+            string organizePath = Path.Combine(Application.persistentDataPath, "organize_scene_data.json");
+            string organizeJson = JsonUtility.ToJson(currentSaveData.organizeSceneData, true);
+            File.WriteAllText(organizePath, organizeJson);
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataをファイルに保存しました");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"{nameof(GameSaveManager)}: OrganizeSceneData保存中にエラーが発生しました: {e.Message}");
+        }
+    }
+
+    /// <summary>
+    /// ファイルを削除済みとしてマーク
+    /// </summary>
+    /// <param name="fileName">削除するファイル名</param>
+    public void MarkFileAsDeleted(string fileName)
+    {
+        if (string.IsNullOrEmpty(fileName))
+        {
+            return;
+        }
+
+        var organizeData = GetOrganizeSceneData();
+        organizeData.AddDeletedFile(fileName);
+
+        // 自動保存
+        if (autoSaveOnQuit)
+        {
+            SaveOrganizeDataToFile();
+        }
+
+        if (debugMode)
+        {
+            Debug.Log($"{nameof(GameSaveManager)}: ファイル '{fileName}' を削除済みとしてマークしました");
+        }
+    }
+
+    /// <summary>
+    /// ファイルの削除を取り消し（復元）
+    /// </summary>
+    /// <param name="fileName">復元するファイル名</param>
+    /// <returns>復元成功時はtrue</returns>
+    public bool RestoreDeletedFile(string fileName)
+    {
+        if (string.IsNullOrEmpty(fileName))
+        {
+            return false;
+        }
+
+        var organizeData = GetOrganizeSceneData();
+        bool result = organizeData.RemoveDeletedFile(fileName);
+
+        if (result)
+        {
+            // 自動保存
+            if (autoSaveOnQuit)
+            {
+                SaveOrganizeDataToFile();
+            }
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(GameSaveManager)}: ファイル '{fileName}' を復元しました");
+            }
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// ファイルが削除済みかチェック
+    /// </summary>
+    /// <param name="fileName">チェックするファイル名</param>
+    /// <returns>削除済みの場合true</returns>
+    public bool IsFileDeleted(string fileName)
+    {
+        if (string.IsNullOrEmpty(fileName))
+        {
+            return false;
+        }
+
+        var organizeData = GetOrganizeSceneData();
+        return organizeData.IsFileDeleted(fileName);
+    }
+
+    /// <summary>
+    /// 全ファイル完全削除フラグを設定
+    /// </summary>
+    /// <param name="value">設定する値</param>
+    public void SetAllFilesCompletelyDeleted(bool value)
+    {
+        var organizeData = GetOrganizeSceneData();
+        organizeData.allFilesCompletelyDeleted = value;
+
+        if (value)
+        {
+            // BGM変更フラグも同時に設定
+            organizeData.bgmChanged = true;
+
+            // Steam実績解除フラグも設定（Steam連携実装後）
+            // organizeData.steamAchievementUnlocked = true;
+        }
+
+        // 自動保存
+        if (autoSaveOnQuit)
+        {
+            SaveOrganizeDataToFile();
+        }
+
+        if (debugMode)
+        {
+            Debug.Log($"{nameof(GameSaveManager)}: 全ファイル完全削除フラグを{value}に設定しました");
+        }
+    }
+
+    /// <summary>
+    /// 全ファイル完全削除フラグを取得
+    /// </summary>
+    /// <returns>全ファイル完全削除済みの場合true</returns>
+    public bool GetAllFilesCompletelyDeleted()
+    {
+        var organizeData = GetOrganizeSceneData();
+        return organizeData.allFilesCompletelyDeleted;
+    }
+
+    /// <summary>
+    /// OrganizeSceneDataをリセット
+    /// </summary>
+    public void ResetOrganizeSceneData()
+    {
+        if (currentSaveData != null)
+        {
+            currentSaveData.organizeSceneData = new OrganizeSceneData();
+
+            // ファイルに保存
+            if (autoSaveOnQuit)
+            {
+                SaveOrganizeDataToFile();
+            }
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataをリセットしました");
+            }
+        }
+    }
+
+    /// <summary>
+    /// OrganizeSceneData用のバックアップファイルを読み込み
+    /// </summary>
+    /// <returns>読み込み成功時はtrue</returns>
+    public bool LoadOrganizeDataBackup()
+    {
+        try
+        {
+            string organizePath = Path.Combine(Application.persistentDataPath, "organize_scene_data.json");
+
+            if (File.Exists(organizePath))
+            {
+                string jsonData = File.ReadAllText(organizePath);
+                OrganizeSceneData loadedData = JsonUtility.FromJson<OrganizeSceneData>(jsonData);
+
+                if (loadedData != null)
+                {
+                    if (currentSaveData == null)
+                    {
+                        InitializeSaveData();
+                    }
+
+                    currentSaveData.organizeSceneData = loadedData;
+
+                    if (debugMode)
+                    {
+                        Debug.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataバックアップを読み込みました");
+                    }
+
+                    return true;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"{nameof(GameSaveManager)}: OrganizeSceneDataバックアップ読み込み中にエラー: {e.Message}");
+        }
+
+        return false;
+    }
+
+    #endregion
 }
