@@ -2,7 +2,7 @@
 - Project name: ExplorerGame
 - Unity version: Unity 6000.0.41f1
 - Active game object:
-  - Name: TextChangerForHimContainer
+  - Name: 思い出すボタン
   - Tag: Untagged
   - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

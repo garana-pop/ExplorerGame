@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using System;
+
 
 /// <summary>
 /// HerMainSceneから遷移してきた際に「思い出す」ボタンのテキストを「決意する」に変更するコンポーネント
@@ -75,6 +77,31 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     public bool DataResetPanelControllerBoot = false; // DataResetPanelControllerクラスの起動管理フラグ
 
     private readonly string glitchChars = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`{|}~";
+
+    public static event Action OnOrganizeMainSceneActivated;
+
+    private bool organizeMainSceneActive = false;
+    public bool OrganizeMainSceneActive
+    {
+        get => organizeMainSceneActive;
+        set
+        {
+            // 値が変わり、trueになった瞬間だけ発火
+            if (!organizeMainSceneActive && value == true)
+            {
+                organizeMainSceneActive = true;
+
+                Debug.Log("OrganizeMainSceneActive が true になったのでイベント発火！");
+                OnOrganizeMainSceneActivated?.Invoke();
+            }
+            else
+            {
+                organizeMainSceneActive = value;
+            }
+        }
+    }
+
+
 
     private void Awake()
     {
@@ -155,6 +182,7 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
         {
             shouldExecuteReverseChangeOnNextLoad = false;
             if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 逆変換（MonologueScene → TitleScene）を実行");
+            OrganizeMainSceneActive = true;
             return true;
         }
 
@@ -293,7 +321,7 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
         {
             if (index < chars.Length)
             {
-                chars[index] = glitchChars[Random.Range(0, glitchChars.Length)];
+                chars[index] = glitchChars[UnityEngine.Random.Range(0, glitchChars.Length)];
                 buttonText.text = new string(chars);
             }
 

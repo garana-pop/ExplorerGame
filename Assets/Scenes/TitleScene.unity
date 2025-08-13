@@ -2123,6 +2123,7 @@ GameObject:
   - component: {fileID: 309281827}
   - component: {fileID: 309281831}
   - component: {fileID: 309281830}
+  - component: {fileID: 309281832}
   m_Layer: 5
   m_Name: "\u601D\u3044\u51FA\u3059\u30DC\u30BF\u30F3"
   m_TagString: Untagged
@@ -2299,6 +2300,27 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &309281832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309281825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95295fa1cab77454b805c316b78669d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetButton: {fileID: 309281827}
+  buttonText: {fileID: 2089768332}
+  targetSceneName: OrganizeMainScene
+  transitionDelay: 0.3
+  fadePanel: {fileID: 0}
+  fadeDuration: 1
+  useSpecialSound: 0
+  specialClickSound: {fileID: 0}
+  debugMode: 1
 --- !u!1 &314724796
 GameObject:
   m_ObjectHideFlags: 0
