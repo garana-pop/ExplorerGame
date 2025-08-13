@@ -192,6 +192,12 @@ public class OrganizeMainSceneController : MonoBehaviour
     /// </summary>
     private void OnDestroy()
     {
+        // セーブデータを保存
+        if (!isTransitioning) // シーン遷移中でない場合のみ
+        {
+            SaveData();
+        }
+
         // シングルトンインスタンスのクリア
         if (instance == this)
         {
@@ -453,6 +459,20 @@ public class OrganizeMainSceneController : MonoBehaviour
         if (debugMode)
         {
             Debug.Log($"{nameof(OrganizeMainSceneController)}: セーブデータ読み込み完了");
+        }
+    }
+
+    /// <summary>
+    /// アプリケーション終了時の処理
+    /// </summary>
+    private void OnApplicationQuit()
+    {
+        // セーブデータを強制保存
+        SaveData();
+
+        if (debugMode)
+        {
+            Debug.Log($"{nameof(OrganizeMainSceneController)}: アプリケーション終了時にセーブデータを保存しました");
         }
     }
 

@@ -441,7 +441,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
     }
 
     /// <summary>
-    /// ファイルオブジェクトの削除処理
+    /// ファイルオブジェクトを非表示/削除
     /// </summary>
     /// <param name="draggableFile">削除対象のファイル</param>
     private void ProcessFileRemoval(DraggableFile draggableFile)
@@ -449,23 +449,66 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         if (draggableFile == null) return;
 
         GameObject fileObject = draggableFile.gameObject;
+        string fileName = draggableFile.name;
 
+        // OrganizeMainSceneControllerに削除を通知
+        if (sceneController != null)
+        {
+            sceneController.DeleteFile(fileName);
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(TrashBoxDeletionManagement)}: OrganizeMainSceneControllerに削除を通知 - {fileName}");
+            }
+        }
+        else if (debugMode)
+        {
+            Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: OrganizeMainSceneControllerが見つかりません");
+        }
+
+        // FileManagerに削除を通知（必要に応じて）
+        if (fileManager != null)
+        {
+            fileManager.DeleteFile(fileName);
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(TrashBoxDeletionManagement)}: FileManagerに削除を通知 - {fileName}");
+            }
+        }
+
+        // ファイルオブジェクトの処理
         if (enableFileRestore)
         {
             // 復元可能にする場合は非表示にするだけ
             fileObject.SetActive(false);
             deletedFileObjects.Add(fileObject);
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(TrashBoxDeletionManagement)}: ファイルを非表示化（復元可能） - {fileName}");
+            }
         }
         else
         {
             // 復元不可の場合は完全に削除
             Destroy(fileObject);
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(TrashBoxDeletionManagement)}: ファイルを完全削除 - {fileName}");
+            }
         }
 
-        // FileManagerに削除を通知
-        if (fileManager != null)
+        // 即座にセーブデータを保存（重要な変更のため）
+        if (sceneController != null)
         {
-            // TODO: fileManager.OnFileDeleted(draggableFile.name);
+            sceneController.SaveData();
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(TrashBoxDeletionManagement)}: セーブデータを即座に保存しました");
+            }
         }
     }
 
