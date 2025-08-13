@@ -281,9 +281,17 @@ public class FileManager : MonoBehaviour
     /// </summary>
     private void DeleteFileImmediate(GameObject fileObject, string fileName)
     {
-        fileObject.SetActive(false);
-        deletedFiles.Add(fileName);
-        activeFileCount--;
+        if (fileObject != null)
+        {
+            fileObject.SetActive(false);
+        }
+
+        // ファイル名が重複しないようチェック
+        if (!deletedFiles.Contains(fileName))
+        {
+            deletedFiles.Add(fileName);
+            activeFileCount--;
+        }
 
         if (debugMode)
         {
@@ -296,6 +304,23 @@ public class FileManager : MonoBehaviour
     /// </summary>
     private IEnumerator DeleteFileWithAnimation(GameObject fileObject, string fileName)
     {
+        // nullチェックを追加
+        if (fileObject == null)
+        {
+            // オブジェクトが既に破棄されている場合、削除状態のみ更新
+            if (!deletedFiles.Contains(fileName))
+            {
+                deletedFiles.Add(fileName);
+                activeFileCount--;
+            }
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(FileManager)}: ファイル '{fileName}' は既に破棄されていましたが、削除状態を更新しました");
+            }
+            yield break;
+        }
+
         CanvasGroup canvasGroup = fileObject.GetComponent<CanvasGroup>();
         if (canvasGroup == null)
         {
@@ -305,14 +330,33 @@ public class FileManager : MonoBehaviour
         float elapsedTime = 0f;
         float startAlpha = canvasGroup.alpha;
 
+        // アニメーション中にオブジェクトが破棄されないよう、毎フレームnullチェック
         while (elapsedTime < fadeOutDuration)
         {
+            // オブジェクトまたはCanvasGroupが破棄されていたら終了
+            if (fileObject == null || canvasGroup == null)
+            {
+                break;
+            }
+
             elapsedTime += Time.deltaTime;
             float progress = elapsedTime / fadeOutDuration;
-            canvasGroup.alpha = Mathf.Lerp(startAlpha, 0f, progress);
+
+            // 安全にalphaを設定
+            try
+            {
+                canvasGroup.alpha = Mathf.Lerp(startAlpha, 0f, progress);
+            }
+            catch (System.Exception)
+            {
+                // CanvasGroupが破棄された場合、ログを出さずに終了
+                break;
+            }
+
             yield return null;
         }
 
+        // 最終的な削除処理
         DeleteFileImmediate(fileObject, fileName);
     }
 
