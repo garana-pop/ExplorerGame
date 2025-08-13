@@ -96,17 +96,17 @@ public class MainMenuController : MonoBehaviour
 
         bool fromMonologue = saveManager.GetFromMonologueSceneFlag();
 
-        if (fromMonologue)
-        {
-            rememberButton.SetActive(false);
-            Debug.Log("MainMenuController: 思い出すボタンを非表示にしました");
+        //if (fromMonologue)
+        //{
+        //    rememberButton.SetActive(false);
+        //    Debug.Log("MainMenuController: 思い出すボタンを非表示にしました");
 
-            saveManager.SaveGame();
-        }
-        else
-        {
-            rememberButton.SetActive(true);
-        }
+        //    saveManager.SaveGame();
+        //}
+        //else
+        //{
+        //    rememberButton.SetActive(true);
+        //}
     }
 
     private void InitializeMenu()

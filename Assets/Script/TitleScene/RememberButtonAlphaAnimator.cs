@@ -144,7 +144,7 @@ public class RememberButtonAlphaAnimator : MonoBehaviour
             if (debugMode)
             {
                 string reason = forceStart ? "強制開始" :
-                               lastAfterChangeFlag ? "AfterChangeフラグがtrue" : "TextChangerフラグがtrue";
+                lastAfterChangeFlag ? "AfterChangeフラグがtrue" : "TextChangerフラグがtrue";
                 Debug.Log($"RememberButtonAlphaAnimator: {reason}のためアニメーション開始");
             }
 

@@ -131,11 +131,11 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
     private void LoadAndApplyText()
     {
         // afterChangeToLastフラグがtrueの場合は処理をスキップ
-        if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
-        {
-            if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: afterChangeToLastがtrueのため処理をスキップします");
-            return;
-        }
+        //if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
+        //{
+        //    if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: afterChangeToLastがtrueのため処理をスキップします");
+        //    return;
+        //}
 
         bool shouldChangeText = false;
 
@@ -162,7 +162,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
             }
         }
 
-        // ボタンテキストを設定
+        // ボタンテキストを設定 changedButtonText=決意する　normalButtonText=思い出す
         string textToApply = shouldChangeText ? changedButtonText : normalButtonText;
 
         if (buttonText != null)
@@ -176,7 +176,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
         }
 
         // ボタンにシーン遷移機能を設定
-        if (shouldChangeText && buttonText != null)
+        if (shouldChangeText && buttonText != null && !GameSaveManager.Instance.GetAfterChangeToLastFlag())
         {
             Button button = buttonText.GetComponentInParent<Button>();
             if (button != null)
@@ -186,6 +186,25 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
                 {
                     if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: MonologueSceneへ遷移します");
                     UnityEngine.SceneManagement.SceneManager.LoadScene("MonologueScene");
+                });
+            }
+        }
+
+        // MonologueScene→TitleSceneに遷移済みの場合：思い出すボタンを「整理する」に変更し、OrganizeMainSceneに遷移するように設定
+        if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
+        {
+            if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: 思い出すボタンを「整理する」に変更");
+            //思い出すボタンを「整理する」に変更
+            buttonText.text = "整理する";
+
+            Button button = buttonText.GetComponentInParent<Button>();
+            if (button != null)
+            {
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(() =>
+                {
+                    if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: OrganizeMainSceneへ遷移します");
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("OrganizeMainScene");
                 });
             }
         }

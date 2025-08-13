@@ -2511,7 +2511,7 @@ MonoBehaviour:
   newButtonText: "\u6C7A\u610F\u3059\u308B"
   rememberButton: {fileID: 309281827}
   targetSceneName: MonologueScene
-  reverseTargetText: "\u601D\u3044\u51FA\u3059"
+  reverseTargetText: "\u6574\u7406\u3059\u308B"
   transitionDelay: 0.5
   changeInterval: 0.4
   startDelay: 5
@@ -2521,7 +2521,7 @@ MonoBehaviour:
   completeSound: {fileID: 0}
   audioSource: {fileID: 0}
   setCompletionFlag: 1
-  debugMode: 0
+  debugMode: 1
   forceExecute: 0
   DataResetPanelControllerBoot: 0
 --- !u!1 &391127917
@@ -6792,7 +6792,7 @@ MonoBehaviour:
   normalButtonText: "\u601D\u3044\u51FA\u3059"
   changedButtonText: "\u6C7A\u610F\u3059\u308B"
   buttonTextChanger: {fileID: 382864325}
-  debugMode: 0
+  debugMode: 1
   forceChangedText: 0
 --- !u!114 &1188788110
 MonoBehaviour:

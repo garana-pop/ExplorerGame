@@ -347,6 +347,8 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
             return; // 早期リターンでシーン遷移処理を停止CheckAfterChangeToLastFlagAndProceed
         }
 
+        Debug.Log("RememberButtonTextChangerForHer:OnRememberButtonClickedメソッド起動");
+
         // 遅延してafterChangeToLastフラグをチェック
         StartCoroutine(CheckAfterChangeToLastFlagAndProceed());
     }
@@ -356,11 +358,23 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
         // GameSaveManagerのロード完了を待つ
         yield return new WaitForSeconds(0.5f);
 
+        Debug.Log("RememberButtonTextChangerForHer-GetAfterChangeToLastFlag: " + GameSaveManager.Instance.GetAfterChangeToLastFlag());
+
         // afterChangeToLastフラグをチェック
         if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
         {
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: afterChangeToLastフラグがtrueのため、シーン遷移をスキップします");
-            yield break; // afterChangeToLastがtrueの場合はシーン遷移を停止
+            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: afterChangeToLastフラグがtrueのため、OrganizeMainSceneへ遷移設定開始");
+
+            Button button = buttonText.GetComponentInParent<Button>();
+            if (button != null)
+            {
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(() =>
+                {
+                    if (debugMode) Debug.Log("RememberButtonTextChangerForHer: OrganizeMainSceneへ遷移します");
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("OrganizeMainScene");
+                });
+            }
         }
 
         // フラグがfalseまたは取得できない場合は既存のシーン遷移処理を継続
