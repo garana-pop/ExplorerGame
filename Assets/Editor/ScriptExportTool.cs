@@ -11,10 +11,10 @@ public class ScriptExportTool : EditorWindow
     #region Private Fields
 
     [SerializeField] private bool debugMode = true; // デバッグモード
-    [SerializeField] private string outputDirectory = ""; // 出力ディレクトリ
+    [SerializeField] private string outputDirectory = "C:/Users/wakam/Desktop/アイデア/ファイル整理ゲーム/Claudeに提供するもの/スクリプト"; // 出力ディレクトリ
     [SerializeField] private bool includeSubfolders = true; // サブフォルダーを含むかどうか
     [SerializeField] private bool addFileExtensionToName = true; // ファイル名に拡張子を追加するか
-    [SerializeField] private bool createSubfolderStructure = false; // フォルダー構造を再現するか
+    [SerializeField] private bool createSubfolderStructure = true; // フォルダー構造を再現するか
     [SerializeField] private Vector2 scrollPosition; // スクロール位置
 
     private const string SCRIPT_FOLDER_PATH = "Assets/Script"; // スクリプトフォルダーのパス

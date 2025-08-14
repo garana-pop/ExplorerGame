@@ -979,10 +979,10 @@ public class GameSaveManager : MonoBehaviour
         {
             // game_save.jsonから読み込んだ値を保持
             if (debugMode)
-            { 
-                Debug.Log("game_save.jsonから読み込んだ値を保持"); 
+            {
+                Debug.Log("game_save.jsonから読み込んだ値を保持");
             }
-                
+
             return;
         }
 

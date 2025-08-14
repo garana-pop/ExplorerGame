@@ -535,6 +535,32 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
                 Debug.Log($"{nameof(TrashBoxDeletionManagement)}: セーブデータを即座に保存しました");
             }
         }
+        else
+        {
+            // sceneControllerが取得できない場合は直接GameSaveManagerを使用
+            if (GameSaveManager.Instance != null)
+            {
+                var organizeData = GameSaveManager.Instance.GetOrganizeSceneData();
+                if (organizeData != null)
+                {
+                    // 削除済みファイルリストを更新
+                    organizeData.deletedFiles = new List<string>(deletedFileNames);
+                    organizeData.allFilesCompletelyDeleted = isAllFilesDeleted;
+
+                    // セーブデータをファイルに保存
+                    GameSaveManager.Instance.SaveOrganizeSceneData(organizeData);
+
+                    if (debugMode)
+                    {
+                        Debug.Log($"{nameof(TrashBoxDeletionManagement)}: GameSaveManager経由で直接セーブデータを保存しました");
+                    }
+                }
+            }
+            else if (debugMode)
+            {
+                Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: セーブデータの保存に失敗しました - どちらのマネージャーも見つかりません");
+            }
+        }
     }
 
     /// <summary>

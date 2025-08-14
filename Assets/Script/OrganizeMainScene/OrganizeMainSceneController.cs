@@ -86,11 +86,11 @@ public class OrganizeMainSceneController : MonoBehaviour
     [Tooltip("ゴミ箱でのファイル削除管理マネージャー")]
     [SerializeField] private TrashBoxDeletionManagement trashBoxDeletionManagement;
 
-    [Tooltip("セーブデータ管理マネージャー")]
-    [SerializeField] private GameSaveManager saveManager;
+    // SerializeFieldを削除し、プライベート変数として定義
+    private GameSaveManager saveManager;  // [SerializeField]を削除
 
-    [Tooltip("サウンドエフェクト管理マネージャー")]
-    [SerializeField] private SoundEffectManager soundManager;
+    // SoundEffectManagerもSerializeFieldを削除
+    private SoundEffectManager soundManager;  // [SerializeField]を削除
 
     [Header("シーン設定")]
     [Tooltip("戻る際の遷移先シーン名")]
@@ -300,14 +300,46 @@ public class OrganizeMainSceneController : MonoBehaviour
     /// <returns>コルーチン</returns>
     private IEnumerator InitializeManagers()
     {
-        // GameSaveManagerの取得
-        if (saveManager == null)
+        // GameSaveManagerの取得（複数フレーム待機して確実に取得）
+        int retryCount = 0;
+        const int maxRetries = 10;
+
+        while (saveManager == null && retryCount < maxRetries)
         {
             saveManager = GameSaveManager.Instance;
-            if (saveManager == null && debugMode)
+
+            if (saveManager == null)
             {
-                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerが見つかりません");
+                retryCount++;
+                yield return null; // 1フレーム待機
+
+                if (debugMode && retryCount == 1)
+                {
+                    Debug.Log($"{nameof(OrganizeMainSceneController)}: GameSaveManagerを待機中...");
+                }
             }
+        }
+
+        if (saveManager == null)
+        {
+            // それでも見つからない場合は新規作成を試みる
+            GameObject gameSaveManagerObj = GameObject.Find("GameSaveManager");
+            if (gameSaveManagerObj == null)
+            {
+                gameSaveManagerObj = new GameObject("GameSaveManager");
+                gameSaveManagerObj.AddComponent<GameSaveManager>();
+                DontDestroyOnLoad(gameSaveManagerObj);
+            }
+            saveManager = GameSaveManager.Instance;
+
+            if (debugMode)
+            {
+                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerを新規作成しました");
+            }
+        }
+        else if (debugMode)
+        {
+            Debug.Log($"{nameof(OrganizeMainSceneController)}: GameSaveManagerを取得しました（試行回数: {retryCount + 1}）");
         }
 
         // SoundEffectManagerの取得
@@ -415,16 +447,22 @@ public class OrganizeMainSceneController : MonoBehaviour
     /// </summary>
     private void LoadSaveData()
     {
+        // saveManagerがnullの場合は再取得を試みる
         if (saveManager == null)
         {
-            if (debugMode)
+            saveManager = GameSaveManager.Instance;
+
+            if (saveManager == null)
             {
-                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerが設定されていません");
+                if (debugMode)
+                {
+                    Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerが設定されていません");
+                }
+                return;
             }
-            return;
         }
 
-        // セーブデータから削除済みファイル情報を読み込む
+        // セーブデータから削除済みファイル情報を読み込み
         var organizeData = saveManager.GetOrganizeSceneData();
         if (organizeData != null && organizeData.deletedFiles != null)
         {
@@ -440,7 +478,7 @@ public class OrganizeMainSceneController : MonoBehaviour
             // 削除済みファイルを非表示にする
             foreach (string fileName in deletedFiles)
             {
-                GameObject fileItem = currentFileItems.Find(item => item.name == fileName);
+                GameObject fileItem = currentFileItems.Find(item => item != null && item.name == fileName);
                 if (fileItem != null)
                 {
                     fileItem.SetActive(false);
@@ -463,6 +501,7 @@ public class OrganizeMainSceneController : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// アプリケーション終了時の処理
     /// </summary>
@@ -482,13 +521,19 @@ public class OrganizeMainSceneController : MonoBehaviour
     /// </summary>
     public void SaveData()
     {
+        // saveManagerがnullの場合は再取得を試みる
         if (saveManager == null)
         {
-            if (debugMode)
+            saveManager = GameSaveManager.Instance;
+
+            if (saveManager == null)
             {
-                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerが設定されていません");
+                if (debugMode)
+                {
+                    Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerが設定されていません");
+                }
+                return;
             }
-            return;
         }
 
         // 現在の削除済みファイルリストを保存
@@ -504,6 +549,7 @@ public class OrganizeMainSceneController : MonoBehaviour
             Debug.Log($"{nameof(OrganizeMainSceneController)}: セーブデータ保存完了");
         }
     }
+
 
     #endregion
 
