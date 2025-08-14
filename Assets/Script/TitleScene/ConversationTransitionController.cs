@@ -72,11 +72,25 @@ public class ConversationTransitionController : MonoBehaviour
 
     private void Start()
     {
+        // GameSaveManagerを確認
+        GameSaveManager saveManager = GameSaveManager.Instance;
+        if (saveManager != null && saveManager.GetAfterChangeToLastFlag())
+        {
+            // afterChangeToLastフラグが設定されている場合は無効化
+            this.enabled = false;
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(ConversationTransitionController)}: afterChangeToLastフラグのため無効化");
+            }
+            return;
+        }
+
         // GameSaveManagerとMainMenuControllerの参照を取得
         InitializeManagers();
 
         // MainMenuControllerのStartボタンイベントを拡張
         OverrideStartButtonBehavior();
+
     }
 
     //先頭に重複防止処理を追加

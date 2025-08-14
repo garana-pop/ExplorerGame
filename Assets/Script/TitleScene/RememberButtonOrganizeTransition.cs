@@ -1,214 +1,233 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
+using UnityEngine.UI;
 
 /// <summary>
-/// MonologueScene完了後、TitleSceneで「整理する」ボタンに変化した際の
-/// OrganizeMainSceneへの遷移を管理するコンポーネント
+/// 思い出すボタンをOrganizeMainSceneへの遷移ボタンに変更するクラス
 /// </summary>
 public class RememberButtonOrganizeTransition : MonoBehaviour
 {
     [Header("ボタン参照")]
-    [Tooltip("思い出す/整理するボタンへの参照")]
-    [SerializeField] private Button targetButton;
-
-    [Tooltip("ボタンのテキストコンポーネント")]
-    [SerializeField] private TMP_Text buttonText;
+    [SerializeField] private Button targetButton; // 対象のボタン
 
     [Header("遷移設定")]
-    [Tooltip("遷移先シーン名")]
-    [SerializeField] private string targetSceneName = "OrganizeMainScene";
-
-    [Tooltip("遷移前の待機時間")]
-    [SerializeField] private float transitionDelay = 0f;
-
-    [Header("フェード設定")]
-    [Tooltip("フェードパネル")]
-    [SerializeField] private Image fadePanel;
-
-    [Tooltip("フェード時間")]
-    [SerializeField] private float fadeDuration = 1.0f;
-
-    [Header("音声設定")]
-    [Tooltip("クリック時に特別な効果音を再生するか")]
-    [SerializeField] private bool useSpecialSound = true;
-
-    [Tooltip("特別な効果音クリップ")]
-    [SerializeField] private AudioClip specialClickSound;
+    [SerializeField] private string targetSceneName = "OrganizeMainScene"; // 遷移先シーン名
 
     [Header("デバッグ設定")]
-    [SerializeField] private bool debugMode = false;
+    [SerializeField] private bool debugMode = false; // デバッグモード
 
-    // 内部状態
-    private bool isTransitioning = false;
+    // フラグ管理
     private bool isOrganizeMode = false;
+    private ConversationTransitionController conversationController; // 追加
+    private bool isSetupCompleted = false;
 
     private void Awake()
     {
-        // ボタン参照の自動取得
+        // 自身のGameObjectからButtonコンポーネントを取得
+        targetButton = GetComponent<Button>();
+
         if (targetButton == null)
         {
-            targetButton = GetComponent<Button>();
-            if (targetButton == null && transform.parent != null)
-            {
-                // MenuContainer内の思い出すボタンを探す
-                if (transform.parent.name == "MenuContainer")
-                {
-                    Transform buttonTransform = transform.parent.Find("思い出すボタン");
-                    if (buttonTransform != null)
-                    {
-                        targetButton = buttonTransform.GetComponent<Button>();
-                    }
-                }
-            }
+            Debug.LogError($"{nameof(RememberButtonOrganizeTransition)}: Buttonコンポーネントが見つかりません");
         }
 
-        // テキストコンポーネントの自動取得
-        if (buttonText == null && targetButton != null)
-        {
-            buttonText = targetButton.GetComponentInChildren<TMP_Text>();
-        }
+        // ConversationTransitionControllerの取得（追加）
+        conversationController = GetComponent<ConversationTransitionController>();
+    }
 
-        // フェードパネルの自動取得
-        if (fadePanel == null)
-        {
-            GameObject fadePanelObj = GameObject.Find("FadePanel");
-            if (fadePanelObj != null)
-            {
-                fadePanel = fadePanelObj.GetComponent<Image>();
-            }
-        }
+    private void Start()
+    {
+        CheckAndActivateOrganizeMode();
     }
 
     private void OnEnable()
     {
-        // シーンがアクティブになった時に状態を再チェック
-        //CheckButtonState();
-        // イベント購読
-        RememberButtonTextChangerForHer.OnOrganizeMainSceneActivated += HandleOrganizeMainSceneActivated;
-
+        // 有効化時に自動的にセットアップ
+        SetupOrganizeTransition();
     }
 
-    void OnDisable()
+    /// <summary>
+    /// OrganizeMainSceneモードをチェックして有効化
+    /// </summary>
+    private void CheckAndActivateOrganizeMode()
     {
-        // イベント購読解除
-        RememberButtonTextChangerForHer.OnOrganizeMainSceneActivated -= HandleOrganizeMainSceneActivated;
+        GameSaveManager saveManager = GameSaveManager.Instance;
+        if (saveManager == null) return;
+
+        // afterChangeToLastフラグがtrueの場合
+        if (saveManager.GetAfterChangeToLastFlag())
+        {
+            HandleOrganizeMainSceneActivated();
+        }
     }
 
+    /// <summary>
+    /// OrganizeMainSceneモードが有効化された時の処理
+    /// </summary>
     private void HandleOrganizeMainSceneActivated()
     {
-        Debug.Log("RememberButtonOrganizeTransition：イベントを受信しました！ OrganizeMainScene がアクティブになりました。");
+        if (targetButton == null) return;
 
-        // 既存の OnButtonClick を削除
-        targetButton.onClick.RemoveListener(OnButtonClick);
+        isOrganizeMode = true;
 
-        // 新しい MoveScene を追加
+        // ConversationTransitionControllerを無効化（重要）
+        if (conversationController != null)
+        {
+            conversationController.enabled = false;
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: ConversationTransitionControllerを無効化しました");
+            }
+        }
+
+        // 既存のリスナーを削除して新しいリスナーを追加
+        targetButton.onClick.RemoveAllListeners();
         targetButton.onClick.AddListener(MoveScene);
+
+        // 少し遅延させて確実に設定（追加）
+        StartCoroutine(DelayedListenerSetup());
+
+        if (debugMode)
+        {
+            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: OrganizeMainSceneへの遷移ボタンを設定しました");
+        }
     }
 
+    /// <summary>
+    /// 遅延してリスナーを再設定（追加）
+    /// </summary>
+    private IEnumerator DelayedListenerSetup()
+    {
+        yield return null; // 1フレーム待機
+
+        if (isOrganizeMode && targetButton != null)
+        {
+            // 再度リスナーを設定して確実に有効化
+            targetButton.onClick.RemoveAllListeners();
+            targetButton.onClick.AddListener(MoveScene);
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: リスナーを再設定しました");
+            }
+        }
+    }
+
+    /// <summary>
+    /// OrganizeMainSceneへ遷移
+    /// </summary>
     private void MoveScene()
     {
-        Debug.Log("ボタンが押されたので OrganizeMainScene に移動します");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("OrganizeMainScene");
+        if (debugMode)
+        {
+            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: {targetSceneName}への遷移を開始します");
+        }
+
+        // 効果音再生
+        if (SoundEffectManager.Instance != null)
+        {
+            SoundEffectManager.Instance.PlayClickSound();
+        }
+
+        // シーン遷移
+        StartCoroutine(LoadSceneWithDelay());
     }
 
+    /// <summary>
+    /// 遅延してシーンをロード
+    /// </summary>
+    private IEnumerator LoadSceneWithDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        try
+        {
+            SceneManager.LoadScene(targetSceneName);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"{nameof(RememberButtonOrganizeTransition)}: シーン遷移エラー: {ex.Message}");
+            targetButton.interactable = true;
+        }
+    }
+
+    /// <summary>
+    /// デバッグ用：強制的にOrganizeモードを有効化
+    /// </summary>
+    [ContextMenu("Force Enable Organize Mode")]
+    private void ForceEnableOrganizeMode()
+    {
+        HandleOrganizeMainSceneActivated();
+    }
 
     /// <summary>
     /// ボタンクリック時の処理
     /// </summary>
-    private void OnButtonClick()
+    private void OnButtonClicked()
     {
-        // 既に遷移中の場合は処理しない
-        if (isTransitioning) return;
-
-        // ボタンの状態を再チェック
-        //CheckButtonState();
-
-        if (isOrganizeMode)
-        {
-            // 整理モードの場合、OrganizeMainSceneへ遷移
-            StartOrganizeSceneTransition();
-        }
-        else
-        {
-            // 通常モードの場合は何もしない（他のコンポーネントが処理）
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: 通常モードのため処理をスキップ");
-            }
-        }
-    }
-
-    /// <summary>
-    /// OrganizeMainSceneへの遷移を開始
-    /// </summary>
-    private void StartOrganizeSceneTransition()
-    {
-        if (isTransitioning) return;
-
-        isTransitioning = true;
-
-
-        // ボタンを無効化
-        if (targetButton != null)
-        {
-            targetButton.interactable = false;
-        }
-
         if (debugMode)
         {
-            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: OrganizeMainSceneへの遷移を開始");
+            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: ボタンがクリックされました");
         }
 
-        // フェード処理を開始
-        StartCoroutine(TransitionWithFade());
-    }
-
-    /// <summary>
-    /// フェード付きシーン遷移
-    /// </summary>
-    private IEnumerator TransitionWithFade()
-    {
-        // 遷移前の待機
-        yield return new WaitForSeconds(transitionDelay);
-
-        // GameSaveManagerに遷移を通知
-        GameSaveManager saveManager = GameSaveManager.Instance;
-        if (saveManager != null)
+        // 効果音再生
+        if (SoundEffectManager.Instance != null)
         {
-            // OrganizeSceneへの遷移フラグを設定（必要に応じて）
-            saveManager.SaveGame();
-
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: セーブデータを保存しました");
-            }
+            SoundEffectManager.Instance.PlayClickSound();
         }
 
         // シーン遷移
-        SceneManager.LoadScene(targetSceneName);
+        TransitionToOrganizeScene();
     }
 
     /// <summary>
-    /// 外部から整理モードを強制設定
+    /// OrganizeMainSceneへ遷移
     /// </summary>
-    public void SetOrganizeMode(bool enabled)
+    private void TransitionToOrganizeScene()
     {
-        isOrganizeMode = enabled;
+        if (debugMode)
+        {
+            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: {targetSceneName}への遷移を開始");
+        }
+
+        // 二重遷移防止
+        targetButton.interactable = false;
+
+        StartCoroutine(LoadSceneWithDelay());
+    }
+
+    /// <summary>
+    /// OrganizeMainSceneへの遷移を設定（外部から呼び出し可能）
+    /// </summary>
+    public void SetupOrganizeTransition()
+    {
+        if (targetButton == null || isSetupCompleted) return;
+
+        // GameSaveManagerでフラグを確認
+        GameSaveManager saveManager = GameSaveManager.Instance;
+        if (saveManager == null) return;
+
+        // afterChangeToLastフラグが設定されている場合のみ処理
+        if (!saveManager.GetAfterChangeToLastFlag())
+        {
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: afterChangeToLastフラグが設定されていません");
+            }
+            return;
+        }
+
+        // リスナーをクリアして新規追加
+        targetButton.onClick.RemoveAllListeners();
+        targetButton.onClick.AddListener(OnButtonClicked);
+
+        isSetupCompleted = true;
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: 整理モードを{enabled}に設定");
+            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: OrganizeMainSceneへの遷移を設定しました");
         }
-    }
-
-    /// <summary>
-    /// 現在整理モードかどうかを取得
-    /// </summary>
-    public bool IsOrganizeMode()
-    {
-        return isOrganizeMode;
     }
 }

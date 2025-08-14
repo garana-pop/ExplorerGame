@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -239,29 +240,30 @@ public class MonologueDisplayManager : MonoBehaviour
     /// </summary>
     private void OnAllDialoguesCompleted()
     {
+        if (allDialoguesCompleted) return;
+
         allDialoguesCompleted = true;
 
-        Debug.Log("すべてのセリフの表示が完了しました。シーン遷移の準備中...");
-
-        // ContinueIndicatorを非表示
-        if (continueIndicator != null)
+        // GameSaveManagerのフラグを設定
+        if (GameSaveManager.Instance != null)
         {
-            continueIndicator.SetActive(false);
+            // afterChangeToLastフラグを設定（重要）
+            GameSaveManager.Instance.SetAfterChangeToLastFlag(true);
+
+            // MonologueScene完了フラグも設定
+            GameSaveManager.Instance.SetFromMonologueSceneFlag(true);
+
+            // 即座に保存
+            GameSaveManager.Instance.SaveGame();
+
+            Debug.Log($"{nameof(MonologueDisplayManager)}: afterChangeToLastフラグを設定しました");
+
         }
 
-        if (waitForInputAfterCompletion)
-        {
-            // 入力待機状態に移行
-            isWaitingForFinalInput = true;
-
-            Debug.Log("シーン遷移のための入力を待機中...");
-        }
-        else
-        {
-            // 即座にシーン遷移
-            StartCoroutine(FadeOutAndLoadScene());
-        }
+        // フェードアウトとシーン遷移
+        StartCoroutine(FadeOutAndLoadScene());
     }
+
 
     /// <summary>
     /// シーン移行時の処理

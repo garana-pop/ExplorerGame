@@ -16,8 +16,10 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     [Tooltip("変更対象のTextMeshProコンポーネント")]
     [SerializeField] private TMP_Text buttonText;
 
-    [Tooltip("変更後のテキスト")]
+    [Header("ボタン設定")]
+    [SerializeField] private GameObject targetButton;
     [SerializeField] private string newButtonText = "決意する";
+    [SerializeField] private bool debugMode = false;
 
     [Header("ボタン制御設定")]
     [Tooltip("思い出すボタンのButton コンポーネント")]
@@ -62,7 +64,6 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     [SerializeField] private bool setCompletionFlag = true;
 
     [Header("デバッグ設定")]
-    [SerializeField] private bool debugMode = false;
     [SerializeField] private bool forceExecute = false;
 
     private string currentText;
@@ -79,6 +80,9 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     private readonly string glitchChars = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`{|}~";
 
     public static event Action OnOrganizeMainSceneActivated;
+
+    private TextMeshProUGUI buttonTextComponent;
+    private bool isTextChanged = false;
 
     private bool organizeMainSceneActive = false;
     public bool OrganizeMainSceneActive
@@ -106,45 +110,23 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     private void Awake()
     {
 
-        if (buttonText == null)
+        // ボタンの自動検索
+        if (targetButton == null)
         {
-            // MenuContainerの思い出すボタンを探す
             GameObject menuContainer = GameObject.Find("MenuContainer");
             if (menuContainer != null)
             {
-                Transform rememberButton = menuContainer.transform.Find("思い出すボタン");
-                if (rememberButton != null)
+                Transform button = menuContainer.transform.Find("思い出すボタン");
+                if (button != null)
                 {
-                    buttonText = rememberButton.GetComponentInChildren<TMP_Text>();
+                    targetButton = button.gameObject;
                 }
             }
         }
 
-        if (buttonText == null)
+        if (targetButton != null)
         {
-            Debug.LogError("RememberButtonTextChangerForHer: 思い出すボタンのTextMeshProコンポーネントが見つかりません");
-            enabled = false;
-            return;
-        }
-
-        // StartTextChangeコルーチンの最後、完了フラグ設定後に追加
-        if (rememberButton != null)
-        {
-            // RemoveAllListenersを使わず、自分のリスナーのみ管理
-            rememberButton.onClick.RemoveListener(OnRememberButtonClicked);
-            rememberButton.onClick.AddListener(OnRememberButtonClicked);
-
-        }
-
-        // AudioSource
-        if (audioSource == null && (changeSound != null || completeSound != null))
-        {
-            audioSource = GetComponent<AudioSource>();
-            if (audioSource == null)
-            {
-                audioSource = gameObject.AddComponent<AudioSource>();
-                audioSource.playOnAwake = false;
-            }
+            buttonTextComponent = targetButton.GetComponentInChildren<TextMeshProUGUI>();
         }
     }
 
@@ -157,7 +139,71 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
             if (debugMode) Debug.Log("RememberButtonTextChangerForHer: ボタンテキスト変更を開始します");
             StartCoroutine(StartTextChange());
         }
+        CheckAndChangeButtonText();
     }
+
+    /// <summary>
+    /// ボタンテキストの変更をチェック
+    /// </summary>
+    private void CheckAndChangeButtonText()
+    {
+        GameSaveManager saveManager = GameSaveManager.Instance;
+        if (saveManager == null) return;
+
+        // afterChangeToLastフラグをチェック
+        if (saveManager.GetAfterChangeToLastFlag())
+        {
+            ChangeButtonText();
+            SetupOrganizeTransition();
+        }
+    }
+
+    /// <summary>
+    /// ボタンテキストを変更
+    /// </summary>
+    private void ChangeButtonText()
+    {
+        if (buttonTextComponent != null && !isTextChanged)
+        {
+            buttonTextComponent.text = newButtonText;
+            isTextChanged = true;
+        }
+    }
+
+    /// <summary>
+    /// OrganizeMainSceneへの遷移を設定
+    /// </summary>
+    private void SetupOrganizeTransition()
+    {
+        if (targetButton == null) return;
+
+        Button button = targetButton.GetComponent<Button>();
+        if (button == null) return;
+
+        // ConversationTransitionControllerを無効化
+        ConversationTransitionController conversationController =
+            targetButton.GetComponent<ConversationTransitionController>();
+        if (conversationController != null)
+        {
+            conversationController.enabled = false;
+        }
+
+        // RememberButtonOrganizeTransitionを有効化または追加
+        RememberButtonOrganizeTransition organizeTransition =
+            targetButton.GetComponent<RememberButtonOrganizeTransition>();
+
+        if (organizeTransition == null)
+        {
+            organizeTransition = targetButton.AddComponent<RememberButtonOrganizeTransition>();
+        }
+
+        organizeTransition.enabled = true;
+
+        // 遷移を即座に設定
+        organizeTransition.SetupOrganizeTransition();
+    }
+
+
 
     private bool ShouldExecuteTextChange()
     {
