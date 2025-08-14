@@ -29,6 +29,9 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
     [Tooltip("削除ファイルの最大保持数")]
     [SerializeField] private int maxDeletedFilesCount = 50;
 
+    [Tooltip("OrganizeMainSceneController.csを参照")]
+    [SerializeField] private OrganizeMainSceneController organizeMainSceneController;
+
     [Header("デバッグ設定")]
     [Tooltip("デバッグログを表示するか")]
     [SerializeField] private bool debugMode = false;
@@ -403,11 +406,30 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
 
         GameObject fileObject = draggableFile.gameObject;
         CanvasGroup canvasGroup = fileObject.GetComponent<CanvasGroup>();
+        FileHighlighter fileHighlighter = fileObject.GetComponent<FileHighlighter>();
+        FileOpen fileOpen = fileObject.GetComponent<FileOpen>();
 
         // CanvasGroupが無い場合は追加
         if (canvasGroup == null)
         {
             canvasGroup = fileObject.AddComponent<CanvasGroup>();
+        }
+
+        // 削除ファイルの各コンポーネントが無効化する
+        if (draggableFile != null)
+        {
+            draggableFile.enabled = false;
+            Debug.Log($"{fileObject.name} の DraggableFile を無効化しました。");
+        }
+        if (fileHighlighter != null)
+        {
+            fileHighlighter.enabled = false;
+            Debug.Log($"{fileObject.name} の FileHighlighter を無効化しました。");
+        }
+        if (fileOpen != null)
+        {
+            fileOpen.enabled = false;
+            Debug.Log($"{fileObject.name} の FileOpen を無効化しました。");
         }
 
         float elapsedTime = 0f;
@@ -493,6 +515,9 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         {
             // 復元不可の場合は完全に削除
             Destroy(fileObject);
+
+            // リストから破棄された（nullになっている）GameObjectの参照を削除
+            organizeMainSceneController.CleanUpFileList();
 
             if (debugMode)
             {

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Services.CloudSave.Models;
 
 /// <summary>
 /// OrganizeMainSceneの全体制御を行うメインコントローラークラス
@@ -509,6 +510,22 @@ public class OrganizeMainSceneController : MonoBehaviour
     #region ファイル管理
 
     /// <summary>
+    /// リストから破棄された（nullになっている）GameObjectの参照を削除します。
+    /// </summary>
+    public void CleanUpFileList()
+    {
+        // nullになっているGameObjectの参照をリストからすべて削除する
+        // item == null は、UnityのObject型に対して破棄されたオブジェクトをチェックする際に有効です。
+        // Unityのオブジェクトは破棄されると内部的にnullとして扱われるため。
+        int removedCount = currentFileItems.RemoveAll(item => item == null);
+
+        if (removedCount > 0)
+        {
+            Debug.Log($"CleanUpFileList: {removedCount} 個の破棄されたオブジェクトの参照をリストから削除しました。");
+        }
+    }
+
+    /// <summary>
     /// ファイルの削除（非表示化）処理
     /// </summary>
     /// <param name="fileName">削除するファイル名</param>
@@ -526,8 +543,11 @@ public class OrganizeMainSceneController : MonoBehaviour
             deletedFileCount++;
         }
 
+        var fileObject = currentFileItems.Find(item => item != null && item.name == fileName);
+
         // 対応するファイルアイテムを非表示にする
-        GameObject fileItem = currentFileItems.Find(item => item.name == fileName);
+        //GameObject fileItem = currentFileItems.Find(item => item.name == fileName);
+        GameObject fileItem = currentFileItems.Find(item => item != null && item.name == fileName);
         if (fileItem != null)
         {
             fileItem.SetActive(false);
@@ -552,6 +572,7 @@ public class OrganizeMainSceneController : MonoBehaviour
         {
             Debug.Log($"{nameof(OrganizeMainSceneController)}: ファイル '{fileName}' を削除しました（{deletedFileCount}/{OrganizeMainScene_totalFileCount}）");
         }
+
     }
 
     /// <summary>
