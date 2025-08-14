@@ -21716,8 +21716,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1191983983}
   m_HandleRect: {fileID: 1191983982}
   m_Direction: 2
-  m_Value: 1.0000005
-  m_Size: 0.63888025
+  m_Value: 1.0000006
+  m_Size: 0.6388804
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -22186,8 +22186,6 @@ MonoBehaviour:
   commonSettingsPanel: {fileID: 1995164893}
   fileManager: {fileID: 594733860}
   trashBoxDeletionManagement: {fileID: 1566202294}
-  saveManager: {fileID: 1458724187}
-  soundManager: {fileID: 457994791}
   returnSceneName: TitleScene
   fadeSpeed: 1
   deleteAllMessage: "\u3059\u3079\u3066\u306E\u30D5\u30A1\u30A4\u30EB\u3092\u5B8C\u5168\u306B\u524A\u9664\u3057\u307E\u3059\u304B\uFF1F"
@@ -30090,8 +30088,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 513497713}
   m_HandleRect: {fileID: 513497712}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.54715514
+  m_Value: 1.0000002
+  m_Size: 0.5471552
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -32804,8 +32802,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422776613}
   m_HandleRect: {fileID: 422776612}
   m_Direction: 2
-  m_Value: 1.0000002
-  m_Size: 0.47507444
+  m_Value: 1.0000005
+  m_Size: 0.47507447
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -51048,7 +51046,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1754196685}
   m_HandleRect: {fileID: 1754196684}
   m_Direction: 2
-  m_Value: 1.0000002
+  m_Value: 1.0000005
   m_Size: 0.6764883
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -55559,7 +55557,7 @@ MonoBehaviour:
   enableFileRestore: 0
   maxDeletedFilesCount: 50
   organizeMainSceneController: {fileID: 594733859}
-  debugMode: 1
+  debugMode: 0
 --- !u!1 &1567676492
 GameObject:
   m_ObjectHideFlags: 0
@@ -60231,7 +60229,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 321899461}
   m_HandleRect: {fileID: 321899460}
   m_Direction: 2
-  m_Value: 1.0000002
+  m_Value: 1.0000005
   m_Size: 0.6764883
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -61048,7 +61046,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 199547236}
   m_HandleRect: {fileID: 199547235}
   m_Direction: 2
-  m_Value: 1.0000007
+  m_Value: 1.0000011
   m_Size: 0.753838
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -64668,7 +64666,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 155549764}
   m_HandleRect: {fileID: 155549763}
   m_Direction: 2
-  m_Value: 1.0000002
+  m_Value: 1.0000004
   m_Size: 0.50460666
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -67193,7 +67191,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 69069101}
   m_HandleRect: {fileID: 69069100}
   m_Direction: 2
-  m_Value: 1.0000002
+  m_Value: 1.0000004
   m_Size: 0.6298318
   m_NumberOfSteps: 0
   m_OnValueChanged:

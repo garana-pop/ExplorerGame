@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.Services.CloudSave.Models;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
-using Unity.Services.CloudSave.Models;
 
 /// <summary>
 /// OrganizeMainSceneの全体制御を行うメインコントローラークラス
@@ -137,6 +138,16 @@ public class OrganizeMainSceneController : MonoBehaviour
 
     // 現在の削除ファイル数
     private int deletedFileCount = 0;
+
+    #endregion
+
+    #region パブリック変数
+
+    // TitleScene遷移フラグ
+    public static bool returnScene = false;
+
+    // 整理するボタン非表示フラグ
+    //public static event Action<bool> OrganizeButtonHidden;
 
     #endregion
 
@@ -728,6 +739,14 @@ public class OrganizeMainSceneController : MonoBehaviour
         {
             soundManager.PlayClickSound();
         }
+
+        returnScene = true;
+
+        //// イベント発火（nullチェックしてから呼び出す）
+        //OrganizeButtonHidden?.Invoke(returnScene);
+        //Debug.Log($"OrganizeMainSceneController: イベント発火しました → {returnScene}");
+
+        SceneManager.LoadScene(returnSceneName);
     }
 
     /// <summary>
