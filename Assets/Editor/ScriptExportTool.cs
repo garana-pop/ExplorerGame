@@ -16,7 +16,7 @@ public class ScriptExportTool : EditorWindow
     #region Private Fields
 
     [SerializeField] private bool debugMode = true; // デバッグモード
-    [SerializeField] private string outputDirectory = "C:/Users/wakam/Desktop/アイデア/ファイル整理ゲーム/Claudeに提供するもの/スクリプト"; // 出力ディレクトリ
+    [SerializeField] private string outputDirectory = "C:/Users/wakam/Desktop/アイデア/ファイル整理ゲーム/Claudeに提供するもの/スクリプト_GitHub最新Push"; // 出力ディレクトリ
     [SerializeField] private bool includeSubfolders = true; // サブフォルダーを含むかどうか
     [SerializeField] private bool addFileExtensionToName = true; // ファイル名に拡張子を追加するか
     [SerializeField] private bool createSubfolderStructure = true; // フォルダー構造を再現するか
