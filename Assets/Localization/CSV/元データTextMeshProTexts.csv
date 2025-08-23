@@ -1,0 +1,354 @@
+Key,id,Japanese(ja),English(en)
+"ConversationFatherAndDaughter-Canvas-CommonSettingsPanel-SettingsContainer-BackButton-Text (TMP) ""戻る""",0,戻る,Back
+"ConversationFatherAndDaughter-Canvas-CommonSettingsPanel-SettingsContainer-BGMVolumeControl-LabelText ""BGM音量""",0,BGM音量,BGM Volume
+"ConversationFatherAndDaughter-Canvas-CommonSettingsPanel-SettingsContainer-SaveAndQuitButton-Text (TMP) ""保存して終了""",0,セーブしてから終了,Save & Quit
+"ConversationFatherAndDaughter-Canvas-CommonSettingsPanel-SettingsContainer-SEVolumeControl-LabelText ""SE音量""",0,SE音量,SFX Volume
+DaughterRequest-Canvas-BackgroundPanel-WishTextFromMyDaughter,0,New Text,My Daughter's Wish
+HerMainScene-GameObject-Canvas-FolderPanel -FolderButton_1 (思い出)-Text (TMP),0,思い出,Memories
+HerMainScene-GameObject-Canvas-SettingsPanel-SettingsContainer-BackButton-Text (TMP),0,戻る,Back
+HerMainScene-GameObject-Canvas-SettingsPanel-SettingsContainer-BGMVolumeControl-LabelText,0,BGM音量,BGM Volume
+HerMainScene-GameObject-Canvas-SettingsPanel-SettingsContainer-SaveAndQuitButton-Text (TMP),0,セーブしてから終了,Save & Quit
+HerMainScene-GameObject-Canvas-SettingsPanel-SettingsContainer-SEVolumeControl-LabelText,0,SE音量,SFX Volume
+HerMainScene-GameObject-Canvas-思い出FilePanel-思い出ファイル-似顔絵.png-Text (TMP),0,似顔絵,Portrait
+"HerMainScene-GameObject-Canvas-似顔絵.FilePanel-DeleteSelectionPanel-ButtonContainer-CancelButton-Text (TMP)""いいえ""",0,いいえ,No
+"HerMainScene-GameObject-Canvas-似顔絵.FilePanel-DeleteSelectionPanel-ButtonContainer-ConfirmButton-Text (TMP)""はい""",0,はい,Yes
+HerMainScene-GameObject-Canvas-似顔絵.FilePanel-DeleteSelectionPanel-MessageContainer-ConfirmationMessageText,0,似顔絵を捨てますか？,Will you discard the portrait?
+HerMainScene-GameObject-Canvas-似顔絵.FilePanel-TitleBar-TitleText,0,似顔絵.png,Portrait.png
+MainScene-GameObject-Canvas-FirstFileOpenTipText,0,たしかファイルはダブルクリックで開けるはず,Double-click to open files
+MainScene-GameObject-Canvas-FolderPanel -FolderButton_1 (思い出)-Text (TMP),0,思い出,Memories
+MainScene-GameObject-Canvas-FolderPanel -FolderButton_2 (恋人)-Text (TMP),0,恋人,Lover
+MainScene-GameObject-Canvas-FolderPanel -FolderButton_3 (友人)-Text (TMP),0,友人,Friend
+MainScene-GameObject-Canvas-FolderPanel -FolderButton_4 (記録)-Text (TMP),0,記録,Records
+MainScene-GameObject-Canvas-FolderPanel -FolderButton_5 (願い)-Text (TMP),0,願い,Wish
+MainScene-GameObject-Canvas-SettingsPanel-SettingsContainer-BackButton-Text (TMP),0,戻る,Back
+MainScene-GameObject-Canvas-SettingsPanel-SettingsContainer-BGMVolumeControl-LabelText,0,BGM音量,BGM Volume
+MainScene-GameObject-Canvas-SettingsPanel-SettingsContainer-SaveAndQuitButton-Text (TMP),0,セーブしてから終了,Save & Quit
+MainScene-GameObject-Canvas-SettingsPanel-SettingsContainer-SEVolumeControl-LabelText,0,SE音量,SFX Volume
+MainScene-GameObject-Canvas-カフェの彼女.PNGFilePanel-TitleBar-TitleText,0,カフェの彼女.png,Girl at the Cafe.png
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine,0,ちょうどいい場所だ...,Just the right place...
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (1),0,何をされているんですか？,What are you doing?
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (2),0,彼女へのサプライズです,It's a surprise for her
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (3),0,ここに住んでる方のお知り合いですか？,Are you an acquaintance of the resident?
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (4),0,はい、まだ彼女には内緒なんです,"Yes,it's still a secret from her"
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (5),0,...,...
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (6),0,一生懸命描いた絵なんです。,I put my heart into this drawing.
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (6.1),0,きっと喜んでもらえるはずです。,I'm sure she'll be pleased.
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (7),0,そうですか...,I see...
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-ContentScrollView-Viewport-Content-DropAreas-DropArea-Text (TMP),0,ここにドロップ,Drop here
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-InstructionText,0,発言者　（ドラッグして上の空欄にドロップ）,Speaker (Drag and drop to the box above)
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-ProgressPanel-Text (TMP),0,進捗度：  /9,Progress:  /9
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-SpeakerPalette-Landlord-Text (TMP),0,大家さん,Landlord
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-SpeakerPalette-MainCharacter-Text (TMP),0,ぼく,Me
+MainScene-GameObject-Canvas-プレゼント.TXTFilePanel-TitleBar-TitleText,0,プレゼント.txt,Present.txt
+MainScene-GameObject-Canvas-願いFilePanel-願いファイル-被害者の手記.pdf-Text (TMP),0,被害者の手記.pdf,Victim's Notes.pdf
+MainScene-GameObject-Canvas-願いFilePanel-願いファイル-父親からの手紙.pdf-Text (TMP),0,父親からの手紙.pdf,Letter from Father.pdf
+MainScene-GameObject-Canvas-願いFilePanel-願いファイル-娘からのお願い-Text (TMP),0,娘からのお願い,Daughter's Request
+MainScene-GameObject-Canvas-記録FilePanel-記録ファイル-警察記録.pdf-Text (TMP),0,警察記録.pdf,Police Record.pdf
+MainScene-GameObject-Canvas-記録FilePanel-記録ファイル-事故報告書.pdf-Text (TMP),0,事故報告書.pdf,Accident Report.pdf
+MainScene-GameObject-Canvas-記録FilePanel-記録ファイル-診断書.pdf-Text (TMP),0,診断書.pdf,Medical Diagnosis.pdf
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine,0,あ、こんにちは。偶然ですね,"Oh,hello. What a coincidence"
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (1),0,こんにちは・・・,Hello...
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (10),0,いいですね！,That's great!
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (11),0,フランス文学好きな人、あまり周りにいなくて,Not many people around like French literature
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (12),0,これ、僕の連絡先です。,This is my contact information.
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (13),0,よかったらメッセージください！,Please message me if you'd like!
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (14),0,ありがとうございます。私も連絡先教えますね,Thank you. I'll give you my contact too
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (2),0,あ、前にもカフェに来てましたね,"Ah,you've been to this cafe before"
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (3),0,僕も常連で、よく見かけるので,"I'm a regular too,I often see you"
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (4),0,私も週に2回くらい来るんです。,I come here about twice a week too.
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (5),0,静かで本が読みやすくて,It's quiet and easy to read books
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (6),0,その本、プルーストですよね。,"That book is Proust,isn't it?"
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (7),0,僕も読んだことあります,I've read it too
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (8),0,えっ、本当ですか！？珍しい,Really!? That's rare
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (9),0,あの、もしよければ文学の話でも...,"Um,if you'd like,we could talk about literature..."
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-InstructionText,0,発言者　（ドラッグして上の空欄にドロップ）,Speaker (Drag and drop to the box above)
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-ProgressPanel-Text (TMP),0,進捗度：  /15,Progress:  /15
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-SpeakerPalette-MainCharacter-Text (TMP),0,ぼく,Me
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-SpeakerPalette-Woman-Text (TMP),0,彼女,Her
+MainScene-GameObject-Canvas-偶然の再会.TXTFilePanel-TitleBar-TitleText,0,偶然の再会.txt,Chance Encounter.txt
+MainScene-GameObject-Canvas-警察記録.PDFFilePanel-DocumentArea-DateText,0,届出日：2023年6月12日,"Report Date: June 12,'2023"
+MainScene-GameObject-Canvas-警察記録.PDFFilePanel-DocumentArea-Line1Text,0,"被害者：佐藤 美咲（22歳）
+被害内容：ストーカー行為","Victim: Misaki Sato (22 years old)
+Incident: Stalking behavior"
+MainScene-GameObject-Canvas-警察記録.PDFFilePanel-DocumentArea-Line1Text (1),0,被害者の証言：,Victim's testimony:
+MainScene-GameObject-Canvas-警察記録.PDFFilePanel-DocumentArea-Line1Text (2),0,尾行,Stalking
+MainScene-GameObject-Canvas-警察記録.PDFFilePanel-DocumentArea-Line1Text (3),0,脅迫,Threats
+MainScene-GameObject-Canvas-警察記録.PDFFilePanel-DocumentArea-Line1Text (4),0,侵入,Intrusion
+MainScene-GameObject-Canvas-警察記録.PDFFilePanel-DocumentArea-Line2Text,0,"約3ヶ月前から知らない男性に付きまとわれるようになりました。最初はカフェでの偶然の出会いだと思っていましたが、その後SNSで見つけられ、連絡が来るようになりました。初めは文学の話などで返信していましたが、次第に　　　されていることに気づきました。通勤経路や行きつけの場所を知られており、自宅の周辺で見かけることも増えました。
+先週からは　　　あいたメッセージが増え、「僕たちは特別な関係なのに」「なぜ避けるのか」などと執拗に連絡が来ます。昨日は自宅のポストに知らないうちに手紙が入れられており、　　　されたのではないかと不安です。","About 3 months ago, an unknown man began following me. At first I thought it was a chance encounter at a cafe, but later he found me on social media and started contacting me. Initially I replied about literature topics, but gradually realized I was being watched. He knows my commute route and usual places, and I've seen him around my home more frequently.
+Since last week, threatening messages have increased, with persistent contact saying things like 'we have a special relationship' and 'why are you avoiding me?' Yesterday, a letter was placed in my mailbox without my knowledge, and I'm anxious that I may have been watched."
+MainScene-GameObject-Canvas-警察記録.PDFFilePanel-DocumentArea-Line3Text,0,"対応状況：
+　・被害者宅周辺のパトロール強化
+　・被疑者への接触禁止の警告
+　・被害者への安全指導実施済み","Response status:
+　・Enhanced patrol around victim's residence
+　・Warning issued to suspect prohibiting contact
+　・Safety guidance provided to victim"
+MainScene-GameObject-Canvas-警察記録.PDFFilePanel-TitleBar-TitleText,0,警察記録.pdf,Police Record.pdf
+MainScene-GameObject-Canvas-警察署前.PNGFilePanel-TitleBar-TitleText,0,警察署前.png,Police Station.png
+MainScene-GameObject-Canvas-喧嘩.PNGFilePanel-TitleBar-TitleText,0,喧嘩.png,Argument.png
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine,0,もうやめろ、頼む,"Stop it already,please"
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (1),0,何をやめろって？,Stop what?
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (2),0,彼女の家の前で待ち伏せしてるって聞いたぞ,I heard you're waiting in front of her house
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (3),0,誰が言ったんだ,Who told you that?
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (4),0,関係ない。お前、おかしくなってる,That doesn't matter. You're acting strange
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (5),0,ぼくが何をした？彼女を愛してるだけだ,What did I do? I just love her
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (6),0,これは愛じゃない,This isn't love
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (7),0,僕たちのことは君には理解できないよ,You can't understand what we have
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (8),0,彼女は怖がってるんだぞ,She's frightened
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (9),0,そんなわけないだろ、何をバカなことを...,"That can't be true,what nonsense..."
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-InstructionText,0,発言者　（ドラッグして上の空欄にドロップ）,Speaker (Drag and drop to the box above)
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-ProgressPanel-Text (TMP),0,進捗度：  /10,Progress:  /10
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-SpeakerPalette-Friend-Text (TMP),0,友人,Friend
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-SpeakerPalette-MainCharacter-Text (TMP),0,ぼく,Me
+MainScene-GameObject-Canvas-最後の警告.TXTFilePanel-TitleBar-TitleText,0,最後の警告.txt,Final Warning.txt
+MainScene-GameObject-Canvas-思い出FilePanel-思い出ファイル-カフェの彼女.png-Text (TMP),0,カフェの彼女.png,Girl at the Cafe.png
+MainScene-GameObject-Canvas-思い出FilePanel-思い出ファイル-偶然の再会.txt-Text (TMP),0,偶然の再会.txt,Chance Encounter.txt
+MainScene-GameObject-Canvas-思い出FilePanel-思い出ファイル-似顔絵.png-Text (TMP),0,似顔絵,Portrait
+MainScene-GameObject-Canvas-思い出FilePanel-思い出ファイル-初めて見かけた日.txt-Text (TMP),0,初めて見かけた日.txt,First Day I Saw Her.txt
+MainScene-GameObject-Canvas-思い出FilePanel-思い出ファイル-通勤路.png-Text (TMP),0,通勤路.png,Commute Route.png
+MainScene-GameObject-Canvas-思い出FilePanel-思い出ファイル-彼女のこと.txt-Text (TMP),0,彼女のこと.txt,About Her.txt
+MainScene-GameObject-Canvas-事故報告書.PDFFilePanel-DocumentArea-Line1Text,0,"発生日時：2023年7月28日 22:47
+発生場所：東京都新宿区桜町△-□□（　　　　　　）
+    天候：雨
+
+道路状況：路面湿潤、横断歩道なし","Incident Date: July 28, 2023 22:47
+Location: Sakura-cho, Shinjuku-ku, Tokyo △-□□ (　　　　　　)
+    Weather: Rain
+
+Road Conditions: Wet surface, no crosswalk"
+MainScene-GameObject-Canvas-事故報告書.PDFFilePanel-DocumentArea-Line1Text (1),0,被害者宅付近,Near victim's residence
+MainScene-GameObject-Canvas-事故報告書.PDFFilePanel-DocumentArea-Line2Text,0,"事故状況：鈴木啓太（28歳・歩行者）が深夜、住宅街の路上を歩行中、横断歩道のない場所で急に車道に飛び出したところ、山田浩二（52歳・乗用車運転手）の運転する乗用車と衝突。走行車は制限速度内で走行しており、雨天による視界不良と急な飛び出しにより回避できなかった。
+
+
+目撃者証言：
+・目撃者Aの証言によると、鈴木啓太は事故直前、マンションの外を　　　　　　　の様子で、何かに気を取られていたとのこと。
+・目撃者Bは「車道に向かって走り出す直前、誰かを押すような動作をしていた」と証言。ただし雨天のため詳細は不明。","Incident Description: Keita Suzuki (28, pedestrian) was walking on a residential street late at night when he suddenly darted into the roadway where there was no crosswalk, colliding with a passenger car driven by Koji Yamada (52, driver). The vehicle was traveling within the speed limit, and the collision could not be avoided due to poor visibility from rain and the sudden emergence.
+
+
+Witness Testimonies:
+・According to witness A's testimony, Keita Suzuki appeared to be _______ outside the apartment building just before the accident, seemingly distracted by something.
+・Witness B testified that ""just before running toward the roadway, he was making pushing motions toward someone."" However, details are unclear due to the rain."
+MainScene-GameObject-Canvas-事故報告書.PDFFilePanel-DocumentArea-Line2Text (1),0,ストーキング中,stalking
+MainScene-GameObject-Canvas-事故報告書.PDFFilePanel-DocumentArea-Line3Text,0,"負傷状況：
+鈴木啓太：頭部外傷、右足骨折、　　　　の状態で病院搬送
+山田浩二：軽度の首の痛み、ショック症状","Injury Status:
+Keita Suzuki: Head trauma, right leg fracture, transported to hospital in _______ condition
+Koji Yamada: Mild neck pain, shock symptoms"
+MainScene-GameObject-Canvas-事故報告書.PDFFilePanel-DocumentArea-Line3Text (1),0,意識不明,unconscious
+MainScene-GameObject-Canvas-事故報告書.PDFFilePanel-TitleBar-TitleText,0,事故報告書.pdf,Accident Report.pdf
+MainScene-GameObject-Canvas-似顔絵.PNGFilePanel-TitleBar-TitleText,0,似顔絵.png,Portrait.png
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine,0,最近連絡がつかないけど、大丈夫？,I haven't been able to reach you lately. Are you okay?
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (1),0,心配してるんだ,I'm worried about you
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (10),0,特に何もないです。ただ忙しいだけ,Nothing in particular. I'm just busy
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (11),0,いつなら会える？,When can we meet?
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (12),0,返事がないと不安になるよ,I get anxious when you don't reply
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (13),0,昨日あなたのアパートの前を通りかかったんだ,I happened to pass by your apartment yesterday
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (14),0,どうして僕を避けるの？特別な関係でしょ,Why are you avoiding me? We have a special relationship
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (15),0,もう連絡しないでください,Please don't contact me anymore
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (16),0,どうして？何があったの？,Why? What happened?
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (17),0,警察に相談しますよ,I'll consult the police
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (18),0,僕はただ心配で...,I'm just worried...
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (2),0,何か怒らせてしまったかな？,Did I do something to upset you?
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (3),0,返事をくれたら嬉しいです,I'd be happy if you could reply
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (4),0,プルーストの新しい解釈について話したい,I want to talk about new interpretations of Proust
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (5),0,すみません、最近忙しくて,"Sorry,I've been busy lately"
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (6),0,しばらく返信できないと思います,I don't think I'll be able to reply for a while
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (7),0,何かあったの？手伝えることがあれば言って,Did something happen? Let me know if I can help
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (8),0,体調を崩したりしてないよね？,You haven't gotten sick or anything?
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (9),0,僕が何かしたのなら謝るよ,If I did something wrong I'll apologize
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-InstructionText,0,発言者　（ドラッグして上の空欄にドロップ）,Speaker (Drag and drop to the blank area above)
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-ProgressPanel-Text (TMP),0,進捗度：  /19,Progress:  /19
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-SpeakerPalette-MainCharacter-Text (TMP),0,ぼく,me
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-SpeakerPalette-Woman-Text (TMP),0,彼女,her
+MainScene-GameObject-Canvas-初めての喧嘩.TXTFilePanel-TitleBar-TitleText,0,初めての喧嘩？.txt,First Fight?.txt
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine,0,あのカフェ、雰囲気よかったよね,That cafe had a nice atmosphere
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (1),0,そうだな、コーヒーも美味しかったし,Yeah the coffee was good too
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (10),0,また行くのかよ,You're going again?
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (2),0,あそこにいた女の子、すごく印象的だった,The girl who was there was really striking
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (3),0,どの子？,Which one?
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (4),0,窓際の席で本を読んでた子。,The one reading a book by the window
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (5),0,『失われた時を求めて』を読んでたよ,She was reading 'In Search of Lost Time'
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (6),0,へぇ、そんなに気になったの？,Huh you were that interested?
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (7),0,ぼくも好きな本なんだ...特別な感じする,It's a book I like too... It feels special
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (8),0,ふーん、そうなんだ,Hmm I see
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (9),0,また行ってみようかな,Maybe I'll go again
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-InstructionText,0,発言者　（ドラッグして上の空欄にドロップ）,Speaker (Drag and drop to the blank area above)
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-ProgressPanel-Text (TMP),0,進捗度：  /11,Progress:  /11
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-SpeakerPalette-Friend-Text (TMP),0,友人,friend
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-SpeakerPalette-MainCharacter-Text (TMP),0,ぼく,me
+MainScene-GameObject-Canvas-初めて見かけた日.TXTFilePanel-TitleBar-TitleText,0,初めて見かけた日.txt,First Time I Saw Her.txt
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine,0,最近どうしたんだよ、全然連絡取れないじゃないか,What's wrong with you lately? I can't reach you at all
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (1),0,忙しかったんだ。彼女のことで,I've been busy. With her
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (2),0,彼女って...またあの子か？,Her... that girl again?
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (3),0,うん、もっと特別な関係になれそうなんだ,Yeah we might become even more special
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (4),0,お前、まだ粘着してるのか,Dude are you still obsessing over her?
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (5),0,粘着なんかじゃない。愛だよ,It's not obsessing. It's love
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (6),0,これは恋愛じゃなくてストーキングだよ,This isn't romance it's stalking
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (7),0,彼女は僕のことを理解していないだけだ,She just doesn't understand me yet
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (8),0,警察沙汰になるぞ、マジで,This is going to involve the police seriously
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (9),0,なぜ？彼女は喜んでいるよ,Why? She's happy about it
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-InstructionText,0,発言者　（ドラッグして上の空欄にドロップ）,Speaker (Drag and drop to the blank area above)
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-ProgressPanel-Text (TMP),0,進捗度：  /10,Progress:  /10
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-SpeakerPalette-Friend-Text (TMP),0,友人,friend
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-SpeakerPalette-MainCharacter-Text (TMP),0,ぼく,me
+MainScene-GameObject-Canvas-親友からの忠告.TXTFilePanel-TitleBar-TitleText,0,親友からの忠告.txt,Warning from a Close Friend.txt
+MainScene-GameObject-Canvas-診断書.PDFFilePanel-DocumentArea-Line1Text,0,"患者氏名：鈴木 啓太
+年齢：28歳","Patient Name: Keita Suzuki
+Age: 28"
+MainScene-GameObject-Canvas-診断書.PDFFilePanel-DocumentArea-Line2Text,0,"診断：　　　　　、急性ストレス反応あり
+","Diagnosis: _______, with acute stress reaction
+"
+MainScene-GameObject-Canvas-診断書.PDFFilePanel-DocumentArea-Line2Text (1),0,妄想性障害,Delusional disorder
+MainScene-GameObject-Canvas-診断書.PDFFilePanel-DocumentArea-Line3Text,0,"所見：
+患者は交通事故による一時的な記憶障害から回復過程にありますが、特定の女性に対する強い執着と　　　　　　が認められます。自分と対象者との関係性を実際よりも親密なものと誤認識しており、その認識を修正することに強い抵抗を示しています。","Findings:
+The patient is in the process of recovering from temporary memory impairment caused by a traffic accident, but shows strong obsession with a specific woman and _______ are observed. He misperceives his relationship with the subject as more intimate than it actually is, and shows strong resistance to correcting this perception."
+MainScene-GameObject-Canvas-診断書.PDFFilePanel-DocumentArea-Line3Text (1),0,現実との乖離,detachment from reality
+MainScene-GameObject-Canvas-診断書.PDFFilePanel-DocumentArea-Line4Text,0,思考内容には強迫観念的な要素が見られ、対象者との「　　　　　」を証明しようとする行動パターンが顕著です。現状では自身の行動が相手に与える影響について洞察が不足しています。,"Thought content shows obsessive elements, with a pronounced behavioral pattern of trying to prove a ""_______"" with the subject. Currently lacks insight into the impact his behavior has on the other person."
+MainScene-GameObject-Canvas-診断書.PDFFilePanel-DocumentArea-Line4Text (1),0,特別な関係,special relationship
+MainScene-GameObject-Canvas-診断書.PDFFilePanel-DocumentArea-Line5Text,0,"治療計画：
+	・認知行動療法（週1回）
+	・必要に応じた薬物療法の検討
+	・現実検討能力の向上を目指した介入","Treatment Plan:
+	・Cognitive behavioral therapy (once a week)
+	・Consideration of pharmacotherapy as needed
+	・Intervention aimed at improving reality testing abilities"
+MainScene-GameObject-Canvas-診断書.PDFFilePanel-TitleBar-TitleText,0,診断書.pdf,Medical Certificate.pdf
+MainScene-GameObject-Canvas-窓越しの彼女.PNGFilePanel-TitleBar-TitleText,0,窓越しの彼女.png,Her Through the Window.png
+MainScene-GameObject-Canvas-通勤路.PNGFilePanel-TitleBar-TitleText,0,通勤路.png,Commute Route.png
+MainScene-GameObject-Canvas-特別な場所.PNGFilePanel-TitleBar-TitleText,0,特別な場所.png,Special Place.png
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine,0,今日はプルーストの話ができて楽しかった。,It was fun talking about Proust today
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (1),0,こちらこそ、楽しい時間をありがとう,Thank you for the enjoyable time
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (10),0,そっか、ぼくのSNSアカウントまだ知らないよね,Oh right you don't know my social media account yet
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (11),0,このアカウントに、予定が決まったら連絡して,Contact me on this account when you've decided on plans
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (12),0,・・・うん、わかった,...okay I understand
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (2),0,また機会があればお話したいです,I'd like to talk again if we have the opportunity
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (3),0,ぜひ。プルーストについてもっと話したいです,Definitely. I want to talk more about Proust
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (4),0,明日、もしよければカフェでお茶しませんか？,Tomorrow if you'd like would you have tea at the cafe?
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (5),0,ごめんなさい、明日は予定があるんです,I'm sorry I have plans tomorrow
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (6),0,じゃあ明後日はどうですか？,How about the day after tomorrow?
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (7),0,う～ん、ちょっと考えておきます,Um let me think about it
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (8),0,お返事待ってますね。,I'll wait for your reply
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (9),0,返事？,Reply?
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-InstructionText,0,発言者　（ドラッグして上の空欄にドロップ）,Speaker (Drag and drop to the blank area above)
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-ProgressPanel-Text (TMP),0,進捗度：  /13,Progress:  /13
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-SpeakerPalette-MainCharacter-Text (TMP),0,ぼく,me
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-SpeakerPalette-Woman-Text (TMP),0,彼女,her
+MainScene-GameObject-Canvas-彼女との文通.TXTFilePanel-TitleBar-TitleText,0,帰り際.txt,Parting Moment.txt
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine,0,調べたよ、彼女のこと,I looked her up
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (1),0,どうやって？,How?
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (10),0,やばっ（笑）,That's crazy (laugh)
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (11),0,何がヤバいの？,What's crazy about it?
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (12),0,好きになったら知りたくなるのは当然でしょ,It's natural to want to know more when you like someone
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (13),0,いや・・・う、うん。そうだな・・・,No... y-yeah. That's right...
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (2),0,えっ、片っ端しから調べて,I searched everywhere
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (3),0,ＳＮＳアカウントを見つけたよ,and found her social media accounts
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (4),0,すごい執念だなぁ,That's quite an obsession
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (5),0,普通だよ,It's normal
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (6),0,文学部で、フランス文学が好きなんだって,She's in the literature department and loves French literature
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (7),0,どこまで調べたんだよ...,How far did you dig...
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (8),0,友達の投稿にタグ付けされてたから、,"She was tagged in a friend's post,so"
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (9),0,住んでる場所も大体分かった,I figured out roughly where she lives
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-InstructionText,0,発言者　（ドラッグして上の空欄にドロップ）,Speaker (Drag and drop to the blank above)
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-ProgressPanel-Text (TMP),0,進捗度：  /14,Progress:  /14
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-SpeakerPalette-Friend-Text (TMP),0,友人,Friend
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-SpeakerPalette-MainCharacter-Text (TMP),0,ぼく,Me
+MainScene-GameObject-Canvas-彼女のこと.TXTFilePanel-TitleBar-TitleText,0,彼女のこと.txt,About Her.txt
+MainScene-GameObject-Canvas-被害者の手記.PDFFilePanel-DocumentArea-Line1Text,0,もう一ヶ月以上眠れない日が続いている。あの人のことを考えると、体が震えてしまう。最初は文学の話で盛り上がった親切な人だと思ったのに。どうしてこうなってしまったのだろう。,"It's been over a month since I've had a sleepless night. When I think about that person,my body trembles. At first,I thought he was a kind person who enjoyed talking about literature. How did it come to this?"
+MainScene-GameObject-Canvas-被害者の手記.PDFFilePanel-DocumentArea-Line2Text,0,"窓の外を見るたびに、彼がいるような気がする。本当に　　でしかない。連絡先を教えたことを後悔している。初めの私の返信が彼を勇気づけてしまったのかもしれない。今となっては取り返しがつかない。
+","Every time I look out the window, I feel like he's there. It's nothing but pure　　. I regret giving him my contact information. Maybe my initial reply encouraged him. Now it's irreversible.
+"
+MainScene-GameObject-Canvas-被害者の手記.PDFFilePanel-DocumentArea-Line2Text (1),0,恐怖,terror
+MainScene-GameObject-Canvas-被害者の手記.PDFFilePanel-DocumentArea-Line3Text,0,昨日も玄関先にプレゼントが置かれていた。断っているのに、なぜ理解してくれないのだろう。もう何日も　　　　　夜、物音がすると飛び起きてしまう。友人の家に泊めてもらおうかとも考えたけれど、彼に友人のことまで知られたくない。,"Yesterday,another gift was left at my doorstep. I've refused him,so why won't he understand? For days now,I　　　　　. At night,I wake up startled by any sound. I've thought about staying at a friend's house,but I don't want him to know about my friends too."
+MainScene-GameObject-Canvas-被害者の手記.PDFFilePanel-DocumentArea-Line3Text (1),0,眠れない。,can't sleep
+MainScene-GameObject-Canvas-被害者の手記.PDFFilePanel-DocumentArea-Line4Text,0,時々カーテンの隙間から外を見ると、いつも同じ場所に彼がいる。常に　　　　　　　感覚が消えない。警察にも相談したけれど、具体的な脅迫がないと動けないと言われた。このまま私は、ずっと怯えて生きていくしかないのだろうか。,"Sometimes when I peek through the curtain gaps,he's always in the same spot. I can't shake the feeling of being constantly　　　　　　　. I consulted the police,but they said they can't act without specific threats. Will I have to live in fear like this forever?"
+MainScene-GameObject-Canvas-被害者の手記.PDFFilePanel-DocumentArea-Line4Text (1),0,監視されている,watched
+MainScene-GameObject-Canvas-被害者の手記.PDFFilePanel-DocumentArea-Line5Text,0,できることなら、彼の記憶から私のことが消えてほしい。そうすれば、私も普通の日常に戻れるのに。,If only he could forget about me completely. Then I could return to my normal life.
+MainScene-GameObject-Canvas-被害者の手記.PDFFilePanel-TitleBar-TitleText,0,被害者の手記.pdf,Victim's Journal.pdf
+MainScene-GameObject-Canvas-父親からの手紙.PDFFilePanel-DocumentArea-Line1Text,0,鈴木 啓太さんへ,To Mr. Keita Suzuki
+MainScene-GameObject-Canvas-父親からの手紙.PDFFilePanel-DocumentArea-Line2Text,0,あなたは女性対して、数ヶ月に渡って執拗な接触を続けてきました。SNSを調べ、行動を監視し、自宅まで押しかけるなど、あなたの行動は明らかに彼女を　　　　　　　のです。,"You have persistently contacted a woman for months. Investigating her social media,monitoring her behavior,and even showing up at her home - your actions have clearly　　　　　　　."
+MainScene-GameObject-Canvas-父親からの手紙.PDFFilePanel-DocumentArea-Line2Text (1),0,娘を追い詰めた,cornered my daughter
+MainScene-GameObject-Canvas-父親からの手紙.PDFFilePanel-DocumentArea-Line3Text,0,事故でいっさいの記憶を失ったとしても、あなたがした行為の責任は消えません。だからこそ、あなたには全てを　　　　　　必要があると考えました。この記憶の断片を見て、自分が何をしたのかを理解してください。,"Even if you lost all your memories in the accident,the responsibility for your actions doesn't disappear. That's why I believe you need to　　　　　　everything. Look at these fragments of memory and understand what you did."
+MainScene-GameObject-Canvas-父親からの手紙.PDFFilePanel-DocumentArea-Line3Text (1),0,思い出させる,remember
+MainScene-GameObject-Canvas-父親からの手紙.PDFFilePanel-DocumentArea-Line4Text,0,あなたが抱えている問題には専門的な治療が必要です。そして何より必要なのは、自分の行動への　　です。記憶を取り戻し、自分の行為と向き合うことが、あなた自身の回復への第一歩になるはずです。,Your problems require professional treatment. And what you need most is　　for your actions. Recovering your memories and confronting your deeds should be the first step toward your own recovery.
+MainScene-GameObject-Canvas-父親からの手紙.PDFFilePanel-DocumentArea-Line4Text (1),0,反省,remorse
+MainScene-GameObject-Canvas-父親からの手紙.PDFFilePanel-DocumentArea-Line5Text,0,"　　　　　　　　　　　　　　　　　と言っています。
+その願いを尊重してください。","She says　　　　　　　　　　　　　　　　　.
+Please respect her wish."
+MainScene-GameObject-Canvas-父親からの手紙.PDFFilePanel-DocumentArea-Line5Text (1),0,娘はもう二度とあなたに会いたくない,my daughter never wants to see you again
+MainScene-GameObject-Canvas-父親からの手紙.PDFFilePanel-TitleBar-TitleText,0,父親からの手紙.pdf,Letter from the Father.pdf
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine,0,もう関わりたくない,I don't want to be involved anymore
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (1),0,そう...,I see...
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (10),0,...なぜ？,...Why?
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (2),0,警察に相談したからな、彼女の件で,I consulted the police about her case
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (3),0,なんで、ぼく達の邪魔をするんだ？,Why are you interfering with us?
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (4),0,お前を止めるためだ,To stop you
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (5),0,もしかして、君も彼女のことが好きなのか？,Do you like her too?
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (6),0,違う！そうじゃない,No! That's not it
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (7),0,友達だから、止めようとしてる,I'm trying to stop you because we're friends
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (8),0,...,...
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ContentScrollView-Viewport-Content-DialogueArea-DialogLine (9),0,自分を見つめ直せ,Take a good look at yourself
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-InstructionText,0,発言者　（ドラッグして上の空欄にドロップ）,Speaker (Drag and drop to the blank above)
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-ProgressPanel-Text (TMP),0,進捗度：  /11,Progress:  /11
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-SpeakerPalette-Friend-Text (TMP),0,友人,Friend
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-SpeakerPalette-MainCharacter-Text (TMP),0,ぼく,Me
+MainScene-GameObject-Canvas-別れ話.TXTFilePanel-TitleBar-TitleText,0,別れ話.txt,Breaking Ties.txt
+MainScene-GameObject-Canvas-友人FilePanel-友人ファイル-警察署前.png-Text (TMP),0,警察署前.png,In Front of Police Station.png
+MainScene-GameObject-Canvas-友人FilePanel-友人ファイル-喧嘩.png-Text (TMP),0,喧嘩.png,The Fight.png
+MainScene-GameObject-Canvas-友人FilePanel-友人ファイル-最後の警告.txt-Text (TMP),0,最後の警告.txt,Final Warning.txt
+MainScene-GameObject-Canvas-友人FilePanel-友人ファイル-親友からの忠告.txt-Text (TMP),0,親友からの忠告.txt,Advice from a Friend.txt
+MainScene-GameObject-Canvas-友人FilePanel-友人ファイル-別れ話.txt-Text (TMP),0,別れ話.txt,Breaking Ties.txt
+MainScene-GameObject-Canvas-恋人FilePanel-恋人ファイル-プレゼント.txt-Text (TMP),0,プレゼント.txt,The Gift.txt
+MainScene-GameObject-Canvas-恋人FilePanel-恋人ファイル-初めての喧嘩？.txt-Text (TMP),0,初めての喧嘩？.txt,First Fight?.txt
+MainScene-GameObject-Canvas-恋人FilePanel-恋人ファイル-窓越しの彼女.png-Text (TMP),0,窓越しの彼女.png,Her Through the Window.png
+MainScene-GameObject-Canvas-恋人FilePanel-恋人ファイル-特別な場所.png-Text (TMP),0,特別な場所.png,Special Place.png
+MainScene-GameObject-Canvas-恋人FilePanel-恋人ファイル-彼女との文通.txt-Text (TMP),0,帰り際.txt,Departure.txt
+"MonologueScene-Canvas-CommonSettingsPanel-SettingsContainer-BackButton-Text (TMP) ""戻る""",0,戻る,Back
+"MonologueScene-Canvas-CommonSettingsPanel-SettingsContainer-BGMVolumeControl-LabelText ""BGM音量""",0,BＧＭ,BGM
+"MonologueScene-Canvas-CommonSettingsPanel-SettingsContainer-SaveAndQuitButton-Text (TMP) ""保存して終了""",0,セーブしてから終了,Save and Exit
+"MonologueScene-Canvas-CommonSettingsPanel-SettingsContainer-SEVolumeControl-LabelText ""SE音量""",0,ＳＥ,SE
+MonologueScene-Canvas-DialogueArea-DialogueText,0,New Text,New Text
+"OpeningScene-Canvas-CommonSettingsPanel-SettingsContainer-BackButton-Text (TMP) ""戻る""",0,戻る,Back
+"OpeningScene-Canvas-CommonSettingsPanel-SettingsContainer-BGMVolumeControl-LabelText ""BGM音量""",0,BＧＭ,BGM
+"OpeningScene-Canvas-CommonSettingsPanel-SettingsContainer-SaveAndQuitButton-Text (TMP) ""保存して終了""",0,セーブしてから終了,Save and Exit
+"OpeningScene-Canvas-CommonSettingsPanel-SettingsContainer-SEVolumeControl-LabelText ""SE音量""",0,ＳＥ,SE
+"Prefab-CommonSettingsPanel-CommonSettingsPanel-SettingsContainer-BackButton-Text (TMP) ""戻る""",0,戻る,Back
+"Prefab-CommonSettingsPanel-CommonSettingsPanel-SettingsContainer-BGMVolumeControl-LabelText ""BGM音量""",0,BＧＭ,BGM
+"Prefab-CommonSettingsPanel-CommonSettingsPanel-SettingsContainer-SaveAndQuitButton-Text (TMP) ""保存して終了""",0,セーブしてから終了,Save and Exit
+"Prefab-CommonSettingsPanel-CommonSettingsPanel-SettingsContainer-SEVolumeControl-LabelText ""SE音量""",0,ＳＥ,SE
+Prefab-DialogueEntryPrefab-DialogueEntryPrefab-BubbleBackground-DialogueText,0,<セリフのサンプルテキスト。ここに実際のダイアログが入ります。>,<Sample dialogue text. Actual dialogue goes here.>
+Prefab-DialogueEntryPrefab-DialogueEntryPrefab-BubbleBackground-SpeakerName,0,<話者名>,<Speaker Name>
+Prefab-NarrationEntryPrefab-NarrationEntryPrefab-NarrationBackground -DialogueText,0,<ナレーションのサンプルテキスト。ここに説明文や状況説明が入ります。>,<Sample narration text. Descriptions and situational explanations go here.>
+Prefab-Text Popup-Text Popup-TextMeshPro Text,0,Sample,Sample
+Prefab-TextMeshPro - Prefab 1-TextMeshPro - Prefab 1,0,Seems to be ok!,Seems to be ok!
+Prefab-TextMeshPro - Prefab 2-TextMeshPro - Prefab 2,0,Hello World!,Hello World!
+TitleScene-Canvas-MenuContainer-やめるボタン-Text (TMP),0,やめる,Quit
+TitleScene-Canvas-MenuContainer-思い出すボタン-Text (TMP),0,思い出す,Remember
+TitleScene-Canvas-MenuContainer-設定ボタン-Text (TMP),0,設定,Settings
+TitleScene-Canvas-QuitConfirmationPanel -いいえボタン-Text (TMP),0,いいえ,No
+TitleScene-Canvas-QuitConfirmationPanel -はいボタン-Text (TMP),0,はい,Yes
+TitleScene-Canvas-QuitConfirmationPanel -確認テキスト,0,ゲームを終了しますか？,Are you sure you want to quit the game?
+TitleScene-Canvas-SettingsPanel-GraphicsPanel-BackButton-Text (TMP),0,戻る,Back
+TitleScene-Canvas-SettingsPanel-GraphicsPanel-SaveButton-Text (TMP),0,適用,Apply
+TitleScene-Canvas-SettingsPanel-GraphicsPanel-TitleText,0,グラフィック設定,Graphics Settings
+TitleScene-Canvas-SettingsPanel-LanguagePanel-BackButton-Text (TMP),0,戻る,Back
+TitleScene-Canvas-SettingsPanel-LanguagePanel-LanguageDropdown-Label,0,日本語,Japanese
+TitleScene-Canvas-SettingsPanel-LanguagePanel-LanguageDropdown-Template-Viewport-Content-Item-Item Label,0,Option A,Option A
+TitleScene-Canvas-SettingsPanel-LanguagePanel-SaveButton-Text (TMP),0,適用,Apply
+TitleScene-Canvas-SettingsPanel-LanguagePanel-TitleText,0,言語設定,Language Settings
+TitleScene-Canvas-SettingsPanel-SoundPanel-BackButton-Text (TMP),0,戻る,Back
+TitleScene-Canvas-SettingsPanel-SoundPanel-BGMVolumeLabel,0,BGM音量,BGM Volume
+TitleScene-Canvas-SettingsPanel-SoundPanel-MasterVolumeLabel,0,マスター音量,Master Volume
+TitleScene-Canvas-SettingsPanel-SoundPanel-SaveButton-Text (TMP),0,適用,Apply
+TitleScene-Canvas-SettingsPanel-SoundPanel-SFXVolumeLabel,0,効果音量,SFX Volume
+TitleScene-Canvas-SettingsPanel-SoundPanel-TitleText,0,サウンド設定,Sound Settings
+TitleScene-Canvas-SettingsPanel-グラフィックボタン-Text (TMP),0,グラフィック,Graphics
+TitleScene-Canvas-SettingsPanel-サウンドボタン-Text (TMP),0,サウンド,Sound
+TitleScene-Canvas-SettingsPanel-データ初期化ボタン-Text (TMP),0,データ初期化,Reset Data
+TitleScene-Canvas-SettingsPanel-データ初期化確認パネル-いいえボタン-Text (TMP),0,いいえ,No
+TitleScene-Canvas-SettingsPanel-データ初期化確認パネル-はいボタン-Text (TMP),0,はい,Yes
+TitleScene-Canvas-SettingsPanel-データ初期化確認パネル-メッセージパネル-メッセージテキスト,0,保存されていたデータはすべて削除されました,All saved data has been deleted
+TitleScene-Canvas-SettingsPanel-データ初期化確認パネル-確認テキスト,0,ゲームを初期化しますか？,Do you want to reset the game?
+TitleScene-Canvas-SettingsPanel-言語ボタン-Text (TMP),0,言語,Language
+TitleScene-Canvas-SettingsPanel-戻るボタン-Text (TMP),0,戻る,Back
+TitleScene-Canvas-TitleContainer,0,「願い」の記憶,"Memories of ""Desire"""

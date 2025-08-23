@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 26527299}
   - component: {fileID: 26527301}
   - component: {fileID: 26527300}
+  - component: {fileID: 26527302}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -255,6 +256,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26527298}
   m_CullTransparentMesh: 1
+--- !u!114 &26527302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26527298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "ConversationFatherAndDaughter-Canvas-CommonSettingsPanel-SettingsContainer-BackButton-Text
+        (TMP) \"\u623B\u308B\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 26527300}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &69811319
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +308,7 @@ GameObject:
   - component: {fileID: 69811320}
   - component: {fileID: 69811322}
   - component: {fileID: 69811321}
+  - component: {fileID: 69811323}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -391,6 +434,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69811319}
   m_CullTransparentMesh: 1
+--- !u!114 &69811323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69811319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: TitleScene-Canvas-SettingsPanel-LanguagePanel-TitleText
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 69811321}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &73169071
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +485,7 @@ GameObject:
   - component: {fileID: 73169072}
   - component: {fileID: 73169074}
   - component: {fileID: 73169073}
+  - component: {fileID: 73169075}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -527,6 +611,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73169071}
   m_CullTransparentMesh: 1
+--- !u!114 &73169075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73169071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: TitleScene-Canvas-SettingsPanel-LanguagePanel-LanguageDropdown-Label
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 73169073}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &79965081
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,6 +921,7 @@ GameObject:
   - component: {fileID: 140274094}
   - component: {fileID: 140274096}
   - component: {fileID: 140274095}
+  - component: {fileID: 140274097}
   m_Layer: 5
   m_Name: "\u78BA\u8A8D\u30C6\u30AD\u30B9\u30C8"
   m_TagString: Untagged
@@ -922,6 +1047,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140274093}
   m_CullTransparentMesh: 1
+--- !u!114 &140274097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140274093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "TitleScene-Canvas-SettingsPanel-\u30C7\u30FC\u30BF\u521D\u671F\u5316\u78BA\u8A8D\u30D1\u30CD\u30EB-\u78BA\u8A8D\u30C6\u30AD\u30B9\u30C8"
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 140274095}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &156225886
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,6 +1098,7 @@ GameObject:
   - component: {fileID: 156225887}
   - component: {fileID: 156225889}
   - component: {fileID: 156225888}
+  - component: {fileID: 156225890}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1058,6 +1224,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156225886}
   m_CullTransparentMesh: 1
+--- !u!114 &156225890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156225886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: TitleScene-Canvas-SettingsPanel-GraphicsPanel-SaveButton-Text (TMP)
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 156225888}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &166184617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,6 +1396,7 @@ GameObject:
   - component: {fileID: 168432982}
   - component: {fileID: 168432984}
   - component: {fileID: 168432983}
+  - component: {fileID: 168432985}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1315,6 +1522,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168432981}
   m_CullTransparentMesh: 1
+--- !u!114 &168432985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168432981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "TitleScene-Canvas-SettingsPanel-\u30B0\u30E9\u30D5\u30A3\u30C3\u30AF\u30DC\u30BF\u30F3-Text
+        (TMP)"
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 168432983}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &171906730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,6 +1695,7 @@ GameObject:
   - component: {fileID: 219016536}
   - component: {fileID: 219016538}
   - component: {fileID: 219016537}
+  - component: {fileID: 219016539}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1572,6 +1821,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219016535}
   m_CullTransparentMesh: 1
+--- !u!114 &219016539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219016535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: TitleScene-Canvas-SettingsPanel-GraphicsPanel-SaveButton-Text (TMP)
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 219016537}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &223408166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,6 +1872,7 @@ GameObject:
   - component: {fileID: 223408167}
   - component: {fileID: 223408169}
   - component: {fileID: 223408168}
+  - component: {fileID: 223408170}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1708,6 +1998,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223408166}
   m_CullTransparentMesh: 1
+--- !u!114 &223408170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223408166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "ConversationFatherAndDaughter-Canvas-CommonSettingsPanel-SettingsContainer-BackButton-Text
+        (TMP) \"\u623B\u308B\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 223408168}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &277519837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1763,7 +2094,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -1771,6 +2101,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!81 &277519839
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2339,6 +2670,7 @@ GameObject:
   - component: {fileID: 314724797}
   - component: {fileID: 314724799}
   - component: {fileID: 314724798}
+  - component: {fileID: 314724800}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2464,6 +2796,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314724796}
   m_CullTransparentMesh: 1
+--- !u!114 &314724800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314724796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "ConversationFatherAndDaughter-Canvas-CommonSettingsPanel-SettingsContainer-BackButton-Text
+        (TMP) \"\u623B\u308B\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 314724798}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &382864322
 GameObject:
   m_ObjectHideFlags: 0
@@ -3212,6 +3585,7 @@ GameObject:
   - component: {fileID: 564006552}
   - component: {fileID: 564006554}
   - component: {fileID: 564006553}
+  - component: {fileID: 564006555}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3337,6 +3711,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564006551}
   m_CullTransparentMesh: 1
+--- !u!114 &564006555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564006551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "ConversationFatherAndDaughter-Canvas-CommonSettingsPanel-SettingsContainer-BackButton-Text
+        (TMP) \"\u623B\u308B\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 564006553}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &588213461
 GameObject:
   m_ObjectHideFlags: 0
@@ -3423,6 +3838,7 @@ GameObject:
   - component: {fileID: 598075281}
   - component: {fileID: 598075283}
   - component: {fileID: 598075282}
+  - component: {fileID: 598075284}
   m_Layer: 5
   m_Name: MasterVolumeLabel
   m_TagString: Untagged
@@ -3447,7 +3863,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -306}
-  m_SizeDelta: {x: -1600, y: 51.567}
+  m_SizeDelta: {x: -1400, y: 51.567}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &598075282
 MonoBehaviour:
@@ -3548,6 +3964,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598075280}
   m_CullTransparentMesh: 1
+--- !u!114 &598075284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598075280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: TitleScene-Canvas-SettingsPanel-SoundPanel-MasterVolumeLabel
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 598075282}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &620134477
 GameObject:
   m_ObjectHideFlags: 0
@@ -4704,6 +5160,7 @@ GameObject:
   - component: {fileID: 783457979}
   - component: {fileID: 783457981}
   - component: {fileID: 783457980}
+  - component: {fileID: 783457982}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -4829,6 +5286,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783457978}
   m_CullTransparentMesh: 1
+--- !u!114 &783457982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783457978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: TitleScene-Canvas-SettingsPanel-SoundPanel-TitleText
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 783457980}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &787701685
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,6 +5458,7 @@ GameObject:
   - component: {fileID: 945425783}
   - component: {fileID: 945425785}
   - component: {fileID: 945425784}
+  - component: {fileID: 945425786}
   m_Layer: 5
   m_Name: "\u78BA\u8A8D\u30C6\u30AD\u30B9\u30C8"
   m_TagString: Untagged
@@ -5086,6 +5584,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945425782}
   m_CullTransparentMesh: 1
+--- !u!114 &945425786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945425782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "TitleScene-Canvas-QuitConfirmationPanel -\u78BA\u8A8D\u30C6\u30AD\u30B9\u30C8"
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 945425784}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &965977324
 GameObject:
   m_ObjectHideFlags: 0
@@ -5097,6 +5635,7 @@ GameObject:
   - component: {fileID: 965977325}
   - component: {fileID: 965977327}
   - component: {fileID: 965977326}
+  - component: {fileID: 965977328}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5222,6 +5761,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965977324}
   m_CullTransparentMesh: 1
+--- !u!114 &965977328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965977324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "HerMainScene-GameObject-Canvas-\u4F3C\u9854\u7D75.FilePanel-DeleteSelectionPanel-ButtonContainer-ConfirmButton-Text
+        (TMP)\"\u306F\u3044\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 965977326}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &975851900
 GameObject:
   m_ObjectHideFlags: 0
@@ -5233,6 +5813,7 @@ GameObject:
   - component: {fileID: 975851901}
   - component: {fileID: 975851903}
   - component: {fileID: 975851902}
+  - component: {fileID: 975851904}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5358,6 +5939,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975851900}
   m_CullTransparentMesh: 1
+--- !u!114 &975851904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975851900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "TitleScene-Canvas-SettingsPanel-\u30C7\u30FC\u30BF\u521D\u671F\u5316\u30DC\u30BF\u30F3-Text
+        (TMP)"
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 975851902}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &977365486
 GameObject:
   m_ObjectHideFlags: 0
@@ -5369,6 +5991,7 @@ GameObject:
   - component: {fileID: 977365487}
   - component: {fileID: 977365489}
   - component: {fileID: 977365488}
+  - component: {fileID: 977365490}
   m_Layer: 5
   m_Name: SFXVolumeLabel
   m_TagString: Untagged
@@ -5494,6 +6117,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977365486}
   m_CullTransparentMesh: 1
+--- !u!114 &977365490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977365486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: TitleScene-Canvas-SettingsPanel-SoundPanel-SFXVolumeLabel
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 977365488}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1000068614
 GameObject:
   m_ObjectHideFlags: 0
@@ -5642,13 +6305,14 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:38622b1bc7b05e14abfe9e49f7e535a8
+      m_TableCollectionName: SceneStringTable
     m_TableEntryReference:
-      m_KeyId: 3535023001600
-      m_Key: 
+      m_KeyId: 0
+      m_Key: "TitleScene-Canvas-MenuContainer-\u8A2D\u5B9A\u30DC\u30BF\u30F3-Text
+        (TMP)"
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
@@ -5657,7 +6321,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1000068616}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
         m_MethodName: set_text
         m_Mode: 0
         m_Arguments:
@@ -5667,7 +6331,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -5893,6 +6557,7 @@ GameObject:
   - component: {fileID: 1037577391}
   - component: {fileID: 1037577393}
   - component: {fileID: 1037577392}
+  - component: {fileID: 1037577394}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6018,6 +6683,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037577390}
   m_CullTransparentMesh: 1
+--- !u!114 &1037577394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037577390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "HerMainScene-GameObject-Canvas-\u4F3C\u9854\u7D75.FilePanel-DeleteSelectionPanel-ButtonContainer-CancelButton-Text
+        (TMP)\"\u3044\u3044\u3048\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1037577392}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1041362477
 GameObject:
   m_ObjectHideFlags: 0
@@ -6654,6 +7360,7 @@ GameObject:
   - component: {fileID: 1188788109}
   - component: {fileID: 1188788111}
   - component: {fileID: 1188788110}
+  - component: {fileID: 1188788112}
   m_Layer: 5
   m_Name: TitleContainer
   m_TagString: Untagged
@@ -6905,6 +7612,46 @@ MonoBehaviour:
   setCompletionFlag: 1
   debugMode: 0
   forceExecute: 0
+--- !u!114 &1188788112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188788102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: TitleScene-Canvas-TitleContainer
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1188788104}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1196015994
 GameObject:
   m_ObjectHideFlags: 0
@@ -6916,6 +7663,7 @@ GameObject:
   - component: {fileID: 1196015995}
   - component: {fileID: 1196015997}
   - component: {fileID: 1196015996}
+  - component: {fileID: 1196015998}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -7041,6 +7789,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196015994}
   m_CullTransparentMesh: 1
+--- !u!114 &1196015998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196015994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "HerMainScene-GameObject-Canvas-\u4F3C\u9854\u7D75.FilePanel-DeleteSelectionPanel-ButtonContainer-CancelButton-Text
+        (TMP)\"\u3044\u3044\u3048\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1196015996}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1202129961
 GameObject:
   m_ObjectHideFlags: 0
@@ -7088,6 +7877,7 @@ GameObject:
   - component: {fileID: 1222537459}
   - component: {fileID: 1222537461}
   - component: {fileID: 1222537460}
+  - component: {fileID: 1222537462}
   m_Layer: 5
   m_Name: BGMVolumeLabel
   m_TagString: Untagged
@@ -7213,6 +8003,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222537458}
   m_CullTransparentMesh: 1
+--- !u!114 &1222537462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222537458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "ConversationFatherAndDaughter-Canvas-CommonSettingsPanel-SettingsContainer-BGMVolumeControl-LabelText
+        \"BGM\u97F3\u91CF\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1222537460}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1243904997
 GameObject:
   m_ObjectHideFlags: 0
@@ -8522,6 +9353,7 @@ GameObject:
   - component: {fileID: 1499360173}
   - component: {fileID: 1499360175}
   - component: {fileID: 1499360174}
+  - component: {fileID: 1499360176}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -8647,6 +9479,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499360172}
   m_CullTransparentMesh: 1
+--- !u!114 &1499360176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499360172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "HerMainScene-GameObject-Canvas-\u4F3C\u9854\u7D75.FilePanel-DeleteSelectionPanel-ButtonContainer-ConfirmButton-Text
+        (TMP)\"\u306F\u3044\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1499360174}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1504430315
 GameObject:
   m_ObjectHideFlags: 0
@@ -8873,10 +9746,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:38622b1bc7b05e14abfe9e49f7e535a8
+      m_TableCollectionName: SceneStringTable
     m_TableEntryReference:
-      m_KeyId: 4163543650304
-      m_Key: 
+      m_KeyId: 0
+      m_Key: "TitleScene-Canvas-MenuContainer-\u3084\u3081\u308B\u30DC\u30BF\u30F3-Text
+        (TMP)"
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
@@ -8885,7 +9759,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1522315244}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
         m_MethodName: set_text
         m_Mode: 0
         m_Arguments:
@@ -8895,7 +9769,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -8910,6 +9784,7 @@ GameObject:
   - component: {fileID: 1559678902}
   - component: {fileID: 1559678904}
   - component: {fileID: 1559678903}
+  - component: {fileID: 1559678905}
   m_Layer: 5
   m_Name: Item Label
   m_TagString: Untagged
@@ -9035,6 +9910,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559678901}
   m_CullTransparentMesh: 1
+--- !u!114 &1559678905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559678901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: TitleScene-Canvas-SettingsPanel-LanguagePanel-LanguageDropdown-Template-Viewport-Content-Item-Item
+        Label
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1559678903}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1575647446
 GameObject:
   m_ObjectHideFlags: 0
@@ -9046,6 +9962,7 @@ GameObject:
   - component: {fileID: 1575647447}
   - component: {fileID: 1575647449}
   - component: {fileID: 1575647448}
+  - component: {fileID: 1575647450}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -9171,6 +10088,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575647446}
   m_CullTransparentMesh: 1
+--- !u!114 &1575647450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575647446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "TitleScene-Canvas-SettingsPanel-\u8A00\u8A9E\u30DC\u30BF\u30F3-Text
+        (TMP)"
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1575647448}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1585512998
 GameObject:
   m_ObjectHideFlags: 0
@@ -9562,6 +10520,7 @@ GameObject:
   - component: {fileID: 1630455641}
   - component: {fileID: 1630455643}
   - component: {fileID: 1630455642}
+  - component: {fileID: 1630455644}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -9687,6 +10646,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630455640}
   m_CullTransparentMesh: 1
+--- !u!114 &1630455644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630455640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "TitleScene-Canvas-SettingsPanel-\u30B5\u30A6\u30F3\u30C9\u30DC\u30BF\u30F3-Text
+        (TMP)"
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1630455642}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1636961297
 GameObject:
   m_ObjectHideFlags: 0
@@ -10092,6 +11092,7 @@ GameObject:
   - component: {fileID: 1831253041}
   - component: {fileID: 1831253043}
   - component: {fileID: 1831253042}
+  - component: {fileID: 1831253044}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -10217,6 +11218,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831253040}
   m_CullTransparentMesh: 1
+--- !u!114 &1831253044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831253040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: TitleScene-Canvas-SettingsPanel-GraphicsPanel-SaveButton-Text (TMP)
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1831253042}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1863207712
 GameObject:
   m_ObjectHideFlags: 0
@@ -11147,6 +12188,7 @@ GameObject:
   - component: {fileID: 2032767359}
   - component: {fileID: 2032767361}
   - component: {fileID: 2032767360}
+  - component: {fileID: 2032767362}
   m_Layer: 5
   m_Name: "\u30E1\u30C3\u30BB\u30FC\u30B8\u30C6\u30AD\u30B9\u30C8"
   m_TagString: Untagged
@@ -11272,6 +12314,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032767358}
   m_CullTransparentMesh: 1
+--- !u!114 &2032767362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032767358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "TitleScene-Canvas-SettingsPanel-\u30C7\u30FC\u30BF\u521D\u671F\u5316\u78BA\u8A8D\u30D1\u30CD\u30EB-\u30E1\u30C3\u30BB\u30FC\u30B8\u30D1\u30CD\u30EB-\u30E1\u30C3\u30BB\u30FC\u30B8\u30C6\u30AD\u30B9\u30C8"
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2032767360}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &2043835269
 GameObject:
   m_ObjectHideFlags: 0
@@ -11283,6 +12365,7 @@ GameObject:
   - component: {fileID: 2043835270}
   - component: {fileID: 2043835272}
   - component: {fileID: 2043835271}
+  - component: {fileID: 2043835273}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -11408,6 +12491,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043835269}
   m_CullTransparentMesh: 1
+--- !u!114 &2043835273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043835269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: TitleScene-Canvas-SettingsPanel-GraphicsPanel-TitleText
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2043835271}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &2089768330
 GameObject:
   m_ObjectHideFlags: 0
@@ -11556,13 +12679,14 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:38622b1bc7b05e14abfe9e49f7e535a8
+      m_TableCollectionName: SceneStringTable
     m_TableEntryReference:
-      m_KeyId: 180364136448
-      m_Key: 
+      m_KeyId: 0
+      m_Key: "TitleScene-Canvas-MenuContainer-\u601D\u3044\u51FA\u3059\u30DC\u30BF\u30F3-Text
+        (TMP)"
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
@@ -11571,7 +12695,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2089768332}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
         m_MethodName: set_text
         m_Mode: 0
         m_Arguments:
@@ -11581,7 +12705,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -11830,7 +12954,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 89650f02079a4544aa86a11258933e34, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 89650f02079a4544aa86a11258933e34, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8

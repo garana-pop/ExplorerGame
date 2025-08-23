@@ -781,6 +781,190 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &144585591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4409956909417565310, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+  m_PrefabInstance: {fileID: 1437847658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &144585592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3648418226753654589, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+  m_PrefabInstance: {fileID: 1437847658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &144585593 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2761882003614598885, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+  m_PrefabInstance: {fileID: 1437847658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &144585594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 998241287333995521, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+  m_PrefabInstance: {fileID: 1437847658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &144585595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144585591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "ConversationFatherAndDaughter-Canvas-CommonSettingsPanel-SettingsContainer-SaveAndQuitButton-Text
+        (TMP) \"\u4FDD\u5B58\u3057\u3066\u7D42\u4E86\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1089367035}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: System.String, mscorlib
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &144585596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144585592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "MonologueScene-Canvas-CommonSettingsPanel-SettingsContainer-SEVolumeControl-LabelText
+        \"SE\u97F3\u91CF\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1089367036}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: System.String, mscorlib
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &144585597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144585593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "MonologueScene-Canvas-CommonSettingsPanel-SettingsContainer-BGMVolumeControl-LabelText
+        \"BGM\u97F3\u91CF\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1089367037}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: System.String, mscorlib
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &144585598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144585594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: SceneStringTable
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: "ConversationFatherAndDaughter-Canvas-CommonSettingsPanel-SettingsContainer-BackButton-Text
+        (TMP) \"\u623B\u308B\""
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1089367038}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: System.String, mscorlib
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &187240449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,7 +1283,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5cac6e3aba9585341bf72d0566a5e7d4, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5cac6e3aba9585341bf72d0566a5e7d4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -2014,6 +2198,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724364933}
   m_CullTransparentMesh: 1
+--- !u!114 &1089367035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2467938712263986116, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+  m_PrefabInstance: {fileID: 1437847658}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144585591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1089367036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6881529368691549011, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+  m_PrefabInstance: {fileID: 1437847658}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144585592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1089367037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3196906948360440975, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+  m_PrefabInstance: {fileID: 1437847658}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144585593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1089367038 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6159576110459882775, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+  m_PrefabInstance: {fileID: 1437847658}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144585594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1326341613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,7 +2468,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 998241287333995521, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 144585598}
+    - targetCorrespondingSourceObject: {fileID: 2761882003614598885, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 144585597}
+    - targetCorrespondingSourceObject: {fileID: 3648418226753654589, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 144585596}
+    - targetCorrespondingSourceObject: {fileID: 4409956909417565310, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 144585595}
   m_SourcePrefab: {fileID: 100100000, guid: 7bb434ae150eb8048819fb7fcba8b96e, type: 3}
 --- !u!224 &1437847659 stripped
 RectTransform:
@@ -2631,7 +2871,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -2639,6 +2878,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &1861281221
 GameObject:
   m_ObjectHideFlags: 0

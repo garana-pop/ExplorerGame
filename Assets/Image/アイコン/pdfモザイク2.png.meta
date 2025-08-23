@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "pdf\u30E2\u30B6\u30A4\u30AF2_0": 9082177557529223689
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
