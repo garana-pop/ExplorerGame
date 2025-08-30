@@ -67,7 +67,7 @@ namespace ExplorerGame.Localization
             }
 
             // 保存された言語設定を読み込む（Step 6で実装）
-            // LoadLanguageSetting();
+            LoadLanguageSetting();
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace ExplorerGame.Localization
             yield return LocalizationSettings.SelectedLocaleAsync;
 
             // 設定を保存（Step 6で実装）
-            // SaveLanguageSetting(languageCode);
+            SaveLanguageSetting(languageCode);
 
             // イベント発火
             OnLanguageChanged?.Invoke(newLocale);
@@ -161,6 +161,93 @@ namespace ExplorerGame.Localization
                 Debug.Log($"{nameof(LocalizationManager)}: 言語を {languageCode} に変更しました");
             }
         }
+
+        /// <summary>
+        /// 言語設定をセーブデータに保存
+        /// </summary>
+        /// <param name="languageCode">保存する言語コード</param>
+        private void SaveLanguageSetting(string languageCode)
+        {
+            try
+            {
+                // GameSaveManagerのインスタンスを取得
+                if (GameSaveManager.Instance == null)
+                {
+                    Debug.LogWarning($"{nameof(LocalizationManager)}: GameSaveManagerが見つかりません");
+                    return;
+                }
+
+                // 現在のセーブデータを取得
+                GameSaveData saveData = GameSaveManager.Instance.GetCurrentSaveData();
+
+                if (saveData == null)
+                {
+                    Debug.LogWarning($"{nameof(LocalizationManager)}: セーブデータが取得できません");
+                    return;
+                }
+
+                // 言語コードを更新
+                saveData.languageCode = languageCode;
+
+                // セーブデータを保存
+                GameSaveManager.Instance.SaveGame();
+
+                if (debugMode)
+                {
+                    Debug.Log($"{nameof(LocalizationManager)}: 言語設定 '{languageCode}' をセーブデータに保存しました");
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"{nameof(LocalizationManager)}: 言語設定の保存に失敗しました: {e.Message}");
+            }
+        }
+
+        /// <summary>
+        /// セーブデータから言語設定を読み込んで適用
+        /// </summary>
+        private void LoadLanguageSetting()
+        {
+            try
+            {
+                // GameSaveManagerのインスタンスを取得
+                if (GameSaveManager.Instance == null)
+                {
+                    Debug.LogWarning($"{nameof(LocalizationManager)}: GameSaveManagerが見つかりません");
+                    return;
+                }
+
+                // 現在のセーブデータを取得
+                GameSaveData saveData = GameSaveManager.Instance.GetCurrentSaveData();
+
+                if (saveData == null)
+                {
+                    if (debugMode)
+                    {
+                        Debug.Log($"{nameof(LocalizationManager)}: セーブデータが存在しません。デフォルト言語を使用");
+                    }
+                    return;
+                }
+
+                // 保存された言語コードを取得
+                string savedLanguageCode = string.IsNullOrEmpty(saveData.languageCode)
+                    ? JAPANESE_CODE
+                    : saveData.languageCode;
+
+                // 保存された言語を適用
+                StartCoroutine(ChangeLanguage(savedLanguageCode));
+
+                if (debugMode)
+                {
+                    Debug.Log($"{nameof(LocalizationManager)}: セーブデータから言語設定 '{savedLanguageCode}' を読み込みました");
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"{nameof(LocalizationManager)}: 言語設定の読み込みに失敗しました: {e.Message}");
+            }
+        }
+
 
         /// <summary>
         /// 言語選択を一時保存（SaveButton押下まで適用しない）
@@ -202,39 +289,35 @@ namespace ExplorerGame.Localization
         }
 
 #if UNITY_EDITOR
-        // エディタ用デバッグ機能
-        [ContextMenu("Switch to Japanese")]
-        private void SwitchToJapanese()
+        [ContextMenu("Test Save Language Setting")]
+        private void TestSaveLanguageSetting()
         {
-            StartCoroutine(ChangeLanguage(JAPANESE_CODE));
+            string currentCode = GetCurrentLanguageCode();
+            SaveLanguageSetting(currentCode);
+            Debug.Log($"言語設定 '{currentCode}' を保存しました");
         }
 
-        [ContextMenu("Switch to English")]
-        private void SwitchToEnglish()
+        [ContextMenu("Test Load Language Setting")]
+        private void TestLoadLanguageSetting()
         {
-            StartCoroutine(ChangeLanguage(ENGLISH_CODE));
+            LoadLanguageSetting();
+            Debug.Log("言語設定を読み込みました");
         }
 
-        [ContextMenu("Log Current Language")]
-        private void LogCurrentLanguage()
+        [ContextMenu("Show Current Save Data Language")]
+        private void ShowCurrentSaveDataLanguage()
         {
-            Debug.Log($"現在の言語: {GetCurrentLanguageCode()}");
-        }
-
-        [ContextMenu("Log Available Locales")]
-        private void LogAvailableLocales()
-        {
-            if (LocalizationSettings.AvailableLocales == null)
+            if (GameSaveManager.Instance != null)
             {
-                Debug.LogWarning("AvailableLocalesがnullです");
-                return;
-            }
-
-            var locales = LocalizationSettings.AvailableLocales.Locales;
-            Debug.Log($"利用可能なLocale数: {locales.Count}");
-            foreach (var locale in locales)
-            {
-                Debug.Log($"- {locale.Identifier.Code}: {locale.LocaleName}");
+                GameSaveData saveData = GameSaveManager.Instance.GetCurrentSaveData();
+                if (saveData != null)
+                {
+                    Debug.Log($"セーブデータの言語設定: {saveData.languageCode}");
+                }
+                else
+                {
+                    Debug.Log("セーブデータが存在しません");
+                }
             }
         }
 #endif
