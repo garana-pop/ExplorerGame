@@ -1,13 +1,13 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
-using System.Collections;
 
 namespace ExplorerGame.Localization
 {
     /// <summary>
-    /// ゲーム内のテキストローカライゼーション（日本語/英語）を統括管理するマネージャークラス
-    /// Unity Localizationパッケージと連携して言語切り替え機能を提供
+    /// Unity Localizationパッケージを使用したローカライゼーション管理クラス
+    /// 日本語/英語の切り替えとテキスト管理を統括
     /// </summary>
     public class LocalizationManager : MonoBehaviour
     {
@@ -18,14 +18,13 @@ namespace ExplorerGame.Localization
         private const string JAPANESE_CODE = "ja";
         private const string ENGLISH_CODE = "en";
 
-        // 一時保存用の言語コード（TitleScene設定画面用）
+        // 一時保存用の言語コード（設定画面用）
         private string preparedLanguageCode;
 
         // 言語変更完了イベント
         public event System.Action<Locale> OnLanguageChanged;
 
         // デバッグ設定
-        [Header("Debug Settings")]
         [SerializeField] private bool debugMode = false;
 
         /// <summary>
@@ -41,14 +40,15 @@ namespace ExplorerGame.Localization
 
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(LocalizationManager)}: インスタンス作成完了");
+                    Debug.Log($"{nameof(LocalizationManager)}: インスタンスを初期化しました");
                 }
             }
             else
             {
+                // 重複インスタンスの削除
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(LocalizationManager)}: 重複インスタンスを削除");
+                    Debug.LogWarning($"{nameof(LocalizationManager)}: 重複インスタンスを削除します");
                 }
                 Destroy(gameObject);
                 return;
@@ -271,7 +271,7 @@ namespace ExplorerGame.Localization
         {
             if (LocalizationSettings.AvailableLocales == null)
             {
-                Debug.LogWarning($"{nameof(LocalizationManager)}: AvailableLocalesが未初期化です");
+                Debug.LogWarning($"{nameof(LocalizationManager)}: AvailableLocalesが初期化されていません");
                 return;
             }
 
@@ -284,5 +284,20 @@ namespace ExplorerGame.Localization
             }
         }
 #endif
+
+        /// <summary>
+        /// インスタンス破棄時の処理
+        /// </summary>
+        private void OnDestroy()
+        {
+            if (Instance == this)
+            {
+                if (debugMode)
+                {
+                    Debug.Log($"{nameof(LocalizationManager)}: インスタンスを破棄しました");
+                }
+                Instance = null;
+            }
+        }
     }
 }
