@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using System;
 
 namespace ExplorerGame.Localization
 {
     /// <summary>
-    /// ローカライゼーション管理クラス
-    /// Unity Localizationを使用した言語切り替え機能を提供
+    /// ローカライズ設定を管理するシングルトンクラス
+    /// Unity Localizationパッケージと連携して言語切り替えを実装
     /// </summary>
     public class LocalizationManager : MonoBehaviour
     {
@@ -18,21 +20,26 @@ namespace ExplorerGame.Localization
         private const string JAPANESE_CODE = "ja";
         private const string ENGLISH_CODE = "en";
 
-        // 一時保存用の言語コード（TitleSceneで使用）
+        // 一時保存用言語コード（TitleScene用）
         private string preparedLanguageCode;
 
         // 言語変更時のイベント
-        public System.Action<Locale> OnLanguageChanged;
+        public event Action<Locale> OnLanguageChanged;
 
-        // デバッグモード（インスペクターで設定可能）
+        // デバッグモード
+        [Header("Debug Settings")]
         [SerializeField] private bool debugMode = false;
 
+        // テストコントロール
+        [Header("Test Controls")]
+        [SerializeField] private bool showTestButtons = false;
+
         /// <summary>
-        /// 初期化処理
+        /// 初期化処理（シングルトン設定）
         /// </summary>
         private void Awake()
         {
-            // シングルトンの実装
+            // シングルトン処理
             if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
@@ -44,30 +51,34 @@ namespace ExplorerGame.Localization
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(LocalizationManager)}: インスタンスを初期化しました");
+                Debug.Log($"{nameof(LocalizationManager)}: インスタンス初期化完了");
             }
         }
 
         /// <summary>
-        /// Start時の処理
+        /// LocalizationSettings初期化待機
         /// </summary>
         private IEnumerator Start()
         {
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(LocalizationManager)}: LocalizationSettings初期化開始");
-            }
-
             // LocalizationSettingsの初期化を待機
-            yield return LocalizationSettings.InitializationOperation;
+            var handle = LocalizationSettings.InitializationOperation;
+            yield return handle;
 
-            if (debugMode)
+            if (handle.Status == AsyncOperationStatus.Succeeded)
             {
-                Debug.Log($"{nameof(LocalizationManager)}: LocalizationSettings初期化完了");
-            }
+                if (debugMode)
+                {
+                    Debug.Log($"{nameof(LocalizationManager)}: LocalizationSettings初期化完了");
+                    Debug.Log($"現在の言語: {GetCurrentLanguageCode()}");
+                }
 
-            // 保存された言語設定を読み込む（Step 6で実装）
-            LoadLanguageSetting();
+                // 保存された言語設定を読み込み
+                LoadLanguageSetting();
+            }
+            else
+            {
+                Debug.LogError($"{nameof(LocalizationManager)}: LocalizationSettings初期化失敗");
+            }
         }
 
         /// <summary>
@@ -112,11 +123,7 @@ namespace ExplorerGame.Localization
             return null;
         }
 
-        /// <summary>
-        /// 言語を即座に切り替える
-        /// </summary>
-        /// <param name="languageCode">言語コード（"ja" または "en"）</param>
-        /// <returns>切り替え処理のコルーチン</returns>
+        // 修正箇所: ChangeLanguageメソッド内の言語切り替え処理
         public IEnumerator ChangeLanguage(string languageCode)
         {
             // 言語コードの妥当性チェック
@@ -126,11 +133,11 @@ namespace ExplorerGame.Localization
                 yield break;
             }
 
-            // Localeを取得
+            // Locale取得
             Locale newLocale = GetLocaleByCode(languageCode);
             if (newLocale == null)
             {
-                Debug.LogError($"{nameof(LocalizationManager)}: Localeが見つかりません: {languageCode}");
+                Debug.LogError($"{nameof(LocalizationManager)}: 言語コード '{languageCode}' のLocaleが取得できません");
                 yield break;
             }
 
@@ -139,18 +146,17 @@ namespace ExplorerGame.Localization
             {
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(LocalizationManager)}: 既に {languageCode} に設定されています");
+                    Debug.Log($"{nameof(LocalizationManager)}: 既に言語 '{languageCode}' が選択されています");
                 }
                 yield break;
             }
 
-            // 言語変更
+            // 言語切り替え（非同期）
+            var handle = LocalizationSettings.Instance.GetSelectedLocaleAsync();
             LocalizationSettings.SelectedLocale = newLocale;
+            yield return handle;
 
-            // 変更が完了するまで待機
-            yield return LocalizationSettings.SelectedLocaleAsync;
-
-            // 設定を保存（Step 6で実装）
+            // 設定を保存
             SaveLanguageSetting(languageCode);
 
             // イベント発火
@@ -158,100 +164,13 @@ namespace ExplorerGame.Localization
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(LocalizationManager)}: 言語を {languageCode} に変更しました");
+                Debug.Log($"{nameof(LocalizationManager)}: 言語を{languageCode}に変更しました");
             }
         }
-
-        /// <summary>
-        /// 言語設定をセーブデータに保存
-        /// </summary>
-        /// <param name="languageCode">保存する言語コード</param>
-        private void SaveLanguageSetting(string languageCode)
-        {
-            try
-            {
-                // GameSaveManagerのインスタンスを取得
-                if (GameSaveManager.Instance == null)
-                {
-                    Debug.LogWarning($"{nameof(LocalizationManager)}: GameSaveManagerが見つかりません");
-                    return;
-                }
-
-                // 現在のセーブデータを取得
-                GameSaveData saveData = GameSaveManager.Instance.GetCurrentSaveData();
-
-                if (saveData == null)
-                {
-                    Debug.LogWarning($"{nameof(LocalizationManager)}: セーブデータが取得できません");
-                    return;
-                }
-
-                // 言語コードを更新
-                saveData.languageCode = languageCode;
-
-                // セーブデータを保存
-                GameSaveManager.Instance.SaveGame();
-
-                if (debugMode)
-                {
-                    Debug.Log($"{nameof(LocalizationManager)}: 言語設定 '{languageCode}' をセーブデータに保存しました");
-                }
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError($"{nameof(LocalizationManager)}: 言語設定の保存に失敗しました: {e.Message}");
-            }
-        }
-
-        /// <summary>
-        /// セーブデータから言語設定を読み込んで適用
-        /// </summary>
-        private void LoadLanguageSetting()
-        {
-            try
-            {
-                // GameSaveManagerのインスタンスを取得
-                if (GameSaveManager.Instance == null)
-                {
-                    Debug.LogWarning($"{nameof(LocalizationManager)}: GameSaveManagerが見つかりません");
-                    return;
-                }
-
-                // 現在のセーブデータを取得
-                GameSaveData saveData = GameSaveManager.Instance.GetCurrentSaveData();
-
-                if (saveData == null)
-                {
-                    if (debugMode)
-                    {
-                        Debug.Log($"{nameof(LocalizationManager)}: セーブデータが存在しません。デフォルト言語を使用");
-                    }
-                    return;
-                }
-
-                // 保存された言語コードを取得
-                string savedLanguageCode = string.IsNullOrEmpty(saveData.languageCode)
-                    ? JAPANESE_CODE
-                    : saveData.languageCode;
-
-                // 保存された言語を適用
-                StartCoroutine(ChangeLanguage(savedLanguageCode));
-
-                if (debugMode)
-                {
-                    Debug.Log($"{nameof(LocalizationManager)}: セーブデータから言語設定 '{savedLanguageCode}' を読み込みました");
-                }
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError($"{nameof(LocalizationManager)}: 言語設定の読み込みに失敗しました: {e.Message}");
-            }
-        }
-
 
         /// <summary>
         /// 言語選択を一時保存（SaveButton押下まで適用しない）
-        /// TitleSceneの言語選択用
+        /// TitleScene用メソッド
         /// </summary>
         /// <param name="languageCode">選択された言語コード</param>
         public void PrepareLanguageChange(string languageCode)
@@ -266,12 +185,13 @@ namespace ExplorerGame.Localization
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(LocalizationManager)}: 言語 {languageCode} を一時保存");
+                Debug.Log($"{nameof(LocalizationManager)}: 言語{languageCode}を一時保存");
             }
         }
 
         /// <summary>
         /// 一時保存された言語設定を適用
+        /// TitleScene用メソッド
         /// </summary>
         public void ApplyPreparedLanguageChange()
         {
@@ -288,38 +208,118 @@ namespace ExplorerGame.Localization
             preparedLanguageCode = null;
         }
 
-#if UNITY_EDITOR
-        [ContextMenu("Test Save Language Setting")]
-        private void TestSaveLanguageSetting()
+        // 修正案: GameSaveManager に saveData プロパティが存在しないため、GetCurrentSaveData() を使って取得するよう修正
+        private void LoadLanguageSetting()
         {
-            string currentCode = GetCurrentLanguageCode();
-            SaveLanguageSetting(currentCode);
-            Debug.Log($"言語設定 '{currentCode}' を保存しました");
-        }
-
-        [ContextMenu("Test Load Language Setting")]
-        private void TestLoadLanguageSetting()
-        {
-            LoadLanguageSetting();
-            Debug.Log("言語設定を読み込みました");
-        }
-
-        [ContextMenu("Show Current Save Data Language")]
-        private void ShowCurrentSaveDataLanguage()
-        {
-            if (GameSaveManager.Instance != null)
+            // GameSaveManagerが存在する場合、セーブデータから言語を読み込み
+            var saveManager = FindObjectOfType<GameSaveManager>();
+            var saveData = saveManager != null ? saveManager.GetCurrentSaveData() : null;
+            if (saveManager != null && saveData != null)
             {
-                GameSaveData saveData = GameSaveManager.Instance.GetCurrentSaveData();
-                if (saveData != null)
+                string savedLanguageCode = saveData.languageCode;
+                if (!string.IsNullOrEmpty(savedLanguageCode))
                 {
-                    Debug.Log($"セーブデータの言語設定: {saveData.languageCode}");
-                }
-                else
-                {
-                    Debug.Log("セーブデータが存在しません");
+                    StartCoroutine(ChangeLanguage(savedLanguageCode));
+
+                    if (debugMode)
+                    {
+                        Debug.Log($"{nameof(LocalizationManager)}: セーブデータから言語 '{savedLanguageCode}' を読み込みました");
+                    }
                 }
             }
         }
-#endif
+
+        /// <summary>
+        /// 言語設定をセーブデータに保存
+        /// </summary>
+        /// <param name="languageCode">保存する言語コード</param>
+        private void SaveLanguageSetting(string languageCode)
+        {
+            // GameSaveManagerが存在する場合、言語設定を保存
+            var saveManager = FindObjectOfType<GameSaveManager>();
+            var saveData = saveManager != null ? saveManager.GetCurrentSaveData() : null;
+            if (saveManager != null && saveData != null)
+            {
+                saveData.languageCode = languageCode;
+                saveManager.SaveGame();
+
+                if (debugMode)
+                {
+                    Debug.Log($"{nameof(LocalizationManager)}: 言語設定 '{languageCode}' を保存しました");
+                }
+            }
+        }
+
+        /// <summary>
+        /// 動的にローカライズテキストを取得（非同期）
+        /// </summary>
+        /// <param name="key">ローカライゼーションキー</param>
+        /// <param name="callback">取得したテキストを受け取るコールバック</param>
+        /// <returns>テキスト取得のコルーチン</returns>
+        public IEnumerator GetLocalizedString(string key, System.Action<string> callback)
+        {
+            var localizedString = new LocalizedString
+            {
+                TableReference = "SceneStringTable",
+                TableEntryReference = key
+            };
+
+            var handle = localizedString.GetLocalizedStringAsync();
+            yield return handle;
+
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                callback?.Invoke(handle.Result);
+
+                if (debugMode)
+                {
+                    Debug.Log($"{nameof(LocalizationManager)}: キー '{key}' のテキストを取得: {handle.Result}");
+                }
+            }
+            else
+            {
+                Debug.LogError($"{nameof(LocalizationManager)}: キー '{key}' のテキスト取得に失敗");
+                callback?.Invoke(key); // フォールバック
+            }
+        }
+
+        // エディタ用デバッグメソッド
+        #if UNITY_EDITOR
+        [ContextMenu("Switch to Japanese")]
+        private void TestSwitchToJapanese()
+        {
+            StartCoroutine(ChangeLanguage(JAPANESE_CODE));
+        }
+
+        [ContextMenu("Switch to English")]
+        private void TestSwitchToEnglish()
+        {
+            StartCoroutine(ChangeLanguage(ENGLISH_CODE));
+        }
+
+        [ContextMenu("Show Current Language")]
+        private void ShowCurrentLanguage()
+        {
+            Debug.Log($"現在の言語コード: {GetCurrentLanguageCode()}");
+
+            if (LocalizationSettings.SelectedLocale != null)
+            {
+                Debug.Log($"Locale名: {LocalizationSettings.SelectedLocale.name}");
+                Debug.Log($"Locale識別子: {LocalizationSettings.SelectedLocale.Identifier}");
+            }
+        }
+
+        [ContextMenu("Show Available Locales")]
+        private void ShowAvailableLocales()
+        {
+            var locales = LocalizationSettings.AvailableLocales.Locales;
+            Debug.Log($"利用可能なLocale数: {locales.Count}");
+
+            foreach (var locale in locales)
+            {
+                Debug.Log($"- {locale.Identifier.Code}: {locale.name}");
+            }
+        }
+        #endif
     }
 }

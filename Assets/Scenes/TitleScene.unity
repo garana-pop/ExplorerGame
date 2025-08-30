@@ -1907,6 +1907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplorerGame.Localization.LocalizationManager
   debugMode: 1
+  showTestButtons: 0
 --- !u!1 &277519837
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2241,7 @@ GameObject:
   - component: {fileID: 292608202}
   - component: {fileID: 292608204}
   - component: {fileID: 292608203}
+  - component: {fileID: 292608205}
   m_Layer: 5
   m_Name: LanguagePanel
   m_TagString: Untagged
@@ -2309,6 +2311,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292608201}
   m_CullTransparentMesh: 1
+--- !u!114 &292608205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292608201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64bf69c1db3aa2408e9782035d6b21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExplorerGame.UI.TitleLanguageController
+  japaneseButton: {fileID: 338396329}
+  englishButton: {fileID: 1785081483}
+  saveButton: {fileID: 101300684}
+  languagePanel: {fileID: 292608201}
+  selectedColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+  normalColor: {r: 0, g: 0, b: 0, a: 1}
+  debugMode: 1
 --- !u!1 &309281825
 GameObject:
   m_ObjectHideFlags: 0
