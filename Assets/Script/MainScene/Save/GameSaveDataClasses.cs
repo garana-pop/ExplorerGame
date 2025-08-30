@@ -53,6 +53,14 @@ public class GameSaveData
     /// <summary>OrganizeMainSceneのデータ</summary>
     public OrganizeSceneData organizeSceneData;
 
+    /// <summary>
+    /// 現在の言語設定コード
+    /// "ja" = 日本語
+    /// "en" = 英語
+    /// デフォルトは日本語
+    /// </summary>
+    public string languageCode = "ja";
+
 
     /// <summary>
     /// デフォルト値で初期化する
@@ -71,6 +79,7 @@ public class GameSaveData
         portraitDeleted = false;
         afterChangeToLast = false;
         fromMonologueScene = false;
+        languageCode = "ja";
     }
 }
 
