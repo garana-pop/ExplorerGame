@@ -77,15 +77,15 @@ public class WindowResizeManager : MonoBehaviour
         if (windowHandle != IntPtr.Zero)
         {
             int style = GetWindowLong(windowHandle, GWL_STYLE);
-            
+
             // リサイズボーダーと最大化ボタンを削除
             style &= ~(WS_SIZEBOX | WS_MAXIMIZEBOX);
-            
+
             // 最小化ボタンとタイトルバーは維持
             style |= WS_MINIMIZEBOX | WS_CAPTION;
-            
+
             SetWindowLong(windowHandle, GWL_STYLE, style);
-            
+
             Debug.Log("ウィンドウのリサイズを無効化しました");
         }
 #endif
@@ -99,7 +99,7 @@ public class WindowResizeManager : MonoBehaviour
     public void SetWindowSize(int width, int height)
     {
         Screen.SetResolution(width, height, false);
-        Debug.Log($"ウィンドウサイズを {width}x{height} に変更しました");
+        //Debug.Log($"ウィンドウサイズを {width}x{height} に変更しました");
 
         // 解像度変更後にリサイズ無効化を再適用
         StartCoroutine(ReapplyResizeDisableAfterDelay());

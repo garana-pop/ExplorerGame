@@ -348,9 +348,6 @@ public class GameSaveManager : MonoBehaviour
             // 現在のフラグ状態でセーブ設定を決定
             GameSaveManager.Instance.SetAutoSaveOnQuit(currentFlag);
         }
-
-        // デバッグログ
-        Debug.Log("アプリケーション終了時: AfterChangeToHerMemoryフラグはJSONファイルに保存済み");
     }
 
     /// <summary>

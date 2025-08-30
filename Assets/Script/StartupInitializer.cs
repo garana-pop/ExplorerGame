@@ -23,7 +23,5 @@ public class StartupInitializer : MonoBehaviour
             Debug.Log("WindowResizeManagerを初期化しています...");
         }
 
-        // ウィンドウのリサイズは自動的に無効化される
-        Debug.Log("ウィンドウのリサイズ無効化が完了しました");
     }
 }

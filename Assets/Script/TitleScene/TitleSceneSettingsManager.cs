@@ -87,7 +87,7 @@ public class TitleSceneSettingsManager : BaseSettingsManager
                     }
                 }
 
-                Debug.Log($"保存された解像度を適用: {resolution.x}x{resolution.y}");
+                //Debug.Log($"保存された解像度を適用: {resolution.x}x{resolution.y}");
             }
         }
         else
@@ -108,7 +108,7 @@ public class TitleSceneSettingsManager : BaseSettingsManager
                     Debug.Log("WindowResizeManagerを作成し、リサイズを無効化しました");
                 }
             }
-            Debug.Log("デフォルト解像度を適用: 1280x720");
+            //Debug.Log("デフォルト解像度を適用: 1280x720");
         }
     }
 
