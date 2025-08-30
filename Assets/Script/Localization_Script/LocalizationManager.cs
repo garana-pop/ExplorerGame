@@ -6,8 +6,8 @@ using UnityEngine.Localization.Settings;
 namespace ExplorerGame.Localization
 {
     /// <summary>
-    /// Unity Localizationパッケージを使用したローカライゼーション管理クラス
-    /// 日本語/英語の切り替えとテキスト管理を統括
+    /// ローカライゼーション管理クラス
+    /// Unity Localizationを使用した言語切り替え機能を提供
     /// </summary>
     public class LocalizationManager : MonoBehaviour
     {
@@ -18,45 +18,38 @@ namespace ExplorerGame.Localization
         private const string JAPANESE_CODE = "ja";
         private const string ENGLISH_CODE = "en";
 
-        // 一時保存用の言語コード（設定画面用）
+        // 一時保存用の言語コード（TitleSceneで使用）
         private string preparedLanguageCode;
 
-        // 言語変更完了イベント
-        public event System.Action<Locale> OnLanguageChanged;
+        // 言語変更時のイベント
+        public System.Action<Locale> OnLanguageChanged;
 
-        // デバッグ設定
+        // デバッグモード（インスペクターで設定可能）
         [SerializeField] private bool debugMode = false;
 
         /// <summary>
-        /// シングルトンの初期化とDontDestroyOnLoad設定
+        /// 初期化処理
         /// </summary>
         private void Awake()
         {
-            // シングルトン実装
-            if (Instance == null)
+            // シングルトンの実装
+            if (Instance != null && Instance != this)
             {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-
-                if (debugMode)
-                {
-                    Debug.Log($"{nameof(LocalizationManager)}: インスタンスを初期化しました");
-                }
-            }
-            else
-            {
-                // 重複インスタンスの削除
-                if (debugMode)
-                {
-                    Debug.LogWarning($"{nameof(LocalizationManager)}: 重複インスタンスを削除します");
-                }
                 Destroy(gameObject);
                 return;
+            }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(LocalizationManager)}: インスタンスを初期化しました");
             }
         }
 
         /// <summary>
-        /// Localization Settingsの初期化と保存された言語設定の復元
+        /// Start時の処理
         /// </summary>
         private IEnumerator Start()
         {
@@ -65,7 +58,7 @@ namespace ExplorerGame.Localization
                 Debug.Log($"{nameof(LocalizationManager)}: LocalizationSettings初期化開始");
             }
 
-            // LocalizationSettingsの初期化を待つ
+            // LocalizationSettingsの初期化を待機
             yield return LocalizationSettings.InitializationOperation;
 
             if (debugMode)
@@ -73,7 +66,7 @@ namespace ExplorerGame.Localization
                 Debug.Log($"{nameof(LocalizationManager)}: LocalizationSettings初期化完了");
             }
 
-            // 保存された言語設定を読み込む（後のステップで実装）
+            // 保存された言語設定を読み込む（Step 6で実装）
             // LoadLanguageSetting();
         }
 
@@ -151,13 +144,13 @@ namespace ExplorerGame.Localization
                 yield break;
             }
 
-            // 言語を変更
+            // 言語変更
             LocalizationSettings.SelectedLocale = newLocale;
 
             // 変更が完了するまで待機
             yield return LocalizationSettings.SelectedLocaleAsync;
 
-            // 設定を保存（後のステップで実装）
+            // 設定を保存（Step 6で実装）
             // SaveLanguageSetting(languageCode);
 
             // イベント発火
@@ -201,11 +194,6 @@ namespace ExplorerGame.Localization
                 return;
             }
 
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(LocalizationManager)}: 一時保存された言語 {preparedLanguageCode} を適用");
-            }
-
             // コルーチンを開始して言語を変更
             StartCoroutine(ChangeLanguage(preparedLanguageCode));
 
@@ -213,91 +201,42 @@ namespace ExplorerGame.Localization
             preparedLanguageCode = null;
         }
 
-        /// <summary>
-        /// キーから動的にローカライズテキストを取得（非同期）
-        /// </summary>
-        /// <param name="key">ローカライゼーションキー</param>
-        /// <param name="callback">取得したテキストを受け取るコールバック</param>
-        /// <returns>ローカライズされたテキスト取得のコルーチン</returns>
-        public IEnumerator GetLocalizedString(string key, System.Action<string> callback)
-        {
-            var localizedString = new LocalizedString
-            {
-                TableReference = "SceneStringTable",
-                TableEntryReference = key
-            };
-
-            var handle = localizedString.GetLocalizedStringAsync();
-            yield return handle;
-
-            if (handle.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
-            {
-                callback?.Invoke(handle.Result);
-
-                if (debugMode)
-                {
-                    Debug.Log($"{nameof(LocalizationManager)}: キー '{key}' のテキスト取得成功: {handle.Result}");
-                }
-            }
-            else
-            {
-                Debug.LogError($"{nameof(LocalizationManager)}: キー '{key}' のテキスト取得に失敗");
-                callback?.Invoke(key); // フォールバック
-            }
-        }
-
-        // デバッグ機能
 #if UNITY_EDITOR
+        // エディタ用デバッグ機能
         [ContextMenu("Switch to Japanese")]
-        private void TestSwitchToJapanese()
+        private void SwitchToJapanese()
         {
             StartCoroutine(ChangeLanguage(JAPANESE_CODE));
         }
 
         [ContextMenu("Switch to English")]
-        private void TestSwitchToEnglish()
+        private void SwitchToEnglish()
         {
             StartCoroutine(ChangeLanguage(ENGLISH_CODE));
         }
 
-        [ContextMenu("Print Current Language")]
-        private void PrintCurrentLanguage()
+        [ContextMenu("Log Current Language")]
+        private void LogCurrentLanguage()
         {
-            Debug.Log($"{nameof(LocalizationManager)}: 現在の言語コード: {GetCurrentLanguageCode()}");
+            Debug.Log($"現在の言語: {GetCurrentLanguageCode()}");
         }
 
-        [ContextMenu("Print Available Locales")]
-        private void PrintAvailableLocales()
+        [ContextMenu("Log Available Locales")]
+        private void LogAvailableLocales()
         {
             if (LocalizationSettings.AvailableLocales == null)
             {
-                Debug.LogWarning($"{nameof(LocalizationManager)}: AvailableLocalesが初期化されていません");
+                Debug.LogWarning("AvailableLocalesがnullです");
                 return;
             }
 
             var locales = LocalizationSettings.AvailableLocales.Locales;
-            Debug.Log($"{nameof(LocalizationManager)}: 利用可能なLocale数: {locales.Count}");
-
+            Debug.Log($"利用可能なLocale数: {locales.Count}");
             foreach (var locale in locales)
             {
-                Debug.Log($"  - {locale.LocaleName} ({locale.Identifier.Code})");
+                Debug.Log($"- {locale.Identifier.Code}: {locale.LocaleName}");
             }
         }
 #endif
-
-        /// <summary>
-        /// インスタンス破棄時の処理
-        /// </summary>
-        private void OnDestroy()
-        {
-            if (Instance == this)
-            {
-                if (debugMode)
-                {
-                    Debug.Log($"{nameof(LocalizationManager)}: インスタンスを破棄しました");
-                }
-                Instance = null;
-            }
-        }
     }
 }
