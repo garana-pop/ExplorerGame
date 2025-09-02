@@ -191,20 +191,21 @@ public class OpeningSceneController : MonoBehaviour
 
     private void InitializeDialogueData()
     {
-        // Load dialog data
-        if (dialogueTextAsset != null)
+        DialogueDataLoader loader = GetComponent<DialogueDataLoader>();
+        if (loader == null)
         {
-            DialogueDataLoader loader = GetComponent<DialogueDataLoader>();
-            if (loader == null)
-            {
-                loader = gameObject.AddComponent<DialogueDataLoader>();
-            }
-
-            dialogueEntries = loader.LoadDialogueFromTextAsset(dialogueTextAsset);
+            loader = gameObject.AddComponent<DialogueDataLoader>();
         }
-        else
+
+        // 言語設定に基づいたテキストファイルを読み込むようにする
+        // LoadDialogueFromTextAsset()を直接呼ばずに、
+        // DialogueDataLoaderの言語対応メソッドを使用
+        loader.ReloadLocalizedDialogue();  // 言語設定に基づいて適切なファイルを読み込む
+        dialogueEntries = loader.GetDialogueEntries();
+
+        // dialogueEntriesが空の場合のみサンプルダイアログを使用
+        if (dialogueEntries == null || dialogueEntries.Count == 0)
         {
-            // Use sample dialog if no text asset
             SetupSampleDialogue();
         }
     }
