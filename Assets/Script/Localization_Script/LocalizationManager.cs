@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using System;
 
@@ -9,7 +10,7 @@ namespace ExplorerGame.Localization
 {
     /// <summary>
     /// ローカライズ設定を管理するシングルトンクラス
-    /// Unity Localizationパッケージと連携して言語切り替えを実装
+    /// Unity Localizationパッケージと連携して言語切り替えを制御
     /// </summary>
     public class LocalizationManager : MonoBehaviour
     {
@@ -20,10 +21,13 @@ namespace ExplorerGame.Localization
         private const string JAPANESE_CODE = "ja";
         private const string ENGLISH_CODE = "en";
 
+        // String Table名の定数
+        private const string SCENE_STRING_TABLE_NAME = "SceneStringTable";
+
         // 一時保存用言語コード（TitleScene用）
         private string preparedLanguageCode;
 
-        // 言語変更時のイベント
+        // 言語変更完了イベント
         public event Action<Locale> OnLanguageChanged;
 
         // デバッグモード
@@ -39,7 +43,7 @@ namespace ExplorerGame.Localization
         /// </summary>
         private void Awake()
         {
-            // シングルトン処理
+            // シングルトン実装
             if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
@@ -123,7 +127,11 @@ namespace ExplorerGame.Localization
             return null;
         }
 
-        // 修正箇所: ChangeLanguageメソッド内の言語切り替え処理
+        /// <summary>
+        /// 言語を即座に切り替える
+        /// </summary>
+        /// <param name="languageCode">言語コード（"ja" または "en"）</param>
+        /// <returns>切り替え処理のコルーチン</returns>
         public IEnumerator ChangeLanguage(string languageCode)
         {
             // 言語コードの妥当性チェック
@@ -137,7 +145,7 @@ namespace ExplorerGame.Localization
             Locale newLocale = GetLocaleByCode(languageCode);
             if (newLocale == null)
             {
-                Debug.LogError($"{nameof(LocalizationManager)}: 言語コード '{languageCode}' のLocaleが取得できません");
+                Debug.LogError($"{nameof(LocalizationManager)}: 言語コード '{languageCode}' のLocaleを取得できません");
                 yield break;
             }
 
@@ -152,9 +160,10 @@ namespace ExplorerGame.Localization
             }
 
             // 言語切り替え（非同期）
-            var handle = LocalizationSettings.Instance.GetSelectedLocaleAsync();
             LocalizationSettings.SelectedLocale = newLocale;
-            yield return handle;
+
+            // 変更が完了するまで待機
+            yield return new WaitUntil(() => LocalizationSettings.SelectedLocale == newLocale);
 
             // 設定を保存
             SaveLanguageSetting(languageCode);
@@ -208,7 +217,139 @@ namespace ExplorerGame.Localization
             preparedLanguageCode = null;
         }
 
-        // 修正案: GameSaveManager に saveData プロパティが存在しないため、GetCurrentSaveData() を使って取得するよう修正
+        /// <summary>
+        /// キーから動的にローカライズテキストを取得（非同期）
+        /// </summary>
+        /// <param name="key">ローカライゼーションキー</param>
+        /// <param name="callback">テキスト取得後のコールバック</param>
+        /// <returns>ローカライズされたテキスト取得のコルーチン</returns>
+        public IEnumerator GetLocalizedString(string key, System.Action<string> callback)
+        {
+            // 引数チェック
+            if (string.IsNullOrEmpty(key))
+            {
+                Debug.LogError($"{nameof(LocalizationManager)}: キーが空またはnullです");
+                callback?.Invoke(key);
+                yield break;
+            }
+
+            if (callback == null)
+            {
+                Debug.LogWarning($"{nameof(LocalizationManager)}: コールバックがnullです");
+                yield break;
+            }
+
+            // LocalizedString作成
+            var localizedString = new LocalizedString
+            {
+                TableReference = SCENE_STRING_TABLE_NAME,
+                TableEntryReference = key
+            };
+
+            // デバッグログ
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(LocalizationManager)}: キー '{key}' のテキスト取得を開始");
+            }
+
+            // 非同期でテキスト取得
+            var handle = localizedString.GetLocalizedStringAsync();
+            yield return handle;
+
+            // 結果処理
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                if (debugMode)
+                {
+                    Debug.Log($"{nameof(LocalizationManager)}: キー '{key}' → '{handle.Result}'");
+                }
+                callback.Invoke(handle.Result);
+            }
+            else
+            {
+                Debug.LogError($"{nameof(LocalizationManager)}: キー '{key}' のテキスト取得に失敗");
+                if (handle.OperationException != null)
+                {
+                    Debug.LogError($"エラー詳細: {handle.OperationException.Message}");
+                }
+
+                // フォールバック処理（キーをそのまま返す）
+                callback.Invoke(key);
+            }
+        }
+
+        /// <summary>
+        /// 指定テーブルからキーに対応するローカライズテキストを取得（非同期）
+        /// </summary>
+        /// <param name="tableName">String Tableの名前</param>
+        /// <param name="key">ローカライゼーションキー</param>
+        /// <param name="callback">テキスト取得後のコールバック</param>
+        /// <returns>ローカライズされたテキスト取得のコルーチン</returns>
+        public IEnumerator GetLocalizedString(string tableName, string key, System.Action<string> callback)
+        {
+            // 引数チェック
+            if (string.IsNullOrEmpty(tableName))
+            {
+                Debug.LogError($"{nameof(LocalizationManager)}: テーブル名が空またはnullです");
+                callback?.Invoke(key);
+                yield break;
+            }
+
+            if (string.IsNullOrEmpty(key))
+            {
+                Debug.LogError($"{nameof(LocalizationManager)}: キーが空またはnullです");
+                callback?.Invoke(key);
+                yield break;
+            }
+
+            if (callback == null)
+            {
+                Debug.LogWarning($"{nameof(LocalizationManager)}: コールバックがnullです");
+                yield break;
+            }
+
+            // LocalizedString作成
+            var localizedString = new LocalizedString
+            {
+                TableReference = tableName,
+                TableEntryReference = key
+            };
+
+            // デバッグログ
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(LocalizationManager)}: テーブル '{tableName}' からキー '{key}' のテキスト取得を開始");
+            }
+
+            // 非同期でテキスト取得
+            var handle = localizedString.GetLocalizedStringAsync();
+            yield return handle;
+
+            // 結果処理
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                if (debugMode)
+                {
+                    Debug.Log($"{nameof(LocalizationManager)}: キー '{key}' → '{handle.Result}'");
+                }
+                callback.Invoke(handle.Result);
+            }
+            else
+            {
+                Debug.LogError($"{nameof(LocalizationManager)}: テーブル '{tableName}' のキー '{key}' のテキスト取得に失敗");
+                if (handle.OperationException != null)
+                {
+                    Debug.LogError($"エラー詳細: {handle.OperationException.Message}");
+                }
+
+                // フォールバック処理
+                callback.Invoke(key);
+            }
+        }
+
+        /// <summary>
+        /// 保存された言語設定を読み込んで適用
+        /// </summary>
         private void LoadLanguageSetting()
         {
             // GameSaveManagerが存在する場合、セーブデータから言語を読み込み
@@ -245,81 +386,54 @@ namespace ExplorerGame.Localization
 
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(LocalizationManager)}: 言語設定 '{languageCode}' を保存しました");
+                    Debug.Log($"{nameof(LocalizationManager)}: 言語 '{languageCode}' をセーブデータに保存しました");
                 }
             }
         }
 
-        /// <summary>
-        /// 動的にローカライズテキストを取得（非同期）
-        /// </summary>
-        /// <param name="key">ローカライゼーションキー</param>
-        /// <param name="callback">取得したテキストを受け取るコールバック</param>
-        /// <returns>テキスト取得のコルーチン</returns>
-        public IEnumerator GetLocalizedString(string key, System.Action<string> callback)
-        {
-            var localizedString = new LocalizedString
-            {
-                TableReference = "SceneStringTable",
-                TableEntryReference = key
-            };
-
-            var handle = localizedString.GetLocalizedStringAsync();
-            yield return handle;
-
-            if (handle.Status == AsyncOperationStatus.Succeeded)
-            {
-                callback?.Invoke(handle.Result);
-
-                if (debugMode)
-                {
-                    Debug.Log($"{nameof(LocalizationManager)}: キー '{key}' のテキストを取得: {handle.Result}");
-                }
-            }
-            else
-            {
-                Debug.LogError($"{nameof(LocalizationManager)}: キー '{key}' のテキスト取得に失敗");
-                callback?.Invoke(key); // フォールバック
-            }
-        }
-
+#if UNITY_EDITOR
         // エディタ用デバッグメソッド
-        #if UNITY_EDITOR
         [ContextMenu("Switch to Japanese")]
-        private void TestSwitchToJapanese()
+        void TestSwitchToJapanese()
         {
-            StartCoroutine(ChangeLanguage(JAPANESE_CODE));
+            StartCoroutine(ChangeLanguage("ja"));
         }
 
         [ContextMenu("Switch to English")]
-        private void TestSwitchToEnglish()
+        void TestSwitchToEnglish()
         {
-            StartCoroutine(ChangeLanguage(ENGLISH_CODE));
+            StartCoroutine(ChangeLanguage("en"));
+        }
+
+        [ContextMenu("Test Get Localized String")]
+        void TestGetLocalizedString()
+        {
+            StartCoroutine(GetLocalizedString("Test-Key-001", (result) =>
+            {
+                Debug.Log($"GetLocalizedString結果: '{result}'");
+            }));
         }
 
         [ContextMenu("Show Current Language")]
-        private void ShowCurrentLanguage()
+        void ShowCurrentLanguage()
         {
             Debug.Log($"現在の言語コード: {GetCurrentLanguageCode()}");
-
             if (LocalizationSettings.SelectedLocale != null)
             {
-                Debug.Log($"Locale名: {LocalizationSettings.SelectedLocale.name}");
-                Debug.Log($"Locale識別子: {LocalizationSettings.SelectedLocale.Identifier}");
+                Debug.Log($"現在のLocale: {LocalizationSettings.SelectedLocale.name}");
             }
         }
 
-        [ContextMenu("Show Available Locales")]
-        private void ShowAvailableLocales()
+        [ContextMenu("List Available Locales")]
+        void ListAvailableLocales()
         {
             var locales = LocalizationSettings.AvailableLocales.Locales;
             Debug.Log($"利用可能なLocale数: {locales.Count}");
-
             foreach (var locale in locales)
             {
                 Debug.Log($"- {locale.Identifier.Code}: {locale.name}");
             }
         }
-        #endif
+#endif
     }
 }
