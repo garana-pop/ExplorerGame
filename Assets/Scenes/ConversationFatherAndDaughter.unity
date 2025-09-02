@@ -1273,6 +1273,8 @@ MonoBehaviour:
   dialogueTextAsset: {fileID: 4900000, guid: f07bbca6c9bd5bb4fad79a3d27e2f0b7, type: 3}
   loadOnAwake: 1
   convertArrowToNewline: 1
+  dialogueTextAsset_Japanese: {fileID: 4900000, guid: f07bbca6c9bd5bb4fad79a3d27e2f0b7, type: 3}
+  dialogueTextAsset_English: {fileID: 4900000, guid: 700bae8ce5de81f4bb6f4f52f097fee0, type: 3}
 --- !u!82 &302817323
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1837,6 +1839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplorerGame.Localization.LocalizationManager
   debugMode: 1
+  showTestButtons: 0
 --- !u!4 &609871049
 Transform:
   m_ObjectHideFlags: 0
@@ -2980,6 +2983,10 @@ MonoBehaviour:
   - speakerName: "\u7236\u89AA"
     alignment: 2
   - speakerName: "\u79C1"
+    alignment: 0
+  - speakerName: Father
+    alignment: 2
+  - speakerName: Daughter
     alignment: 0
   leftOffset: -300
   rightOffset: 300

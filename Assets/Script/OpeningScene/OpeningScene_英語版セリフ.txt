@@ -5,11 +5,11 @@ Man:Who are you...?
 ???:You don't know?
 ???:It's me... your father.
 Man:Father...?
-SpeakerChange_father
+SpeakerChange_father(English)
 Man:I'm sorry, I can't remember anything...
 Father:I see... Just as the doctor said.
 Father:It seems you've completely lost your memory.
-SpeakerChange_amnesiac
+SpeakerChange_amnesiac(English)
 Amnesiac:What happened?
 Amnesiac:Why am I here...
 Father:It was a traffic accident. Two weeks ago.

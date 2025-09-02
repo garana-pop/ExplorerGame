@@ -187,20 +187,24 @@ public class ConversationSceneController : MonoBehaviour
 
     private void InitializeDialogueData()
     {
-        // Load dialog data
-        if (dialogueTextAsset != null)
+        DialogueDataLoader loader = GetComponent<DialogueDataLoader>();
+        if (loader == null)
         {
-            DialogueDataLoader loader = GetComponent<DialogueDataLoader>();
-            if (loader == null)
-            {
-                loader = gameObject.AddComponent<DialogueDataLoader>();
-            }
-
-            dialogueEntries = loader.LoadDialogueFromTextAsset(dialogueTextAsset);
+            loader = gameObject.AddComponent<DialogueDataLoader>();
         }
-        else
+
+        // 言語設定に基づいたテキストファイルを読み込むようにする
+        // LoadDialogueFromTextAsset()を直接呼ばずに、
+        // DialogueDataLoaderの言語対応メソッドを使用
+        loader.ReloadLocalizedDialogue();  // 言語設定に基づいて適切なファイルを読み込む
+        dialogueEntries = loader.GetDialogueEntries();
+
+        // dialogueEntriesが空の場合はエラーログを出力
+        if (dialogueEntries == null || dialogueEntries.Count == 0)
         {
-            Debug.LogError("Dialogue text asset not set!");
+            Debug.LogError("ConversationSceneController: 会話データが読み込めませんでした。");
+            // 必要に応じてデフォルトの会話データを設定
+            dialogueEntries = new List<DialogueEntry>();
         }
     }
 

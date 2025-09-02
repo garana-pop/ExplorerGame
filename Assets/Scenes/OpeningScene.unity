@@ -445,6 +445,14 @@ MonoBehaviour:
     beforeName: "\u7537\u6027"
     afterName: "\u8A18\u61B6\u55AA\u5931\u8005"
     isLeftCharacter: 0
+  - commandKey: father(English)
+    beforeName: ???
+    afterName: Father
+    isLeftCharacter: 1
+  - commandKey: amnesiac(English)
+    beforeName: Man
+    afterName: Amnesiac
+    isLeftCharacter: 0
   debugMode: 0
 --- !u!114 &184265726
 MonoBehaviour:
@@ -1576,6 +1584,14 @@ MonoBehaviour:
   - speakerName: "\uFF1F\uFF1F\uFF1F"
     alignment: 2
   - speakerName: "\u8A18\u61B6\u55AA\u5931\u8005"
+    alignment: 0
+  - speakerName: Man
+    alignment: 0
+  - speakerName: Father
+    alignment: 2
+  - speakerName: ???
+    alignment: 2
+  - speakerName: Amnesiac
     alignment: 0
   leftOffset: -300
   rightOffset: 300
