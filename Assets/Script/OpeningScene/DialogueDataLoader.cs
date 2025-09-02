@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Text.RegularExpressions;
 using OpeningScene;
+using ExplorerGame.Localization;
 
 /// <summary>
 /// テキストファイルから会話データを読み込むユーティリティクラス
@@ -12,6 +13,11 @@ public class DialogueDataLoader : MonoBehaviour
     [SerializeField] private bool loadOnAwake = true;
     [SerializeField] private bool convertArrowToNewline = true;
 
+    // 言語別テキストアセット（インスペクターで設定）
+    [Header("Localized Text Assets")]
+    [SerializeField] private TextAsset dialogueTextAsset_Japanese;  // 日本語用テキストファイル
+    [SerializeField] private TextAsset dialogueTextAsset_English;   // 英語用テキストファイル
+
     // コマンドプレフィックスの定義
     private const string SPEAKER_CHANGE_COMMAND = "SpeakerChange_";
     // exit コマンドを追加
@@ -21,10 +27,94 @@ public class DialogueDataLoader : MonoBehaviour
 
     private void Awake()
     {
-        if (loadOnAwake && dialogueTextAsset != null)
+        if (loadOnAwake)
         {
-            LoadDialogueFromTextAsset(dialogueTextAsset);
+            // 言語設定に基づいてテキストファイルを読み込む
+            LoadLocalizedDialogue();
         }
+    }
+
+    /// <summary>
+    /// 現在の言語設定に基づいて適切なテキストファイルを読み込む
+    /// </summary>
+    private void LoadLocalizedDialogue()
+    {
+        // LocalizationManagerが存在しない場合は既存の処理にフォールバック
+        if (LocalizationManager.Instance == null)
+        {
+            Debug.LogWarning("DialogueDataLoader: LocalizationManagerが見つかりません。デフォルトのテキストアセットを使用します。");
+            if (dialogueTextAsset != null)
+            {
+                LoadDialogueFromTextAsset(dialogueTextAsset);
+            }
+            return;
+        }
+
+        // 現在の言語コードを取得
+        string currentLanguageCode = LocalizationManager.Instance.GetCurrentLanguageCode();
+        TextAsset selectedTextAsset = null;
+
+        // 言語コードに応じてテキストアセットを選択
+        switch (currentLanguageCode)
+        {
+            case "ja":
+                selectedTextAsset = dialogueTextAsset_Japanese;
+                if (selectedTextAsset == null)
+                {
+                    Debug.LogWarning("DialogueDataLoader: 日本語テキストアセットが設定されていません。");
+                }
+                break;
+            case "en":
+                selectedTextAsset = dialogueTextAsset_English;
+                if (selectedTextAsset == null)
+                {
+                    Debug.LogWarning("DialogueDataLoader: 英語テキストアセットが設定されていません。");
+                }
+                break;
+            default:
+                Debug.LogWarning($"DialogueDataLoader: 未対応の言語コード: {currentLanguageCode}");
+                break;
+        }
+
+        // テキストアセットが見つからない場合、フォールバック処理
+        if (selectedTextAsset == null)
+        {
+            // デフォルトのテキストアセットを使用
+            if (dialogueTextAsset != null)
+            {
+                Debug.Log("DialogueDataLoader: フォールバックとしてデフォルトのテキストアセットを使用します。");
+                selectedTextAsset = dialogueTextAsset;
+            }
+            else if (dialogueTextAsset_Japanese != null)
+            {
+                Debug.Log("DialogueDataLoader: フォールバックとして日本語テキストアセットを使用します。");
+                selectedTextAsset = dialogueTextAsset_Japanese;
+            }
+            else if (dialogueTextAsset_English != null)
+            {
+                Debug.Log("DialogueDataLoader: フォールバックとして英語テキストアセットを使用します。");
+                selectedTextAsset = dialogueTextAsset_English;
+            }
+        }
+
+        // 選択されたテキストアセットを読み込む
+        if (selectedTextAsset != null)
+        {
+            LoadDialogueFromTextAsset(selectedTextAsset);
+            Debug.Log($"DialogueDataLoader: 言語コード '{currentLanguageCode}' のテキストファイルを読み込みました。");
+        }
+        else
+        {
+            Debug.LogError("DialogueDataLoader: 読み込み可能なテキストアセットが見つかりません。");
+        }
+    }
+
+    /// <summary>
+    /// 言語を再読み込みする（言語切り替え時に呼び出し）
+    /// </summary>
+    public void ReloadLocalizedDialogue()
+    {
+        LoadLocalizedDialogue();
     }
 
     /// <summary>

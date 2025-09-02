@@ -342,6 +342,8 @@ MonoBehaviour:
   dialogueTextAsset: {fileID: 4900000, guid: 736cb19a116444f4d8b69d2cb206b068, type: 3}
   loadOnAwake: 1
   convertArrowToNewline: 1
+  dialogueTextAsset_Japanese: {fileID: 4900000, guid: 736cb19a116444f4d8b69d2cb206b068, type: 3}
+  dialogueTextAsset_English: {fileID: 4900000, guid: 3bd214e7576720346b9f70124fb93291, type: 3}
 --- !u!114 &184265721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,6 +768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplorerGame.Localization.LocalizationManager
   debugMode: 1
+  showTestButtons: 0
 --- !u!4 &331591880
 Transform:
   m_ObjectHideFlags: 0
