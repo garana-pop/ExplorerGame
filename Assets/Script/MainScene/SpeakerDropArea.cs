@@ -2,9 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using ExplorerGame.Localization;
 
 public class SpeakerDropArea : MonoBehaviour, IDropHandler
 {
+    // 言語別の期待される発言者設定（インスペクターで設定）
+    [Header("言語別期待発言者設定")]
+    [SerializeField] private string expectedSpeaker_Japanese; // 日本語の期待される発言者
+    [SerializeField] private string expectedSpeaker_English;  // 英語の期待される発言者
+
     [SerializeField] private string expectedSpeaker; // このエリアに対応する正しい発言者
     [SerializeField] private Color correctColor = new Color(0.5f, 1f, 0.5f, 1f); // 正解時の色
     [SerializeField] private Color wrongColor = new Color(1f, 0.5f, 0.5f, 1f); // 不正解時の色
@@ -64,44 +70,68 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
 
     private void Start()
     {
-        // Start時にTxtPuzzleManagerを取得
-        if (puzzleManager == null)
+        // LocalizationManagerから現在の言語設定を取得して適用
+        UpdateExpectedSpeakerByLanguage();
+
+        // 言語変更イベントに登録
+        if (LocalizationManager.Instance != null)
         {
-            // 親方向に探索してTxtPuzzleManagerを取得
-            Transform current = transform;
-            while (current != null && puzzleManager == null)
-            {
-                puzzleManager = current.GetComponent<TxtPuzzleManager>();
-                if (puzzleManager == null)
-                    current = current.parent;
-                else
-                    break;
-            }
-
-            // ファイルパネル経由でも検索
-            if (puzzleManager == null)
-            {
-                Transform filePanel = transform;
-                while (filePanel != null && !filePanel.name.Contains("FilePanel"))
-                {
-                    filePanel = filePanel.parent;
-                }
-
-                if (filePanel != null)
-                {
-                    puzzleManager = filePanel.GetComponentInChildren<TxtPuzzleManager>(true);
-                }
-            }
+            LocalizationManager.Instance.OnLanguageChanged += OnLanguageChanged;
         }
 
-        // パズルマネージャーが見つかったら、初期状態を適用
-        if (puzzleManager != null)
-        {
-            // 初期表示のために進捗をチェック
-            CheckAndUpdateProgressUI();
+        FindPuzzleManager();
+        CheckAndUpdateProgressUI();
+    }
 
-            // 少し遅延させて確実に正しい状態を反映
-            Invoke("DelayedProgressCheck", 0.5f);
+    private void OnDestroy()
+    {
+        // イベントの登録解除
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged -= OnLanguageChanged;
+        }
+    }
+
+    /// <summary>
+    /// 言語変更時のコールバック
+    /// </summary>
+    private void OnLanguageChanged(UnityEngine.Localization.Locale newLocale)
+    {
+        UpdateExpectedSpeakerByLanguage();
+
+        // 既に正解している場合は表示テキストも更新
+        if (hasBeenCorrect && correctSpeakerText != null)
+        {
+            correctSpeakerText.text = expectedSpeaker;
+        }
+    }
+
+    /// <summary>
+    /// 現在の言語設定に基づいてexpectedSpeakerを更新
+    /// </summary>
+    private void UpdateExpectedSpeakerByLanguage()
+    {
+        if (LocalizationManager.Instance == null)
+        {
+            // LocalizationManagerが存在しない場合は日本語をデフォルトとする
+            expectedSpeaker = expectedSpeaker_Japanese;
+            Debug.LogWarning($"{nameof(SpeakerDropArea)}: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+            return;
+        }
+
+        // 現在の言語コードを取得
+        string currentLanguageCode = LocalizationManager.Instance.GetCurrentLanguageCode();
+
+        // 言語コードに応じて期待される発言者を設定
+        if (currentLanguageCode == "en")
+        {
+            expectedSpeaker = expectedSpeaker_English;
+            Debug.Log($"{nameof(SpeakerDropArea)}: 英語モード - expectedSpeaker = {expectedSpeaker}");
+        }
+        else // デフォルトは日本語（"ja"またはその他）
+        {
+            expectedSpeaker = expectedSpeaker_Japanese;
+            Debug.Log($"{nameof(SpeakerDropArea)}: 日本語モード - expectedSpeaker = {expectedSpeaker}");
         }
     }
 
@@ -206,7 +236,10 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
         puzzleManager = Object.FindFirstObjectByType<TxtPuzzleManager>();
 
         // このエリアを登録
-        puzzleManager.RegisterDropArea(this);
+        if (puzzleManager != null)
+        {
+            puzzleManager.RegisterDropArea(this);
+        }
     }
 
     public void OnDrop(PointerEventData eventData)

@@ -224,6 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -293,6 +295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -1230,6 +1234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -3629,6 +3635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -4337,6 +4345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -5442,6 +5452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -7440,6 +7452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -8276,6 +8290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -8398,6 +8414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -13715,6 +13733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -14015,6 +14035,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -14174,6 +14196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -18526,6 +18550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -19167,6 +19193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -19993,6 +20021,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -20285,6 +20315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -20893,6 +20925,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: "\u307C\u304F"
+  expectedSpeaker_English: my
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -21066,6 +21100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -22570,6 +22606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -23098,6 +23136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -23242,6 +23282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -23994,6 +24036,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -25539,6 +25583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -26068,6 +26114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -26604,6 +26652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -28554,6 +28604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -30024,6 +30076,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -31168,6 +31222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -32544,8 +32600,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1191983983}
   m_HandleRect: {fileID: 1191983982}
   m_Direction: 2
-  m_Value: 0.99999976
-  m_Size: 0.60044545
+  m_Value: 1
+  m_Size: 0.6004455
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -32954,6 +33010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -33871,6 +33929,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -34410,6 +34470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -36023,6 +36085,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -37182,6 +37246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -37429,6 +37495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -37729,6 +37797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -38206,6 +38276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -38887,6 +38959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -40035,6 +40109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5927\u5BB6"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -41403,6 +41479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -41996,6 +42074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -44491,6 +44571,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -45318,7 +45400,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 513497712}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5064988
+  m_Size: 0.5064989
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -46481,6 +46563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -46844,7 +46928,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 673634948}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.3450459
+  m_Size: 0.34504595
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -46992,6 +47076,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -48218,6 +48304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -48360,6 +48448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -48482,6 +48572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -48812,8 +48904,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422776613}
   m_HandleRect: {fileID: 422776612}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.43463343
+  m_Value: 1.0000001
+  m_Size: 0.43463352
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -51393,6 +51485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -51462,6 +51556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -51734,6 +51830,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -51982,6 +52080,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -55550,6 +55650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -56028,6 +56130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -58113,6 +58217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -59020,6 +59126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -60210,6 +60318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -60974,6 +61084,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -61274,6 +61386,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -61396,6 +61510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5927\u5BB6"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -62078,6 +62194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -62690,6 +62808,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -63358,6 +63478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -64802,6 +64924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -64977,6 +65101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -66938,6 +67064,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -67395,6 +67523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -67767,6 +67897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -67926,6 +68058,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -71754,6 +71888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -72462,6 +72598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5927\u5BB6"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -72794,6 +72932,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -73515,6 +73655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -74187,6 +74329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -74970,8 +75114,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1754196685}
   m_HandleRect: {fileID: 1754196684}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.63979936
+  m_Value: 1.0000002
+  m_Size: 0.6397995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -75358,6 +75502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -77787,6 +77933,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -78443,6 +78591,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -78796,6 +78946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -80570,6 +80722,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -82724,6 +82878,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -83221,6 +83377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -83343,6 +83501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -83518,6 +83678,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -86145,6 +86307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -86360,6 +86524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -86769,6 +86935,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -87480,6 +87648,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -88407,8 +88577,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 321899461}
   m_HandleRect: {fileID: 321899460}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.63979936
+  m_Value: 1.0000002
+  m_Size: 0.6397995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -89745,6 +89915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -90337,6 +90509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -90459,6 +90633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -91933,6 +92109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -92636,6 +92814,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -93905,6 +94085,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -93974,6 +94156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -94552,7 +94736,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 155549763}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.46387327
+  m_Size: 0.4638733
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -95211,6 +95395,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -96828,6 +97014,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -97513,6 +97701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -97685,8 +97875,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 69069101}
   m_HandleRect: {fileID: 69069100}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.59105027
+  m_Value: 1.0000002
+  m_Size: 0.5910504
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -98005,6 +98195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -98429,6 +98621,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -99474,6 +99668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -100402,6 +100598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -102140,6 +102338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -102712,6 +102912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -103740,6 +103942,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -104370,6 +104574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -104795,6 +105001,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5927\u5BB6"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -105386,6 +105594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -106097,6 +106307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -107821,6 +108033,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -108428,6 +108642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -109392,6 +109608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u53CB\u4EBA"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -109461,6 +109679,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -109754,6 +109974,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u307C\u304F"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
@@ -110559,6 +110781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded3b3b5b1be0a419119262be3a0522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expectedSpeaker_Japanese: 
+  expectedSpeaker_English: 
   expectedSpeaker: "\u5F7C\u5973"
   correctColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   wrongColor: {r: 1, g: 0.5, b: 0.5, a: 1}
