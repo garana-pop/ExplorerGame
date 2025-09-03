@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using ExplorerGame.Localization;
 
 public class TxtPuzzleManager : MonoBehaviour
 {
@@ -44,10 +45,26 @@ public class TxtPuzzleManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
+
+        // ロード時にも話者名を更新
+        if (Application.isPlaying)
+        {
+            // 少し遅延させて確実にデータがロードされてから実行
+            Invoke(nameof(UpdateSpeakerNamesBasedOnLanguage), 0.1f);
+        }
     }
 
     private void Start()
     {
+        // 言語設定に応じてSpeakerDropAreaの話者名を更新
+        UpdateSpeakerNamesBasedOnLanguage();
+
+        // 言語変更イベントに登録
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged += OnLanguageChanged;
+        }
+
         // オーバーレイパネルを初期状態で非表示に
         if (overlayPanel != null)
             overlayPanel.SetActive(false);
@@ -70,6 +87,124 @@ public class TxtPuzzleManager : MonoBehaviour
         // モザイクコンテナの参照を検証
         VerifyMosaicContainer();
     }
+
+    /// <summary>
+    /// 言語設定に基づいてすべてのSpeakerDropAreaの話者名を更新
+    /// </summary>
+    private void UpdateSpeakerNamesBasedOnLanguage()
+    {
+        // GameSaveManagerから言語コードを取得
+        string languageCode = GetCurrentLanguageCode();
+
+            Debug.Log($"TxtPuzzleManager '{fileName}': 言語コード '{languageCode}' で話者名を更新中...");
+
+        // すべてのDropAreaの話者名を更新
+        foreach (var dropArea in dropAreas)
+        {
+            if (dropArea != null)
+            {
+                UpdateDropAreaSpeakerName(dropArea, languageCode);
+            }
+        }
+            Debug.Log($"TxtPuzzleManager '{fileName}': {dropAreas.Count}個のDropAreaの話者名を更新完了");
+    }
+
+    /// <summary>
+    /// 個別のSpeakerDropAreaの話者名を言語設定に応じて更新
+    /// </summary>
+    /// <param name="dropArea">更新対象のSpeakerDropArea</param>
+    /// <param name="languageCode">言語コード（"ja" または "en"）</param>
+    private void UpdateDropAreaSpeakerName(SpeakerDropArea dropArea, string languageCode)
+    {
+        if (dropArea == null) return;
+
+        // リフレクションを使用してSpeakerDropAreaのexpectedSpeakerフィールドにアクセス
+        var dropAreaType = dropArea.GetType();
+        var expectedSpeakerField = dropAreaType.GetField("expectedSpeaker",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        if (expectedSpeakerField == null)
+        {
+            Debug.LogWarning($"TxtPuzzleManager: expectedSpeakerフィールドが見つかりません");
+            return;
+        }
+
+        // 言語に応じた話者名フィールドを取得
+        string fieldName = (languageCode == "en")
+            ? "expectedSpeaker_English"
+            : "expectedSpeaker_Japanese";
+
+        var speakerNameField = dropAreaType.GetField(fieldName,
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        if (speakerNameField != null)
+        {
+            // 言語別フィールドからexpectedSpeakerに値をコピー
+            string speakerName = speakerNameField.GetValue(dropArea) as string;
+            if (!string.IsNullOrEmpty(speakerName))
+            {
+                expectedSpeakerField.SetValue(dropArea, speakerName);
+
+                    Debug.Log($"DropArea更新: {dropArea.gameObject.name} - 話者名を '{speakerName}' に設定（{languageCode}）");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"TxtPuzzleManager: {fieldName}フィールドが見つかりません");
+        }
+    }
+
+    /// <summary>
+    /// 現在の言語コードを取得
+    /// </summary>
+    /// <returns>言語コード（"ja" または "en"）</returns>
+    private string GetCurrentLanguageCode()
+    {
+        // LocalizationManagerが存在する場合はそこから取得
+        if (LocalizationManager.Instance != null)
+        {
+            return LocalizationManager.Instance.GetCurrentLanguageCode();
+        }
+
+        // LocalizationManagerがない場合はGameSaveManagerから直接取得
+        var saveManager = FindObjectOfType<GameSaveManager>();
+        if (saveManager != null)
+        {
+            var saveData = saveManager.GetCurrentSaveData();
+            if (saveData != null && !string.IsNullOrEmpty(saveData.languageCode))
+            {
+                return saveData.languageCode;
+            }
+        }
+
+        // デフォルトは日本語
+        return "ja";
+    }
+
+    /// <summary>
+    /// 言語変更時に呼ばれるコールバック
+    /// </summary>
+    /// <param name="newLocale">新しいロケール</param>
+    private void OnLanguageChanged(UnityEngine.Localization.Locale newLocale)
+    {
+        if (newLocale != null)
+        {
+            string languageCode = newLocale.Identifier.Code;
+            UpdateSpeakerNamesBasedOnLanguage();
+
+            Debug.Log($"TxtPuzzleManager '{fileName}': 言語が '{languageCode}' に変更されました");
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // 言語変更イベントの登録解除
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged -= OnLanguageChanged;
+        }
+    }
+
 
     private void VerifyMosaicContainer()
     {
