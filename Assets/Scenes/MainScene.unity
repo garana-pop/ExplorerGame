@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.65
+  m_fontSize: 39
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1317,6 +1317,7 @@ GameObject:
   - component: {fileID: 47119512}
   - component: {fileID: 47119514}
   - component: {fileID: 47119513}
+  - component: {fileID: 47119515}
   m_Layer: 0
   m_Name: DocumentArea
   m_TagString: Untagged
@@ -1391,6 +1392,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47119511}
   m_CullTransparentMesh: 1
+--- !u!114 &47119515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47119511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcec84e51043774cab71961ca6c0529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenkeywordPositionAdjustmentByLanguage
+  positionAdjustments:
+  - targetParentObject: {fileID: 563306183}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  - targetParentObject: {fileID: 1631712508}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  - targetParentObject: {fileID: 953350546}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  - targetParentObject: {fileID: 174157036}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  debugMode: 0
 --- !u!1 &50986587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,7 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u53CD\u7701"
-  hiddenWord_English: 
+  hiddenWord_English: remorse
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 2
@@ -2765,7 +2812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u8105\u8FEB"
-  hiddenWord_English: 
+  hiddenWord_English: Threats
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 2
@@ -6028,7 +6075,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.05
+  m_fontSize: 40
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6867,6 +6914,7 @@ GameObject:
   - component: {fileID: 142399487}
   - component: {fileID: 142399489}
   - component: {fileID: 142399488}
+  - component: {fileID: 142399490}
   m_Layer: 0
   m_Name: DocumentArea
   m_TagString: Untagged
@@ -6940,6 +6988,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142399486}
   m_CullTransparentMesh: 1
+--- !u!114 &142399490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142399486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcec84e51043774cab71961ca6c0529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenkeywordPositionAdjustmentByLanguage
+  positionAdjustments:
+  - targetParentObject: {fileID: 582169835}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  - targetParentObject: {fileID: 395758766}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  - targetParentObject: {fileID: 188391215}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  debugMode: 0
 --- !u!1 &151775212
 GameObject:
   m_ObjectHideFlags: 0
@@ -7360,7 +7446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u76E3\u8996\u3055\u308C\u3066\u3044\u308B"
-  hiddenWord_English: 
+  hiddenWord_English: watched
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 7
@@ -7795,7 +7881,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.05
+  m_fontSize: 40.05
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8150,7 +8236,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.4
+  m_fontSize: 38.8
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9110,7 +9196,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.1
+  m_fontSize: 38.9
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9681,6 +9767,7 @@ GameObject:
   - component: {fileID: 203630649}
   - component: {fileID: 203630651}
   - component: {fileID: 203630650}
+  - component: {fileID: 203630652}
   m_Layer: 0
   m_Name: DocumentArea
   m_TagString: Untagged
@@ -9754,6 +9841,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203630648}
   m_CullTransparentMesh: 1
+--- !u!114 &203630652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203630648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcec84e51043774cab71961ca6c0529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenkeywordPositionAdjustmentByLanguage
+  positionAdjustments:
+  - targetParentObject: {fileID: 1200024122}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  - targetParentObject: {fileID: 1436142773}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  - targetParentObject: {fileID: 251143721}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  debugMode: 0
 --- !u!1 &205955357
 GameObject:
   m_ObjectHideFlags: 0
@@ -12559,7 +12684,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.3
+  m_fontSize: 34.25
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13361,7 +13486,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.15
+  m_fontSize: 40.15
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16095,7 +16220,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.1
+  m_fontSize: 40.85
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -17655,7 +17780,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.1
+  m_fontSize: 40.75
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -21262,7 +21387,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.75
+  m_fontSize: 38.9
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -23465,7 +23590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u610F\u8B58\u4E0D\u660E"
-  hiddenWord_English: Stalking
+  hiddenWord_English: unconscious
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 4
@@ -24469,7 +24594,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 40.9
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -24771,7 +24896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u5984\u60F3\u6027\u969C\u5BB3"
-  hiddenWord_English: 
+  hiddenWord_English: Delusional disorder
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 5
@@ -27468,7 +27593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u73FE\u5B9F\u3068\u306E\u4E56\u96E2"
-  hiddenWord_English: 
+  hiddenWord_English: detachment from reality
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 6
@@ -30241,7 +30366,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.05
+  m_fontSize: 34.4
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -30955,7 +31080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u5A18\u306F\u3082\u3046\u4E8C\u5EA6\u3068\u3042\u306A\u305F\u306B\u4F1A\u3044\u305F\u304F\u306A\u3044"
-  hiddenWord_English: 
+  hiddenWord_English: my daughter never wants to see you again
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 17
@@ -31565,7 +31690,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.95
+  m_fontSize: 39.9
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -31743,7 +31868,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.6
+  m_fontSize: 39.65
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -32608,8 +32733,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1191983983}
   m_HandleRect: {fileID: 1191983982}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.6004455
+  m_Value: 0.99999976
+  m_Size: 0.60044557
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -32873,7 +32998,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.05
+  m_fontSize: 39.05
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -35978,7 +36103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u88AB\u5BB3\u8005\u5B85\u4ED8\u8FD1"
-  hiddenWord_English: Near the victim's residence
+  hiddenWord_English: Near victim's residence
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 6
@@ -38497,7 +38622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u7720\u308C\u306A\u3044\u3002"
-  hiddenWord_English: 
+  hiddenWord_English: can't sleep.
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 5
@@ -40989,7 +41114,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.1
+  m_fontSize: 40.05
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -43657,7 +43782,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.35
+  m_fontSize: 39
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -44207,7 +44332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u5C3E\u884C"
-  hiddenWord_English: 
+  hiddenWord_English: Stalking
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 2
@@ -44739,7 +44864,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 39.9
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -46939,7 +47064,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 673634948}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.34504595
+  m_Size: 0.34504598
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -47191,7 +47316,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.45
+  m_fontSize: 39.25
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -48915,8 +49040,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422776613}
   m_HandleRect: {fileID: 422776612}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.4346335
+  m_Value: 0.9999999
+  m_Size: 0.43463355
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -49358,7 +49483,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.95
+  m_fontSize: 40.15
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -51120,7 +51245,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.2
+  m_fontSize: 34
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -51926,7 +52051,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.1
+  m_fontSize: 40.2
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -53856,7 +53981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u4FB5\u5165"
-  hiddenWord_English: 
+  hiddenWord_English: Intrusion
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 2
@@ -54507,6 +54632,7 @@ GameObject:
   - component: {fileID: 1044685600}
   - component: {fileID: 1044685602}
   - component: {fileID: 1044685601}
+  - component: {fileID: 1044685603}
   m_Layer: 0
   m_Name: DocumentArea
   m_TagString: Untagged
@@ -54580,6 +54706,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044685599}
   m_CullTransparentMesh: 1
+--- !u!114 &1044685603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044685599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcec84e51043774cab71961ca6c0529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenkeywordPositionAdjustmentByLanguage
+  positionAdjustments:
+  - targetParentObject: {fileID: 1002657302}
+    englishParentPosition: {x: -89, y: 300, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 867486794}
+  - targetParentObject: {fileID: 1235895038}
+    englishParentPosition: {x: -571.5, y: -76.5, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 67937220}
+  - targetParentObject: {fileID: 328127555}
+    englishParentPosition: {x: 827.99084, y: -132.78601, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 1039443253}
+  debugMode: 1
 --- !u!1 &1051644015
 GameObject:
   m_ObjectHideFlags: 0
@@ -56552,7 +56716,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.4
+  m_fontSize: 34.3
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -60612,7 +60776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u6050\u6016"
-  hiddenWord_English: 
+  hiddenWord_English: terror
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 2
@@ -62446,7 +62610,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.55
+  m_fontSize: 41
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -64282,7 +64446,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.85
+  m_fontSize: 40.05
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -67713,7 +67877,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.7
+  m_fontSize: 40.6
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -72005,7 +72169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u601D\u3044\u51FA\u3055\u305B\u308B"
-  hiddenWord_English: 
+  hiddenWord_English: rebmemer
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 6
@@ -74776,7 +74940,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.25
+  m_fontSize: 39.15
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -74954,7 +75118,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.7
+  m_fontSize: 41.5
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -75129,7 +75293,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1754196684}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6397994
+  m_Size: 0.6397995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -75393,6 +75557,7 @@ GameObject:
   - component: {fileID: 1447473028}
   - component: {fileID: 1447473030}
   - component: {fileID: 1447473029}
+  - component: {fileID: 1447473031}
   m_Layer: 0
   m_Name: DocumentArea
   m_TagString: Untagged
@@ -75464,6 +75629,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447473027}
   m_CullTransparentMesh: 1
+--- !u!114 &1447473031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447473027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcec84e51043774cab71961ca6c0529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenkeywordPositionAdjustmentByLanguage
+  positionAdjustments:
+  - targetParentObject: {fileID: 1683732383}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  - targetParentObject: {fileID: 978837862}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  - targetParentObject: {fileID: 540833677}
+    englishParentPosition: {x: 0, y: 0, z: 0}
+    adjustChildHiddenKeyword: 0
+    englishChildOffset: {x: 0, y: 0, z: 0}
+    useLocalPosition: 1
+    originalParentPosition: {x: 0, y: 0, z: 0}
+    originalChildOffset: {x: 0, y: 0, z: 0}
+    childHiddenKeyword: {fileID: 0}
+  debugMode: 0
 --- !u!1 &1448742929
 GameObject:
   m_ObjectHideFlags: 0
@@ -76170,7 +76373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u7279\u5225\u306A\u95A2\u4FC2"
-  hiddenWord_English: 
+  hiddenWord_English: special relationship
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 5
@@ -77626,7 +77829,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41
+  m_fontSize: 40.75
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -77804,7 +78007,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.75
+  m_fontSize: 39.7
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -84252,7 +84455,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.7
+  m_fontSize: 40.6
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -85728,7 +85931,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.5
+  m_fontSize: 39.1
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -86177,7 +86380,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.45
+  m_fontSize: 40.55
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -86696,7 +86899,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.55
+  m_fontSize: 39.5
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -88340,7 +88543,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.75
+  m_fontSize: 34.05
   m_fontSizeBase: 34.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -88593,7 +88796,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 321899460}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6397994
+  m_Size: 0.6397995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -89301,7 +89504,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.15
+  m_fontSize: 40
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -89700,7 +89903,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 199547235}
   m_Direction: 2
   m_Value: 0.99999964
-  m_Size: 0.72232056
+  m_Size: 0.7223206
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -94750,8 +94953,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 155549764}
   m_HandleRect: {fileID: 155549763}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.4638733
+  m_Value: 0.9999999
+  m_Size: 0.46387333
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -97891,7 +98094,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 69069100}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5910503
+  m_Size: 0.5910504
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -98829,7 +99032,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.1
+  m_fontSize: 39.05
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -106694,7 +106897,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
+  m_fontSize: 34.2
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -111693,7 +111896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiddenWord: "\u5A18\u3092\u8FFD\u3044\u8A70\u3081\u305F"
-  hiddenWord_English: 
+  hiddenWord_English: cornered my daughter
   revealedColor: {r: 0, g: 0, b: 0, a: 1}
   censorSymbol: 
   censorSymbolCount: 7
