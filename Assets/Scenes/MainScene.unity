@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39
+  m_fontSize: 38.9
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1318,6 +1318,7 @@ GameObject:
   - component: {fileID: 47119514}
   - component: {fileID: 47119513}
   - component: {fileID: 47119515}
+  - component: {fileID: 47119516}
   m_Layer: 0
   m_Name: DocumentArea
   m_TagString: Untagged
@@ -1437,7 +1438,45 @@ MonoBehaviour:
     originalParentPosition: {x: 0, y: 0, z: 0}
     originalChildOffset: {x: 0, y: 0, z: 0}
     childHiddenKeyword: {fileID: 0}
-  debugMode: 0
+  debugMode: 1
+--- !u!114 &47119516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47119511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8164b4de17a9b96499a4f9677ccb4d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenkeywordSizeAdjustmentByLanguage
+  sizeAdjustments:
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  debugMode: 1
 --- !u!1 &50986587
 GameObject:
   m_ObjectHideFlags: 0
@@ -6075,7 +6114,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 39.85
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6915,6 +6954,7 @@ GameObject:
   - component: {fileID: 142399489}
   - component: {fileID: 142399488}
   - component: {fileID: 142399490}
+  - component: {fileID: 142399491}
   m_Layer: 0
   m_Name: DocumentArea
   m_TagString: Untagged
@@ -7025,7 +7065,45 @@ MonoBehaviour:
     originalParentPosition: {x: 0, y: 0, z: 0}
     originalChildOffset: {x: 0, y: 0, z: 0}
     childHiddenKeyword: {fileID: 0}
-  debugMode: 0
+  debugMode: 1
+--- !u!114 &142399491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142399486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8164b4de17a9b96499a4f9677ccb4d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenkeywordSizeAdjustmentByLanguage
+  sizeAdjustments:
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  debugMode: 1
 --- !u!1 &151775212
 GameObject:
   m_ObjectHideFlags: 0
@@ -8236,7 +8314,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.8
+  m_fontSize: 38.65
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9196,7 +9274,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.9
+  m_fontSize: 38.6
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9768,6 +9846,7 @@ GameObject:
   - component: {fileID: 203630651}
   - component: {fileID: 203630650}
   - component: {fileID: 203630652}
+  - component: {fileID: 203630653}
   m_Layer: 0
   m_Name: DocumentArea
   m_TagString: Untagged
@@ -9878,7 +9957,45 @@ MonoBehaviour:
     originalParentPosition: {x: 0, y: 0, z: 0}
     originalChildOffset: {x: 0, y: 0, z: 0}
     childHiddenKeyword: {fileID: 0}
-  debugMode: 0
+  debugMode: 1
+--- !u!114 &203630653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203630648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8164b4de17a9b96499a4f9677ccb4d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenkeywordSizeAdjustmentByLanguage
+  sizeAdjustments:
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  debugMode: 1
 --- !u!1 &205955357
 GameObject:
   m_ObjectHideFlags: 0
@@ -12684,7 +12801,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.25
+  m_fontSize: 34.15
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13486,7 +13603,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.15
+  m_fontSize: 39.85
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16220,7 +16337,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.85
+  m_fontSize: 40.55
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -17780,7 +17897,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.75
+  m_fontSize: 40.45
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -21387,7 +21504,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.9
+  m_fontSize: 38.6
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -24594,7 +24711,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.9
+  m_fontSize: 40.8
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -25767,6 +25884,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1616703633}
   - {fileID: 1519389550}
   m_Father: {fileID: 1309483376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30366,7 +30484,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.4
+  m_fontSize: 34.05
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -31690,7 +31808,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.9
+  m_fontSize: 39.75
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -31868,7 +31986,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.65
+  m_fontSize: 39.35
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -32733,7 +32851,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1191983983}
   m_HandleRect: {fileID: 1191983982}
   m_Direction: 2
-  m_Value: 0.99999976
+  m_Value: 1
   m_Size: 0.60044557
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -41114,7 +41232,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.05
+  m_fontSize: 39.95
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -43782,7 +43900,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39
+  m_fontSize: 38.9
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -44864,7 +44982,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.9
+  m_fontSize: 39.75
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -47316,7 +47434,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.25
+  m_fontSize: 39.2
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -49040,8 +49158,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422776613}
   m_HandleRect: {fileID: 422776612}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.43463355
+  m_Value: 1
+  m_Size: 0.43463352
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -49689,7 +49807,6 @@ RectTransform:
   - {fileID: 869932627}
   - {fileID: 1989554260}
   - {fileID: 2043932667}
-  - {fileID: 1616703633}
   - {fileID: 465716586}
   - {fileID: 2059102690}
   - {fileID: 300010582}
@@ -51245,7 +51362,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 33.7
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -54633,6 +54750,7 @@ GameObject:
   - component: {fileID: 1044685602}
   - component: {fileID: 1044685601}
   - component: {fileID: 1044685603}
+  - component: {fileID: 1044685604}
   m_Layer: 0
   m_Name: DocumentArea
   m_TagString: Untagged
@@ -54743,6 +54861,44 @@ MonoBehaviour:
     originalParentPosition: {x: 0, y: 0, z: 0}
     originalChildOffset: {x: 0, y: 0, z: 0}
     childHiddenKeyword: {fileID: 1039443253}
+  debugMode: 1
+--- !u!114 &1044685604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044685599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8164b4de17a9b96499a4f9677ccb4d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenkeywordSizeAdjustmentByLanguage
+  sizeAdjustments:
+  - targetParentObject: {fileID: 1002657302}
+    englishParentSize: {x: -1846.376, y: -995.91}
+    adjustParentSize: 1
+    adjustChildHiddenKeyword: 0
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 867486794}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  - targetParentObject: {fileID: 1235895038}
+    englishParentSize: {x: -1846.376, y: -995.91}
+    adjustParentSize: 1
+    adjustChildHiddenKeyword: 0
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 67937220}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  - targetParentObject: {fileID: 328127555}
+    englishParentSize: {x: -1846.376, y: -995.91}
+    adjustParentSize: 1
+    adjustChildHiddenKeyword: 0
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 1039443253}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
   debugMode: 1
 --- !u!1 &1051644015
 GameObject:
@@ -56716,7 +56872,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.3
+  m_fontSize: 34.2
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -67877,7 +68033,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.6
+  m_fontSize: 40.45
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -74940,7 +75096,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.15
+  m_fontSize: 38.85
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -75118,7 +75274,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.5
+  m_fontSize: 41.2
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -75293,7 +75449,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1754196684}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6397995
+  m_Size: 0.6397994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -75558,6 +75714,7 @@ GameObject:
   - component: {fileID: 1447473030}
   - component: {fileID: 1447473029}
   - component: {fileID: 1447473031}
+  - component: {fileID: 1447473032}
   m_Layer: 0
   m_Name: DocumentArea
   m_TagString: Untagged
@@ -75666,7 +75823,45 @@ MonoBehaviour:
     originalParentPosition: {x: 0, y: 0, z: 0}
     originalChildOffset: {x: 0, y: 0, z: 0}
     childHiddenKeyword: {fileID: 0}
-  debugMode: 0
+  debugMode: 1
+--- !u!114 &1447473032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447473027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8164b4de17a9b96499a4f9677ccb4d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HiddenkeywordSizeAdjustmentByLanguage
+  sizeAdjustments:
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  - targetParentObject: {fileID: 0}
+    englishParentSize: {x: 0, y: 0}
+    adjustParentSize: 0
+    adjustChildHiddenKeyword: 1
+    englishChildSize: {x: 0, y: 0}
+    childHiddenKeyword: {fileID: 0}
+    originalParentSize: {x: 0, y: 0}
+    originalChildSize: {x: 0, y: 0}
+  debugMode: 1
 --- !u!1 &1448742929
 GameObject:
   m_ObjectHideFlags: 0
@@ -77829,7 +78024,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.75
+  m_fontSize: 40.45
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -78007,7 +78202,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.7
+  m_fontSize: 39.65
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -84455,7 +84650,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.6
+  m_fontSize: 40.45
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -85502,7 +85697,7 @@ RectTransform:
   - {fileID: 1744893863}
   - {fileID: 1044685600}
   - {fileID: 1867312231}
-  m_Father: {fileID: 960451939}
+  m_Father: {fileID: 463437475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -85931,7 +86126,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.1
+  m_fontSize: 38.95
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -86899,7 +87094,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.5
+  m_fontSize: 39.4
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -88543,7 +88738,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.05
+  m_fontSize: 33.75
   m_fontSizeBase: 34.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -88796,7 +88991,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 321899460}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6397995
+  m_Size: 0.6397994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -89903,7 +90098,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 199547235}
   m_Direction: 2
   m_Value: 0.99999964
-  m_Size: 0.7223206
+  m_Size: 0.72232056
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -94953,7 +95148,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 155549764}
   m_HandleRect: {fileID: 155549763}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 1
   m_Size: 0.46387333
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -98093,7 +98288,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 69069101}
   m_HandleRect: {fileID: 69069100}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000002
   m_Size: 0.5910504
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -99032,7 +99227,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.05
+  m_fontSize: 38.95
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -106897,7 +107092,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.2
+  m_fontSize: 34.15
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1

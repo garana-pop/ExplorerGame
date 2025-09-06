@@ -8,6 +8,9 @@ using UnityEngine.Localization;
 /// </summary>
 public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
 {
+    // HiddenKeywordのサイズを調整するクラスを参照
+    private HiddenkeywordSizeAdjustmentByLanguage sizeAdjustment;
+
     // 英語用の位置調整設定
     [System.Serializable]
     public class EnglishPositionAdjustment
@@ -52,6 +55,13 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
 
     // 現在の言語コード
     private string currentLanguageCode = JAPANESE_CODE;
+
+    // 2. Awakeメソッドに以下を追加
+    private void Awake()
+    {
+        // サイズ調整コンポーネントへの参照を取得
+        sizeAdjustment = GetComponent<HiddenkeywordSizeAdjustmentByLanguage>();
+    }
 
     private void Start()
     {
@@ -200,6 +210,18 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
                 ApplyOriginalPosition(adjustment);
             }
         }
+
+        // サイズも調整
+        if (sizeAdjustment != null)
+        {
+            sizeAdjustment.ApplyLanguageSizeAdjustment();
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: サイズ調整も実行しました");
+            }
+        }
+
     }
 
     /// <summary>
