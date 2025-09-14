@@ -104,8 +104,11 @@ public class GameSaveManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        // 以降の初期化処理
-        InitializeSaveData();
+        // currentSaveDataがnullの場合のみ初期化
+        if (currentSaveData == null)
+        {
+            InitializeSaveData();
+        }
     }
 
     private void Start()
@@ -547,6 +550,13 @@ public class GameSaveManager : MonoBehaviour
 
     public void InitializeSaveData()
     {
+        // 既にデータが存在する場合は初期化しない
+        if (currentSaveData != null)
+        {
+            Debug.Log("GameSaveManager: 既存のセーブデータが存在するため、初期化をスキップします");
+            return;
+        }
+
         // 初期状態では設定されたフォルダーをアクティブに
         currentSaveData = new GameSaveData
         {
@@ -574,6 +584,7 @@ public class GameSaveManager : MonoBehaviour
             endOpeningScene = false,
             resolutionIndex = 2 // デフォルトは1280x720
         };
+
     }
 
     private void CollectGameState()
