@@ -1,6 +1,7 @@
+using ExplorerGame.Localization;
 using System.Collections;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 /// <summary>
 /// テキストを一文字ずつタイプライターのように表示するスクリプト
@@ -11,8 +12,14 @@ public class TextTyper : MonoBehaviour
     [Tooltip("表示するTextMeshProコンポーネント")]
     [SerializeField] private TMP_Text textComponent;
 
-    [Tooltip("表示する完全なテキスト")]
+    [Tooltip("表示する完全なテキスト(デフォルト日本語)")]
     [SerializeField] private string fullText = "気持ち悪い。消えてよ・・・";
+
+    [Tooltip("日本語テキスト")]
+    [SerializeField] private string JapaneseText = "気持ち悪い。消えてよ・・・";
+
+    [Tooltip("英語テキスト")]
+    [SerializeField] private string EnglishText = "I hate this. Disappear...";
 
     [Header("タイピング設定")]
     [Tooltip("1文字表示するまでの時間（秒）")]
@@ -40,6 +47,7 @@ public class TextTyper : MonoBehaviour
     private bool isTyping = false;
     private string currentText = "";
     private SoundEffectManager soundManager;
+    private LocalizationManager localizationManager;
 
     // タイピング完了イベントデリゲート
     public delegate void TypingCompletedHandler();
@@ -64,15 +72,53 @@ public class TextTyper : MonoBehaviour
 
         // 初期テキストをクリア
         textComponent.text = "";
+
+        // LocalizationManagerの参照を取得
+        localizationManager = LocalizationManager.Instance;
     }
 
     private void Start()
     {
+        // ローカライズ設定の適用（追加）
+        ApplyLocalization();
+
         // 自動開始が有効なら、指定された遅延後に開始
         if (autoStart)
         {
             Invoke("StartTyping", autoStartDelay);
         }
+    }
+
+    /// <summary>
+    /// 現在の言語設定に基づいてテキストを切り替える
+    /// </summary>
+    private void ApplyLocalization()
+    {
+        // LocalizationManagerが存在しない場合は何もしない
+        if (localizationManager == null)
+        {
+            Debug.LogWarning("TextTyper: LocalizationManagerが見つかりません。デフォルトテキストを使用します。");
+            return;
+        }
+
+        // 現在の言語コードを取得
+        string currentLanguageCode = localizationManager.GetCurrentLanguageCode();
+
+        // 英語の場合、englishTextを使用
+        if (currentLanguageCode == "en")
+        {
+            // 英語テキストが設定されている場合のみ適用
+            if (!string.IsNullOrEmpty(EnglishText))
+            {
+                fullText = EnglishText;
+                Debug.Log($"TextTyper: 英語モードのため、テキストを切り替えました");
+            }
+            else
+            {
+                Debug.LogWarning("TextTyper: 英語テキストが設定されていません。デフォルトテキストを使用します。");
+            }
+        }
+        // 日本語の場合は何もしない（デフォルトのfullTextを使用）
     }
 
     /// <summary>
@@ -208,6 +254,17 @@ public class TextTyper : MonoBehaviour
     /// </summary>
     public void SetText(string text)
     {
+        // 言語設定を確認して適切なテキストを設定
+        if (localizationManager != null && localizationManager.GetCurrentLanguageCode() == "en")
+        {
+            // 英語モードで、EnglishTextが設定されている場合は無視
+            if (!string.IsNullOrEmpty(EnglishText))
+            {
+                Debug.Log("TextTyper: 英語モードでは、インスペクターで設定されたEnglishTextを使用します");
+                return;
+            }
+        }
+
         fullText = text;
         IsCompleted = false; // 新しいテキスト設定時にリセット
 
