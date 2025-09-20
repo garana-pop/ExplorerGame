@@ -1,6 +1,8 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using ExplorerGame.Localization;
+using System.Collections;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
 
@@ -45,6 +47,9 @@ public class TitleTextChangerForHim : MonoBehaviour
     [SerializeField] private bool debugMode = false;
     [SerializeField] private bool forceExecute = false;
 
+    // コンポーネント参照
+    [SerializeField] private LocalizationManager localizationManager;
+
     private string currentText;
     private bool isChanging = false;
 
@@ -77,11 +82,39 @@ public class TitleTextChangerForHim : MonoBehaviour
     {
         currentText = titleText.text;
 
-        if (ShouldExecuteTitleChange())
+        string currentLanguage = LoadSaveLanguageCode();
+        Debug.Log("TitleTextChangerForHim: 現在の言語コード " + currentLanguage);
+
+        if (ShouldExecuteTitleChange() && currentLanguage == "ja")
         {
-            if (debugMode) Debug.Log("TitleTextChangerForHim: タイトル変更を開始します");
+            if (debugMode) Debug.Log("TitleTextChangerForHim: タイトル変更を開始します（言語コードが" + currentLanguage + "のため）");
             StartCoroutine(StartTitleChange());
         }
+        else
+        {
+            if (debugMode) Debug.Log("TitleTextChangerForHim: 現在の言語コード：" + currentLanguage + "　日本語ではないためタイトル変更をスキップ");
+        }
+    }
+
+    /// <summary>
+    /// 保存された言語設定を読み込み、言語コードを返す
+    /// </summary>
+    private string LoadSaveLanguageCode()
+    {
+        // GameSaveManagerが存在する場合、セーブデータから言語を読み込み
+        var saveManager = FindObjectOfType<GameSaveManager>();
+        var saveData = saveManager != null ? saveManager.GetCurrentSaveData() : null;
+        if (saveManager != null && saveData != null)
+        {
+            string savedLanguageCode = saveData.languageCode;
+            if (!string.IsNullOrEmpty(savedLanguageCode))
+            {
+                Debug.Log($"TitleTextChangerForHim: セーブデータから言語 '{savedLanguageCode}' を読み込みました");
+                return savedLanguageCode;
+            }
+        }
+        // 返す値がない場合は空文字列を返す
+        return string.Empty;
     }
 
     private bool ShouldExecuteTitleChange()

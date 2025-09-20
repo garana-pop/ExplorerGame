@@ -5849,7 +5849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u8A2D\u5B9A"
+  m_text: Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c70edee34563413409e14307e8f1024e, type: 2}
   m_sharedMaterial: {fileID: 3882789679240245536, guid: c70edee34563413409e14307e8f1024e, type: 2}
@@ -7005,7 +7005,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u300C\u9858\u3044\u300D\u306E\u8A18\u61B6"
+  m_text: Memories of 'Wish'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c70edee34563413409e14307e8f1024e, type: 2}
   m_sharedMaterial: {fileID: 3882789679240245536, guid: c70edee34563413409e14307e8f1024e, type: 2}
@@ -9106,7 +9106,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3084\u3081\u308B"
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c70edee34563413409e14307e8f1024e, type: 2}
   m_sharedMaterial: {fileID: 3882789679240245536, guid: c70edee34563413409e14307e8f1024e, type: 2}
@@ -11898,7 +11898,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u601D\u3044\u51FA\u3059"
+  m_text: Remember
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c70edee34563413409e14307e8f1024e, type: 2}
   m_sharedMaterial: {fileID: 3882789679240245536, guid: c70edee34563413409e14307e8f1024e, type: 2}

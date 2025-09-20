@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Localization.Components;
+using ExplorerGame.Localization;
 
 /// <summary>
 /// ゲームロード時にafterChangeToHisFutureフラグをチェックして
@@ -18,6 +20,13 @@ public class TitleTextLoaderForHim : MonoBehaviour
     [Tooltip("afterChangeToHisFuture=true時のタイトルテキスト")]
     [SerializeField] private string changedTitleText = "「彼」の未来";
 
+    [Header("ローカライズ設定")]
+    [Tooltip("英語での通常時タイトルテキスト")]
+    [SerializeField] private string normalTitleTextEnglish = "Memories of 'Wish'";
+
+    [Tooltip("英語でのafterChangeToHisFuture=true時のタイトルテキスト")]
+    [SerializeField] private string changedTitleTextEnglish = "His Future";
+
     [Header("TitleTextChangerForHim参照")]
     [Tooltip("TitleTextChangerForHimへの参照（オプション）")]
     [SerializeField] private TitleTextChangerForHim titleTextChangerForHim;
@@ -25,6 +34,9 @@ public class TitleTextLoaderForHim : MonoBehaviour
     [Header("デバッグ設定")]
     [SerializeField] private bool debugMode = false;
     [SerializeField] private bool forceChangedTitle = false; // テスト用の強制変更
+
+    // コンポーネント参照
+    private LocalizeStringEvent localizeStringEvent;
 
     private void Awake()
     {
@@ -44,6 +56,9 @@ public class TitleTextLoaderForHim : MonoBehaviour
             enabled = false;
             return;
         }
+
+        // Localize String Eventコンポーネントの取得
+        localizeStringEvent = titleText.GetComponent<LocalizeStringEvent>();
 
         // TitleTextChangerForHimの自動検索
         if (titleTextChangerForHim == null)
@@ -76,6 +91,30 @@ public class TitleTextLoaderForHim : MonoBehaviour
     {
         // 少し遅延させて確実にGameSaveManagerが初期化されてから実行
         StartCoroutine(LoadAndApplyTitleDelayed());
+
+        // 言語変更イベントの購読
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged += OnLanguageChanged;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // イベントの購読解除
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged -= OnLanguageChanged;
+        }
+    }
+
+    /// <summary>
+    /// 言語変更時のコールバック
+    /// </summary>
+    /// <param name="newLocale">新しいロケール</param>
+    private void OnLanguageChanged(UnityEngine.Localization.Locale newLocale)
+    {
+        LoadAndApplyTitle();
     }
 
     /// <summary>
@@ -94,6 +133,12 @@ public class TitleTextLoaderForHim : MonoBehaviour
     /// </summary>
     private void LoadAndApplyTitle()
     {
+        // Localize String Eventを無効化（localizeStringEventコンポーネントがアタッチされている　かつ、タイトル変更時）
+        if (localizeStringEvent != null)
+        {
+            localizeStringEvent.enabled = false;
+        }
+
         // afterChangeToLastフラグがtrueの場合は処理をスキップ
         if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
         {
@@ -126,12 +171,36 @@ public class TitleTextLoaderForHim : MonoBehaviour
             }
         }
 
+        // 現在の言語設定を取得
+        string currentLanguageCode = GetCurrentLanguageCode();
+        bool isEnglish = currentLanguageCode == "en";
+
         // タイトルテキストを設定
         if (shouldChangeTitle)
         {
-            titleText.text = changedTitleText;
-            if (debugMode) Debug.Log($"TitleTextLoaderForHim: タイトルを「{changedTitleText}」に変更しました");
+            titleText.text = isEnglish ? changedTitleTextEnglish : changedTitleText;
+            if (debugMode) Debug.Log($"TitleTextLoaderForHim: タイトルを「{titleText.text}」に変更しました");
         }
+        else
+        {
+            // 通常時のテキストを設定（通常はTitleTextLoaderが管理するため基本的にここは実行されない）
+            titleText.text = isEnglish ? normalTitleTextEnglish : normalTitleText;
+            if (debugMode) Debug.Log($"TitleTextLoaderForHim: 通常タイトル「{titleText.text}」を維持");
+        }
+    }
+
+    /// <summary>
+    /// 現在の言語コードを取得
+    /// </summary>
+    private string GetCurrentLanguageCode()
+    {
+        if (LocalizationManager.Instance != null)
+        {
+            return LocalizationManager.Instance.GetCurrentLanguageCode();
+        }
+
+        // LocalizationManagerが存在しない場合は日本語をデフォルトとする
+        return "ja";
     }
 
     /// <summary>

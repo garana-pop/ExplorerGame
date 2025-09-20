@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Localization.Components;
+using ExplorerGame.Localization;
 
 /// <summary>
 /// ゲームロード時にafterChangeToHerMemory、afterChangeToHisFuture、afterChangeToLastフラグをチェックして
@@ -15,6 +17,10 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
     [Tooltip("すべてのフラグがtrue時のタイトルテキスト")]
     [SerializeField] private string finalTitleText = "Thanks for playing the game.";
 
+    [Header("ローカライズ設定")]
+    [Tooltip("英語での最終タイトルテキスト")]
+    [SerializeField] private string finalTitleTextEnglish = "Thanks for playing the game.";
+
     [Header("TitleTextChangerForMonologueScene参照")]
     [Tooltip("TitleTextChangerForMonologueSceneへの参照（オプション）")]
     [SerializeField] private TitleTextChangerForMonologueScene titleTextChangerForMonologue;
@@ -22,6 +28,9 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
     [Header("デバッグ設定")]
     [SerializeField] private bool debugMode = false;
     [SerializeField] private bool forceAllFlagsTrue = false; // テスト用の強制変更
+
+    // コンポーネント参照
+    private LocalizeStringEvent localizeStringEvent;
 
     private void Awake()
     {
@@ -41,6 +50,9 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
             enabled = false;
             return;
         }
+
+        // Localize String Eventコンポーネントの取得
+        localizeStringEvent = titleText.GetComponent<LocalizeStringEvent>();
 
         // TitleTextChangerForMonologueSceneの自動検索
         if (titleTextChangerForMonologue == null)
@@ -74,6 +86,30 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
     {
         // 少し遅延させて確実にGameSaveManagerが初期化されてから実行
         StartCoroutine(LoadAndApplyTitleDelayed());
+
+        // 言語変更イベントの購読
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged += OnLanguageChanged;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // イベントの購読解除
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged -= OnLanguageChanged;
+        }
+    }
+
+    /// <summary>
+    /// 言語変更時のコールバック
+    /// </summary>
+    /// <param name="newLocale">新しいロケール</param>
+    private void OnLanguageChanged(UnityEngine.Localization.Locale newLocale)
+    {
+        LoadAndApplyTitle();
     }
 
     /// <summary>
@@ -93,6 +129,12 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
     /// </summary>
     private void LoadAndApplyTitle()
     {
+        // Localize String Eventを無効化（手動制御のため）
+        if (localizeStringEvent != null)
+        {
+            localizeStringEvent.enabled = false;
+        }
+
         bool shouldChangeFinal = false;
 
         // デバッグモードでの強制変更
@@ -124,14 +166,38 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
         // すべてのフラグがtrueの場合のみタイトルを変更 ※それ以外は何もしない
         if (shouldChangeFinal)
         {
-            string textToApply = finalTitleText;
+            // 現在の言語設定を取得
+            string currentLanguageCode = GetCurrentLanguageCode();
+            bool isEnglish = currentLanguageCode == "en";
+            //bool isChinese = currentLanguageCode == "zh"; 中国語対応は不要のためコメントアウト
+
+            // 言語コードが英語の場合は、英語テキストを適用
+            string textToApply = isEnglish ? finalTitleTextEnglish : finalTitleText;
+            //string textToApply = isChinese ? finalTitleTextChinese : finalTitleText; 中国語対応は不要のためコメントアウト
+
             titleText.text = textToApply;
+
 
             if (debugMode)
             {
-                Debug.Log($"TitleTextLoaderForMonologueScene: タイトルを '{finalTitleText}' に設定しました");
+                Debug.Log("TitleTextLoaderForMonologueScene: 現在の言語コード" + currentLanguageCode);
+                Debug.Log($"TitleTextLoaderForMonologueScene: タイトルを '{textToApply}' に設定しました");
             }
         }
+    }
+
+    /// <summary>
+    /// 現在の言語コードを取得
+    /// </summary>
+    private string GetCurrentLanguageCode()
+    {
+        if (LocalizationManager.Instance != null)
+        {
+            return LocalizationManager.Instance.GetCurrentLanguageCode();
+        }
+
+        // LocalizationManagerが存在しない場合は日本語をデフォルトとする
+        return "ja";
     }
 
     /// <summary>
