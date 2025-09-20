@@ -1,6 +1,7 @@
 using ExplorerGame.Localization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 
 /// <summary>
 /// ゲームロード時にafterChangeToHerMemoryフラグに基づいてタイトルテキストを設定するクラス
@@ -33,8 +34,12 @@ public class TitleTextLoader : MonoBehaviour
     [SerializeField] private bool debugMode = false;
     [SerializeField] private bool forceChangedTitle = false; // テスト用の強制変更
 
-    // LocalizationManagerへの参照
+    // コンポーネント参照
     private LocalizationManager localizationManager;
+    private LocalizeStringEvent localizeStringEvent;
+
+    // 現在の状態を記録
+    private bool isUsingChangedTitle = false;
 
     private void Awake()
     {
@@ -54,6 +59,9 @@ public class TitleTextLoader : MonoBehaviour
             enabled = false;
             return;
         }
+
+        // Localize String Eventコンポーネントの取得
+        localizeStringEvent = titleText.GetComponent<LocalizeStringEvent>();
 
         // TitleTextChangerの自動検索
         if (titleTextChanger == null)
@@ -182,49 +190,62 @@ public class TitleTextLoader : MonoBehaviour
             return;
         }
 
-        // 現在の言語を確認
-        bool isEnglish = false;
-        if (localizationManager != null)
-        {
-            string currentLanguage = localizationManager.GetCurrentLanguageCode();
-            isEnglish = (currentLanguage == "en");
+        // 状態を記録
+        isUsingChangedTitle = useChangedTitle;
 
-            Debug.Log($"TitleTextLoader: 現在の言語 = {currentLanguage}");
-        }
-
-        // 言語に応じてテキストを選択
-        string targetText;
-        if (isEnglish)
+        // Localize String Eventコンポーネントの制御
+        if (useChangedTitle && localizeStringEvent != null)
         {
-            // 英語の場合
-            targetText = useChangedTitle ? changedTitleTextEnglish : normalTitleTextEnglish;
-        }
-        else
-        {
-            // 日本語の場合
-            targetText = useChangedTitle ? changedTitleText : normalTitleText;
-        }
-
-        // テキストが空でないことを確認
-        if (string.IsNullOrEmpty(targetText))
-        {
-            Debug.LogWarning($"TitleTextLoader: 設定するテキストが空です (useChangedTitle: {useChangedTitle}, isEnglish: {isEnglish})");
-            // フォールバック
-            if (isEnglish)
+            // afterChangeToHerMemory = true の場合、Localize String Eventを無効化
+            localizeStringEvent.enabled = false;
+            if (debugMode)
             {
-                targetText = useChangedTitle ? "Memories of 'Her'" : "Memories of 'Wish'";
-            }
-            else
-            {
-                targetText = useChangedTitle ? "「彼女」の記憶" : "「願い」の記憶";
+                Debug.Log("TitleTextLoader: Localize String Eventを無効化しました");
             }
         }
-
-        titleText.text = targetText;
-
-        if (debugMode)
+        else if (!useChangedTitle && localizeStringEvent != null)
         {
-            Debug.Log($"TitleTextLoader: タイトルテキストを設定しました: '{targetText}' (変更後: {useChangedTitle}, 英語: {isEnglish})");
+            // 通常タイトルの場合は有効化（ローカライズシステムに任せる）
+            localizeStringEvent.enabled = true;
+            if (debugMode)
+            {
+                Debug.Log("TitleTextLoader: Localize String Eventを有効化しました");
+            }
+            return; // Localize String Eventに処理を任せる
+        }
+
+        // 手動でテキストを設定（afterChangeToHerMemory = true の場合のみ）
+        if (useChangedTitle)
+        {
+            // 現在の言語を確認
+            bool isEnglish = false;
+            if (localizationManager != null)
+            {
+                string currentLanguage = localizationManager.GetCurrentLanguageCode();
+                isEnglish = (currentLanguage == "en");
+                if (debugMode)
+                {
+                    Debug.Log($"TitleTextLoader: 現在の言語 = {currentLanguage}");
+                }
+            }
+
+            // 言語に応じてテキストを選択
+            string targetText = isEnglish ? changedTitleTextEnglish : changedTitleText;
+
+            // テキストが空でないことを確認
+            if (string.IsNullOrEmpty(targetText))
+            {
+                Debug.LogWarning($"TitleTextLoader: 設定するテキストが空です (isEnglish: {isEnglish})");
+                // フォールバック
+                targetText = isEnglish ? "Memories of 'Her'" : "「彼女」の記憶";
+            }
+
+            titleText.text = targetText;
+
+            if (debugMode)
+            {
+                Debug.Log($"TitleTextLoader: タイトルテキストを設定しました: '{targetText}' (変更後: {useChangedTitle}, 英語: {isEnglish})");
+            }
         }
     }
 
@@ -263,11 +284,14 @@ public class TitleTextLoader : MonoBehaviour
     {
         bool gameSaveFlag = GameSaveManager.Instance?.GetAfterChangeToHerMemoryFlag() ?? false;
         bool titleChangerFlag = titleTextChanger?.GetAfterChangeToHerMemoryFlag() ?? false;
+        bool localizeEnabled = localizeStringEvent?.enabled ?? false;
 
         Debug.Log($"=== TitleTextLoader フラグ状態 ===");
         Debug.Log($"GameSaveManager: {gameSaveFlag}");
         Debug.Log($"TitleTextChanger: {titleChangerFlag}");
+        Debug.Log($"LocalizeStringEvent有効: {localizeEnabled}");
         Debug.Log($"現在のタイトル: '{titleText?.text}'");
+        Debug.Log($"変更後タイトル使用中: {isUsingChangedTitle}");
         Debug.Log($"==============================");
     }
 
