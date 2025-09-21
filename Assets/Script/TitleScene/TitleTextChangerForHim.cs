@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 
-
 /// <summary>
 /// HerMainSceneから遷移してきた際にタイトルを「彼」の未来に変更するコンポーネント
 /// タイトルテキストの表示管理はTitleTextLoaderForHimが行う
@@ -16,8 +15,13 @@ public class TitleTextChangerForHim : MonoBehaviour
     [Tooltip("変更対象のTextMeshProコンポーネント")]
     [SerializeField] private TMP_Text titleText;
 
-    [Tooltip("変更後のテキスト")]
-    [SerializeField] private string newTitleText = "「彼」の未来";
+    [Header("日本語テキスト設定")]
+    [Tooltip("変更後のテキスト（日本語）")]
+    [SerializeField] private string newTitleText_Japanese = "「彼」の未来";
+
+    [Header("英語テキスト設定")]
+    [Tooltip("変更後のテキスト（英語）")]
+    [SerializeField] private string newTitleText_English = "\"His\" Future";
 
     [Header("アニメーション設定")]
     [Tooltip("1文字変更にかかる時間（秒）")]
@@ -47,15 +51,14 @@ public class TitleTextChangerForHim : MonoBehaviour
     [SerializeField] private bool debugMode = false;
     [SerializeField] private bool forceExecute = false;
 
-    // コンポーネント参照
-    [SerializeField] private LocalizationManager localizationManager;
-
+    // ランタイムで使用する変数（言語設定に応じて切り替え）
+    private string newTitleText;
     private string currentText;
     private bool isChanging = false;
 
     // 静的変数による状態管理
     private static bool shouldExecuteOnNextLoad = false;
-    private static bool titleChangedToHisFuture = false; // 完了フラグの代替
+    private static bool titleChangedToHisFuture = false;
     private bool soundEnabled = true;
 
     private readonly string glitchChars = "!#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`{|}~";
@@ -80,53 +83,110 @@ public class TitleTextChangerForHim : MonoBehaviour
 
     private void Start()
     {
+        // LocalizationManagerから現在の言語設定を取得して適用
+        UpdateTextsByLanguage();
+
+        // 言語変更イベントに登録
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged += OnLanguageChanged;
+        }
+
         currentText = titleText.text;
 
-        string currentLanguage = LoadSaveLanguageCode();
-        Debug.Log("TitleTextChangerForHim: 現在の言語コード " + currentLanguage);
-
-        if (ShouldExecuteTitleChange() && currentLanguage == "ja")
+        if (ShouldExecuteTitleChange())
         {
-            if (debugMode) Debug.Log("TitleTextChangerForHim: タイトル変更を開始します（言語コードが" + currentLanguage + "のため）");
+            if (debugMode) Debug.Log("TitleTextChangerForHim: タイトル変更を開始します");
             StartCoroutine(StartTitleChange());
         }
-        else
+    }
+
+    private void OnDestroy()
+    {
+        // イベントの登録解除
+        if (LocalizationManager.Instance != null)
         {
-            if (debugMode) Debug.Log("TitleTextChangerForHim: 現在の言語コード：" + currentLanguage + "　日本語ではないためタイトル変更をスキップ");
+            LocalizationManager.Instance.OnLanguageChanged -= OnLanguageChanged;
         }
     }
 
     /// <summary>
-    /// 保存された言語設定を読み込み、言語コードを返す
+    /// 言語変更時のコールバック
     /// </summary>
-    private string LoadSaveLanguageCode()
+    private void OnLanguageChanged(UnityEngine.Localization.Locale newLocale)
     {
-        // GameSaveManagerが存在する場合、セーブデータから言語を読み込み
-        var saveManager = FindObjectOfType<GameSaveManager>();
-        var saveData = saveManager != null ? saveManager.GetCurrentSaveData() : null;
-        if (saveManager != null && saveData != null)
+        UpdateTextsByLanguage();
+
+        // 変更中でない場合、現在の表示を更新
+        if (!isChanging)
         {
-            string savedLanguageCode = saveData.languageCode;
-            if (!string.IsNullOrEmpty(savedLanguageCode))
+            // Localize String Eventコンポーネントを無効化
+            DisableLocalizeStringEvent();
+
+            // 適切なテキストを表示（変更済みの場合）
+            GameSaveManager saveManager = GameSaveManager.Instance;
+            if (saveManager != null && saveManager.GetAfterChangeToHisFutureFlag())
             {
-                Debug.Log($"TitleTextChangerForHim: セーブデータから言語 '{savedLanguageCode}' を読み込みました");
-                return savedLanguageCode;
+                titleText.text = newTitleText;
             }
         }
-        // 返す値がない場合は空文字列を返す
-        return string.Empty;
+    }
+
+    /// <summary>
+    /// 現在の言語設定に基づいてテキストを更新
+    /// </summary>
+    private void UpdateTextsByLanguage()
+    {
+        if (LocalizationManager.Instance == null)
+        {
+            // LocalizationManagerが存在しない場合は日本語をデフォルトとする
+            newTitleText = newTitleText_Japanese;
+            if (debugMode) Debug.LogWarning("TitleTextChangerForHim: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+            return;
+        }
+
+        // 現在の言語コードを取得
+        string currentLanguageCode = LocalizationManager.Instance.GetCurrentLanguageCode();
+
+        // 言語コードに応じてテキストを設定
+        if (currentLanguageCode == "en")
+        {
+            newTitleText = newTitleText_English;
+            if (debugMode) Debug.Log("TitleTextChangerForHim: 英語テキストを適用");
+        }
+        else
+        {
+            newTitleText = newTitleText_Japanese;
+            if (debugMode) Debug.Log("TitleTextChangerForHim: 日本語テキストを適用");
+        }
+    }
+
+    /// <summary>
+    /// Localize String Eventコンポーネントを無効化
+    /// </summary>
+    private void DisableLocalizeStringEvent()
+    {
+        if (titleText != null)
+        {
+            LocalizeStringEvent localizeEvent = titleText.GetComponent<LocalizeStringEvent>();
+            if (localizeEvent != null)
+            {
+                localizeEvent.enabled = false;
+                if (debugMode) Debug.Log("TitleTextChangerForHim: LocalizeStringEventを無効化しました");
+            }
+        }
     }
 
     private bool ShouldExecuteTitleChange()
     {
-        // MonologueSceneからの遷移フラグがtrueの場合は実行しない（新規追加）
+        // MonologueSceneからの遷移フラグがtrueの場合は実行しない
         if (IsFromMonologueScene())
         {
             if (debugMode) Debug.Log("TitleTextChangerForHim: MonologueSceneからの遷移のため、処理をスキップします");
             return false;
         }
 
-        // afterChangeToLastフラグがtrueの場合は実行しない（追加）
+        // afterChangeToLastフラグがtrueの場合は実行しない
         GameSaveManager saveManager = GameSaveManager.Instance;
         if (saveManager != null && saveManager.GetAfterChangeToLastFlag())
         {
@@ -149,11 +209,11 @@ public class TitleTextChangerForHim : MonoBehaviour
         if (shouldExecuteOnNextLoad)
         {
             shouldExecuteOnNextLoad = false;
-            if (debugMode) Debug.Log("TitleTextChangerForHim: HerMainSceneからの遷移を検出");
+            if (debugMode) Debug.Log("TitleTextChangerForHim: shouldExecuteOnNextLoadフラグを検出");
             return true;
         }
 
-        // HerMainSceneで特定の状態をクリアした場合のフラグチェック
+        // HerMainSceneクリアした場合のフラグチェック
         GameSaveManager saveManager2 = GameSaveManager.Instance;
         if (saveManager2 != null && saveManager2.GetAfterChangeToHisFutureFlag())
         {
@@ -183,6 +243,9 @@ public class TitleTextChangerForHim : MonoBehaviour
 
     private IEnumerator StartTitleChange()
     {
+        // Localize String Eventコンポーネントを無効化
+        DisableLocalizeStringEvent();
+
         // 変更開始時にボタンを無効化
         SetMenuButtonsInteractable(false);
 
@@ -217,131 +280,86 @@ public class TitleTextChangerForHim : MonoBehaviour
         }
 
         isChanging = false;
+        titleChangedToHisFuture = true;
 
-        // SoundEffectManagerを使用した完了音再生
-        if (soundEnabled && SoundEffectManager.Instance != null)
-        {
-            SoundEffectManager.Instance.PlayCompletionSound();
-        }
-
+        // 変更完了フラグを設定
         if (setCompletionFlag)
         {
-            titleChangedToHisFuture = true;
-
             GameSaveManager saveManager = GameSaveManager.Instance;
             if (saveManager != null)
             {
                 saveManager.SetAfterChangeToHisFutureFlag(true);
                 saveManager.SaveGame();
+                if (debugMode) Debug.Log("TitleTextChangerForHim: タイトル変更フラグを保存しました");
             }
-
-            if (debugMode) Debug.Log("TitleTextChangerForHim: 完了フラグを設定しました");
         }
 
-        // 変更完了時にボタンを有効化
+        // ボタンを再度有効化
         SetMenuButtonsInteractable(true);
-
-    }
-
-    /// <summary>
-    /// MenuContainer内のボタンの有効/無効を切り替える
-    /// </summary>
-    private void SetMenuButtonsInteractable(bool interactable)
-    {
-        if (!disableButtonsDuringChange) return;
-
-        // MenuContainerの取得
-        if (menuContainer == null)
-        {
-            menuContainer = GameObject.Find("MenuContainer");
-        }
-
-        if (menuContainer == null)
-        {
-            if (debugMode) Debug.LogWarning($"{GetType().Name}: MenuContainerが見つかりません");
-            return;
-        }
-
-        // 全てのButtonコンポーネントを取得して制御
-        Button[] buttons = menuContainer.GetComponentsInChildren<Button>();
-        foreach (Button button in buttons)
-        {
-            button.interactable = interactable;
-        }
-
-        if (debugMode)
-        {
-            Debug.Log($"{GetType().Name}: MenuContainerのボタンを{(interactable ? "有効" : "無効")}化しました");
-        }
     }
 
     private IEnumerator ChangeCharacter(int index)
     {
-        char[] chars = titleText.text.ToCharArray();
         if (index < newTitleText.Length)
         {
-            chars[index] = newTitleText[index];
-            titleText.text = new string(chars);
+            char[] textArray = titleText.text.ToCharArray();
+            if (index < textArray.Length)
+            {
+                textArray[index] = newTitleText[index];
+                titleText.text = new string(textArray);
+            }
         }
         yield return null;
     }
 
     private IEnumerator ChangeCharacterWithGlitch(int index)
     {
-        char[] chars = titleText.text.ToCharArray();
-        char targetChar = index < newTitleText.Length ? newTitleText[index] : chars[index];
-
-        float glitchTimer = 0f;
-
-        while (glitchTimer < glitchDuration)
+        if (index < newTitleText.Length && index < currentText.Length)
         {
-            chars[index] = glitchChars[Random.Range(0, glitchChars.Length)];
-            titleText.text = new string(chars);
+            char targetChar = newTitleText[index];
 
-            glitchTimer += Time.deltaTime;
-            yield return null;
-        }
+            float elapsed = 0;
+            while (elapsed < glitchDuration)
+            {
+                char[] textArray = titleText.text.ToCharArray();
+                textArray[index] = glitchChars[Random.Range(0, glitchChars.Length)];
+                titleText.text = new string(textArray);
 
-        chars[index] = targetChar;
-        titleText.text = new string(chars);
-    }
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
 
-    [ContextMenu("Execute Title Change")]
-    public void ExecuteTitleChange()
-    {
-        if (!isChanging)
-        {
-            StartCoroutine(StartTitleChange());
+            char[] finalArray = titleText.text.ToCharArray();
+            finalArray[index] = targetChar;
+            titleText.text = new string(finalArray);
         }
     }
 
-    [ContextMenu("Reset Completion Flag")]
-    public void ResetCompletionFlag()
+    private void SetMenuButtonsInteractable(bool interactable)
     {
-        titleChangedToHisFuture = false;
+        if (!disableButtonsDuringChange) return;
 
-        GameSaveManager saveManager = GameSaveManager.Instance;
-        if (saveManager != null)
+        if (menuContainer == null)
         {
-            saveManager.SetAfterChangeToHisFutureFlag(false);
-            saveManager.SaveGame();
+            menuContainer = GameObject.Find("MenuContainer");
         }
 
-        if (debugMode) Debug.Log("TitleTextChangerForHim: 完了フラグをリセットしました");
+        if (menuContainer != null)
+        {
+            Button[] buttons = menuContainer.GetComponentsInChildren<Button>();
+            foreach (Button button in buttons)
+            {
+                button.interactable = interactable;
+            }
+
+            if (debugMode)
+            {
+                string state = interactable ? "有効" : "無効";
+                Debug.Log($"TitleTextChangerForHim: MenuContainerのボタンを{state}にしました");
+            }
+        }
     }
 
-    /// <summary>
-    /// 完了状態を取得（TitleTextLoaderForHimから参照可能）
-    /// </summary>
-    public static bool IsTitleChanged()
-    {
-        return titleChangedToHisFuture;
-    }
-
-    /// <summary>
-    /// 効果音の有効/無効を設定
-    /// </summary>
-    /// <param name="enabled">有効にする場合はtrue</param>
     public void SetSoundEnabled(bool enabled)
     {
         soundEnabled = enabled;

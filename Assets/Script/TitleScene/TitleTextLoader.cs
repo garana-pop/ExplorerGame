@@ -282,9 +282,24 @@ public class TitleTextLoader : MonoBehaviour
     [ContextMenu("Debug: Check Flag Status")]
     public void CheckFlagStatus()
     {
-        bool gameSaveFlag = GameSaveManager.Instance?.GetAfterChangeToHerMemoryFlag() ?? false;
-        bool titleChangerFlag = titleTextChanger?.GetAfterChangeToHerMemoryFlag() ?? false;
-        bool localizeEnabled = localizeStringEvent?.enabled ?? false;
+        bool gameSaveFlag = false;
+        if (GameSaveManager.Instance != null)
+        {
+            gameSaveFlag = GameSaveManager.Instance.GetAfterChangeToHerMemoryFlag();
+        }
+
+        // TitleTextChangerのフラグ取得（HasChangedプロパティを利用）
+        bool titleChangerFlag = false;
+        if (titleTextChanger != null)
+        {
+            titleChangerFlag = titleTextChanger.HasChanged;
+        }
+
+        bool localizeEnabled = false;
+        if (localizeStringEvent != null)
+        {
+            localizeEnabled = localizeStringEvent.enabled;
+        }
 
         Debug.Log($"=== TitleTextLoader フラグ状態 ===");
         Debug.Log($"GameSaveManager: {gameSaveFlag}");

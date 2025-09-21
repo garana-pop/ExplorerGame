@@ -181,12 +181,6 @@ public class TitleTextLoaderForHim : MonoBehaviour
             titleText.text = isEnglish ? changedTitleTextEnglish : changedTitleText;
             if (debugMode) Debug.Log($"TitleTextLoaderForHim: タイトルを「{titleText.text}」に変更しました");
         }
-        else
-        {
-            // 通常時のテキストを設定（通常はTitleTextLoaderが管理するため基本的にここは実行されない）
-            titleText.text = isEnglish ? normalTitleTextEnglish : normalTitleText;
-            if (debugMode) Debug.Log($"TitleTextLoaderForHim: 通常タイトル「{titleText.text}」を維持");
-        }
     }
 
     /// <summary>
