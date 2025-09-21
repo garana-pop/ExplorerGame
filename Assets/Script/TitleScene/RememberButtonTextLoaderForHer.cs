@@ -3,6 +3,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using ExplorerGame.Localization;
+using UnityEngine.Localization.Components;
 
 /// <summary>
 /// 思い出すボタンのテキスト表示を管理するクラス
@@ -13,6 +15,13 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
     [Header("テキスト設定")]
     [Tooltip("表示対象のTextMeshProコンポーネント")]
     [SerializeField] private TMP_Text buttonText;
+
+    [Header("ローカライズ設定")]
+    [Tooltip("英語版の通常時のボタンテキスト")]
+    [SerializeField] private string normalButtonTextEnglish = "Remember";
+
+    [Tooltip("英語版の変更後のボタンテキスト")]
+    [SerializeField] private string changedButtonTextEnglish = "Accept";
 
     [Tooltip("通常時のボタンテキスト")]
     [SerializeField] private string normalButtonText = "思い出す";
@@ -27,6 +36,9 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
     [Header("デバッグ設定")]
     [SerializeField] private bool debugMode = false;
     [SerializeField] private bool forceChangedText = false; // テスト用の強制変更
+
+    // LocalizeStringEventコンポーネントの参照
+    private LocalizeStringEvent localizeStringEvent;
 
     private void Awake()
     {
@@ -74,12 +86,42 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
                 }
             }
         }
+
+        // Localize String Eventコンポーネントの取得を追加
+        if (buttonText != null)
+        {
+            localizeStringEvent = buttonText.GetComponent<LocalizeStringEvent>();
+        }
     }
 
     private void Start()
     {
         // 少し遅延させて確実に状態を確認
         StartCoroutine(LoadAndApplyTextDelayed());
+
+        // 言語変更イベントへの登録
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged += OnLanguageChanged;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // 言語変更イベントの登録解除
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged -= OnLanguageChanged;
+        }
+    }
+
+    // 言語変更時のコールバックメソッドを追加
+    /// <summary>
+    /// 言語変更時のコールバック
+    /// </summary>
+    private void OnLanguageChanged(UnityEngine.Localization.Locale newLocale)
+    {
+        LoadAndApplyText();
     }
 
     /// <summary>
@@ -162,16 +204,38 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
             }
         }
 
-        // ボタンテキストを設定 changedButtonText=決意する　normalButtonText=思い出す
-        string textToApply = shouldChangeText ? changedButtonText : normalButtonText;
+        // 現在の言語を取得
+        string currentLanguageCode = "ja"; // デフォルト
+        if (LocalizationManager.Instance != null)
+        {
+            currentLanguageCode = LocalizationManager.Instance.GetCurrentLanguageCode();
+        }
 
+        // 言語に応じてテキストを選択
+        string textToApply;
+        if (currentLanguageCode == "en")
+        {
+            textToApply = shouldChangeText ? changedButtonTextEnglish : normalButtonTextEnglish;
+        }
+        else
+        {
+            textToApply = shouldChangeText ? changedButtonText : normalButtonText;
+        }
+
+        // Localize String Eventコンポーネントを無効化
+        if (localizeStringEvent != null)
+        {
+            localizeStringEvent.enabled = false;
+            if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: LocalizeStringEventを無効化");
+        }
+
+        // ボタンテキストを設定
         if (buttonText != null)
         {
             buttonText.text = textToApply;
-
             if (debugMode)
             {
-                Debug.Log($"RememberButtonTextLoaderForHer: ボタンテキストを「{textToApply}」に設定しました");
+                Debug.Log($"RememberButtonTextLoaderForHer: ボタンテキストを「{textToApply}」に設定 (言語: {currentLanguageCode})");
             }
         }
 
@@ -190,12 +254,25 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
             }
         }
 
-        // MonologueScene→TitleSceneに遷移済みの場合：思い出すボタンを「整理する」に変更し、OrganizeMainSceneに遷移するように設定
+        // MonologueScene→TitleSceneに遷移済みの場合：思い出すボタンを「整理する」or"Organize"に変更し、OrganizeMainSceneに遷移するように設定
         if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
         {
-            if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: 思い出すボタンを「整理する」に変更");
-            //思い出すボタンを「整理する」に変更
-            buttonText.text = "整理する";
+            //言語コードに応じてテキストを設定
+            if (currentLanguageCode == "ja")
+            {
+                buttonText.text = "整理する";
+                if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: ボタンテキストを「整理する」に設定");
+            }
+            else if (currentLanguageCode == "en")
+            {
+                buttonText.text = "Organize";
+                if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: ボタンテキストを「Organize」に設定");
+            }
+            else
+            {
+                buttonText.text = "整理する"; // デフォルトは日本語
+                if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: 言語コード取得失敗のため、ボタンテキストをデフォルトの「整理する」に設定");
+            }
 
             Button button = buttonText.GetComponentInParent<Button>();
             if (button != null)

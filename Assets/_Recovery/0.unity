@@ -2898,7 +2898,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 1188788104}
-  newTitleText: "\u300C\u5F7C\u300D\u306E\u672A\u6765"
+  newTitleText_Japanese: "\u300C\u5F7C\u300D\u306E\u672A\u6765"
+  newTitleText_English: '"His" Future'
   changeInterval: 0.4
   startDelay: 2
   useGlitchEffect: 1
@@ -2908,7 +2909,6 @@ MonoBehaviour:
   setCompletionFlag: 1
   debugMode: 1
   forceExecute: 0
-  localizationManager: {fileID: 277003920}
 --- !u!114 &382864325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2922,6 +2922,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 2089768332}
+  newButtonTextEnglish: Accept
+  reverseTargetTextEnglish: Remember
   targetButton: {fileID: 0}
   newButtonText: "\u6C7A\u610F\u3059\u308B"
   debugMode: 0
@@ -7097,25 +7099,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 1188788104}
-  newTitleText: "\u300C\u5F7C\u5973\u300D\u306E\u8A18\u61B6"
-  originalTitleText: "\u300C\u9858\u3044\u300D\u306E\u8A18\u61B6"
+  originalTitleText_Japanese: "\u300C\u9858\u3044\u300D\u306E\u8A18\u61B6"
+  newTitleText_Japanese: "\u300C\u5F7C\u5973\u300D\u306E\u8A18\u61B6"
+  originalTitleText_English: Memory of "Wishes"
+  newTitleText_English: Memory of "Her"
   changeInterval: 0.4
   startDelay: 2
   useGlitchEffect: 1
   glitchDuration: 0.15
-  changeSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
-  completeSound: {fileID: 0}
-  checkPreviousScene: 1
-  previousSceneName: DaughterRequest
-  debugMode: 0
-  forceExecute: 0
-  onlySetFlagWhenChanged: 0
-  manualResetFlag: 0
-  requireSaveDataForChange: 0
-  autoExecuteOnTransition: 1
   disableButtonsDuringChange: 1
   menuContainer: {fileID: 722676647}
   transitionFlagDuration: 4
+  debugMode: 1
+  forceExecute: 0
 --- !u!114 &1188788107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7169,6 +7165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonText: {fileID: 2089768332}
+  normalButtonTextEnglish: Remember
+  changedButtonTextEnglish: Accept
   normalButtonText: "\u601D\u3044\u51FA\u3059"
   changedButtonText: "\u6C7A\u610F\u3059\u308B"
   buttonTextChanger: {fileID: 382864325}
@@ -7205,15 +7203,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 1188788104}
-  newTitleText: Thanks for playing the game.
+  newTitleText_Japanese: Thanks for playing the game.
+  newTitleText_English: Thanks for playing the game.
   changeInterval: 0.1
   startDelay: 2
   useGlitchEffect: 1
   glitchDuration: 0.15
   disableButtonsDuringChange: 1
   menuContainer: {fileID: 0}
-  setCompletionFlag: 1
-  debugMode: 0
+  debugMode: 1
   forceExecute: 0
 --- !u!114 &1188788112
 MonoBehaviour:

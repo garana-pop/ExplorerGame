@@ -4,6 +4,8 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System;
+using ExplorerGame.Localization;
+using UnityEngine.Localization.Components;
 
 
 /// <summary>
@@ -15,6 +17,13 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     [Header("テキスト設定")]
     [Tooltip("変更対象のTextMeshProコンポーネント")]
     [SerializeField] private TMP_Text buttonText;
+
+    [Header("ローカライズ設定")]
+    [Tooltip("英語版の変更後のボタンテキスト")]
+    [SerializeField] private string newButtonTextEnglish = "Accept";
+
+    [Tooltip("英語版の逆変換時のターゲットテキスト")]
+    [SerializeField] private string reverseTargetTextEnglish = "Organize";
 
     [Header("ボタン設定")]
     [SerializeField] private GameObject targetButton;
@@ -31,7 +40,7 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
 
     [Header("逆変換設定")]
     [Tooltip("逆変換時のターゲットテキスト")]
-    [SerializeField] private string reverseTargetText = "思い出す";
+    [SerializeField] private string reverseTargetText = "整理する";
 
     [Tooltip("シーン遷移時のフェード時間（秒）")]
     [SerializeField] private float transitionDelay = 0.5f;
@@ -85,6 +94,10 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     private bool isTextChanged = false;
 
     private bool organizeMainSceneActive = false;
+
+    // LocalizeStringEventコンポーネントの参照
+    private LocalizeStringEvent localizeStringEvent;
+
     public bool OrganizeMainSceneActive
     {
         get => organizeMainSceneActive;
@@ -128,6 +141,12 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
         {
             buttonTextComponent = targetButton.GetComponentInChildren<TextMeshProUGUI>();
         }
+
+        // Localize String Eventコンポーネントの取得
+        if (buttonText != null)
+        {
+            localizeStringEvent = buttonText.GetComponent<LocalizeStringEvent>();
+        }
     }
 
     private void Start()
@@ -140,6 +159,43 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
             StartCoroutine(StartTextChange());
         }
         CheckAndChangeButtonText();
+
+        // 言語変更イベントへの登録
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged += OnLanguageChanged;
+        }
+    }
+
+    // OnDestroyメソッドを追加
+    private void OnDestroy()
+    {
+        // 言語変更イベントの登録解除
+        if (LocalizationManager.Instance != null)
+        {
+            LocalizationManager.Instance.OnLanguageChanged -= OnLanguageChanged;
+        }
+    }
+
+    // 言語変更時のコールバックメソッドを追加
+    /// <summary>
+    /// 言語変更時のコールバック
+    /// </summary>
+    private void OnLanguageChanged(UnityEngine.Localization.Locale newLocale)
+    {
+        // 既にテキスト変更が完了している場合は、言語に応じてテキストを更新
+        if (buttonTextChangedForHer && buttonText != null)
+        {
+            string languageCode = newLocale.Identifier.Code;
+            if (languageCode == "en")
+            {
+                buttonText.text = isReverseMode ? reverseTargetTextEnglish : newButtonTextEnglish;
+            }
+            else
+            {
+                buttonText.text = isReverseMode ? reverseTargetText : newButtonText;
+            }
+        }
     }
 
     /// <summary>
@@ -264,8 +320,15 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
 
         isChanging = true;
 
-        // 変換方向とターゲットテキストを決定
+        // 変換方向と言語コードを判定し、ターゲットテキストを決定
         string targetText = DetermineTargetText();
+
+        // Localize String Eventコンポーネントを無効化
+        if (localizeStringEvent != null)
+        {
+            localizeStringEvent.enabled = false;
+            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: LocalizeStringEventを無効化");
+        }
 
         // 現在のテキストとターゲットテキストの長さを調整
         int maxLength = Mathf.Max(currentText.Length, targetText.Length);
@@ -507,16 +570,34 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     /// </summary>
     private string DetermineTargetText()
     {
+        // 現在の言語を取得
+        string currentLanguageCode = "ja"; // デフォルト
+        if (LocalizationManager.Instance != null)
+        {
+            currentLanguageCode = LocalizationManager.Instance.GetCurrentLanguageCode();
+        }
+
         if (debugMode)
         {
             Debug.Log($"RememberButtonTextChangerForHer: isReverseModeフラグ: {isReverseMode}");
+            Debug.Log($"RememberButtonTextChangerForHer: 現在の言語コード: {currentLanguageCode}");
         }
 
         // フラグベースで判定
-        if (isReverseMode)
+        if (isReverseMode && currentLanguageCode == "ja")
         {
             if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 逆変換モード - ターゲット: " + reverseTargetText);
-            return reverseTargetText; // "思い出す"
+            return reverseTargetText; // "整理する"
+        }
+        else if (isReverseMode && currentLanguageCode == "en")
+        {
+            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 逆変換モード - ターゲット: " + reverseTargetTextEnglish);
+            return reverseTargetTextEnglish; // "Organize"
+        }
+        else if (!isReverseMode && currentLanguageCode == "en")
+        {
+            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 通常変換モード - ターゲット: " + newButtonTextEnglish);
+            return newButtonTextEnglish; // "Accept"
         }
         else
         {
