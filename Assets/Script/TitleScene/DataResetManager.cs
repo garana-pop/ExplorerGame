@@ -1,8 +1,10 @@
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+using ExplorerGame.Localization;
 using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DataResetManager : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class DataResetManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float messageDisplayDuration = 2.0f;
     [SerializeField] private string deletionMessage = "保存されていたデータはすべて削除されました";
+    [SerializeField] private string deletionMessageEnglish = "All saved data has been deleted";
 
     [Header("Text Animation Settings")]
     [Tooltip("文字全体のフェードイン時間（秒）")]
@@ -27,6 +30,19 @@ public class DataResetManager : MonoBehaviour
 
     [Tooltip("文字の最終透明度（0.0～1.0）")]
     [SerializeField] private float endAlpha = 1.0f;
+
+    // LocalizeStringEventコンポーネントの参照
+    private LocalizeStringEvent localizeStringEvent;
+
+
+    private void Awake()
+    {
+        // Localize String Eventコンポーネントの取得を追加
+        if (messageText != null)
+        {
+            localizeStringEvent = messageText.GetComponent<LocalizeStringEvent>();
+        }
+    }
 
     private void Start()
     {
@@ -92,11 +108,31 @@ public class DataResetManager : MonoBehaviour
             yield break;
         }
 
-        // メッセージパネルを表示
-        messagePanel.SetActive(true);
+        // 現在の言語を取得
+        string currentLanguageCode = "ja"; // デフォルト
+        if (LocalizationManager.Instance != null)
+        {
+            currentLanguageCode = LocalizationManager.Instance.GetCurrentLanguageCode();
+        }
+
+        // 言語に応じてメッセージパネルを表示
+        if (currentLanguageCode == "en") // 英語の場合
+        {
+            deletionMessage = deletionMessageEnglish;
+        }
+        else
+        {
+            // デフォルトは日本語
+            deletionMessage = "保存されていたデータはすべて削除されました";
+        }
+
+        Debug.Log($"DataResetManager: 現在の言語コード: {currentLanguageCode}, 表示メッセージ: {deletionMessage}");
 
         // メッセージテキストを設定
         messageText.text = deletionMessage;
+
+        // メッセージパネルを表示
+        messagePanel.SetActive(true);
 
         // 文字全体をフェードインで表示
         yield return StartCoroutine(FadeInText());
