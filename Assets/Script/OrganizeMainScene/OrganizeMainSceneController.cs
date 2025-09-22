@@ -1,3 +1,4 @@
+using ExplorerGame.Localization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,6 +6,7 @@ using TMPro;
 using Unity.Services.CloudSave.Models;
 using Unity.VectorGraphics;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -87,6 +89,9 @@ public class OrganizeMainSceneController : MonoBehaviour
     [Tooltip("ゴミ箱でのファイル削除管理マネージャー")]
     [SerializeField] private TrashBoxDeletionManagement trashBoxDeletionManagement;
 
+    [Tooltip("ゴミ箱のヒントメッセージ表示を管理するクラス")]
+    [SerializeField] private TrashBoxTips TrashBoxTips;
+
     // SerializeFieldを削除し、プライベート変数として定義
     private GameSaveManager saveManager;  // [SerializeField]を削除
 
@@ -104,12 +109,19 @@ public class OrganizeMainSceneController : MonoBehaviour
     [Tooltip("全ファイル削除確認メッセージ")]
     [SerializeField] private string deleteAllMessage = "すべてのファイルを完全に削除しますか？";
 
+    [Header("確認ダイアログ（英語）設定")]
+    [Tooltip("英語の全ファイル削除確認メッセージ")]
+    [SerializeField] private string deleteAllEnglishMessage = "Are you sure you want to permanently delete all files?";
+
     [Tooltip("ダイアログアニメーション時間")]
     [SerializeField] private float dialogAnimationDuration = 0.3f;
 
     [Header("デバッグ設定")]
     [Tooltip("デバッグログを表示するか")]
     [SerializeField] private bool debugMode = false;
+
+    [Tooltip("LocalizationManagerを参照")]
+    [SerializeField] private LocalizationManager localizationManager;
 
     #endregion
 
@@ -138,6 +150,12 @@ public class OrganizeMainSceneController : MonoBehaviour
 
     // 現在の削除ファイル数
     private int deletedFileCount = 0;
+
+    // 現在の言語コード
+    private string currentLanguage = "ja"; // デフォルトは日本語
+
+    // LocalizeStringEventコンポーネントの参照
+    private LocalizeStringEvent localizeStringEvent;
 
     #endregion
 
@@ -182,6 +200,22 @@ public class OrganizeMainSceneController : MonoBehaviour
         // 初期化
         InitializeLists();
         SetupButtonEvents();
+
+        // LocalizationManagerの取得
+        if (localizationManager == null)
+        {
+            localizationManager = LocalizationManager.Instance;
+            if (localizationManager == null && debugMode)
+            {
+                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: LocalizationManagerが見つかりません");
+            }
+        }
+
+        // ゴミ箱オブジェクトのLocalize String Eventコンポーネントの取得を追加
+        if (trashBinButton != null)
+        {
+            localizeStringEvent = trashBinButton.GetComponent<LocalizeStringEvent>();
+        }
     }
 
     /// <summary>
@@ -196,6 +230,20 @@ public class OrganizeMainSceneController : MonoBehaviour
         if (trashBinButton != null)
         {
             trashBinButton.onClick.AddListener(OnTrashBinClicked);
+        }
+
+        // 現在の言語コードを取得
+        if (localizationManager != null)
+        {
+            currentLanguage = localizationManager.GetCurrentLanguageCode();
+            Debug.Log("OrganizeMainSceneController : 現在の言語コード " + currentLanguage);
+        }
+
+        // 言語コードが英語の場合、クリックメッセージを英語テキストに設定
+        if (currentLanguage == "en")
+        {
+            string clickEnglishMessage = "Click the trash bin to delete files.";
+            TrashBoxTips.SetClickMessage(clickEnglishMessage);
         }
     }
 
@@ -683,20 +731,13 @@ public class OrganizeMainSceneController : MonoBehaviour
     {
         if (allFilesDeleted == true)
         {
-            Debug.Log("allFilesDeletedフラグ：" + allFilesDeleted);
+            Debug.Log("OrganizeMainSceneController : allFilesDeletedフラグ " + allFilesDeleted);
             ShowAllFilesDeleteConfirmation();
         }
-
-        ShowMessage("削除したいファイルをドラッグ&ドロップしてください。", 3.0f);
 
         if (soundManager != null)
         {
             soundManager.PlayClickSound();
-        }
-
-        if (debugMode)
-        {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: ゴミ箱がクリックされました");
         }
     }
 
@@ -712,6 +753,12 @@ public class OrganizeMainSceneController : MonoBehaviour
         if (confirmationPanel == null || confirmationText == null)
         {
             return;
+        }
+
+        if (currentLanguage == "en") // 英語の場合
+        {
+            // 全ファイル削除確認ダイアログを英語テキストに切り替え
+            deleteAllMessage = deleteAllEnglishMessage;
         }
 
         isDialogOpen = true;

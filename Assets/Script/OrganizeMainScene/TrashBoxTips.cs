@@ -1,6 +1,7 @@
+using ExplorerGame.Localization;
 using System.Collections;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 /// <summary>
 /// ゴミ箱のヒントメッセージ表示を管理するクラス
@@ -11,7 +12,7 @@ public class TrashBoxTips : MonoBehaviour
     #region インスペクター設定
 
     [Header("メッセージ設定")]
-    [Tooltip("ゴミ箱クリック時のメッセージ")]
+    [Tooltip("ゴミ箱クリック時のメッセージ（デフォルト日本語）")]
     [SerializeField] private string clickMessage = "削除したいファイルをドラッグ&ドロップしてください。";
 
     [Tooltip("メッセージ表示時間（秒）")]
@@ -50,6 +51,9 @@ public class TrashBoxTips : MonoBehaviour
     [Tooltip("スケールアニメーションの終了値")]
     [SerializeField] private float scaleAnimationEnd = 1.0f;
 
+    [Tooltip("LocalizationManagerを参照")]
+    [SerializeField] private LocalizationManager localizationManager;
+
     [Header("デバッグ設定")]
     [Tooltip("デバッグログを表示するか")]
     [SerializeField] private bool debugMode = false;
@@ -83,6 +87,9 @@ public class TrashBoxTips : MonoBehaviour
 
     private bool allFileDeletde_TrashBoxTips = false;
 
+    // 現在の言語コード
+    private string currentLanguage = "ja"; // デフォルトは日本語
+
     #endregion
 
     #region Unity ライフサイクル
@@ -102,6 +109,16 @@ public class TrashBoxTips : MonoBehaviour
         {
             Debug.Log($"{nameof(TrashBoxTips)}: 初期化完了");
         }
+
+        // LocalizationManagerの取得
+        if (localizationManager == null)
+        {
+            localizationManager = LocalizationManager.Instance;
+            if (localizationManager == null && debugMode)
+            {
+                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: LocalizationManagerが見つかりません");
+            }
+        }
     }
 
     /// <summary>
@@ -118,6 +135,21 @@ public class TrashBoxTips : MonoBehaviour
 
         // メッセージパネルを初期状態で非表示に設定
         SetMessagePanelVisible(false);
+
+        // 現在の言語コードを取得
+        if (localizationManager != null)
+        {
+            currentLanguage = localizationManager.GetCurrentLanguageCode();
+            Debug.Log("TrashBoxTips : 現在の言語コード " + currentLanguage);
+        }
+
+        // メッセージを現在の言語に更新（日本語の場合は何もしない）
+        if (currentLanguage == "en")
+        {
+            string clickEnglishMessage = "Click the trash bin to delete files.";
+            SetClickMessage(clickEnglishMessage);
+            Debug.Log("TrashBoxTips : 英語メッセージに更新 " + clickEnglishMessage);
+        }
 
         // TrashBoxDisplayManagerのクリックイベントを監視
         if (displayManager != null)
