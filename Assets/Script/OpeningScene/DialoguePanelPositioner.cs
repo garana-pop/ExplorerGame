@@ -249,10 +249,10 @@ public class DialoguePanelPositioner : MonoBehaviour
         switch (alignment)
         {
             case DialogueAlignment.Left:
-                textAlign = TextAlignmentOptions.Left;
+                textAlign = TextAlignmentOptions.Center;
                 break;
             case DialogueAlignment.Right:
-                textAlign = TextAlignmentOptions.Right;
+                textAlign = TextAlignmentOptions.Center;
                 break;
             default:
                 textAlign = TextAlignmentOptions.Center;

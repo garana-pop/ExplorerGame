@@ -6,6 +6,12 @@ using OpeningScene;
 
 public class DialogueEntryController : MonoBehaviour
 {
+    [Header("サイズ設定")]
+    [SerializeField] private float minWidth = 200f;   // 最小横幅
+    [SerializeField] private float maxWidth = 800f;   // 最大横幅
+    [SerializeField] private float minHeight = 80f;   // 最小高さ
+    [SerializeField] private float padding = 40f;     // パディング
+
     [SerializeField] private TextMeshProUGUI textComponent;
     [SerializeField] private TextMeshProUGUI speakerNameComponent;
     [SerializeField] private Image backgroundImage;
@@ -42,10 +48,12 @@ public class DialogueEntryController : MonoBehaviour
             if (contentSizeFitter == null)
             {
                 contentSizeFitter = gameObject.AddComponent<ContentSizeFitter>();
-                contentSizeFitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
-                contentSizeFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             }
         }
+
+        // 横幅も縦幅も内容に合わせて自動調整
+        contentSizeFitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+        contentSizeFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
         // LayoutElementの確認と初期化
         if (layoutElement == null)
@@ -54,28 +62,44 @@ public class DialogueEntryController : MonoBehaviour
             if (layoutElement == null)
             {
                 layoutElement = gameObject.AddComponent<LayoutElement>();
-                layoutElement.flexibleWidth = 1;
-                layoutElement.minHeight = 50;
             }
         }
+
+        // レイアウト設定
+        layoutElement.minWidth = minWidth;      // 最小横幅
+        layoutElement.minHeight = minHeight;    // 最小高さ
+        layoutElement.preferredWidth = -1;      // 自動計算
+        layoutElement.preferredHeight = -1;     // 自動計算
+        layoutElement.flexibleWidth = 0;        // 伸縮なし
+        layoutElement.flexibleHeight = 0;       // 伸縮なし
     }
 
     private void InitializeTextComponent()
     {
         if (textComponent != null)
         {
+            // 折り返しなしで一行表示（短いテキスト用）
+            // または最大幅で折り返し（長いテキスト用）
             textComponent.textWrappingMode = TextWrappingModes.Normal;
             textComponent.overflowMode = TextOverflowModes.Overflow;
 
-            // テキストが表示領域に合わせて調整されるようにする
+            // 最大幅の制限を設定
             RectTransform textRect = textComponent.GetComponent<RectTransform>();
             if (textRect != null)
             {
                 textRect.anchorMin = new Vector2(0, 0);
                 textRect.anchorMax = new Vector2(1, 1);
-                textRect.sizeDelta = Vector2.zero;
-                textRect.anchoredPosition = Vector2.zero;
+                textRect.offsetMin = new Vector2(padding / 2, padding / 2);
+                textRect.offsetMax = new Vector2(-padding / 2, -padding / 2);
             }
+
+            // 最大幅の制約を追加
+            LayoutElement textLayout = textComponent.GetComponent<LayoutElement>();
+            if (textLayout == null)
+            {
+                textLayout = textComponent.gameObject.AddComponent<LayoutElement>();
+            }
+            textLayout.preferredWidth = maxWidth - padding;
         }
     }
 
