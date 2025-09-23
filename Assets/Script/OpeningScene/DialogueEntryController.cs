@@ -27,6 +27,9 @@ public class DialogueEntryController : MonoBehaviour
     [SerializeField] private ContentSizeFitter contentSizeFitter;
     [SerializeField] private LayoutElement layoutElement;
 
+    // namePanelフィールド
+    [SerializeField] private GameObject namePanel;
+
     private string fullText;
     private bool isTyping = false;
     private Coroutine typingCoroutine;
@@ -110,9 +113,28 @@ public class DialogueEntryController : MonoBehaviour
         // 話者名は内部で保持するが表示はしない
         if (speakerNameComponent != null)
         {
-            // 話者名を保存するが、常に非表示にする
+            // 話者名パネル全体を最初から非表示にする（テキスト設定前に非表示化）
+            if (namePanel != null)
+            {
+                namePanel.SetActive(false);
+            }
+            else
+            {
+                // namePanelがない場合は、speakerNameComponentの親オブジェクトを非表示にする
+                Transform parentTransform = speakerNameComponent.transform.parent;
+                if (parentTransform != null)
+                {
+                    parentTransform.gameObject.SetActive(false);
+                }
+                else
+                {
+                    // 親がない場合は、コンポーネント自体を非表示にする
+                    speakerNameComponent.gameObject.SetActive(false);
+                }
+            }
+
+            // 話者名をセット（非表示状態でセット）
             speakerNameComponent.text = string.IsNullOrEmpty(speaker) ? "" : speaker;
-            speakerNameComponent.gameObject.SetActive(false);
         }
 
         // ダイアログタイプに応じたスタイルの適用

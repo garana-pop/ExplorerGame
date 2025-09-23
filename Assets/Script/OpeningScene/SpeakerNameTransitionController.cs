@@ -247,6 +247,9 @@ public class SpeakerNameTransitionController : MonoBehaviour
             // 左側キャラクターの名前を変更
             if (leftNameText != null)
             {
+                // 話者名を一文字ずつ削除するアニメーション開始前まで、話者名を非表示にする
+                rightNameText.gameObject.SetActive(false);
+
                 leftNameTransition = StartCoroutine(AnimateNameChange(
                     leftNameText,
                     setting.GetBeforeName(),  // 言語対応
@@ -263,6 +266,9 @@ public class SpeakerNameTransitionController : MonoBehaviour
             // 右側キャラクターの名前を変更
             if (rightNameText != null)
             {
+                // 話者名を一文字ずつ削除するアニメーション開始前まで、話者名を非表示にする
+                rightNameText.gameObject.SetActive(false);
+
                 rightNameTransition = StartCoroutine(AnimateNameChange(
                     rightNameText,
                     setting.GetBeforeName(),  // 言語対応
@@ -286,6 +292,9 @@ public class SpeakerNameTransitionController : MonoBehaviour
         // ハイライト色に変更
         Color originalTextColor = textComponent.color;
         textComponent.color = transitionHighlightColor;
+
+        // 名前を一文字ずつ削除するアニメーション開始前まで非表示にしていたので表示する
+        rightNameText.gameObject.SetActive(true);
 
         // まず元の名前を一文字ずつ消す
         string currentText = fromName;

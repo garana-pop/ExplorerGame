@@ -592,7 +592,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4717996559202037119, guid: 647899ae349554140b92f9189b14efc4, type: 3}
   m_PrefabInstance: {fileID: 33563538}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2069785179}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -646,6 +646,7 @@ MonoBehaviour:
   narrationTextColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   contentSizeFitter: {fileID: 33563548}
   layoutElement: {fileID: 33563544}
+  namePanel: {fileID: 2069785179}
 --- !u!114 &33563546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,12 +1211,16 @@ MonoBehaviour:
   typeSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
   transitionSettings:
   - commandKey: father
-    beforeName: "\uFF1F\uFF1F\uFF1F"
-    afterName: "\u7236\u89AA"
+    beforeName_Japanese: "\uFF1F\uFF1F\uFF1F"
+    beforeName_English: ???
+    afterName_Japanese: "\u7236\u89AA"
+    afterName_English: Father
     isLeftCharacter: 1
   - commandKey: amnesiac
-    beforeName: "\u7537\u6027"
-    afterName: "\u8A18\u61B6\u55AA\u5931\u8005"
+    beforeName_Japanese: "\u7537\u6027"
+    beforeName_English: Man
+    afterName_Japanese: "\u8A18\u61B6\u55AA\u5931"
+    afterName_English: Amnesiac
     isLeftCharacter: 0
   debugMode: 0
 --- !u!114 &302817319
@@ -3232,6 +3237,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 415}
   m_SizeDelta: {x: -327.8101, y: 79.7539}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!1 &2069785179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6289181789229511025, guid: 647899ae349554140b92f9189b14efc4, type: 3}
+  m_PrefabInstance: {fileID: 33563538}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

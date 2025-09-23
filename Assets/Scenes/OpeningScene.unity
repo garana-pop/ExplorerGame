@@ -284,7 +284,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4717996559202037119, guid: 647899ae349554140b92f9189b14efc4, type: 3}
   m_PrefabInstance: {fileID: 630863795157598102}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 630863795157598103}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -2500,6 +2500,7 @@ MonoBehaviour:
   narrationTextColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   contentSizeFitter: {fileID: 1703393530}
   layoutElement: {fileID: 1703393531}
+  namePanel: {fileID: 630863795157598103}
 --- !u!1 &1727700546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3223,6 +3224,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1255392702}
   m_SourcePrefab: {fileID: 100100000, guid: 647899ae349554140b92f9189b14efc4, type: 3}
+--- !u!1 &630863795157598103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6289181789229511025, guid: 647899ae349554140b92f9189b14efc4, type: 3}
+  m_PrefabInstance: {fileID: 630863795157598102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
