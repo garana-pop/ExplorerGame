@@ -1,48 +1,48 @@
-[White ceiling and IV stand visible]
-Man:...Where is this...?
+[A white ceiling and IV stand come into view]
+Man:...Where am I...?
 ???:You're finally awake.
 Man:Who are you...?
-???:You don't know?
+???:Don't you recognize me?
 ???:It's me... your father.
 Man:Father...?
-SpeakerChange_father(English)
+SpeakerChange_father
 Man:I'm sorry, I can't remember anything...
 Father:I see... Just as the doctor said.
-Father:It seems you've completely lost your memory.
-SpeakerChange_amnesiac(English)
+Father:You've completely lost your memory.
+SpeakerChange_amnesiac
 Amnesiac:What happened?
 Amnesiac:Why am I here...
-Father:It was a traffic accident. Two weeks ago.
-Father:You were hit by a car and suffered a severe head injury.
-Father:They said it was a miracle
+Father:A traffic accident. Two weeks ago.
+Father:You were hit by a car and hit your head hard.
+Father:The doctors said it was a miracle
 Father:that you even survived.
-Amnesiac:My memory... I have nothing.
-Amnesiac:I don't even know who I am...
+Amnesiac:My memory... I can't remember anything.
+Amnesiac:Not even who I am...
 Father:According to the doctor, psychological factors
 Father:have caused temporary amnesia.
-Father:It seems it will take time to recover your memories.
+Father:It seems you'll need time to recover your memory.
 Amnesiac:...I don't know why, but
-Amnesiac:I feel I need to recover my memories quickly—
-Father:The doctor said
-Father:organizing memory fragments is
-Father:the quickest way to recover your memories.
-[Receives a laptop]
-Father:I've prepared materials related to your memories.
+Amnesiac:I feel I need to recover my memory quickly--
+Father:The doctor says
+Father:organizing memory fragments
+Father:is the quickest way to recover your memory.
+[Receiving a laptop]
+Father:I've prepared materials related to your memory.
 Father:Including information about the accident.
 Amnesiac:...Thank you.
-Father:Organizing memories
-Father:is apparently similar to organizing files.
+Father:Organizing memories is
+Father:apparently similar to organizing files.
 Father:Fragmented memories connect,
-Father:and the whole picture emerges. Then,
+Father:and the whole picture becomes visible. Then,
 Father:the truth will gradually become clear.
 Father:Memory areas you couldn't recall
-Father:might also open up
+Father:might open up
 Father:by organizing your memories.
 Amnesiac:I understand... I'll try.
 Father:Yes, please do...
-Father:Now, I'll step out for a bit.
+Father:Well, I'll step out for a bit.
 Father:Once you remember everything...
-Father:you'll surely understand.
+Father:I'm sure you'll understand.
 exit
 Amnesiac:...Understand?
-Amnesiac:...First, let me look at these materials.
+Amnesiac:...Let me look at the materials first.

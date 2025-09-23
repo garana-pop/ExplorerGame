@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using OpeningScene;
+using ExplorerGame.Localization;
 
 /// <summary>
 /// オープニングシーンにおいて話者名を一文字ずつ変化させるアニメーションを制御するクラス
@@ -14,14 +15,41 @@ public class SpeakerNameTransitionController : MonoBehaviour
         [Tooltip("変更コマンド名（SpeakerChange_XXXの「XXX」部分）")]
         public string commandKey;
 
-        [Tooltip("変更前の話者名")]
-        public string beforeName;
+        [Tooltip("変更前の話者名（日本語）")]
+        public string beforeName_Japanese;
 
-        [Tooltip("変更後の話者名")]
-        public string afterName;
+        [Tooltip("変更前の話者名（英語）")]
+        public string beforeName_English;
 
-        [Tooltip("左側キャラクターの変更ならtrue、右側ならfalse")]
+        [Tooltip("変更後の話者名（日本語）")]
+        public string afterName_Japanese;
+
+        [Tooltip("変更後の話者名（英語）")]
+        public string afterName_English;
+
+        [Tooltip("左側キャラクターの変更ならtrue、右ならfalse")]
         public bool isLeftCharacter;
+
+        // 現在の言語に応じた名前を取得するプロパティ
+        public string GetBeforeName()
+        {
+            if (LocalizationManager.Instance != null)
+            {
+                string languageCode = LocalizationManager.Instance.GetCurrentLanguageCode();
+                return languageCode == "en" ? beforeName_English : beforeName_Japanese;
+            }
+            return beforeName_Japanese;
+        }
+
+        public string GetAfterName()
+        {
+            if (LocalizationManager.Instance != null)
+            {
+                string languageCode = LocalizationManager.Instance.GetCurrentLanguageCode();
+                return languageCode == "en" ? afterName_English : afterName_Japanese;
+            }
+            return afterName_Japanese;
+        }
     }
 
     [Header("基本設定")]
@@ -40,14 +68,18 @@ public class SpeakerNameTransitionController : MonoBehaviour
     {
         new SpeakerTransitionSetting {
             commandKey = "father",
-            beforeName = "？？？",
-            afterName = "父親",
+            beforeName_Japanese = "？？？",
+            beforeName_English = "???",
+            afterName_Japanese = "父親",
+            afterName_English = "Father",
             isLeftCharacter = true
         },
         new SpeakerTransitionSetting {
             commandKey = "amnesiac",
-            beforeName = "男性",
-            afterName = "記憶喪失者",
+            beforeName_Japanese = "男性",
+            beforeName_English = "Man",
+            afterName_Japanese = "記憶喪失",
+            afterName_English = "Amnesiac",
             isLeftCharacter = false
         }
     };
@@ -171,7 +203,9 @@ public class SpeakerNameTransitionController : MonoBehaviour
                 StartNameTransition(setting);
 
                 if (debugMode)
-                    Debug.Log($"話者名変更コマンド処理: {commandKey} ({setting.beforeName} → {setting.afterName})");
+                {
+                    Debug.Log($"話者名変更コマンド実行: {commandKey} " + $"({setting.GetBeforeName()} → {setting.GetAfterName()})");
+                }
 
                 break;
             }
@@ -215,8 +249,8 @@ public class SpeakerNameTransitionController : MonoBehaviour
             {
                 leftNameTransition = StartCoroutine(AnimateNameChange(
                     leftNameText,
-                    setting.beforeName,
-                    setting.afterName,
+                    setting.GetBeforeName(),  // 言語対応
+                    setting.GetAfterName(),   // 言語対応
                     originalLeftNameColor));
             }
         }
@@ -231,8 +265,8 @@ public class SpeakerNameTransitionController : MonoBehaviour
             {
                 rightNameTransition = StartCoroutine(AnimateNameChange(
                     rightNameText,
-                    setting.beforeName,
-                    setting.afterName,
+                    setting.GetBeforeName(),  // 言語対応
+                    setting.GetAfterName(),   // 言語対応
                     originalRightNameColor));
             }
         }
