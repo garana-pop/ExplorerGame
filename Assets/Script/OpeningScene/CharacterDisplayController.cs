@@ -241,12 +241,31 @@ public class CharacterDisplayController : MonoBehaviour
 
         CharacterSettings targetCharacter = null;
 
-        // マッチするキャラクターを検索
+        // マッチするキャラクターを探す
         foreach (var character in characters)
         {
-            if (character.characterName.Equals(speakerName, System.StringComparison.OrdinalIgnoreCase) ||
-               (speakerName == "???" && character.characterName == "父親") ||  // "???"が左キャラクター(父親)に対応
-               (speakerName == "記憶喪失者" && character.characterName == "男性")) // "記憶喪失者"が右キャラクター(男性)に対応
+            // 日本語・英語両方の話者名に対応
+            bool isMatch = false;
+
+            // 左キャラクター（父親）のマッチング
+            if (character.characterName.Contains("父") || character.characterName.Contains("Left"))
+            {
+                isMatch = speakerName == "父親" ||
+                         speakerName == "Father" ||
+                         speakerName == "???" ||
+                         speakerName == "？？？";
+            }
+            // 右キャラクター（記憶喪失の男性）のマッチング
+            else if (character.characterName.Contains("男") || character.characterName.Contains("Right"))
+            {
+                isMatch = speakerName == "男性" ||
+                         speakerName == "男性" ||
+                         speakerName == "Man" ||
+                         speakerName == "Amnesiac" ||
+                         speakerName == "記憶喪失者";
+            }
+
+            if (isMatch)
             {
                 targetCharacter = character;
                 break;

@@ -446,7 +446,7 @@ MonoBehaviour:
   - commandKey: amnesiac
     beforeName_Japanese: "\u7537\u6027"
     beforeName_English: Man
-    afterName_Japanese: "\u8A18\u61B6\u55AA\u5931"
+    afterName_Japanese: "\u8A18\u61B6\u55AA\u5931\u8005"
     afterName_English: Amnesiac
     isLeftCharacter: 0
   debugMode: 1
