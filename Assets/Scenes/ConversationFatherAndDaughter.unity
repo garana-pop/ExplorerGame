@@ -3208,6 +3208,7 @@ MonoBehaviour:
   fadeSpeed: 2
   activeNameColor: {r: 1, g: 1, b: 1, a: 1}
   inactiveNameColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+  highlightController: {fileID: 2022553379}
 --- !u!1 &1994112040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3244,6 +3245,64 @@ RectTransform:
   m_AnchoredPosition: {x: -18.164, y: 369.67944}
   m_SizeDelta: {x: -907.254, y: 79.754}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!1 &2022553377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2022553378}
+  - component: {fileID: 2022553379}
+  m_Layer: 0
+  m_Name: CharacterHighlightController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2022553378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022553377}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 339.4516, y: 227.78168, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2022553379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022553377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53279c47366ffb04ca281fbaa65fecdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConversationFatherAndDaughter.CharacterHighlightController
+  highlightTransitionSpeed: 2
+  debugMode: 1
+  activeCharacterColor: {r: 1, g: 1, b: 1, a: 1}
+  inactiveCharacterColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  inactiveBrightness: 0.5
+  leftCharacterObject: {fileID: 720566991}
+  rightCharacterObject: {fileID: 699337720}
+  characterMappings:
+  - speakerNameJapanese: "\u7236\u89AA"
+    speakerNameEnglish: Father
+    isLeftSide: 1
+  - speakerNameJapanese: "\u79C1"
+    speakerNameEnglish: Daughter
+    isLeftSide: 0
 --- !u!1 &2069785179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6289181789229511025, guid: 647899ae349554140b92f9189b14efc4, type: 3}
@@ -3262,4 +3321,5 @@ SceneRoots:
   - {fileID: 1326341615}
   - {fileID: 694313430}
   - {fileID: 1954958859}
+  - {fileID: 2022553378}
   - {fileID: 609871049}

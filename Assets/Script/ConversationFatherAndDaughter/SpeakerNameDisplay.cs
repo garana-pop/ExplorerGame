@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using OpeningScene;
+using UnityEngine.UI;
 
 namespace ConversationFatherAndDaughter
 {
@@ -32,6 +33,9 @@ namespace ConversationFatherAndDaughter
         [SerializeField] private float fadeSpeed = 2.0f;                // フェード速度
         [SerializeField] private Color activeNameColor = Color.white;   // アクティブな話者名の色
         [SerializeField] private Color inactiveNameColor = new Color(0.5f, 0.5f, 0.5f, 0.5f); // 非アクティブな話者名の色
+
+        [Header("キャラクターハイライトコントローラー")]
+        [SerializeField] private CharacterHighlightController highlightController;
 
         // 内部変数
         private List<DialogueEntry> currentDialogueEntries;
@@ -102,8 +106,6 @@ namespace ConversationFatherAndDaughter
         {
             // セリフデータを読み込む
             LoadDialogueData();
-
-            Debug.Log($"{nameof(SpeakerNameDisplay)}: 初期化完了");
         }
 
         /// <summary>
@@ -124,8 +126,6 @@ namespace ConversationFatherAndDaughter
                     }
                 }
 
-                Debug.Log("SpeakerNameDisplay:左側の話者名" + leftSpeakerNameText);
-
                 if (leftSpeakerNameText == null)
                 {
                     Debug.LogWarning($"{nameof(SpeakerNameDisplay)}: 左側の話者名テキストが見つかりません");
@@ -144,8 +144,6 @@ namespace ConversationFatherAndDaughter
                         rightSpeakerNameText = nameArea.GetComponentInChildren<TextMeshProUGUI>();
                     }
                 }
-
-                Debug.Log("SpeakerNameDisplay:右側の話者名" + rightSpeakerNameText);
 
                 if (rightSpeakerNameText == null)
                 {
@@ -192,8 +190,6 @@ namespace ConversationFatherAndDaughter
 
             // 話者名を表示
             DisplaySpeakerName(entry.speaker);
-
-            Debug.Log($"{nameof(SpeakerNameDisplay)}: 話者名を表示 - {entry.speaker}");
         }
 
         /// <summary>
@@ -204,6 +200,10 @@ namespace ConversationFatherAndDaughter
             if (string.IsNullOrEmpty(speakerName))
             {
                 ClearBothSpeakerNames();
+                if (highlightController != null)
+                {
+                    highlightController.SetBothCharactersInactive();
+                }
                 return;
             }
 
@@ -219,6 +219,19 @@ namespace ConversationFatherAndDaughter
 
             if (placement != null)
             {
+                // ハイライト切り替え
+                if (highlightController != null)
+                {
+                    if (placement.isLeftSide)
+                    {
+                        highlightController.HighlightLeftCharacter();
+                    }
+                    else
+                    {
+                        highlightController.HighlightRightCharacter();
+                    }
+                }
+
                 // フェードコルーチンを停止
                 if (fadeCoroutine != null)
                 {
@@ -240,6 +253,10 @@ namespace ConversationFatherAndDaughter
             {
                 Debug.LogWarning($"{nameof(SpeakerNameDisplay)}: 話者 '{speakerName}' の配置設定が見つかりません");
                 ClearBothSpeakerNames();
+                if (highlightController != null)
+                {
+                    highlightController.SetBothCharactersInactive();
+                }
             }
         }
 
@@ -376,6 +393,7 @@ namespace ConversationFatherAndDaughter
             }
 
             previousSpeaker = "";
+            highlightController?.SetBothCharactersInactive();
         }
 
         /// <summary>
