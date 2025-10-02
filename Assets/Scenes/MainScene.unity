@@ -15721,6 +15721,7 @@ MonoBehaviour:
   targetFileIconChange: {fileID: 1280279529}
   iconImage: {fileID: 340256715}
   debugMode: 0
+  checkInterval: 0.5
 --- !u!1 &344041277
 GameObject:
   m_ObjectHideFlags: 0
@@ -22324,6 +22325,7 @@ MonoBehaviour:
   targetFileIconChange: {fileID: 1373222116}
   iconImage: {fileID: 468570193}
   debugMode: 0
+  checkInterval: 0.5
 --- !u!1 &469114204
 GameObject:
   m_ObjectHideFlags: 0
@@ -35520,6 +35522,7 @@ MonoBehaviour:
   targetFileIconChange: {fileID: 1729506673}
   iconImage: {fileID: 781600101}
   debugMode: 1
+  checkInterval: 0.5
 --- !u!1 &781848873
 GameObject:
   m_ObjectHideFlags: 0
@@ -43069,8 +43072,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422776613}
   m_HandleRect: {fileID: 422776612}
   m_Direction: 2
-  m_Value: 0.91434574
-  m_Size: 0.43463352
+  m_Value: 0.9143456
+  m_Size: 0.4346335
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -54795,6 +54798,7 @@ MonoBehaviour:
   targetFileIconChange: {fileID: 303051894}
   iconImage: {fileID: 1192700301}
   debugMode: 0
+  checkInterval: 0.5
 --- !u!1 &1192793250
 GameObject:
   m_ObjectHideFlags: 0
@@ -63662,7 +63666,7 @@ MonoBehaviour:
   - {fileID: 1811191008}
   - {fileID: 1991704482}
   puzzlePanel: {fileID: 783573642}
-  debugMode: 0
+  debugMode: 1
 --- !u!114 &1373222117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72486,6 +72490,7 @@ MonoBehaviour:
   targetFileIconChange: {fileID: 1935878442}
   iconImage: {fileID: 1570041093}
   debugMode: 0
+  checkInterval: 0.5
 --- !u!1 &1570085984
 GameObject:
   m_ObjectHideFlags: 0
@@ -83756,8 +83761,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 155549764}
   m_HandleRect: {fileID: 155549763}
   m_Direction: 2
-  m_Value: 0.9035974
-  m_Size: 0.4638733
+  m_Value: 0.9035975
+  m_Size: 0.46387333
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -86896,7 +86901,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 69069101}
   m_HandleRect: {fileID: 69069100}
   m_Direction: 2
-  m_Value: 0.83896905
+  m_Value: 0.8389688
   m_Size: 0.5910504
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -96553,6 +96558,7 @@ MonoBehaviour:
   targetFileIconChange: {fileID: 1135279532}
   iconImage: {fileID: 2092124234}
   debugMode: 1
+  checkInterval: 0.5
 --- !u!1 &2092161155
 GameObject:
   m_ObjectHideFlags: 0

@@ -617,39 +617,41 @@ public class GameSaveManager : MonoBehaviour
         }
     }
 
-    // GameSaveManager.csのCollectTxtPuzzleStateメソッドを修正
+
     private void CollectTxtPuzzleState()
     {
+        // TxtFileDataの初期化を確認
         if (currentSaveData.fileProgress.txt == null)
             currentSaveData.fileProgress.txt = new Dictionary<string, TxtFileData>();
-        else
-            currentSaveData.fileProgress.txt.Clear();
 
+        // 既存のセーブデータを読み込む
+        Dictionary<string, TxtFileData> existingData = new Dictionary<string, TxtFileData>();
+        string txtProgressPath = Path.Combine(Application.persistentDataPath, "txt_progress.json");
+
+        if (File.Exists(txtProgressPath))
+        {
+            try
+            {
+                string txtJson = File.ReadAllText(txtProgressPath);
+                existingData = JsonHelper.FromJson<string, TxtFileData>(txtJson);
+                if (debugMode)
+                    Debug.Log($"既存のTXTデータを読み込みました: {existingData.Count}件");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"既存TXTデータの読み込みエラー: {ex.Message}");
+            }
+        }
+
+        // 既存データをベースとする
+        currentSaveData.fileProgress.txt = new Dictionary<string, TxtFileData>(existingData);
+
+        // シーン内のすべてのTxtPuzzleManager（非アクティブも含む）から進捗データを収集
         TxtPuzzleManager[] txtManagers = FindObjectsByType<TxtPuzzleManager>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         if (txtManagers != null && txtManagers.Length > 0)
         {
-            // 既存データの読み込み
-            Dictionary<string, TxtFileData> existingData = new Dictionary<string, TxtFileData>();
-            string txtProgressPath = Path.Combine(Application.persistentDataPath, "txt_progress.json");
-
-            if (File.Exists(txtProgressPath))
-            {
-                try
-                {
-                    string txtJson = File.ReadAllText(txtProgressPath);
-                    existingData = JsonHelper.FromJson<string, TxtFileData>(txtJson);
-                    if (debugMode)
-                        Debug.Log($"既存のTXTデータを読み込みました: {existingData.Count}件");
-                }
-                catch (Exception ex)
-                {
-                    Debug.LogError($"既存TXTデータの読み込みエラー: {ex.Message}");
-                }
-            }
-
-            // 【修正】重複を防ぐため、fileNameでグループ化
-            HashSet<string> processedFileNames = new HashSet<string>();
+            HashSet<string> processedFiles = new HashSet<string>();
 
             foreach (var manager in txtManagers)
             {
@@ -658,34 +660,42 @@ public class GameSaveManager : MonoBehaviour
                 TxtFileData fileData = manager.GetTxtProgress();
                 if (string.IsNullOrEmpty(fileData.fileName)) continue;
 
-                // 【追加】同じfileNameは一度だけ処理
-                if (processedFileNames.Contains(fileData.fileName))
+                // 重複チェック
+                if (processedFiles.Contains(fileData.fileName)) continue;
+                processedFiles.Add(fileData.fileName);
+
+                // 既存データとの比較
+                if (existingData.TryGetValue(fileData.fileName, out TxtFileData existing))
                 {
+                    // 完了状態は一度trueになったら維持
+                    if (existing.isCompleted || fileData.isCompleted)
+                    {
+                        fileData.isCompleted = true;
+                    }
+
+                    // 進捗は最大値を採用（後退しないように）
+                    if (existing.solvedMatches > fileData.solvedMatches)
+                    {
+                        fileData.solvedMatches = existing.solvedMatches;
+                    }
+                }
+
+                // データを更新（開いたことがあるファイルのみ）
+                if (existingData.ContainsKey(fileData.fileName) || // 既存データにある
+                    manager.gameObject.activeInHierarchy ||        // 現在アクティブ
+                    fileData.isCompleted ||                        // 完了済み
+                    fileData.solvedMatches > 0)                    // 進捗がある
+                {
+                    currentSaveData.fileProgress.txt[fileData.fileName] = fileData;
+
                     if (debugMode)
-                        Debug.LogWarning($"重複するTXTファイル名をスキップ: {fileData.fileName}");
-                    continue;
+                        Debug.Log($"TXTファイル '{fileData.fileName}' を保存: 完了={fileData.isCompleted}, 解答={fileData.solvedMatches}/{fileData.totalMatches}");
                 }
-                processedFileNames.Add(fileData.fileName);
-
-                // 既存データが完了状態なら、その状態を維持
-                if (existingData.TryGetValue(fileData.fileName, out TxtFileData existing) && existing.isCompleted)
-                {
-                    fileData.isCompleted = true;
-                }
-
-                currentSaveData.fileProgress.txt[fileData.fileName] = fileData;
-
-                if (debugMode)
-                    Debug.Log($"TXTファイル '{fileData.fileName}' の進捗を保存: 完了={fileData.isCompleted}, 解答={fileData.solvedMatches}/{fileData.totalMatches}");
             }
+        }
 
-            if (debugMode)
-                Debug.Log($"合計 {currentSaveData.fileProgress.txt.Count} 件のTXTデータを保存します");
-        }
-        else if (debugMode)
-        {
-            Debug.LogWarning("TxtPuzzleManagerが見つかりません");
-        }
+        if (debugMode)
+            Debug.Log($"合計 {currentSaveData.fileProgress.txt.Count} 件のTXTデータを保存します");
     }
 
     private void CollectImageRevealerState()
