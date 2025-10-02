@@ -23,6 +23,11 @@ public class PngFileIconChange : MonoBehaviour
     [Tooltip("デバッグログを表示するかどうか")]
     [SerializeField] private bool debugMode = false;
 
+    [Header("更新設定")]
+    [Tooltip("FileIconChangeの状態チェック間隔(秒)")]
+    [SerializeField] private float checkInterval = 0.5f;
+    private float checkTimer = 0f;
+
     // 監視対象のスプライト
     private Sprite initialSprite;
     private bool hasCompletedState = false;
@@ -72,36 +77,43 @@ public class PngFileIconChange : MonoBehaviour
 
     private void OnEnable()
     {
-        // オブジェクトが有効になるたびに状態をチェック
+        // オブジェクトがアクティブになる度に状態をチェック
+        if (targetFileIconChange == null)
+        {
+            FindTargetFileIconChange();
+        }
+
+        // 初期状態の記録
         if (targetFileIconChange != null)
         {
-            // 監視対象のimageの名前が"txtファイルアイコン_0"かチェック
             Image targetImage = targetFileIconChange.GetComponent<Image>();
             if (targetImage != null && targetImage.sprite != null)
             {
-                // スプライト名が"txtファイルアイコン_0"だった場合
-                if (targetImage.sprite.name == "txtファイルアイコン_0")
-                {
-                    // completedSpriteに変更
-                    if (completedSprite != null && iconImage != null)
-                    {
-                        iconImage.sprite = completedSprite;
-                        hasCompletedState = true;
+                initialSprite = targetImage.sprite;
+            }
 
-                        if (debugMode)
-                        {
-                            Debug.Log($"PngFileIconChange(OnEnable): txtファイルアイコン_0を検出したため、完了状態に設定しました - {gameObject.name}");
-                        }
-                    }
-                }
+            // FileIconChangeの完了状態を直接確認
+            if (targetFileIconChange.IsPuzzleCompleted())
+            {
+                ApplyCompletedState();
+                return;
             }
         }
+
+        // アイコン状態の確認
+        CheckIconState();
     }
 
     private void Update()
     {
-        // FileIconChangeの状態をチェック
-        CheckIconState();
+        // タイマーで定期的にチェック (負荷軽減)
+        checkTimer += Time.deltaTime;
+
+        if (checkTimer >= checkInterval)
+        {
+            checkTimer = 0f;
+            CheckIconState();
+        }
     }
 
     /// <summary>
@@ -175,7 +187,14 @@ public class PngFileIconChange : MonoBehaviour
     {
         if (targetFileIconChange == null || iconImage == null) return;
 
-        // FileIconChangeのImageコンポーネントを取得
+        // FileIconChangeの完了状態を直接確認
+        if (targetFileIconChange.IsPuzzleCompleted())
+        {
+            ApplyCompletedState();
+            return;
+        }
+
+        // Imageコンポーネントを取得
         Image targetImage = targetFileIconChange.GetComponent<Image>();
         if (targetImage == null || targetImage.sprite == null) return;
 
@@ -186,25 +205,32 @@ public class PngFileIconChange : MonoBehaviour
             return;
         }
 
-        // スプライトが初期値から変更されたかをチェック
+        // スプライトが初期値から変更されたかチェック
         bool isChanged = (initialSprite != targetImage.sprite);
 
         // 状態が変化した場合のみ処理
-        if (isChanged != hasCompletedState)
+        if (isChanged && !hasCompletedState)
         {
-            hasCompletedState = isChanged;
+            ApplyCompletedState();
+        }
+    }
 
-            if (isChanged)
+    /// <summary>
+    /// 完了状態のアイコンを適用
+    /// </summary>
+    private void ApplyCompletedState()
+    {
+        if (hasCompletedState) return; // 既に完了状態なら何もしない
+
+        hasCompletedState = true;
+
+        if (completedSprite != null && iconImage != null)
+        {
+            iconImage.sprite = completedSprite;
+
+            if (debugMode)
             {
-                // 完了状態のスプライトに変更
-                if (completedSprite != null)
-                {
-                    iconImage.sprite = completedSprite;
-                    if (debugMode)
-                    {
-                        Debug.Log($"PngFileIconChange: アイコンを完了状態に変更しました - {gameObject.name}");
-                    }
-                }
+                Debug.Log($"PngFileIconChange: アイコンを完了状態に変更しました - {gameObject.name}");
             }
         }
     }
@@ -240,15 +266,29 @@ public class PngFileIconChange : MonoBehaviour
     {
         if (iconImage == null) return;
 
+        hasCompletedState = completed;
+
         if (completed && completedSprite != null)
         {
             iconImage.sprite = completedSprite;
-            hasCompletedState = true;
         }
-        else if (defaultSprite != null)
+        else if (!completed && defaultSprite != null)
         {
             iconImage.sprite = defaultSprite;
-            hasCompletedState = false;
         }
+
+        if (debugMode)
+        {
+            Debug.Log($"PngFileIconChange: SetCompleted({completed}) - {gameObject.name}");
+        }
+    }
+
+    /// <summary>
+    /// 完了状態を取得
+    /// </summary>
+    /// <returns>完了済みならtrue</returns>
+    public bool IsCompleted()
+    {
+        return hasCompletedState;
     }
 }
