@@ -620,18 +620,16 @@ public class GameSaveManager : MonoBehaviour
     // GameSaveManager.csのCollectTxtPuzzleStateメソッドを修正
     private void CollectTxtPuzzleState()
     {
-        // TxtFileDataの初期化を確認
         if (currentSaveData.fileProgress.txt == null)
             currentSaveData.fileProgress.txt = new Dictionary<string, TxtFileData>();
         else
             currentSaveData.fileProgress.txt.Clear();
 
-        // シーン内のすべてのTxtPuzzleManagerを取得
         TxtPuzzleManager[] txtManagers = FindObjectsByType<TxtPuzzleManager>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         if (txtManagers != null && txtManagers.Length > 0)
         {
-            // 既存のセーブデータがあれば読み込む
+            // 既存データの読み込み
             Dictionary<string, TxtFileData> existingData = new Dictionary<string, TxtFileData>();
             string txtProgressPath = Path.Combine(Application.persistentDataPath, "txt_progress.json");
 
@@ -650,7 +648,9 @@ public class GameSaveManager : MonoBehaviour
                 }
             }
 
-            // すべてのマネージャーから進捗データを収集
+            // 【修正】重複を防ぐため、fileNameでグループ化
+            HashSet<string> processedFileNames = new HashSet<string>();
+
             foreach (var manager in txtManagers)
             {
                 if (manager == null) continue;
@@ -658,13 +658,21 @@ public class GameSaveManager : MonoBehaviour
                 TxtFileData fileData = manager.GetTxtProgress();
                 if (string.IsNullOrEmpty(fileData.fileName)) continue;
 
+                // 【追加】同じfileNameは一度だけ処理
+                if (processedFileNames.Contains(fileData.fileName))
+                {
+                    if (debugMode)
+                        Debug.LogWarning($"重複するTXTファイル名をスキップ: {fileData.fileName}");
+                    continue;
+                }
+                processedFileNames.Add(fileData.fileName);
+
                 // 既存データが完了状態なら、その状態を維持
                 if (existingData.TryGetValue(fileData.fileName, out TxtFileData existing) && existing.isCompleted)
                 {
                     fileData.isCompleted = true;
                 }
 
-                // データを保存
                 currentSaveData.fileProgress.txt[fileData.fileName] = fileData;
 
                 if (debugMode)

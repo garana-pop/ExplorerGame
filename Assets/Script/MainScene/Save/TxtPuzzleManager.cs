@@ -581,12 +581,6 @@ public class TxtPuzzleManager : MonoBehaviour
                 forceApplyCorrectState = false;
             }
         }
-
-        // 追加: 全てのドロップエリアに完了状態を通知
-        if (isPuzzleCompleted)
-        {
-            NotifyAllDropAreasOfCompletion();
-        }
     }
 
     // 追加: すべてのドロップエリアに完了を通知するメソッド
@@ -770,8 +764,6 @@ public class TxtPuzzleManager : MonoBehaviour
 
     private void ForceCorrectStateForAllAreas()
     {
-        // 自動検索部分を削除
-
         // 各エリアについて詳細ログを出力しながら処理
         foreach (var area in dropAreas)
         {
@@ -785,10 +777,6 @@ public class TxtPuzzleManager : MonoBehaviour
                 }
             }
         }
-        // 追加: 全てのドロップエリアに進捗表示を更新するよう通知
-        NotifyAllDropAreasOfCompletion();
-
-        // Debug.Log($"TxtPuzzle '{fileName}': すべてのエリア ({dropAreas.Count}個) の状態設定を完了しました");
     }
 
     // DropAreasリストを取得するパブリックメソッド
