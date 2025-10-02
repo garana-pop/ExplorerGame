@@ -28,9 +28,24 @@ public class FileIconChange : MonoBehaviour
     [Tooltip("デバッグログを表示するかどうか")]
     [SerializeField] private bool debugMode = false;
 
+    [Header("状態管理")]
+    [Tooltip("パズル完了状態を記録するフラグ")]
+    private bool isPuzzleCompleted = false;
+
     private void OnEnable()
     {
-        // オブジェクトが有効になるたびにパズルの状態をチェック
+        // オブジェクトがアクティブになる度にパズルの状態をチェック
+        // 完了済みの場合はすぐにアイコンを変更
+        if (isPuzzleCompleted)
+        {
+            ApplyCompletedSprite();
+            if (debugMode)
+            {
+                Debug.Log($"FileIconChange: 完了済み状態を適用 - {gameObject.name}");
+            }
+            return;
+        }
+
         CheckPuzzleState();
 
         if (debugMode)
@@ -62,6 +77,13 @@ public class FileIconChange : MonoBehaviour
     /// </summary>
     private void CheckPuzzleState()
     {
+        // 既に完了済みの場合は処理をスキップ
+        if (isPuzzleCompleted)
+        {
+            ApplyCompletedSprite();
+            return;
+        }
+
         // インスペクターで直接設定されたドロップエリアがある場合はそれを使用
         if (dropAreas != null && dropAreas.Count > 0)
         {
@@ -69,14 +91,21 @@ public class FileIconChange : MonoBehaviour
             return;
         }
 
-        // 従来互換：パズルパネルから自動検索
+        // 従来通り: パズルパネルから自動検索
         if (puzzlePanel == null) return;
 
-        // パネル内のSpeakerDropAreaを全て取得
+        // パネルからSpeakerDropAreaを全て取得 (非アクティブも含む)
         SpeakerDropArea[] panelDropAreas = puzzlePanel.GetComponentsInChildren<SpeakerDropArea>(true);
-        if (panelDropAreas.Length == 0) return;
+        if (panelDropAreas.Length == 0)
+        {
+            if (debugMode)
+            {
+                Debug.LogWarning($"FileIconChange: パズルパネル内にSpeakerDropAreaが見つかりません - {gameObject.name}");
+            }
+            return;
+        }
 
-        // 正解数と総数をカウント
+        // 正解数と総数カウント
         int correctCount = 0;
         int totalCount = panelDropAreas.Length;
 
@@ -88,16 +117,34 @@ public class FileIconChange : MonoBehaviour
             }
         }
 
-        Debug.Log($"正解数(correctCount)={correctCount}, 総数(totalCount)={totalCount}");
+        if (debugMode)
+        {
+            Debug.Log($"FileIconChange: 正解数(correctCount)={correctCount}, 総数(totalCount)={totalCount} - {gameObject.name}");
+        }
 
         // 全て正解ならアイコンを変更
-        if (correctCount == totalCount)
+        if (correctCount == totalCount && totalCount > 0)
         {
-            ApplyCompletedSprite();
-            if (debugMode)
-            {
-                Debug.Log($"パズル完了を検出しました: correctCount={correctCount}, totalCount={totalCount}");
-            }
+            SetPuzzleCompleted();
+        }
+    }
+
+    /// <summary>
+    /// パズル完了状態を設定
+    /// </summary>
+    public void SetPuzzleCompleted()
+    {
+        if (isPuzzleCompleted)
+        {
+            return; // 既に完了済みなら何もしない
+        }
+
+        isPuzzleCompleted = true;
+        ApplyCompletedSprite();
+
+        if (debugMode)
+        {
+            Debug.Log($"FileIconChange: パズル完了状態を設定しました - {gameObject.name}");
         }
     }
 
@@ -151,10 +198,11 @@ public class FileIconChange : MonoBehaviour
     /// <param name="fileName">完了したファイル名</param>
     public void OnPuzzleCompleted(string fileName)
     {
-        ApplyCompletedSprite();
+        SetPuzzleCompleted();
+
         if (debugMode)
         {
-            Debug.Log($"パズル完了通知を受け取りました: {fileName}");
+            Debug.Log($"FileIconChange: パズル完了通知を受け取りました - ファイル名: {fileName}, オブジェクト名: {gameObject.name}");
         }
     }
 
@@ -176,5 +224,14 @@ public class FileIconChange : MonoBehaviour
     public void ClearDropAreas()
     {
         dropAreas.Clear();
+    }
+
+    /// <summary>
+    /// パズル完了状態を取得
+    /// </summary>
+    /// <returns>完了済みならtrue</returns>
+    public bool IsPuzzleCompleted()
+    {
+        return isPuzzleCompleted;
     }
 }
