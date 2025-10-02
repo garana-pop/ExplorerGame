@@ -85,6 +85,11 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
             puzzleManager = GetComponentInParent<TxtPuzzleManager>();
         }
 
+        if (puzzleManager == null)
+        {
+            Debug.LogError("SpeakerDropArea:puzzleManagerが取得できていません");
+        }
+
         FindPuzzleManager();
         CheckAndUpdateProgressUI();
 
@@ -185,6 +190,8 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
                 }
             }
 
+            Debug.Log($"SpeakerDropArea:DropAreas数: {totalCount}");
+
             // 進捗表示を更新
             UpdateProgressUI(correctCount, totalCount);
 
@@ -256,6 +263,10 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
         if (progressTMPText != null)
         {
             progressTMPText.fontSize = tmpFontSize;
+        }
+        else
+        {
+            Debug.LogError("SpeakerDropArea:progressTMPTextがアサインされていません");
         }
 
     }
