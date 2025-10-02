@@ -79,8 +79,17 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
             LocalizationManager.Instance.OnLanguageChanged += OnLanguageChanged;
         }
 
+        // TxtPuzzleManagerの参照を確実に取得
+        if (puzzleManager == null)
+        {
+            puzzleManager = GetComponentInParent<TxtPuzzleManager>();
+        }
+
         FindPuzzleManager();
         CheckAndUpdateProgressUI();
+
+        // 初期進捗をチェック - 遅延を追加して確実に
+        Invoke("CheckAndUpdateProgressUI", 0.3f);
     }
 
     private void OnDestroy()
@@ -137,6 +146,13 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
 
     private void OnEnable()
     {
+        // パネルが表示された時に、自分が所属するTxtPuzzleManagerを再取得
+        TxtPuzzleManager currentManager = GetComponentInParent<TxtPuzzleManager>();
+        if (currentManager != null)
+        {
+            puzzleManager = currentManager;
+        }
+
         // 表示されたときにも進捗をチェック（特にロード後）
         Invoke("DelayedProgressCheck", 0.2f);
     }
@@ -144,16 +160,29 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
     // 進捗状態をチェックして更新するメソッド
     public void CheckAndUpdateProgressUI()
     {
+        // 自分が所属するTxtPuzzleManagerを確認
+        TxtPuzzleManager currentManager = GetComponentInParent<TxtPuzzleManager>();
+        if (currentManager != null && currentManager != puzzleManager)
+        {
+            puzzleManager = currentManager;
+        }
+
         if (puzzleManager != null)
         {
             int correctCount = 0;
             int totalCount = 0;
 
+            // このマネージャーに所属するドロップエリアのみをカウント
             foreach (var area in puzzleManager.GetDropAreas())
             {
                 if (area == null) continue;
-                totalCount++;
-                if (area.IsCorrect()) correctCount++;
+
+                // このエリアが同じパネルに属していることを確認
+                if (area.transform.IsChildOf(puzzleManager.transform.parent))
+                {
+                    totalCount++;
+                    if (area.IsCorrect()) correctCount++;
+                }
             }
 
             // 進捗表示を更新
@@ -168,6 +197,7 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
             }
         }
     }
+
 
     private void DelayedProgressCheck()
     {
