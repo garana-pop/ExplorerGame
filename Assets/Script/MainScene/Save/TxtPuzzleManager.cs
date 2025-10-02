@@ -39,6 +39,9 @@ public class TxtPuzzleManager : MonoBehaviour
     private bool isPuzzleCompleted = false;
     private bool isProcessingCompletion = false; // 完了処理中かどうか
     private bool mosaicContainerVerified = false;
+    private bool forceApplyCorrectState = false;
+    private bool hasBeenOpenedThisSession = false; // このセッション中に開かれたかフラグ
+
 
     private void Awake()
     {
@@ -485,14 +488,8 @@ public class TxtPuzzleManager : MonoBehaviour
         {
             isPuzzleCompleted = false;
             forceApplyCorrectState = false;
+            hasBeenOpenedThisSession = false;
             ResetAllAreas();
-            return;
-        }
-
-        // 完了状態のリセットを考慮
-        if (IsFirstTimeOpened() && !isPuzzleCompleted)
-        {
-            forceApplyCorrectState = false;
             return;
         }
 
@@ -514,36 +511,11 @@ public class TxtPuzzleManager : MonoBehaviour
                 // 正解状態の強制適用フラグを立てる
                 forceApplyCorrectState = true;
 
-                // すぐに全エリアを正解状態にする
-                ForceCorrectStateForAllAreas();
-
-                // すべてのドロップエリアを正解状態にする
-                foreach (var area in dropAreas)
-                {
-                    if (area != null)
-                    {
-                        // 各ドロップエリアごとに対応する正しい話者を強制設定
-                        string expectedSpeaker = area.GetExpectedSpeaker();
-
-                        if (!string.IsNullOrEmpty(expectedSpeaker))
-                        {
-                            // 強制的に正解状態にする
-                            area.ForceCorrectStateWithoutSpeaker();
-                        }
-                        else
-                        {
-                            // expectedSpeakerが設定されていない場合も強制的に正解状態に
-                            area.ForceCorrectStateWithoutSpeaker();
-                        }
-                    }
-                }
-
                 // 次のフォルダーを必ず表示
                 if (nextFolderOrFile != null)
                 {
                     nextFolderOrFile.SetActive(true);
 
-                    // FolderButtonScriptとFolderActivationGuardを確実に設定
                     FolderButtonScript folderScript = nextFolderOrFile.GetComponent<FolderButtonScript>();
                     if (folderScript != null)
                     {
@@ -557,13 +529,11 @@ public class TxtPuzzleManager : MonoBehaviour
                     }
                 }
 
-                // 直接参照されたFolderButtonScriptがある場合も同様に処理
                 if (nextFolderScript != null)
                 {
                     nextFolderScript.gameObject.SetActive(true);
                     nextFolderScript.SetActivatedState(true);
 
-                    // FolderActivationGuardの設定
                     FolderActivationGuard guard = nextFolderScript.gameObject.GetComponent<FolderActivationGuard>();
                     if (guard != null)
                     {
@@ -571,31 +541,20 @@ public class TxtPuzzleManager : MonoBehaviour
                     }
                 }
 
-                // モザイク解除通知
                 if (puzzleConnector != null)
                     puzzleConnector.OnTxtPuzzleSolved();
             }
             else
             {
-                // 進捗データが見つからなかった場合のログ追加
                 forceApplyCorrectState = false;
             }
         }
-    }
-
-    // 追加: すべてのドロップエリアに完了を通知するメソッド
-    private void NotifyAllDropAreasOfCompletion()
-    {
-        foreach (var area in dropAreas)
+        else
         {
-            if (area == null) continue;
-
-            // SpeakerDropAreaに進捗表示を更新するよう通知
-            SpeakerDropArea dropArea = area.GetComponent<SpeakerDropArea>();
-            if (dropArea != null)
-            {
-                dropArea.CheckAndUpdateProgressUI();
-            }
+            // 進捗データが見つからない場合は初期化
+            isPuzzleCompleted = false;
+            forceApplyCorrectState = false;
+            hasBeenOpenedThisSession = false; // 追加
         }
     }
 
@@ -636,41 +595,38 @@ public class TxtPuzzleManager : MonoBehaviour
             isPuzzleCompleted = true;
     }
 
-    private bool forceApplyCorrectState = false;
-
+    /// <summary>
+    /// ゲームオブジェクトがアクティブになった時に呼ばれる
+    /// </summary>
     private void OnEnable()
     {
-        // フラグの初期化を確実に行う
-        if (!isPuzzleCompleted)
+        // このファイルのセーブデータを確認
+        bool hasSaveData = GameSaveManager.Instance != null &&
+                           GameSaveManager.Instance.SaveDataExists();
+
+        // セーブデータがない、またはこのセッション初回オープンの場合
+        if (!hasSaveData || !hasBeenOpenedThisSession)
         {
-            forceApplyCorrectState = false;
+            // このセッション初回オープンフラグを設定
+            hasBeenOpenedThisSession = true;
+
+            // 完了済みでない場合は初期状態にリセット
+            if (!isPuzzleCompleted)
+            {
+                forceApplyCorrectState = false;
+                ResetAllAreas();
+                return;
+            }
         }
 
-        // セーブデータがなく、初めて開かれた場合は強制適用をスキップ
-        if (!isPuzzleCompleted && (IsFirstTimeOpened() || !GameSaveManager.Instance.SaveDataExists()))
-        {
-            forceApplyCorrectState = false;
-
-            // 全エリアを初期状態に明示的にリセット
-            ResetAllAreas();
-            return;
-        }
-
-        // パネルがアクティブになった時点で保存された進捗を適用
-        // 少し遅延させて確実に適用
+        // 完了済みの場合のみ強制適用
         if (isPuzzleCompleted || forceApplyCorrectState)
         {
-            // 遅延を調整
             CancelInvoke("ForceCorrectStateForAllAreas");
             Invoke("ForceCorrectStateForAllAreas", 0.1f);
-
-            // 確実に適用するため、さらに追加の遅延適用も行う
             Invoke("VerifyCorrectStateForAllAreas", 0.3f);
-
-            // さらに即時実行も追加
             StartCoroutine(ImmediateStateCheck());
 
-            // 追加: 完了状態ならオリジナル画像も表示
             if (originalImage != null)
             {
                 originalImage.SetActive(true);
@@ -678,9 +634,17 @@ public class TxtPuzzleManager : MonoBehaviour
         }
         else
         {
-            // 完了でも強制適用でもない場合は、明示的にリセット
             ResetAllAreas();
         }
+    }
+
+    /// <summary>
+    /// ゲームオブジェクトが非アクティブになったときに呼ばれる
+    /// </summary>
+    private void OnDisable()
+    {
+        // パネルが閉じられた時にセッションフラグをリセット
+        hasBeenOpenedThisSession = false;
     }
 
     // 追加: 全てのエリアを明示的にリセットするメソッド
@@ -693,30 +657,6 @@ public class TxtPuzzleManager : MonoBehaviour
                 area.ResetArea();
             }
         }
-    }
-
-    // 初めて開かれたかどうかを確認するメソッドを追加
-    private bool IsFirstTimeOpened()
-    {
-        // ゲームセーブデータの存在をまず確認
-        bool saveExists = GameSaveManager.Instance != null && GameSaveManager.Instance.SaveDataExists();
-
-        // セーブデータがなければ常に初回とみなす
-        if (!saveExists)
-        {
-            return true;
-        }
-
-        // 初回起動フラグをチェック (起動中のみ有効)
-        string key = $"FirstOpen_{fileName}";
-        if (PlayerPrefs.HasKey(key))
-        {
-            return false;
-        }
-
-        // 一時的な初回フラグを設定 (セッション中のみ有効)
-        PlayerPrefs.SetInt(key, 1);
-        return true;
     }
 
     // 即時チェックを行うコルーチン
