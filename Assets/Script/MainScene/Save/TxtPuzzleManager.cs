@@ -99,8 +99,6 @@ public class TxtPuzzleManager : MonoBehaviour
         // GameSaveManagerから言語コードを取得
         string languageCode = GetCurrentLanguageCode();
 
-            Debug.Log($"TxtPuzzleManager '{fileName}': 言語コード '{languageCode}' で話者名を更新中...");
-
         // すべてのDropAreaの話者名を更新
         foreach (var dropArea in dropAreas)
         {
@@ -109,7 +107,6 @@ public class TxtPuzzleManager : MonoBehaviour
                 UpdateDropAreaSpeakerName(dropArea, languageCode);
             }
         }
-            Debug.Log($"TxtPuzzleManager '{fileName}': {dropAreas.Count}個のDropAreaの話者名を更新完了");
     }
 
     /// <summary>
@@ -147,8 +144,6 @@ public class TxtPuzzleManager : MonoBehaviour
             if (!string.IsNullOrEmpty(speakerName))
             {
                 expectedSpeakerField.SetValue(dropArea, speakerName);
-
-                    Debug.Log($"DropArea更新: {dropArea.gameObject.name} - 話者名を '{speakerName}' に設定（{languageCode}）");
             }
         }
         else
@@ -235,18 +230,9 @@ public class TxtPuzzleManager : MonoBehaviour
                 correctCount++;
         }
 
-        // デバッグログの追加
-        Debug.Log($"TxtPuzzle '{fileName}' 完了チェック: {correctCount}/{dropAreas.Count} が正解");
-
-        // ファイル名と進捗度を表示
-        Debug.Log($"{fileName} 進捗度 {correctCount}/{dropAreas.Count}");
-
         // すべて正解の場合
         if (allCorrect && dropAreas.Count > 0)
         {
-            // 進捗度100%（パズル完了）のログ
-            Debug.Log($"{fileName} 進捗度 {dropAreas.Count}/{dropAreas.Count} パズル完了");
-
             // 完了処理中フラグを設定
             isProcessingCompletion = true;
             isPuzzleCompleted = true;
@@ -286,7 +272,6 @@ public class TxtPuzzleManager : MonoBehaviour
             if (GameSaveManager.Instance != null)
             {
                 GameSaveManager.Instance.SaveGame();
-                Debug.Log($"TXTパズル完成: {fileName} - ゲーム状態を保存しました");
             }
         }
     }
@@ -348,9 +333,6 @@ public class TxtPuzzleManager : MonoBehaviour
                 nextFolderScript.filePanel.SetActive(true);
             }
         }
-
-        Debug.Log("TXTパズルが完了しました！新しいフォルダーが解放されました。");
-
         // パズル完成後にゲームをセーブ
         if (GameSaveManager.Instance != null)
         {

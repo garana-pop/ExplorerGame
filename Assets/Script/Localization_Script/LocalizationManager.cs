@@ -52,11 +52,6 @@ namespace ExplorerGame.Localization
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(LocalizationManager)}: インスタンス初期化完了");
-            }
         }
 
         /// <summary>
@@ -70,12 +65,6 @@ namespace ExplorerGame.Localization
 
             if (handle.Status == AsyncOperationStatus.Succeeded)
             {
-                if (debugMode)
-                {
-                    Debug.Log($"{nameof(LocalizationManager)}: LocalizationSettings初期化完了");
-                    Debug.Log($"現在の言語: {GetCurrentLanguageCode()}");
-                }
-
                 // 保存された言語設定を読み込み
                 LoadLanguageSetting();
             }
@@ -170,11 +159,6 @@ namespace ExplorerGame.Localization
 
             // イベント発火
             OnLanguageChanged?.Invoke(newLocale);
-
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(LocalizationManager)}: 言語を{languageCode}に変更しました");
-            }
         }
 
         /// <summary>

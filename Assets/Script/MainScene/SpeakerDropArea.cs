@@ -85,11 +85,6 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
             puzzleManager = GetComponentInParent<TxtPuzzleManager>();
         }
 
-        if (puzzleManager == null)
-        {
-            Debug.LogError("SpeakerDropArea:puzzleManagerが取得できていません");
-        }
-
         FindPuzzleManager();
         CheckAndUpdateProgressUI();
 
@@ -140,12 +135,10 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
         if (currentLanguageCode == "en")
         {
             expectedSpeaker = expectedSpeaker_English;
-            Debug.Log($"{nameof(SpeakerDropArea)}: 英語モード - expectedSpeaker = {expectedSpeaker}");
         }
         else // デフォルトは日本語（"ja"またはその他）
         {
             expectedSpeaker = expectedSpeaker_Japanese;
-            Debug.Log($"{nameof(SpeakerDropArea)}: 日本語モード - expectedSpeaker = {expectedSpeaker}");
         }
     }
 
@@ -190,8 +183,6 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
                 }
             }
 
-            Debug.Log($"SpeakerDropArea:DropAreas数: {totalCount}");
-
             // 進捗表示を更新
             UpdateProgressUI(correctCount, totalCount);
 
@@ -200,7 +191,6 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
             {
                 string fileName = puzzleManager.GetFileName();
                 if (string.IsNullOrEmpty(fileName)) fileName = "テキストパズル";
-                //Debug.Log($"{fileName} 進捗度 {correctCount}/{totalCount} パズル完了状態です");
             }
         }
     }
@@ -264,11 +254,6 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
         {
             progressTMPText.fontSize = tmpFontSize;
         }
-        else
-        {
-            Debug.LogError("SpeakerDropArea:progressTMPTextがアサインされていません");
-        }
-
     }
 
     private void FindPuzzleManager()
@@ -369,7 +354,6 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
             }
 
             isCorrect = false;
-            //Debug.Log($"不正解: {gameObject.name}");
         }
 
         // 正解/不正解処理の後に進捗度を表示
@@ -592,8 +576,6 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
                 return;
             }
         }
-
-        //Debug.Log($"CorrectSpeakerTextを新規作成します: {gameObject.name}");
 
         GameObject textObj = new GameObject("CorrectSpeakerText");
         textObj.transform.SetParent(transform, false);

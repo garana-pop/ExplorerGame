@@ -46,9 +46,6 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
     [Header("位置調整設定")]
     [SerializeField] private List<EnglishPositionAdjustment> positionAdjustments = new List<EnglishPositionAdjustment>();
 
-    [Header("デバッグ設定")]
-    [SerializeField] private bool debugMode = false;
-
     // 言語コード定数
     private const string JAPANESE_CODE = "ja";
     private const string ENGLISH_CODE = "en";
@@ -78,11 +75,6 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
         if (LocalizationManager.Instance != null)
         {
             LocalizationManager.Instance.OnLanguageChanged += OnLanguageChanged;
-
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: LocalizationManagerの言語変更イベントに登録しました");
-            }
         }
         else
         {
@@ -110,11 +102,6 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
             {
                 // 子オブジェクトからHiddenKeywordコンポーネントを検索
                 adjustment.childHiddenKeyword = adjustment.targetParentObject.GetComponentInChildren<HiddenKeyword>();
-
-                if (adjustment.childHiddenKeyword != null && debugMode)
-                {
-                    Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: {adjustment.targetParentObject.name}の子から{adjustment.childHiddenKeyword.name}を発見");
-                }
             }
         }
     }
@@ -138,20 +125,10 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
                     adjustment.originalParentPosition = adjustment.targetParentObject.position;
                 }
 
-                if (debugMode)
-                {
-                    Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: {adjustment.targetParentObject.name}の元の位置を保存: {adjustment.originalParentPosition}");
-                }
-
                 // 子HiddenKeywordの相対位置を保存
                 if (adjustment.adjustChildHiddenKeyword && adjustment.childHiddenKeyword != null)
                 {
                     adjustment.originalChildOffset = adjustment.childHiddenKeyword.transform.localPosition;
-
-                    if (debugMode)
-                    {
-                        Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: 子HiddenKeyword {adjustment.childHiddenKeyword.name}の元の相対位置を保存: {adjustment.originalChildOffset}");
-                    }
                 }
             }
         }
@@ -162,11 +139,6 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
     /// </summary>
     private void OnLanguageChanged(Locale newLocale)
     {
-        if (debugMode)
-        {
-            Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: 言語が変更されました: {newLocale.Identifier.Code}");
-        }
-
         ApplyLanguagePositionAdjustment();
     }
 
@@ -184,11 +156,6 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
         else
         {
             currentLanguageCode = LocalizationManager.Instance.GetCurrentLanguageCode();
-        }
-
-        if (debugMode)
-        {
-            Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: 現在の言語コード: {currentLanguageCode}");
         }
 
         // 言語に応じて位置を調整
@@ -215,11 +182,6 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
         if (sizeAdjustment != null)
         {
             sizeAdjustment.ApplyLanguageSizeAdjustment();
-
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: サイズ調整も実行しました");
-            }
         }
 
     }
@@ -239,20 +201,10 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
             adjustment.targetParentObject.position = adjustment.englishParentPosition;
         }
 
-        if (debugMode)
-        {
-            Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: {adjustment.targetParentObject.name}を英語位置に移動: {adjustment.englishParentPosition}");
-        }
-
         // 子HiddenKeywordの相対位置も調整（必要な場合）
         if (adjustment.adjustChildHiddenKeyword && adjustment.childHiddenKeyword != null)
         {
             adjustment.childHiddenKeyword.transform.localPosition = adjustment.englishChildOffset;
-
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: 子HiddenKeyword {adjustment.childHiddenKeyword.name}の相対位置を調整: {adjustment.englishChildOffset}");
-            }
         }
     }
 
@@ -271,20 +223,10 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
             adjustment.targetParentObject.position = adjustment.originalParentPosition;
         }
 
-        if (debugMode)
-        {
-            Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: {adjustment.targetParentObject.name}を元の位置に戻す: {adjustment.originalParentPosition}");
-        }
-
         // 子HiddenKeywordも元の相対位置に戻す（必要な場合）
         if (adjustment.adjustChildHiddenKeyword && adjustment.childHiddenKeyword != null)
         {
             adjustment.childHiddenKeyword.transform.localPosition = adjustment.originalChildOffset;
-
-            if (debugMode)
-            {
-                Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: 子HiddenKeyword {adjustment.childHiddenKeyword.name}を元の相対位置に戻す: {adjustment.originalChildOffset}");
-            }
         }
     }
 
@@ -329,15 +271,10 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
                 {
                     adjustment.englishParentPosition = adjustment.targetParentObject.position;
                 }
-
-                Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: {adjustment.targetParentObject.name}の現在位置を英語位置として保存: {adjustment.englishParentPosition}");
-
                 // 子HiddenKeywordの現在の相対位置も保存
                 if (adjustment.adjustChildHiddenKeyword && adjustment.childHiddenKeyword != null)
                 {
                     adjustment.englishChildOffset = adjustment.childHiddenKeyword.transform.localPosition;
-
-                    Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: 子HiddenKeyword {adjustment.childHiddenKeyword.name}の現在相対位置を英語位置として保存: {adjustment.englishChildOffset}");
                 }
             }
         }
@@ -350,6 +287,5 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
     private void RefreshChildHiddenKeywords()
     {
         FindChildHiddenKeywords();
-        Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: 子HiddenKeywordコンポーネントを再検索しました");
     }
 }
