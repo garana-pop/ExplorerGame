@@ -55,6 +55,30 @@ public class GameSaveManager : MonoBehaviour
     [SerializeField] private string[] initialFolders = { "思い出" }; // 初期表示フォルダー
     [SerializeField] private string defaultActiveFolder = "思い出"; // デフォルトのアクティブフォルダー
 
+    [Header("TXT進捗同期設定")]
+    [Tooltip("セーブデータロード時にFileIconChangeと同期するTxtPuzzleManagerのリスト")]
+    [SerializeField] private List<TxtPuzzleManager> txtPuzzleManagersForSync = new List<TxtPuzzleManager>();
+
+    [Tooltip("TxtPuzzleManagerとFileIconChangeのマッピング（手動設定用）")]
+    [SerializeField] private List<TxtToIconMapping> txtToIconMappings = new List<TxtToIconMapping>();
+
+    // マッピング用のシリアライズ可能なクラス
+    [System.Serializable]
+    public class TxtToIconMapping
+    {
+        [Tooltip("TXTパズルマネージャー")]
+        public TxtPuzzleManager txtPuzzleManager;
+
+        [Tooltip("対応するファイルアイコン変更コンポーネント")]
+        public FileIconChange fileIconChange;
+
+        public TxtToIconMapping(TxtPuzzleManager txt = null, FileIconChange icon = null)
+        {
+            txtPuzzleManager = txt;
+            fileIconChange = icon;
+        }
+    }
+
     [Header("遅延設定")]
     [SerializeField] private float folderToggleDelay = 0.1f; // フォルダー切り替え遅延（秒）
 
@@ -1307,10 +1331,16 @@ public class GameSaveManager : MonoBehaviour
             try { ApplyPdfDocumentState(); }
             catch (Exception ex) { Debug.LogError($"PDFデータ適用中にエラー: {ex.Message}"); }
 
-            // 残りのデータを適用
-            try { ApplyTxtPuzzleState(); }
+            // TXTデータの適用
+            try
+            {
+                ApplyTxtPuzzleState();
+                // TXT進捗適用後にFileIconChangeの状態を同期
+                StartCoroutine(SyncFileIconStatesAfterTxtLoad());
+            }
             catch (Exception ex) { Debug.LogError($"TXTデータ適用中にエラー: {ex.Message}"); }
 
+            // 残りのデータを適用
             try { ApplyImageRevealerState(); }
             catch (Exception ex) { Debug.LogError($"画像データ適用中にエラー: {ex.Message}"); }
 
@@ -1347,6 +1377,49 @@ public class GameSaveManager : MonoBehaviour
         {
             Debug.LogError($"セーブデータの適用中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
             return false;
+        }
+    }
+
+    // TXT進捗適用後にFileIconChangeの状態を同期（コルーチン版）
+    private IEnumerator SyncFileIconStatesAfterTxtLoad()
+    {
+        // 1フレーム待機（TxtPuzzleManagerの処理完了を待つ）
+        yield return null;
+
+        // 実際の同期処理を実行
+        SyncFileIconStatesImmediate();
+    }
+
+    private void SyncFileIconStatesImmediate()
+    {
+        int syncedCount = 0;
+
+        // マッピングが設定されている場合は、対応するFileIconChangeを同期
+        if (txtToIconMappings != null && txtToIconMappings.Count > 0)
+        {
+            foreach (var mapping in txtToIconMappings)
+            {
+                if (mapping == null ||
+                    mapping.txtPuzzleManager == null ||
+                    mapping.fileIconChange == null)
+                    continue;
+
+                // TxtPuzzleManagerが完了状態の場合、対応するFileIconChangeを更新
+                if (mapping.txtPuzzleManager.IsPuzzleCompleted())
+                {
+                    mapping.fileIconChange.SetPuzzleCompletedState(true);
+                    syncedCount++;
+
+                    if (debugMode)
+                    {
+                        Debug.Log($"GameSaveManager: FileIconChangeを同期（マッピング使用） - {mapping.fileIconChange.gameObject.name}");
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("txtToIconMappingsが設定されていません。手動で設定するか、GameSaveManagerのインスペクターでマッピングを追加してください。");
         }
     }
 

@@ -24,10 +24,18 @@ public class FileIconChange : MonoBehaviour
     [Tooltip("従来互換：パズルがまとめて含まれるパネル（dropAreasが空の場合のみ使用）")]
     [SerializeField] private GameObject puzzlePanel;
 
+    [Header("パズルマネージャー参照")]
+    [Tooltip("インスペクターで設定するTxtPuzzleManager（自動検索しません）")]
+    [SerializeField] private TxtPuzzleManager puzzleManager;
+
     [Header("状態管理")]
     [Tooltip("パズル完了状態を記録するフラグ")]
     private bool isPuzzleCompleted = false;
 
+    /// <summary>
+    /// オブジェクトがアクティブになったときの初期化処理を行う。
+    /// </summary>
+    /// <remarks>パズルがすでに完了している場合は、即座に完了スプライトを適用する。それ以外の場合は、現在のパズル状態をチェックする。</remarks>
     private void OnEnable()
     {
         // オブジェクトがアクティブになる度にパズルの状態をチェック
@@ -196,5 +204,44 @@ public class FileIconChange : MonoBehaviour
     public bool IsPuzzleCompleted()
     {
         return isPuzzleCompleted;
+    }
+
+    /// <summary>
+    /// パズル完了状態を外部から設定（セーブデータ復元用）
+    /// </summary>
+    /// <param name="completed">完了状態</param>
+    public void SetPuzzleCompletedState(bool completed)
+    {
+        isPuzzleCompleted = completed;
+
+        if (completed)
+        {
+            ApplyCompletedSprite();
+
+            Debug.Log($"FileIconChange: セーブデータから完了状態を復元 - {gameObject.name}");
+        }
+        else
+        {
+            // 未完了の場合はデフォルトスプライトに戻す
+            if (iconImage != null && defaultSprite != null)
+            {
+                iconImage.sprite = defaultSprite;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 関連するTxtPuzzleManagerの完了状態を確認して反映
+    /// </summary>
+    public void SyncWithPuzzleManager()
+    {
+        if (puzzleManager != null && puzzleManager.IsPuzzleCompleted())
+        {
+            SetPuzzleCompletedState(true);
+        }
+        else if (puzzleManager != null)
+        {
+            Debug.LogError("FileIconChange: TxtPuzzleManagerが設定されていません。");
+        }
     }
 }

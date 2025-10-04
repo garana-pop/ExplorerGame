@@ -6573,6 +6573,7 @@ MonoBehaviour:
   completionSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
   puzzleConnector: {fileID: 1264772513}
   closeButton: {fileID: 1615977226}
+  linkedFileIcon: {fileID: 1935878442}
   completionDuration: 0.2
   unlockDelay: 0.3
   fileName: "\u5076\u7136\u306E\u518D\u4F1A.txt"
@@ -8658,6 +8659,7 @@ MonoBehaviour:
   completionSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
   puzzleConnector: {fileID: 0}
   closeButton: {fileID: 1395860875}
+  linkedFileIcon: {fileID: 1606000849}
   completionDuration: 0.2
   unlockDelay: 0.3
   fileName: "\u5F7C\u5973\u3068\u306E\u6587\u901A.txt"
@@ -9787,7 +9789,7 @@ MonoBehaviour:
   - {fileID: 1137784394}
   - {fileID: 728328510}
   puzzlePanel: {fileID: 627053070}
-  debugMode: 0
+  puzzleManager: {fileID: 1815481439}
 --- !u!1 &226545426
 GameObject:
   m_ObjectHideFlags: 0
@@ -14119,7 +14121,7 @@ MonoBehaviour:
   - {fileID: 559161756}
   - {fileID: 419990172}
   puzzlePanel: {fileID: 1051644015}
-  debugMode: 0
+  puzzleManager: {fileID: 2073820129}
 --- !u!1 &305148148
 GameObject:
   m_ObjectHideFlags: 0
@@ -21673,7 +21675,7 @@ MonoBehaviour:
   - {fileID: 1784150755}
   - {fileID: 1730262127}
   puzzlePanel: {fileID: 2097639824}
-  debugMode: 0
+  puzzleManager: {fileID: 854032564}
 --- !u!1 &457994789
 GameObject:
   m_ObjectHideFlags: 0
@@ -31731,6 +31733,7 @@ MonoBehaviour:
   completionSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
   puzzleConnector: {fileID: 2139678868}
   closeButton: {fileID: 1843419457}
+  linkedFileIcon: {fileID: 1280279529}
   completionDuration: 0.2
   unlockDelay: 0.3
   fileName: "\u6700\u5F8C\u306E\u8B66\u544A.txt"
@@ -38366,6 +38369,7 @@ MonoBehaviour:
   completionSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
   puzzleConnector: {fileID: 0}
   closeButton: {fileID: 2115303499}
+  linkedFileIcon: {fileID: 457180104}
   completionDuration: 0.2
   unlockDelay: 0.3
   fileName: "\u89AA\u53CB\u304B\u3089\u306E\u5FE0\u544A.txt"
@@ -48227,6 +48231,7 @@ MonoBehaviour:
   completionSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
   puzzleConnector: {fileID: 1040592668}
   closeButton: {fileID: 186926914}
+  linkedFileIcon: {fileID: 1135279532}
   completionDuration: 0.2
   unlockDelay: 0.3
   fileName: "\u521D\u3081\u3066\u306E\u55A7\u5629.txt"
@@ -51820,7 +51825,7 @@ MonoBehaviour:
   - {fileID: 1602273860}
   - {fileID: 1596487188}
   puzzlePanel: {fileID: 1862527504}
-  debugMode: 0
+  puzzleManager: {fileID: 1058090419}
 --- !u!1 &1136438941
 GameObject:
   m_ObjectHideFlags: 0
@@ -59085,7 +59090,7 @@ MonoBehaviour:
   - {fileID: 2087819720}
   - {fileID: 99888510}
   puzzlePanel: {fileID: 1732250456}
-  debugMode: 0
+  puzzleManager: {fileID: 673386687}
 --- !u!1 &1281160935
 GameObject:
   m_ObjectHideFlags: 0
@@ -63666,7 +63671,7 @@ MonoBehaviour:
   - {fileID: 1811191008}
   - {fileID: 1991704482}
   puzzlePanel: {fileID: 783573642}
-  debugMode: 1
+  puzzleManager: {fileID: 2030518820}
 --- !u!114 &1373222117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67120,6 +67125,35 @@ MonoBehaviour:
   - "\u8A18\u9332"
   - "\u9858\u3044"
   defaultActiveFolder: "\u601D\u3044\u51FA"
+  txtPuzzleManagersForSync:
+  - {fileID: 2030518820}
+  - {fileID: 1815481439}
+  - {fileID: 171854359}
+  - {fileID: 215337737}
+  - {fileID: 1058090419}
+  - {fileID: 1520827375}
+  - {fileID: 854032564}
+  - {fileID: 673386687}
+  - {fileID: 2073820129}
+  txtToIconMappings:
+  - txtPuzzleManager: {fileID: 2030518820}
+    fileIconChange: {fileID: 1373222116}
+  - txtPuzzleManager: {fileID: 1815481439}
+    fileIconChange: {fileID: 225275255}
+  - txtPuzzleManager: {fileID: 171854359}
+    fileIconChange: {fileID: 1935878442}
+  - txtPuzzleManager: {fileID: 215337737}
+    fileIconChange: {fileID: 1606000849}
+  - txtPuzzleManager: {fileID: 1058090419}
+    fileIconChange: {fileID: 1135279532}
+  - txtPuzzleManager: {fileID: 1520827375}
+    fileIconChange: {fileID: 1729506673}
+  - txtPuzzleManager: {fileID: 854032564}
+    fileIconChange: {fileID: 457180104}
+  - txtPuzzleManager: {fileID: 673386687}
+    fileIconChange: {fileID: 1280279529}
+  - txtPuzzleManager: {fileID: 2073820129}
+    fileIconChange: {fileID: 303051894}
   folderToggleDelay: 0.2
   debugAfterChangeFlag: 0
   portraitDeleted: 0
@@ -69916,6 +69950,7 @@ MonoBehaviour:
   completionSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
   puzzleConnector: {fileID: 106016393}
   closeButton: {fileID: 402185492}
+  linkedFileIcon: {fileID: 1729506673}
   completionDuration: 0.2
   unlockDelay: 0.3
   fileName: "\u30D7\u30EC\u30BC\u30F3\u30C8.txt"
@@ -74672,7 +74707,7 @@ MonoBehaviour:
   - {fileID: 1403430500}
   - {fileID: 2124504467}
   puzzlePanel: {fileID: 1539281655}
-  debugMode: 0
+  puzzleManager: {fileID: 215337737}
 --- !u!1 &1606302521
 GameObject:
   m_ObjectHideFlags: 0
@@ -79696,7 +79731,7 @@ MonoBehaviour:
   - {fileID: 1663016711}
   - {fileID: 1396603646}
   puzzlePanel: {fileID: 1215067156}
-  debugMode: 0
+  puzzleManager: {fileID: 1520827375}
 --- !u!1001 &1729619310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83675,6 +83710,7 @@ MonoBehaviour:
   completionSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
   puzzleConnector: {fileID: 0}
   closeButton: {fileID: 847535290}
+  linkedFileIcon: {fileID: 225275255}
   completionDuration: 0.2
   unlockDelay: 0.3
   fileName: "\u5F7C\u5973\u306E\u3053\u3068.txt"
@@ -89715,7 +89751,7 @@ MonoBehaviour:
   - {fileID: 1502045113}
   - {fileID: 1009260664}
   puzzlePanel: {fileID: 1997989445}
-  debugMode: 0
+  puzzleManager: {fileID: 171854359}
 --- !u!1 &1943137665
 GameObject:
   m_ObjectHideFlags: 0
@@ -93216,6 +93252,7 @@ MonoBehaviour:
   completionSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
   puzzleConnector: {fileID: 448815637}
   closeButton: {fileID: 226545427}
+  linkedFileIcon: {fileID: 1373222116}
   completionDuration: 0.2
   unlockDelay: 0.3
   fileName: "\u521D\u3081\u3066\u898B\u304B\u3051\u305F\u65E5.txt"
@@ -95332,6 +95369,7 @@ MonoBehaviour:
   completionSound: {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
   puzzleConnector: {fileID: 1655534594}
   closeButton: {fileID: 2046763502}
+  linkedFileIcon: {fileID: 303051894}
   completionDuration: 0.2
   unlockDelay: 0.3
   fileName: Separation.txt

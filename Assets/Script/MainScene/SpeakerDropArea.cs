@@ -382,6 +382,9 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
                     string fileName = puzzleManager.GetFileName();
                     if (string.IsNullOrEmpty(fileName)) fileName = "テキストパズル";
                     Debug.Log($"{fileName} 進捗度 {correctCount}/{totalCount} パズル完了！");
+
+                    // パズル完了をFileIconChangeに通知
+                    fileIconChange.OnPuzzleCompleted(fileName);
                 }
 
                 // 完了サウンドを再生

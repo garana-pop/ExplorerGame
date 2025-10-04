@@ -24,6 +24,10 @@ public class TxtPuzzleManager : MonoBehaviour
     [SerializeField] private TxtPuzzleConnector puzzleConnector;
     [SerializeField] private Button closeButton; // 閉じるボタンへの参照
 
+    [Header("アイコン連携")]
+    [Tooltip("パズル完了時に、設定したファイルアイコンのモザイクを解除する")]
+    [SerializeField] private FileIconChange linkedFileIcon;
+
     [Header("完了演出設定")]
     [SerializeField] private float completionDuration = 1.0f; // 完了演出の所要時間
     [SerializeField] private float unlockDelay = 20.0f; // フォルダー解放後、ボタンをアンロックするまでの遅延
@@ -249,6 +253,8 @@ public class TxtPuzzleManager : MonoBehaviour
                 originalImage.SetActive(true);
             }
 
+            // linkedFileIconの状態を更新
+            UpdateLinkedFileIcon(true);
 
             // 閉じるボタンを無効化
             LockCloseButton();
@@ -525,10 +531,17 @@ public class TxtPuzzleManager : MonoBehaviour
 
                 if (puzzleConnector != null)
                     puzzleConnector.OnTxtPuzzleSolved();
+
+                // linkedFileIconが設定されている場合のみアイコン状態を更新
+                UpdateLinkedFileIcon(true);
             }
             else
             {
                 forceApplyCorrectState = false;
+
+                // 未完了の場合もアイコンを更新
+                UpdateLinkedFileIcon(false);
+                Debug.Log($"TxtPuzzle '{fileName}': 未完了状態アイコンを適用しました");
             }
         }
         else
@@ -536,7 +549,19 @@ public class TxtPuzzleManager : MonoBehaviour
             // 進捗データが見つからない場合は初期化
             isPuzzleCompleted = false;
             forceApplyCorrectState = false;
-            hasBeenOpenedThisSession = false; // 追加
+            hasBeenOpenedThisSession = false;
+            ResetAllAreas();
+            UpdateLinkedFileIcon(false);　// アイコンを未完了状態に更新
+        }
+    }
+
+    // ★新規追加: linkedFileIconの状態を更新するメソッド
+    private void UpdateLinkedFileIcon(bool completed)
+    {
+        if (linkedFileIcon != null)
+        {
+            linkedFileIcon.SetPuzzleCompletedState(completed);
+            Debug.Log($"TxtPuzzleManager: linkedFileIconの状態を更新 - {fileName}: 完了={completed}");
         }
     }
 
@@ -711,5 +736,17 @@ public class TxtPuzzleManager : MonoBehaviour
     public string GetFileName()
     {
         return fileName;
+    }
+
+    // 外部からlinkedFileIconを設定できるメソッド（オプション）
+    public void SetLinkedFileIcon(FileIconChange fileIcon)
+    {
+        linkedFileIcon = fileIcon;
+
+        // 現在の状態を即座に反映
+        if (linkedFileIcon != null)
+        {
+            UpdateLinkedFileIcon(isPuzzleCompleted);
+        }
     }
 }
