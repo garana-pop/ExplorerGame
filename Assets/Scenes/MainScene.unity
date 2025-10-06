@@ -2411,7 +2411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u307C\u304F"
+  speakerName_Japanese: "\u307C\u304F"
+  speakerName_English: Me
 --- !u!114 &73203507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4311,7 +4312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u5F7C\u5973"
+  speakerName_Japanese: "\u5F7C\u5973"
+  speakerName_English: Her
 --- !u!114 &92697688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4623,7 +4625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u53CB\u4EBA"
+  speakerName_Japanese: "\u53CB\u4EBA"
+  speakerName_English: Friend
 --- !u!114 &98665002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6343,7 +6346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u307C\u304F"
+  speakerName_Japanese: "\u307C\u304F"
+  speakerName_English: Me
 --- !u!114 &156123611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9526,7 +9530,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u5F7C\u5973"
+  speakerName_Japanese: "\u5F7C\u5973"
+  speakerName_English: Her
 --- !u!114 &219987983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12121,7 +12126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u307C\u304F"
+  speakerName_Japanese: "\u307C\u304F"
+  speakerName_English: Me
 --- !u!114 &283057085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13323,7 +13329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u53CB\u4EBA"
+  speakerName_Japanese: "\u53CB\u4EBA"
+  speakerName_English: Friend
 --- !u!114 &295862014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25548,7 +25555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u53CB\u4EBA"
+  speakerName_Japanese: "\u53CB\u4EBA"
+  speakerName_English: Friend
 --- !u!114 &525953878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26415,7 +26423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u307C\u304F"
+  speakerName_Japanese: "\u307C\u304F"
+  speakerName_English: Me
 --- !u!114 &541772896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28281,7 +28290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u5F7C\u5973"
+  speakerName_Japanese: "\u5F7C\u5973"
+  speakerName_English: Her
 --- !u!114 &579484211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38090,7 +38100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u307C\u304F"
+  speakerName_Japanese: "\u307C\u304F"
+  speakerName_English: Me
 --- !u!114 &849173942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57034,7 +57045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u53CB\u4EBA"
+  speakerName_Japanese: "\u53CB\u4EBA"
+  speakerName_English: Friend
 --- !u!114 &1241348802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60626,7 +60638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u307C\u304F"
+  speakerName_Japanese: "\u307C\u304F"
+  speakerName_English: Me
 --- !u!114 &1319121070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65831,7 +65844,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u307C\u304F"
+  speakerName_Japanese: "\u307C\u304F"
+  speakerName_English: Me
 --- !u!114 &1428051211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67898,7 +67912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u307C\u304F"
+  speakerName_Japanese: "\u307C\u304F"
+  speakerName_English: Me
 --- !u!114 &1469440620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79156,7 +79171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u53CB\u4EBA"
+  speakerName_Japanese: "\u53CB\u4EBA"
+  speakerName_English: Friend
 --- !u!114 &1714642840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85195,7 +85211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u307C\u304F"
+  speakerName_Japanese: "\u307C\u304F"
+  speakerName_English: Me
 --- !u!114 &1847514237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96207,7 +96224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688acd8c59242fd409ad5f90c04275b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: "\u5927\u5BB6"
+  speakerName_Japanese: "\u5927\u5BB6"
+  speakerName_English: Landlord
 --- !u!114 &2085170391
 MonoBehaviour:
   m_ObjectHideFlags: 0
