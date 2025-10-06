@@ -186,7 +186,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
     private void InitializeComponents()
     {
         // TextMeshProUGUIコンポーネントの取得
-        UpdateTextComponent();
+        CheckTextComponent();
 
         // 背景イメージの取得
         if (backgroundImage == null)
@@ -199,61 +199,27 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
     }
 
     /// <summary>
-    /// TextMeshProUGUIコンポーネントを確実に更新
+    /// TextMeshProUGUIコンポーネントが設定されているか確認
     /// </summary>
-    private void UpdateTextComponent()
+    private void CheckTextComponent()
     {
-        // インスペクターで直接設定されている場合はそれを使用
+        // インスペクターで設定されている場合
         if (textComponentReference != null)
         {
             textComponent = textComponentReference;
+
+            if (debugMode)
+            {
+                Debug.Log($"HiddenKeyword '{currentDisplayWord}': インスペクターで設定されたTextMeshProUGUIコンポーネントを使用します");
+            }
+
             return;
         }
 
-        // まず自分自身から検索
-        textComponent = GetComponent<TextMeshProUGUI>();
-
-        // 見つからない場合は子オブジェクトから検索
-        if (textComponent == null)
+        // インスペクターで設定されていない場合
+        if (textComponentReference == null)
         {
-            textComponent = GetComponentInChildren<TextMeshProUGUI>(true);
-        }
-
-        // 見つからない場合は親オブジェクトから検索
-        if (textComponent == null)
-        {
-            textComponent = GetComponentInParent<TextMeshProUGUI>();
-        }
-
-        // Line1Text, Line2Textなどの親オブジェクトを探す
-        if (textComponent == null)
-        {
-            Transform current = transform;
-            while (current != null && textComponent == null)
-            {
-                if (current.name.Contains("Line") && current.name.Contains("Text"))
-                {
-                    textComponent = current.GetComponent<TextMeshProUGUI>();
-                    if (textComponent != null)
-                    {
-                        if (debugMode)
-                        {
-                            Debug.Log($"HiddenKeyword '{currentDisplayWord}': 親の {current.name} からテキストコンポーネントを見つけました");
-                        }
-                        break;
-                    }
-                }
-                current = current.parent;
-            }
-        }
-
-        if (textComponent == null)
-        {
-            Debug.LogWarning($"HiddenKeyword '{name}': TextMeshProUGUIコンポーネントが見つかりません。インスペクターで直接指定してください。");
-        }
-        else if (debugMode)
-        {
-            Debug.Log($"HiddenKeyword '{currentDisplayWord}': TextMeshProUGUIコンポーネントを取得しました");
+            Debug.LogWarning($"HiddenKeyword '{currentDisplayWord}': インスペクターでTextMeshProUGUIコンポーネントが設定されていません");
         }
     }
 
@@ -317,7 +283,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
         // テキストコンポーネント確認
         if (textComponent == null)
         {
-            UpdateTextComponent();
+            CheckTextComponent();
         }
 
         isRevealed = true;
@@ -354,7 +320,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
         // テキストコンポーネント確認（いつでも確実に取得）
         if (textComponent == null)
         {
-            UpdateTextComponent();
+            CheckTextComponent();
         }
 
         // 強制的に表示状態に設定
@@ -374,16 +340,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
     /// </summary>
     private void ApplyVisualState()
     {
-        // テキストコンポーネントがなければ取得を試みる
-        if (textComponent == null)
-        {
-            UpdateTextComponent();
-            if (textComponent == null)
-            {
-                Debug.LogWarning($"HiddenKeyword '{currentDisplayWord}': TextMeshProUGUIコンポーネントがないため表示更新できません。");
-                return;
-            }
-        }
+        CheckTextComponent();
 
         if (isRevealed)
         {

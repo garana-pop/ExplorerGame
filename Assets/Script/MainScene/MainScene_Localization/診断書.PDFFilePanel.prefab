@@ -687,7 +687,6 @@ MonoBehaviour:
     originalParentPosition: {x: 0, y: 0, z: 0}
     originalChildOffset: {x: 0, y: 0, z: 0}
     childHiddenKeyword: {fileID: 0}
-  debugMode: 1
 --- !u!114 &7239264267357998451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +724,6 @@ MonoBehaviour:
     childHiddenKeyword: {fileID: 0}
     originalParentSize: {x: 0, y: 0}
     originalChildSize: {x: 0, y: 0}
-  debugMode: 1
 --- !u!1 &3005821696658178315
 GameObject:
   m_ObjectHideFlags: 0
