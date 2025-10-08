@@ -19,9 +19,9 @@ public class DialogueDataLoader : MonoBehaviour
     [SerializeField] private TextAsset dialogueTextAsset_English;   // 英語用テキストファイル
 
     // コマンドプレフィックスの定義
-    private const string SPEAKER_CHANGE_COMMAND = "SpeakerChange_";
-    // exit コマンドを追加
-    private const string EXIT_COMMAND = "exit";
+    private const string SPEAKER_CHANGE_COMMAND = "SpeakerChange_"; // 話者変更コマンド
+    private const string EXIT_COMMAND = "exit"; // キャラクターが退出するコマンド
+    private const string SOUND_EFFECT_PREFIX = "SoundEffect:"; // 効果音コマンドのプレフィックス
 
     private List<DialogueEntry> dialogueEntries = new List<DialogueEntry>();
 
@@ -191,6 +191,18 @@ public class DialogueDataLoader : MonoBehaviour
                 exitCommandEntry.isCommand = true;
                 exitCommandEntry.commandParam = EXIT_COMMAND;
                 dialogueEntries.Add(exitCommandEntry);
+                continue;
+            }
+
+            // 効果音コマンドの処理 (例: SoundEffect: ReceivePC)
+            if (trimmedLine.StartsWith(SOUND_EFFECT_PREFIX, System.StringComparison.OrdinalIgnoreCase))
+            {
+                string soundKey = trimmedLine.Substring(SOUND_EFFECT_PREFIX.Length).Trim();
+                DialogueEntry soundEntry = new DialogueEntry("", "", DialogueType.Command);
+                soundEntry.isCommand = true;
+                soundEntry.soundEffectKey = soundKey;
+                soundEntry.commandParam = "SoundEffect";
+                dialogueEntries.Add(soundEntry);
                 continue;
             }
 

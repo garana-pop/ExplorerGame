@@ -27,6 +27,7 @@ Father:The doctor says
 Father:organizing memory fragments
 Father:is the quickest way to recover your memory.
 [Receiving a laptop]
+SoundEffect: ReceivePC_0
 Father:I've prepared materials related to your memory.
 Father:Including information about the accident.
 Amnesiac:...Thank you.

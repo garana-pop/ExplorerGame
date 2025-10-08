@@ -3697,6 +3697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplorerGame.Localization.LocalizationManager
   debugMode: 1
+  showTestButtons: 0
 --- !u!4 &1053847978
 Transform:
   m_ObjectHideFlags: 0
@@ -3930,6 +3931,9 @@ MonoBehaviour:
   - categoryName: Folder open Sound
     clips:
     - {fileID: 8300000, guid: b1ef434a31e184c47a397cdcf5d2c77e, type: 3}
+  - categoryName: ReceivePC
+    clips:
+    - {fileID: 8300000, guid: 96bc8a4f329eec949910e6d9fef7875d, type: 3}
   uiClickSound: {fileID: 8300000, guid: e7ac7d834dee1c34f973e6a8719d525d, type: 3}
   revealSound: {fileID: 8300000, guid: 6c5e3d130d1498b4ab4e7181e84a6284, type: 3}
   progressCompletionSound: {fileID: 8300000, guid: 22d8b35160f396348b30dcde5074545f, type: 3}
@@ -5868,6 +5872,8 @@ MonoBehaviour:
   - "\u8A18\u9332"
   - "\u9858\u3044"
   defaultActiveFolder: "\u601D\u3044\u51FA"
+  txtPuzzleManagersForSync: []
+  txtToIconMappings: []
   folderToggleDelay: 0.2
   debugAfterChangeFlag: 0
   portraitDeleted: 0

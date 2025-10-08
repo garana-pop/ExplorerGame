@@ -16954,6 +16954,9 @@ MonoBehaviour:
   - categoryName: TrashDestroySound
     clips:
     - {fileID: 8300000, guid: aeae03b467f9b0045b7d3c954eaf7cc0, type: 3}
+  - categoryName: ReceivePC
+    clips:
+    - {fileID: 8300000, guid: 96bc8a4f329eec949910e6d9fef7875d, type: 3}
   uiClickSound: {fileID: 8300000, guid: e7ac7d834dee1c34f973e6a8719d525d, type: 3}
   revealSound: {fileID: 8300000, guid: 6c5e3d130d1498b4ab4e7181e84a6284, type: 3}
   progressCompletionSound: {fileID: 8300000, guid: 22d8b35160f396348b30dcde5074545f, type: 3}
@@ -21621,7 +21624,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1191983983}
   m_HandleRect: {fileID: 1191983982}
   m_Direction: 2
-  m_Value: 1.0000006
+  m_Value: 1.0000005
   m_Size: 0.6388804
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -53082,7 +53085,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1754196685}
   m_HandleRect: {fileID: 1754196684}
   m_Direction: 2
-  m_Value: 1.0000007
+  m_Value: 1.0000002
   m_Size: 0.67648834
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -53417,6 +53420,8 @@ MonoBehaviour:
   bgmAudioSource: {fileID: 960451941}
   initialFolders: []
   defaultActiveFolder: "\u601D\u3044\u51FA"
+  txtPuzzleManagersForSync: []
+  txtToIconMappings: []
   folderToggleDelay: 0.2
   debugAfterChangeFlag: 0
   portraitDeleted: 0
@@ -62253,7 +62258,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 321899461}
   m_HandleRect: {fileID: 321899460}
   m_Direction: 2
-  m_Value: 1.0000007
+  m_Value: 1.0000002
   m_Size: 0.67648834
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -63059,7 +63064,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 199547235}
   m_Direction: 2
   m_Value: 1.0000011
-  m_Size: 0.75383806
+  m_Size: 0.7538381
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -66919,8 +66924,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 155549764}
   m_HandleRect: {fileID: 155549763}
   m_Direction: 2
-  m_Value: 1.0000002
-  m_Size: 0.50460666
+  m_Value: 1.0000004
+  m_Size: 0.5046067
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -69867,7 +69872,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 69069100}
   m_Direction: 2
   m_Value: 1.0000004
-  m_Size: 0.62983185
+  m_Size: 0.6298319
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

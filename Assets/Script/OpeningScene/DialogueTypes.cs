@@ -23,6 +23,9 @@ namespace OpeningScene
         public bool isCommand;        // コマンド行かどうか
         public string commandParam;   // コマンドパラメータ
 
+        // サウンドエフェクト関連のプロパティ
+        public string soundEffectKey; // 効果音キー
+
         public DialogueEntry(string speaker, string dialogue, DialogueType type = DialogueType.Normal)
         {
             this.speaker = speaker;
@@ -30,6 +33,7 @@ namespace OpeningScene
             this.type = type;
             this.isCommand = false;
             this.commandParam = "";
+            this.soundEffectKey = "";
         }
     }
 }
