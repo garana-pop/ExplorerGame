@@ -16,6 +16,13 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.rlabrecque.steamworks.net": {
+      "version": "https://github.com/rlabrecque/Steamworks.NET.git?path=/com.rlabrecque.steamworks.net",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "96cc6635c21ea412808092aa6bb86b739d632023"
+    },
     "com.unity.2d.animation": {
       "version": "12.0.2",
       "depth": 1,

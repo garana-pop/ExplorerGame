@@ -1,0 +1,197 @@
+using UnityEngine;
+using Steamworks;
+
+/// <summary>
+/// Steam APIの初期化と管理を行うシングルトンクラス
+/// </summary>
+public class SteamManager : MonoBehaviour
+{
+    #region Singleton
+
+    private static SteamManager _instance;
+
+    public static SteamManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindFirstObjectByType<SteamManager>();
+
+                if (_instance == null)
+                {
+                    GameObject go = new GameObject("SteamManager");
+                    _instance = go.AddComponent<SteamManager>();
+                }
+            }
+            return _instance;
+        }
+    }
+
+    #endregion
+
+    #region Fields
+
+    [Header("デバッグ設定")]
+    [SerializeField] private bool debugMode = true;
+
+    private bool isInitialized = false;
+    private bool isSteamRunning = false;
+
+    #endregion
+
+    #region Unity Lifecycle
+
+    private void Awake()
+    {
+        // シングルトンの重複チェック
+        if (_instance != null && _instance != this)
+        {
+            if (Application.isPlaying)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                DestroyImmediate(gameObject);
+            }
+            return;
+        }
+
+        _instance = this;
+
+        // シーン間で保持
+        if (Application.isPlaying)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
+        // Steam APIの初期化
+        InitializeSteam();
+    }
+
+    private void Update()
+    {
+        // Steam APIのコールバックを処理
+        if (isSteamRunning)
+        {
+            SteamAPI.RunCallbacks();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Steam APIのシャットダウン
+        if (isSteamRunning)
+        {
+            SteamAPI.Shutdown();
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(SteamManager)}: Steam APIをシャットダウンしました");
+            }
+        }
+    }
+
+    #endregion
+
+    #region Steam Initialization
+
+    /// <summary>
+    /// Steam APIを初期化
+    /// </summary>
+    private void InitializeSteam()
+    {
+        try
+        {
+            // Steam APIの初期化
+            if (SteamAPI.Init())
+            {
+                isSteamRunning = true;
+                isInitialized = true;
+
+                Debug.Log($"[Steamworks.NET] SteamAPI_Init() success");
+
+                if (debugMode)
+                {
+                    Debug.Log($"{nameof(SteamManager)}: Steam API初期化成功");
+                    Debug.Log($"{nameof(SteamManager)}: App ID: {SteamUtils.GetAppID()}");
+                    Debug.Log($"{nameof(SteamManager)}: ユーザー名: {SteamFriends.GetPersonaName()}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"{nameof(SteamManager)}: Steam API初期化失敗 - Steamクライアントが起動していない可能性があります");
+                isInitialized = false;
+                isSteamRunning = false;
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"{nameof(SteamManager)}: Steam API初期化中にエラーが発生: {e.Message}");
+            isInitialized = false;
+            isSteamRunning = false;
+        }
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Steamが正常に初期化されているか確認
+    /// </summary>
+    public bool IsInitialized()
+    {
+        return isInitialized && isSteamRunning;
+    }
+
+    /// <summary>
+    /// 現在のユーザー名を取得
+    /// </summary>
+    public string GetUserName()
+    {
+        if (!IsInitialized())
+        {
+            return "Unknown";
+        }
+
+        return SteamFriends.GetPersonaName();
+    }
+
+    /// <summary>
+    /// 現在のApp IDを取得
+    /// </summary>
+    public uint GetAppID()
+    {
+        if (!IsInitialized())
+        {
+            return 0;
+        }
+
+        return SteamUtils.GetAppID().m_AppId;
+    }
+
+    #endregion
+
+    #region Debug Methods
+
+#if UNITY_EDITOR
+    [ContextMenu("Steam初期化状態を表示")]
+    private void ShowSteamStatus()
+    {
+        if (IsInitialized())
+        {
+            Debug.Log($"Steam初期化: 成功");
+            Debug.Log($"App ID: {GetAppID()}");
+            Debug.Log($"ユーザー名: {GetUserName()}");
+        }
+        else
+        {
+            Debug.Log($"Steam初期化: 失敗");
+        }
+    }
+#endif
+
+    #endregion
+}
