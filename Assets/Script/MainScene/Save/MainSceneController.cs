@@ -26,6 +26,9 @@ public class MainSceneController : MonoBehaviour
         {
             LoadSaveData();
         }
+
+        // Steam実績「記憶の扉」を解除
+        UnlockDoorOfMemoryAchievement();
     }
 
     /// <summary>
@@ -79,6 +82,36 @@ public class MainSceneController : MonoBehaviour
         catch (Exception ex)
         {
             LogError($"セーブデータの読み込み中にエラーが発生しました: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// 「記憶の扉」実績を解除
+    /// OpeningSceneを完了してMainSceneに移行した際に呼び出される
+    /// </summary>
+    private void UnlockDoorOfMemoryAchievement()
+    {
+        // GameSaveManagerで OpeningScene完了フラグを確認
+        if (saveManager != null && saveManager.GetEndOpeningSceneFlag())
+        {
+            // 既にOpeningSceneをクリアしているが、実績が未解除の可能性がある場合
+            // SteamAchievementManagerを通じて実績を解除
+            if (SteamAchievementManager.Instance != null)
+            {
+                bool unlocked = SteamAchievementManager.Instance.UnlockAchievement("DoorOfMemory_1_ACHIEVEMENTS_UNLOCK");
+
+                if (debugMode && unlocked)
+                {
+                    LogDebug("Steam実績「記憶の扉」を解除しました");
+                }
+            }
+            else
+            {
+                if (debugMode)
+                {
+                    LogWarning("SteamAchievementManagerが見つからないため、実績を解除できませんでした");
+                }
+            }
         }
     }
 
