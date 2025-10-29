@@ -65,8 +65,11 @@ public class SteamAchievementManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+    }
 
-        // 初期化
+    private void Start()
+    {
+        // Startで初期化することで、SteamManagerの初期化完了を待つ
         Initialize();
     }
 
@@ -86,22 +89,84 @@ public class SteamAchievementManager : MonoBehaviour
             return;
         }
 
-        // Steam APIが初期化されているか確認
+        // Steam APIが初期化されているか確認(複数回チェック)
         if (!SteamManager.Instance.IsInitialized())
         {
-            LogWarning("Steam APIが初期化されていません。実績機能は動作しません。");
+            // 初期化が完了していない場合は、遅延して再試行
+            StartCoroutine(RetryInitialization());
             return;
         }
 
-        isInitialized = true;
+        CompleteInitialization();
+    }
 
-        // キャッシュを有効にする場合、既存の実績を読み込み
-        if (cacheAchievements)
+    /// <summary>
+    /// 初期化のリトライ処理
+    /// </summary>
+    private System.Collections.IEnumerator RetryInitialization()
+    {
+        int retryCount = 0;
+        const int maxRetries = 10;
+        const float retryInterval = 0.5f;
+
+        while (retryCount < maxRetries)
         {
-            LoadUnlockedAchievements();
+            yield return new WaitForSeconds(retryInterval);
+
+            if (SteamManager.Instance != null && SteamManager.Instance.IsInitialized())
+            {
+                CompleteInitialization();
+                yield break;
+            }
+
+            retryCount++;
         }
 
-        LogDebug("SteamAchievementManagerが初期化されました");
+        LogWarning("Steam APIの初期化を待機しましたが、タイムアウトしました。実績機能は動作しません。");
+    }
+
+    /// <summary>
+    /// 初期化の完了処理
+    /// </summary>
+    private void CompleteInitialization()
+    {
+        isInitialized = true;
+
+        // キャッシュが有効な場合、既存の実績を読み込む
+        // ※ユーザー統計情報の受信を待ってから読み込む
+        if (cacheAchievements)
+        {
+            StartCoroutine(WaitForUserStatsAndLoad());
+        }
+        else
+        {
+            LogDebug("SteamAchievementManagerが初期化されました");
+        }
+    }
+
+    /// <summary>
+    /// ユーザー統計情報の受信を待って実績を読み込む
+    /// </summary>
+    private System.Collections.IEnumerator WaitForUserStatsAndLoad()
+    {
+        int waitCount = 0;
+        const int maxWait = 20; // 最大10秒待機(0.5秒 × 20回)
+
+        while (!SteamManager.Instance.IsUserStatsReceived() && waitCount < maxWait)
+        {
+            yield return new WaitForSeconds(0.5f);
+            waitCount++;
+        }
+
+        if (SteamManager.Instance.IsUserStatsReceived())
+        {
+            LoadUnlockedAchievements();
+            LogDebug("SteamAchievementManagerが初期化されました");
+        }
+        else
+        {
+            LogWarning("ユーザー統計情報の受信がタイムアウトしました。実績機能が正常に動作しない可能性があります。");
+        }
     }
 
     #endregion
@@ -128,6 +193,13 @@ public class SteamAchievementManager : MonoBehaviour
             return false;
         }
 
+        // ユーザー統計情報が受信されていない場合
+        if (!SteamManager.Instance.IsUserStatsReceived())
+        {
+            LogWarning($"ユーザー統計情報が受信されていないため、実績 '{achievementApiName}' を解除できません");
+            return false;
+        }
+
         // キャッシュをチェック（既に解除済みの場合はスキップ）
         if (cacheAchievements && unlockedAchievements.Contains(achievementApiName))
         {
@@ -137,6 +209,25 @@ public class SteamAchievementManager : MonoBehaviour
 
         try
         {
+            // 実績が存在するかチェック
+            bool currentState = false;
+            if (!SteamUserStats.GetAchievement(achievementApiName, out currentState))
+            {
+                LogError($"実績 '{achievementApiName}' が見つかりません。API名が正しいか確認してください。");
+                return false;
+            }
+
+            // 既に解除済みの場合
+            if (currentState)
+            {
+                LogDebug($"実績 '{achievementApiName}' は既に解除済みです(Steam側で確認)");
+                if (cacheAchievements)
+                {
+                    unlockedAchievements.Add(achievementApiName);
+                }
+                return true;
+            }
+
             // 実績を解除
             bool success = SteamUserStats.SetAchievement(achievementApiName);
 

@@ -37,6 +37,9 @@ public class SteamManager : MonoBehaviour
 
     private bool isInitialized = false;
     private bool isSteamRunning = false;
+    private bool userStatsReceived = false;
+
+    private Callback<UserStatsReceived_t> m_UserStatsReceived;
 
     #endregion
 
@@ -112,6 +115,9 @@ public class SteamManager : MonoBehaviour
 
                 Debug.Log($"[Steamworks.NET] SteamAPI_Init() success");
 
+                // ユーザー統計情報受信コールバックの登録
+                m_UserStatsReceived = Callback<UserStatsReceived_t>.Create(OnUserStatsReceived);
+
                 if (debugMode)
                 {
                     Debug.Log($"{nameof(SteamManager)}: Steam API初期化成功");
@@ -134,6 +140,26 @@ public class SteamManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// ユーザー統計情報受信時のコールバック
+    /// </summary>
+    private void OnUserStatsReceived(UserStatsReceived_t pCallback)
+    {
+        if (pCallback.m_eResult == EResult.k_EResultOK)
+        {
+            userStatsReceived = true;
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(SteamManager)}: ユーザー統計情報を受信しました");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"{nameof(SteamManager)}: ユーザー統計情報の受信に失敗: {pCallback.m_eResult}");
+        }
+    }
+
     #endregion
 
     #region Public Methods
@@ -144,6 +170,14 @@ public class SteamManager : MonoBehaviour
     public bool IsInitialized()
     {
         return isInitialized && isSteamRunning;
+    }
+
+    /// <summary>
+    /// ユーザー統計情報が受信済みか確認
+    /// </summary>
+    public bool IsUserStatsReceived()
+    {
+        return userStatsReceived;
     }
 
     /// <summary>
@@ -185,6 +219,7 @@ public class SteamManager : MonoBehaviour
             Debug.Log($"Steam初期化: 成功");
             Debug.Log($"App ID: {GetAppID()}");
             Debug.Log($"ユーザー名: {GetUserName()}");
+            Debug.Log($"ユーザー統計情報: {(userStatsReceived ? "受信済み" : "未受信")}");
         }
         else
         {
