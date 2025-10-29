@@ -118,6 +118,9 @@ public class SteamManager : MonoBehaviour
                 // ユーザー統計情報受信コールバックの登録
                 m_UserStatsReceived = Callback<UserStatsReceived_t>.Create(OnUserStatsReceived);
 
+                // 現在のユーザーの統計情報をリクエスト
+                RequestCurrentUserStats();
+
                 if (debugMode)
                 {
                     Debug.Log($"{nameof(SteamManager)}: Steam API初期化成功");
@@ -157,6 +160,34 @@ public class SteamManager : MonoBehaviour
         else
         {
             Debug.LogWarning($"{nameof(SteamManager)}: ユーザー統計情報の受信に失敗: {pCallback.m_eResult}");
+        }
+    }
+
+    /// <summary>
+    /// 現在のユーザーの統計情報をリクエスト
+    /// </summary>
+    private void RequestCurrentUserStats()
+    {
+        if (isSteamRunning)
+        {
+            // 現在のユーザーのSteamIDを取得
+            CSteamID steamID = SteamUser.GetSteamID();
+
+            // ユーザー統計情報をリクエスト
+            SteamAPICall_t handle = SteamUserStats.RequestUserStats(steamID);
+
+            if (debugMode)
+            {
+                if (handle != SteamAPICall_t.Invalid)
+                {
+                    Debug.Log($"{nameof(SteamManager)}: ユーザー統計情報のリクエストを送信しました");
+                    Debug.Log($"{nameof(SteamManager)}: SteamID: {steamID}");
+                }
+                else
+                {
+                    Debug.LogWarning($"{nameof(SteamManager)}: ユーザー統計情報のリクエストに失敗しました");
+                }
+            }
         }
     }
 
@@ -204,6 +235,17 @@ public class SteamManager : MonoBehaviour
         }
 
         return SteamUtils.GetAppID().m_AppId;
+    }
+
+    /// <summary>
+    /// ユーザー統計情報を再リクエスト（公開メソッド）
+    /// </summary>
+    public void RetryRequestUserStats()
+    {
+        if (isSteamRunning && !userStatsReceived)
+        {
+            RequestCurrentUserStats();
+        }
     }
 
     #endregion

@@ -150,22 +150,42 @@ public class SteamAchievementManager : MonoBehaviour
     private System.Collections.IEnumerator WaitForUserStatsAndLoad()
     {
         int waitCount = 0;
-        const int maxWait = 20; // 最大10秒待機(0.5秒 × 20回)
+        const int maxWait = 40; // 最大20秒待機
+        const int retryInterval = 10; // 5秒ごとに再リクエスト
 
         while (!SteamManager.Instance.IsUserStatsReceived() && waitCount < maxWait)
         {
             yield return new WaitForSeconds(0.5f);
             waitCount++;
+
+            // 定期的に再リクエストを送信
+            if (waitCount % retryInterval == 0 && waitCount < maxWait)
+            {
+                if (debugMode)
+                {
+                    LogDebug($"ユーザー統計情報の再リクエスト... ({waitCount / 2}秒経過)");
+                }
+
+                // ★SteamManagerの公開メソッドを使用して再リクエスト
+                SteamManager.Instance.RetryRequestUserStats();
+            }
         }
 
         if (SteamManager.Instance.IsUserStatsReceived())
         {
             LoadUnlockedAchievements();
-            LogDebug("SteamAchievementManagerが初期化されました");
+            LogDebug("SteamAchievementManager初期化完了");
         }
         else
         {
             LogWarning("ユーザー統計情報の受信がタイムアウトしました。実績機能が正常に動作しない可能性があります。");
+
+            // ★タイムアウトしても最低限の初期化は完了させる
+            isInitialized = true;
+
+#if UNITY_EDITOR
+            LogWarning("[エディタモード] タイムアウトしましたが、テスト続行可能です");
+#endif
         }
     }
 
