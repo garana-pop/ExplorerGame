@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class FolderButtonScript : MonoBehaviour
 {
@@ -14,10 +15,15 @@ public class FolderButtonScript : MonoBehaviour
     [Header("表示設定")]
     [SerializeField] private Image folderIcon;
     [SerializeField] private TextMeshProUGUI folderLabel;
- 
-    private bool hasBeenActivated = false; //フォルダが一度でもアクティブにされたかを記録
+
+    [Header("デバッグ設定")]
+    [SerializeField] private bool debugMode = true; // デバッグモード
+
+    private bool hasBeenActivated = false; // フォルダが一度でもアクティブにされたかを記録
     private bool isActive = false;
-    private Image backgroundImage;
+
+    // 静的な解放履歴管理（セッション中に一度でも解放されたフォルダーを記録）
+    private static HashSet<string> unlockedFoldersThisSession = new HashSet<string>();
 
 
     private void Awake()
@@ -53,9 +59,6 @@ public class FolderButtonScript : MonoBehaviour
             isInitialActiveFolder = true;
         }
 
-        // 背景イメージの取得
-        //backgroundImage = GetComponent<Image>();
-
         // 初期状態で無効の場合は非表示に
         if (!isAvailableByDefault)
         {
@@ -70,9 +73,6 @@ public class FolderButtonScript : MonoBehaviour
             filePanel.SetActive(false); // 初期状態で非表示
         }
 
-        // 背景カラー初期化
-        //UpdateVisualState(false);
-
         // 初期アクティブフォルダーの場合は開く
         if (isInitialActiveFolder)
         {
@@ -81,6 +81,9 @@ public class FolderButtonScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// フォルダーをトグル（クリック時）
+    /// </summary>
     public void ToggleFolder()
     {
         if (filePanel != null)
@@ -100,9 +103,8 @@ public class FolderButtonScript : MonoBehaviour
             filePanel.transform.SetAsLastSibling(); // ヒエラルキーの一番下に移動
             UpdateVisualState(true);
 
-            // 追加: このフォルダが一度アクティブになったことを記録
+            // このフォルダが一度アクティブになったことを記録
             hasBeenActivated = true;
-
         }
         else
         {
@@ -113,26 +115,16 @@ public class FolderButtonScript : MonoBehaviour
     /// <summary>
     /// フォルダーの視覚状態を更新（選択/非選択）
     /// </summary>
+    /// <param name="selected">選択されているかどうか</param>
     private void UpdateVisualState(bool selected)
     {
         isActive = selected;
-
-        //// 背景色の更新
-        //if (backgroundImage != null)
-        //{
-        //    backgroundImage.color = selected ? selectedColor : normalColor;
-        //}
-
-        //// フォルダーアイコンの強調表示（オプション）
-        //if (folderIcon != null)
-        //{
-        //    folderIcon.color = selected ? Color.white : new Color(0.9f, 0.9f, 0.9f);
-        //}
     }
 
     /// <summary>
     /// フォルダー名を取得
     /// </summary>
+    /// <returns>フォルダー名</returns>
     public string GetFolderName()
     {
         return folderName;
@@ -141,23 +133,39 @@ public class FolderButtonScript : MonoBehaviour
     /// <summary>
     /// アクティブ状態を取得
     /// </summary>
+    /// <returns>アクティブ状態</returns>
     public bool IsActive()
     {
         return isActive && filePanel != null && filePanel.activeSelf;
     }
 
-    // SetActivatedStateメソッドの強化
+    /// <summary>
+    /// アクティブ化状態を設定
+    /// </summary>
+    /// <param name="activated">アクティブ化するかどうか</param>
     public void SetActivatedState(bool activated)
     {
-        hasBeenActivated = activated;
-
         // アクティブ化された場合は表示を確実に有効に
         if (activated)
         {
+            // フォルダーが初めて解放される場合（セッション中に一度も解放されていない場合）
+            bool isFirstActivation = !unlockedFoldersThisSession.Contains(folderName);
+
+            hasBeenActivated = true;
+
+            // セッション履歴に追加
+            if (isFirstActivation && !string.IsNullOrEmpty(folderName))
+            {
+                unlockedFoldersThisSession.Add(folderName);
+            }
+
             if (!gameObject.activeSelf)
             {
                 gameObject.SetActive(true);
-                Debug.Log($"フォルダー {folderName} を強制的にアクティブ化");
+                if (debugMode)
+                {
+                    Debug.Log($"{nameof(FolderButtonScript)}: フォルダー {folderName} を強制的にアクティブ化");
+                }
             }
 
             // FolderActivationGuardにも状態を反映
@@ -172,23 +180,47 @@ public class FolderButtonScript : MonoBehaviour
             {
                 filePanel.SetActive(true);
             }
+
+            // 初めて解放された場合はSteam実績を解除
+            if (isFirstActivation)
+            {
+                UnlockFolderAchievement();
+            }
         }
     }
 
-    // SetVisibleメソッドの強化
+    /// <summary>
+    /// フォルダーの表示状態を設定
+    /// </summary>
+    /// <param name="visible">表示するかどうか</param>
     public void SetVisible(bool visible)
     {
         if (visible)
         {
+            // フォルダーが初めて解放される場合（セッション中に一度も解放されていない場合）
+            bool isFirstActivation = !unlockedFoldersThisSession.Contains(folderName);
+
             // 表示する場合は常に有効にし、アクティブ化された状態にする
             gameObject.SetActive(true);
             hasBeenActivated = true;
+
+            // セッション履歴に追加
+            if (isFirstActivation && !string.IsNullOrEmpty(folderName))
+            {
+                unlockedFoldersThisSession.Add(folderName);
+            }
 
             // FolderActivationGuardがあれば活性化
             FolderActivationGuard guard = GetComponent<FolderActivationGuard>();
             if (guard != null)
             {
                 guard.SetActivated(true);
+            }
+
+            // 初めて解放された場合はSteam実績を解除
+            if (isFirstActivation)
+            {
+                UnlockFolderAchievement();
             }
         }
         else if (!hasBeenActivated)
@@ -199,14 +231,96 @@ public class FolderButtonScript : MonoBehaviour
         else
         {
             // 既にアクティブ化されたフォルダは非表示にしない
-            Debug.Log($"フォルダー {folderName} は既にアクティブ化されているため、非表示にしません");
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(FolderButtonScript)}: フォルダー {folderName} は既にアクティブ化されているため、非表示にしません");
+            }
         }
     }
 
-    // 追加: フォルダが一度でもアクティブになったかを取得するメソッド
+    /// <summary>
+    /// フォルダが一度でもアクティブになったかを取得
+    /// </summary>
+    /// <returns>アクティブ化されたことがある場合true</returns>
     public bool HasBeenActivated()
     {
         return hasBeenActivated;
     }
 
+    #region Steam実績管理
+
+    /// <summary>
+    /// フォルダー解放時のSteam実績を解除
+    /// </summary>
+    private void UnlockFolderAchievement()
+    {
+        // SteamAchievementManagerの存在確認
+        if (SteamAchievementManager.Instance == null)
+        {
+            if (debugMode)
+            {
+                Debug.LogWarning($"{nameof(FolderButtonScript)}: SteamAchievementManagerが存在しません。実績解除できませんでした。");
+            }
+            return;
+        }
+
+        // フォルダー名に対応する実績API名を取得
+        string achievementApiName = GetFolderAchievementApiName(folderName);
+
+        // 対応する実績がない場合はスキップ
+        if (string.IsNullOrEmpty(achievementApiName))
+        {
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」に対応するSteam実績はありません。");
+            }
+            return;
+        }
+
+        // 既に解除済みかチェック
+        if (SteamAchievementManager.Instance.IsAchievementUnlocked(achievementApiName))
+        {
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」の実績は既に解除済みです。");
+            }
+            return;
+        }
+
+        // 実績を解除
+        bool success = SteamAchievementManager.Instance.UnlockAchievement(achievementApiName);
+
+        if (success)
+        {
+            Debug.Log($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」のSteam実績を解除しました（API: {achievementApiName}）");
+        }
+        else
+        {
+            Debug.LogError($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」のSteam実績解除に失敗しました（API: {achievementApiName}）");
+        }
+    }
+
+    /// <summary>
+    /// フォルダー名から対応するSteam実績API名を取得
+    /// </summary>
+    /// <param name="folder">フォルダー名</param>
+    /// <returns>対応するAPI名。該当なしの場合はnull</returns>
+    private string GetFolderAchievementApiName(string folder)
+    {
+        switch (folder)
+        {
+            case "恋人":
+                return "MemoryOfPain_3_ACHIEVEMENTS_UNLOCK";
+            case "友人":
+                return "Rejection_4_ACHIEVEMENTS_UNLOCK";
+            case "記録":
+                return "ConfrontingReality_5_ACHIEVEMENTS_UNLOCK";
+            case "願い":
+                return "Acceptance_6_ACHIEVEMENTS_UNLOCK";
+            default:
+                return null;
+        }
+    }
+
+    #endregion
 }

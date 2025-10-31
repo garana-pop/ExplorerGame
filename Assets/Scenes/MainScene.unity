@@ -7244,6 +7244,7 @@ MonoBehaviour:
   isAvailableByDefault: 1
   folderIcon: {fileID: 1559991559}
   folderLabel: {fileID: 1901180476}
+  debugMode: 1
 --- !u!114 &181647807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22619,6 +22620,7 @@ MonoBehaviour:
   isAvailableByDefault: 1
   folderIcon: {fileID: 2122661457}
   folderLabel: {fileID: 1094486556}
+  debugMode: 1
 --- !u!114 &470516165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62050,6 +62052,7 @@ MonoBehaviour:
   isAvailableByDefault: 1
   folderIcon: {fileID: 1212855193}
   folderLabel: {fileID: 1060289909}
+  debugMode: 1
 --- !u!114 &1348579697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67356,6 +67359,7 @@ MonoBehaviour:
   isAvailableByDefault: 1
   folderIcon: {fileID: 1398981268}
   folderLabel: {fileID: 365323934}
+  debugMode: 1
 --- !u!114 &1464423881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82863,6 +82867,7 @@ MonoBehaviour:
   isAvailableByDefault: 1
   folderIcon: {fileID: 1417275686}
   folderLabel: {fileID: 1991630719}
+  debugMode: 1
 --- !u!114 &1800366891
 MonoBehaviour:
   m_ObjectHideFlags: 0
