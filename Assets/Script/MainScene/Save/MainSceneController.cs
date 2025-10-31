@@ -25,6 +25,9 @@ public class MainSceneController : MonoBehaviour
         if (loadSaveDataOnStart)
         {
             LoadSaveData();
+
+            // セーブデータ読み込み後にフォルダー解放実績をチェック
+            CheckAndUnlockFolderAchievements();
         }
 
         // Steam実績「記憶の扉」を解除
@@ -129,5 +132,115 @@ public class MainSceneController : MonoBehaviour
     private void LogError(string message)
     {
         Debug.LogError($"[MainSceneController] {message}");
+    }
+
+    /// <summary>
+    /// セーブデータからフォルダー解放状態を確認し、対応するSteam実績を解除
+    /// </summary>
+    private void CheckAndUnlockFolderAchievements()
+    {
+        // SaveManagerが存在しない場合は処理をスキップ
+        if (saveManager == null)
+        {
+            if (debugMode)
+            {
+                LogWarning("GameSaveManagerが見つからないため、フォルダー実績チェックをスキップします");
+            }
+            return;
+        }
+
+        // セーブデータを取得
+        GameSaveData saveData = saveManager.GetCurrentSaveData();
+        if (saveData == null || saveData.folderState == null)
+        {
+            if (debugMode)
+            {
+                LogDebug("セーブデータまたはフォルダー状態が存在しないため、フォルダー実績チェックをスキップします");
+            }
+            return;
+        }
+
+        // SteamAchievementManagerが存在しない場合は処理をスキップ
+        if (SteamAchievementManager.Instance == null)
+        {
+            if (debugMode)
+            {
+                LogWarning("SteamAchievementManagerが見つからないため、フォルダー実績チェックをスキップします");
+            }
+            return;
+        }
+
+        // 解放されているフォルダーを確認
+        string[] activatedFolders = saveData.folderState.activatedFolders;
+        if (activatedFolders == null || activatedFolders.Length == 0)
+        {
+            if (debugMode)
+            {
+                LogDebug("解放されているフォルダーがありません");
+            }
+            return;
+        }
+
+        // 各フォルダーに対応する実績をチェック
+        int unlockedCount = 0;
+        foreach (string folderName in activatedFolders)
+        {
+            string achievementApiName = GetFolderAchievementApiName(folderName);
+
+            // 対応する実績がない場合はスキップ
+            if (string.IsNullOrEmpty(achievementApiName))
+            {
+                continue;
+            }
+
+            // 実績が未解除の場合のみ解除
+            if (!SteamAchievementManager.Instance.IsAchievementUnlocked(achievementApiName))
+            {
+                bool unlocked = SteamAchievementManager.Instance.UnlockAchievement(achievementApiName);
+
+                if (unlocked)
+                {
+                    unlockedCount++;
+                    if (debugMode)
+                    {
+                        LogDebug($"ロード時にSteam実績を解除: {folderName}フォルダー（API: {achievementApiName}）");
+                    }
+                }
+            }
+            else
+            {
+                if (debugMode)
+                {
+                    LogDebug($"フォルダー「{folderName}」の実績は既に解除済みです");
+                }
+            }
+        }
+
+        if (debugMode && unlockedCount > 0)
+        {
+            LogDebug($"ロード時に{unlockedCount}個のフォルダー実績を解除しました");
+        }
+    }
+
+    /// <summary>
+    /// フォルダー名から対応するSteam実績API名を取得
+    /// </summary>
+    /// <param name="folderName">フォルダー名</param>
+    /// <returns>対応するAPI名。該当なしの場合はnull</returns>
+    private string GetFolderAchievementApiName(string folderName)
+    {
+        switch (folderName)
+        {
+            case "恋人":
+                return "MemoryOfPain_3_ACHIEVEMENTS_UNLOCK";
+            case "友人":
+                return "Rejection_4_ACHIEVEMENTS_UNLOCK";
+            case "記録":
+                return "ConfrontingReality_5_ACHIEVEMENTS_UNLOCK";
+            case "願い":
+                return "Acceptance_6_ACHIEVEMENTS_UNLOCK";
+            default:
+                return null;
+        }
     }
 }

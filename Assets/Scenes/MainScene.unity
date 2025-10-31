@@ -2509,7 +2509,7 @@ MonoBehaviour:
   linkedTxtPuzzleManager: {fileID: 2030518820}
   fileName: "\u30AB\u30D5\u30A7\u306E\u5F7C\u5973.png"
   progressText: {fileID: 0}
-  debugMode: 0
+  debugMode: 1
 --- !u!114 &73327583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38491,7 +38491,7 @@ MonoBehaviour:
   linkedTxtPuzzleManager: {fileID: 673386687}
   fileName: "\u55A7\u5629.png"
   progressText: {fileID: 0}
-  debugMode: 0
+  debugMode: 1
 --- !u!114 &858405333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45429,7 +45429,7 @@ MonoBehaviour:
   linkedTxtPuzzleManager: {fileID: 0}
   fileName: "\u4F3C\u9854\u7D75.png"
   progressText: {fileID: 0}
-  debugMode: 0
+  debugMode: 1
 --- !u!114 &1001682867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50802,7 +50802,7 @@ MonoBehaviour:
   linkedTxtPuzzleManager: {fileID: 171854359}
   fileName: "\u901A\u52E4\u8DEF.png"
   progressText: {fileID: 0}
-  debugMode: 0
+  debugMode: 1
 --- !u!114 &1107308513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62909,7 +62909,7 @@ MonoBehaviour:
   linkedTxtPuzzleManager: {fileID: 2073820129}
   fileName: "\u8B66\u5BDF\u7F72\u524D.png"
   progressText: {fileID: 0}
-  debugMode: 0
+  debugMode: 1
 --- !u!114 &1362893880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75988,7 +75988,7 @@ MonoBehaviour:
   linkedTxtPuzzleManager: {fileID: 1058090419}
   fileName: "\u7A93\u8D8A\u3057\u306E\u5F7C\u5973.png"
   progressText: {fileID: 0}
-  debugMode: 0
+  debugMode: 1
 --- !u!114 &1620847457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84166,7 +84166,7 @@ MonoBehaviour:
   linkedTxtPuzzleManager: {fileID: 1520827375}
   fileName: "\u7279\u5225\u306A\u5834\u6240.png"
   progressText: {fileID: 0}
-  debugMode: 0
+  debugMode: 1
 --- !u!114 &1822042084
 MonoBehaviour:
   m_ObjectHideFlags: 0
