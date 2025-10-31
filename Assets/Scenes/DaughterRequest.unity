@@ -573,6 +573,7 @@ GameObject:
   - component: {fileID: 1754868731}
   - component: {fileID: 1754868730}
   - component: {fileID: 1754868732}
+  - component: {fileID: 1754868733}
   m_Layer: 5
   m_Name: WishTextFromMyDaughter
   m_TagString: Untagged
@@ -720,6 +721,21 @@ MonoBehaviour:
   playTypeSound: 1
   autoStart: 1
   autoStartDelay: 1
+--- !u!114 &1754868733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754868728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b0e1b161579ac4fb7a633f78f96362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Steam7AchievementsUnlock_TheWeightOfTruth
+  textTyper: {fileID: 1754868732}
+  achievementApiName: TheWeightOfTruth_7_ACHIEVEMENTS_UNLOCK
+  debugMode: 1
 --- !u!1 &1918058640
 GameObject:
   m_ObjectHideFlags: 0
