@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.Collections.Generic;
 
 /// <summary>
@@ -27,6 +28,10 @@ public class FileIconChange : MonoBehaviour
     [Header("パズルマネージャー参照")]
     [Tooltip("インスペクターで設定するTxtPuzzleManager（自動検索しません）")]
     [SerializeField] private TxtPuzzleManager puzzleManager;
+
+    [Header("イベント")]
+    [Tooltip("パズル完了時に発行されるイベント")]
+    public UnityEvent onPuzzleCompleted;
 
     [Header("状態管理")]
     [Tooltip("パズル完了状態を記録するフラグ")]
@@ -126,6 +131,9 @@ public class FileIconChange : MonoBehaviour
 
         isPuzzleCompleted = true;
         ApplyCompletedSprite();
+
+        // パズル完了イベントを発行：SteamAchievementsUnlock2_HintsOfTruthに通知
+        onPuzzleCompleted?.Invoke();
     }
 
     /// <summary>
@@ -167,6 +175,7 @@ public class FileIconChange : MonoBehaviour
             iconImage.sprite = completedSprite;
         }
     }
+
 
     /// <summary>
     /// パズル完了通知を受け取るメソッド (SpeakerDropAreaから呼び出される)

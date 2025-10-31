@@ -9795,6 +9795,9 @@ MonoBehaviour:
   - {fileID: 728328510}
   puzzlePanel: {fileID: 627053070}
   puzzleManager: {fileID: 1815481439}
+  onPuzzleCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &226545426
 GameObject:
   m_ObjectHideFlags: 0
@@ -14129,6 +14132,9 @@ MonoBehaviour:
   - {fileID: 419990172}
   puzzlePanel: {fileID: 1051644015}
   puzzleManager: {fileID: 2073820129}
+  onPuzzleCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &305148148
 GameObject:
   m_ObjectHideFlags: 0
@@ -21683,6 +21689,9 @@ MonoBehaviour:
   - {fileID: 1730262127}
   puzzlePanel: {fileID: 2097639824}
   puzzleManager: {fileID: 854032564}
+  onPuzzleCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &457994789
 GameObject:
   m_ObjectHideFlags: 0
@@ -51840,6 +51849,9 @@ MonoBehaviour:
   - {fileID: 1596487188}
   puzzlePanel: {fileID: 1862527504}
   puzzleManager: {fileID: 1058090419}
+  onPuzzleCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1136438941
 GameObject:
   m_ObjectHideFlags: 0
@@ -59106,6 +59118,9 @@ MonoBehaviour:
   - {fileID: 99888510}
   puzzlePanel: {fileID: 1732250456}
   puzzleManager: {fileID: 673386687}
+  onPuzzleCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1281160935
 GameObject:
   m_ObjectHideFlags: 0
@@ -63688,6 +63703,9 @@ MonoBehaviour:
   - {fileID: 1991704482}
   puzzlePanel: {fileID: 783573642}
   puzzleManager: {fileID: 2030518820}
+  onPuzzleCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1373222117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74772,6 +74790,9 @@ MonoBehaviour:
   - {fileID: 2124504467}
   puzzlePanel: {fileID: 1539281655}
   puzzleManager: {fileID: 215337737}
+  onPuzzleCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1606302521
 GameObject:
   m_ObjectHideFlags: 0
@@ -79797,6 +79818,9 @@ MonoBehaviour:
   - {fileID: 1396603646}
   puzzlePanel: {fileID: 1215067156}
   puzzleManager: {fileID: 1520827375}
+  onPuzzleCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1729619310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89610,6 +89634,7 @@ GameObject:
   - component: {fileID: 1935878440}
   - component: {fileID: 1935878441}
   - component: {fileID: 1935878442}
+  - component: {fileID: 1935878443}
   m_Layer: 5
   m_Name: "\u601D\u3044\u51FA\u30D5\u30A1\u30A4\u30EB-\u5076\u7136\u306E\u518D\u4F1A.txt"
   m_TagString: Untagged
@@ -89818,6 +89843,24 @@ MonoBehaviour:
   - {fileID: 1009260664}
   puzzlePanel: {fileID: 1997989445}
   puzzleManager: {fileID: 171854359}
+  onPuzzleCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1935878443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935878431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d22c913e3ae1647b0085caeb1a587b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SteamAchievementsUnlock2_HintsOfTruth
+  fileIconChange: {fileID: 1935878442}
+  achievementApiName: HintsOfTruth_2_ACHIEVEMENTS_UNLOCK
+  debugMode: 1
 --- !u!1 &1943137665
 GameObject:
   m_ObjectHideFlags: 0

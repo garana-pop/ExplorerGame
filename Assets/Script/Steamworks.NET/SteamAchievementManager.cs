@@ -253,7 +253,7 @@ public class SteamAchievementManager : MonoBehaviour
 
             if (success)
             {
-                // Steamサーバーに送信
+                // Steamサーバーに送信（右下にポコンと、実績画像が表示される）
                 bool stored = SteamUserStats.StoreStats();
 
                 if (stored)
