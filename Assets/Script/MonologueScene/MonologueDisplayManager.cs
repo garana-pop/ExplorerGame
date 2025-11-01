@@ -34,6 +34,14 @@ public class MonologueDisplayManager : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Image fadePanel;
     [SerializeField] private bool waitForInputAfterCompletion = true;
 
+    [Header("Steam実績設定")]
+    [Tooltip("MonologueScene完了時に解除するSteam実績のAPI名")]
+    [SerializeField] private string achievementApiName = "SelfAwareness_8_ACHIEVEMENTS_UNLOCK";
+
+    [Header("デバッグ")]
+    [Tooltip("デバッグモードの有効化")]
+    [SerializeField] private bool debugMode = true;
+
     private MonologueDataLoader dataLoader;
     private List<string> dialogues;
     private int currentDialogueIndex = 0;
@@ -43,6 +51,7 @@ public class MonologueDisplayManager : MonoBehaviour
     private bool allDialoguesCompleted = false;
     private bool isWaitingForFinalInput = false;
     private bool isSettingsOpen = false;  // 設定画面が開いているかのフラグ
+    private bool isAchievementUnlocked = false; // 実績解除済みフラグ
 
     /// <summary>
     /// 設定画面の開閉状態を設定する
@@ -259,10 +268,49 @@ public class MonologueDisplayManager : MonoBehaviour
             Debug.Log($"{nameof(MonologueDisplayManager)}: afterChangeToLastフラグを設定しました");
 
         }
+        // Steam実績解除処理を呼び出し
+        UnlockSteamAchievement();
 
         // フェードアウトとシーン遷移
         StartCoroutine(FadeOutAndLoadScene());
     }
+
+    #region Steam実績処理
+
+    /// <summary>
+    /// Steam実績を解除する
+    /// </summary>
+    private void UnlockSteamAchievement()
+    {
+        // 既に解除済みの場合は処理をスキップ
+        if (isAchievementUnlocked)
+        {
+            LogDebug("実績は既に解除済みです");
+            return;
+        }
+
+        // SteamAchievementManagerの存在確認
+        if (SteamAchievementManager.Instance == null)
+        {
+            Debug.LogError($"{nameof(MonologueDisplayManager)}: SteamAchievementManagerが見つかりません");
+            return;
+        }
+
+        // Steam実績を解除
+        bool success = SteamAchievementManager.Instance.UnlockAchievement(achievementApiName);
+
+        if (success)
+        {
+            LogDebug($"Steam実績「{achievementApiName}」を正常に解除しました");
+            isAchievementUnlocked = true;
+        }
+        else
+        {
+            Debug.LogError($"{nameof(MonologueDisplayManager)}: Steam実績「{achievementApiName}」の解除に失敗しました");
+        }
+    }
+
+    #endregion
 
 
     /// <summary>
@@ -320,4 +368,20 @@ public class MonologueDisplayManager : MonoBehaviour
         // シーン遷移
         SceneManager.LoadScene(nextSceneName);
     }
+
+    #region デバッグ
+
+    /// <summary>
+    /// デバッグログ出力
+    /// </summary>
+    /// <param name="message">ログメッセージ</param>
+    private void LogDebug(string message)
+    {
+        if (debugMode)
+        {
+            Debug.Log($"{nameof(MonologueDisplayManager)}: {message}");
+        }
+    }
+
+    #endregion
 }
