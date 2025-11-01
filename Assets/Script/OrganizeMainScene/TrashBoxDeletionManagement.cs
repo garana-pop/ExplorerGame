@@ -68,6 +68,10 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
     // イベントの宣言
     public static event Action<bool> AllFilesDeleted; // 全ファイル削除
 
+    // Steam実績管理
+    private SteamAchievementManager steamAchievementManager;
+    private bool isFirstFileDeletionAchievementUnlocked = false; // 最初のファイル削除時に実績が解除済みかどうか
+
     #endregion
 
     #region 内部クラス
@@ -113,6 +117,14 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
     private void Start()
     {
         InitializeComponents();
+
+        // SteamAchievementManagerの取得
+        steamAchievementManager = SteamAchievementManager.Instance;
+        if (steamAchievementManager == null && debugMode)
+        {
+            Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: SteamAchievementManagerが見つかりません");
+        }
+
         CountFiles();
     }
 
@@ -499,6 +511,9 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
             }
         }
 
+        // Steam実績「最初の一歩」の解除処理
+        UnlockFirstFileDeletionAchievement();
+
         // ファイルオブジェクトの処理
         if (enableFileRestore)
         {
@@ -686,6 +701,49 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         }
 
         return restoredCount;
+    }
+
+    #endregion
+
+    #region Steam実績処理
+
+    /// <summary>
+    /// 最初のファイル削除時のSteam実績を解除
+    /// </summary>
+    private void UnlockFirstFileDeletionAchievement()
+    {
+        // 既に解除済みの場合は処理をスキップ
+        if (isFirstFileDeletionAchievementUnlocked)
+        {
+            return;
+        }
+
+        // SteamAchievementManagerが利用できない場合は処理をスキップ
+        if (steamAchievementManager == null)
+        {
+            if (debugMode)
+            {
+                Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: SteamAchievementManagerが利用できないため、実績解除をスキップします");
+            }
+            return;
+        }
+
+        // Steam実績「最初の一歩」を解除
+        bool success = steamAchievementManager.UnlockAchievement("TheFirstStep_9_ACHIEVEMENTS_UNLOCK");
+
+        if (success)
+        {
+            isFirstFileDeletionAchievementUnlocked = true;
+
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(TrashBoxDeletionManagement)}: Steam実績「最初の一歩」(TheFirstStep_9_ACHIEVEMENTS_UNLOCK)を解除しました");
+            }
+        }
+        else
+        {
+            Debug.LogError($"{nameof(TrashBoxDeletionManagement)}: Steam実績「最初の一歩」の解除に失敗しました");
+        }
     }
 
     #endregion
