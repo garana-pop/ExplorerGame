@@ -116,6 +116,10 @@ public class OrganizeMainSceneController : MonoBehaviour
     [Tooltip("ダイアログアニメーション時間")]
     [SerializeField] private float dialogAnimationDuration = 0.3f;
 
+    [Header("Steam実績設定")]
+    [Tooltip("解除するSteam実績のAPI名")]
+    [SerializeField] private string achievementApiName = "TheBeginningOfTheEnd_10_ACHIEVEMENTS_UNLOCK";
+
     [Header("デバッグ設定")]
     [Tooltip("デバッグログを表示するか")]
     [SerializeField] private bool debugMode = false;
@@ -156,6 +160,9 @@ public class OrganizeMainSceneController : MonoBehaviour
 
     // LocalizeStringEventコンポーネントの参照
     private LocalizeStringEvent localizeStringEvent;
+
+    // 実績解除済みフラグ
+    private bool isAchievementUnlocked = false;
 
     #endregion
 
@@ -834,8 +841,7 @@ public class OrganizeMainSceneController : MonoBehaviour
         }
 
         // Steam実績解除処理
-        // TODO: Steam実績「前へ」の解除
-        // SteamAchievementManager.UnlockAchievement("FORWARD");
+        UnlockSteamAchievement();
 
         ShowMessage("すべてのファイルが削除されました", 5.0f);
 
@@ -872,6 +878,81 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         // 全ファイル削除確認ダイアログを表示
         ShowAllFilesDeleteConfirmation();
+    }
+
+    #endregion
+
+    #region Steam実績処理
+
+    /// <summary>
+    /// Steam実績を解除する
+    /// </summary>
+    private void UnlockSteamAchievement()
+    {
+        // 既に解除済みの場合は処理をスキップ
+        if (isAchievementUnlocked)
+        {
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(OrganizeMainSceneController)}: 実績は既に解除済みです");
+            }
+            return;
+        }
+
+        // SteamAchievementManagerの存在確認
+        if (SteamAchievementManager.Instance == null)
+        {
+            Debug.LogError($"{nameof(OrganizeMainSceneController)}: SteamAchievementManagerが利用できません");
+            return;
+        }
+
+        // Steam実績を解除
+        bool success = SteamAchievementManager.Instance.UnlockAchievement(achievementApiName);
+
+        if (success)
+        {
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(OrganizeMainSceneController)}: Steam実績「{achievementApiName}」を正常に解除しました");
+            }
+            isAchievementUnlocked = true;
+        }
+        else
+        {
+            Debug.LogError($"{nameof(OrganizeMainSceneController)}: Steam実績「{achievementApiName}」の解除に失敗しました");
+        }
+    }
+
+    /// <summary>
+    /// 手動で実績を解除(テスト用)
+    /// </summary>
+    [ContextMenu("手動で実績を解除")]
+    public void ManualUnlockAchievement()
+    {
+        if (Application.isEditor && debugMode)
+        {
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(OrganizeMainSceneController)}: 手動で実績解除を実行");
+            }
+            UnlockSteamAchievement();
+        }
+    }
+
+    /// <summary>
+    /// 実績解除状態をリセット(テスト用)
+    /// </summary>
+    [ContextMenu("実績解除状態をリセット")]
+    public void ResetAchievementState()
+    {
+        if (Application.isEditor && debugMode)
+        {
+            isAchievementUnlocked = false;
+            if (debugMode)
+            {
+                Debug.Log($"{nameof(OrganizeMainSceneController)}: 実績解除状態をリセットしました");
+            }
+        }
     }
 
     #endregion

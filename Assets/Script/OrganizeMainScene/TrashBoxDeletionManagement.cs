@@ -34,7 +34,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
 
     [Header("デバッグ設定")]
     [Tooltip("デバッグログを表示するか")]
-    [SerializeField] private bool debugMode = false;
+    [SerializeField] private bool debugMode = true;
 
     #endregion
 
