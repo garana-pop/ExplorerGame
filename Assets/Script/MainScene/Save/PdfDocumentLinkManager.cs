@@ -91,7 +91,7 @@ public class PdfDocumentLinkManager : MonoBehaviour
             {
                 mappingCache[mapping.pdfFileName] = mapping.nextObject;
                 if (debugMode)
-                    Debug.Log($"カスタムマッピングを追加: {mapping.pdfFileName} -> {mapping.nextObject.name}");
+                    DebugLogger.Log($"カスタムマッピングを追加: {mapping.pdfFileName} -> {mapping.nextObject.name}");
             }
         }
 
@@ -134,7 +134,7 @@ public class PdfDocumentLinkManager : MonoBehaviour
         {
             foreach (var kvp in mappingCache)
             {
-                Debug.Log($"マッピング: {kvp.Key} -> {kvp.Value.name}");
+                DebugLogger.Log($"マッピング: {kvp.Key} -> {kvp.Value.name}");
             }
         }
     }
@@ -189,6 +189,6 @@ public class PdfDocumentLinkManager : MonoBehaviour
         mappingCache[pdfFileName] = nextObject;
 
         if (debugMode)
-            Debug.Log($"マッピングを動的に追加: {pdfFileName} -> {nextObject.name}");
+            DebugLogger.Log($"マッピングを動的に追加: {pdfFileName} -> {nextObject.name}");
     }
 }

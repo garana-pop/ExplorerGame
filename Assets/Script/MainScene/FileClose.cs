@@ -15,14 +15,14 @@ public class FileClose : MonoBehaviour
         closeButton = GetComponent<Button>();
         if (closeButton == null)
         {
-            Debug.LogError("Buttonコンポーネントが見つかりません");
+            DebugLogger.LogError("Buttonコンポーネントが見つかりません");
             return;
         }
 
         // FileOpenが設定されているか確認
         if (fileOpen == null)
         {
-            //Debug.LogError("FileOpenがインスペクターで設定されていません");
+            //DebugLogger.LogError("FileOpenがインスペクターで設定されていません");
             return;
         }
 
@@ -36,7 +36,7 @@ public class FileClose : MonoBehaviour
         // ボタンがロックされている場合は何もしない
         if (isLocked)
         {
-            Debug.Log("ボタンはロックされているため、閉じる操作は無視されました");
+            DebugLogger.Log("ボタンはロックされているため、閉じる操作は無視されました");
             return;
         }
 
@@ -47,7 +47,7 @@ public class FileClose : MonoBehaviour
         TxtPuzzleManager txtManager = fileOpen.GetComponentInChildren<TxtPuzzleManager>(true);
         if (txtManager != null && txtManager.IsProcessingCompletion())
         {
-            Debug.Log("TXTパズル完了処理中のため、閉じる操作は無視されました");
+            DebugLogger.Log("TXTパズル完了処理中のため、閉じる操作は無視されました");
             return;
         }
 

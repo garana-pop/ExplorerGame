@@ -88,7 +88,7 @@ public class OpeningSceneController : MonoBehaviour
             bool isOpeningCompleted = GameSaveManager.Instance.GetEndOpeningSceneFlag();
             if (isOpeningCompleted)
             {
-                Debug.LogWarning("OpeningSceneController: 既にOpeningSceneは完了しています。MainSceneへ遷移します。");
+                DebugLogger.LogWarning("OpeningSceneController: 既にOpeningSceneは完了しています。MainSceneへ遷移します。");
                 SceneManager.LoadScene("MainScene");
                 return;
             }
@@ -106,7 +106,7 @@ public class OpeningSceneController : MonoBehaviour
             if (exitController == null)
             {
                 exitController = gameObject.AddComponent<CharacterExitController>();
-                Debug.Log("Exit Controllerが見つからなかったため、新しく追加しました。");
+                DebugLogger.Log("Exit Controllerが見つからなかったため、新しく追加しました。");
             }
         }
 
@@ -114,7 +114,7 @@ public class OpeningSceneController : MonoBehaviour
         speakerNameController = FindFirstObjectByType<SpeakerNameTransitionController>();
         if (speakerNameController == null)
         {
-            Debug.LogWarning("SpeakerNameTransitionControllerが見つかりません。");
+            DebugLogger.LogWarning("SpeakerNameTransitionControllerが見つかりません。");
         }
     }
 
@@ -172,20 +172,20 @@ public class OpeningSceneController : MonoBehaviour
     {
         isSettingsOpen = isOpen;
 
-        Debug.Log($"Settings panel is now {(isOpen ? "open" : "closed")}");
+        DebugLogger.Log($"Settings panel is now {(isOpen ? "open" : "closed")}");
     }
 
     private void ValidateComponents()
     {
         if (dialogueScrollView == null || contentPanel == null)
         {
-            Debug.LogError("DialogueScrollView or ContentPanel not set");
+            DebugLogger.LogError("DialogueScrollView or ContentPanel not set");
         }
 
         // Add warning for unset ContinueIndicator
         if (continueIndicator == null)
         {
-            Debug.LogError("ContinueIndicator not set");
+            DebugLogger.LogError("ContinueIndicator not set");
         }
     }
 
@@ -547,11 +547,11 @@ public class OpeningSceneController : MonoBehaviour
         {
             GameSaveManager.Instance.SetEndOpeningSceneFlag(true);
             GameSaveManager.Instance.SaveOnMainSceneEntry();
-            Debug.Log("OpeningSceneController: endOpeningSceneフラグを設定し、セーブしました");
+            DebugLogger.Log("OpeningSceneController: endOpeningSceneフラグを設定し、セーブしました");
         }
         else
         {
-            Debug.LogError("OpeningSceneController: GameSaveManagerが見つかりません");
+            DebugLogger.LogError("OpeningSceneController: GameSaveManagerが見つかりません");
         }
 
         if (fadePanel == null)

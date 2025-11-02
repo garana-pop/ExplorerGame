@@ -121,17 +121,17 @@ public class MainSceneController : MonoBehaviour
     // デバッグ用のログメソッド
     private void LogDebug(string message)
     {
-        if (debugMode) Debug.Log($"[MainSceneController] {message}");
+        if (debugMode) DebugLogger.Log($"[MainSceneController] {message}");
     }
 
     private void LogWarning(string message)
     {
-        Debug.LogWarning($"[MainSceneController] {message}");
+        DebugLogger.LogWarning($"[MainSceneController] {message}");
     }
 
     private void LogError(string message)
     {
-        Debug.LogError($"[MainSceneController] {message}");
+        DebugLogger.LogError($"[MainSceneController] {message}");
     }
 
     /// <summary>

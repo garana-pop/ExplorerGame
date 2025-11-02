@@ -138,7 +138,7 @@ public class SteamAchievementsUnlock2_HintsOfTruth : MonoBehaviour
     {
         if (debugMode)
         {
-            Debug.Log($"[{nameof(SteamAchievementsUnlock2_HintsOfTruth)}] {message}");
+            DebugLogger.Log($"[{nameof(SteamAchievementsUnlock2_HintsOfTruth)}] {message}");
         }
     }
 
@@ -148,7 +148,7 @@ public class SteamAchievementsUnlock2_HintsOfTruth : MonoBehaviour
     /// <param name="message">エラーメッセージ</param>
     private void LogError(string message)
     {
-        Debug.LogError($"[{nameof(SteamAchievementsUnlock2_HintsOfTruth)}] {message}");
+        DebugLogger.LogError($"[{nameof(SteamAchievementsUnlock2_HintsOfTruth)}] {message}");
     }
 
     #endregion

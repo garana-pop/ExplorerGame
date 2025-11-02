@@ -124,7 +124,7 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
         {
             // LocalizationManagerが存在しない場合は日本語をデフォルトとする
             expectedSpeaker = expectedSpeaker_Japanese;
-            Debug.LogWarning($"{nameof(SpeakerDropArea)}: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+            DebugLogger.LogWarning($"{nameof(SpeakerDropArea)}: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
             return;
         }
 
@@ -381,7 +381,7 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
                 {
                     string fileName = puzzleManager.GetFileName();
                     if (string.IsNullOrEmpty(fileName)) fileName = "テキストパズル";
-                    Debug.Log($"{fileName} 進捗度 {correctCount}/{totalCount} パズル完了！");
+                    DebugLogger.Log($"{fileName} 進捗度 {correctCount}/{totalCount} パズル完了！");
 
                     // パズル完了をFileIconChangeに通知
                     fileIconChange.OnPuzzleCompleted(fileName);
@@ -602,7 +602,7 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
         }
         catch (System.Exception ex)
         {
-            Debug.LogWarning($"フォント読み込みエラー: {ex.Message}");
+            DebugLogger.LogWarning($"フォント読み込みエラー: {ex.Message}");
             FindAndAssignFont();
         }
 
@@ -655,7 +655,7 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
         }
         catch (System.Exception ex)
         {
-            Debug.LogError($"エリア: {gameObject.name} の正解状態設定中にエラー: {ex.Message}");
+            DebugLogger.LogError($"エリア: {gameObject.name} の正解状態設定中にエラー: {ex.Message}");
         }
     }
 }

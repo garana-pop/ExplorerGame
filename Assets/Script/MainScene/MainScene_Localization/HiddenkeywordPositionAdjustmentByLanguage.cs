@@ -78,7 +78,7 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: LocalizationManagerが見つかりません");
+            DebugLogger.LogWarning($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: LocalizationManagerが見つかりません");
         }
     }
 
@@ -150,7 +150,7 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
         // LocalizationManagerから現在の言語コードを取得
         if (LocalizationManager.Instance == null)
         {
-            Debug.LogWarning($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: LocalizationManagerが存在しません。日本語設定として処理します");
+            DebugLogger.LogWarning($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: LocalizationManagerが存在しません。日本語設定として処理します");
             currentLanguageCode = JAPANESE_CODE;
         }
         else
@@ -238,7 +238,7 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
     {
         currentLanguageCode = ENGLISH_CODE;
         ApplyLanguagePositionAdjustment();
-        Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: 英語位置をテスト適用しました");
+        DebugLogger.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: 英語位置をテスト適用しました");
     }
 
     /// <summary>
@@ -249,7 +249,7 @@ public class HiddenkeywordPositionAdjustmentByLanguage : MonoBehaviour
     {
         currentLanguageCode = JAPANESE_CODE;
         ApplyLanguagePositionAdjustment();
-        Debug.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: 日本語位置をテスト適用しました");
+        DebugLogger.Log($"{nameof(HiddenkeywordPositionAdjustmentByLanguage)}: 日本語位置をテスト適用しました");
     }
 
     /// <summary>

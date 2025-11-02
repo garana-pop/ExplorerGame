@@ -85,7 +85,7 @@ public class MonologueDisplayManager : MonoBehaviour
 
         if (dialogues.Count == 0)
         {
-            Debug.LogError("セリフデータが読み込まれませんでした。");
+            DebugLogger.LogError("セリフデータが読み込まれませんでした。");
             return;
         }
 
@@ -157,7 +157,7 @@ public class MonologueDisplayManager : MonoBehaviour
     {
         if (currentDialogueIndex >= dialogues.Count)
         {
-            Debug.Log("すべてのセリフを表示しました。");
+            DebugLogger.Log("すべてのセリフを表示しました。");
             return;
         }
 
@@ -265,7 +265,7 @@ public class MonologueDisplayManager : MonoBehaviour
             // 即座に保存
             GameSaveManager.Instance.SaveGame();
 
-            Debug.Log($"{nameof(MonologueDisplayManager)}: afterChangeToLastフラグを設定しました");
+            DebugLogger.Log($"{nameof(MonologueDisplayManager)}: afterChangeToLastフラグを設定しました");
 
         }
         // Steam実績解除処理を呼び出し
@@ -292,7 +292,7 @@ public class MonologueDisplayManager : MonoBehaviour
         // SteamAchievementManagerの存在確認
         if (SteamAchievementManager.Instance == null)
         {
-            Debug.LogError($"{nameof(MonologueDisplayManager)}: SteamAchievementManagerが見つかりません");
+            DebugLogger.LogError($"{nameof(MonologueDisplayManager)}: SteamAchievementManagerが見つかりません");
             return;
         }
 
@@ -306,7 +306,7 @@ public class MonologueDisplayManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"{nameof(MonologueDisplayManager)}: Steam実績「{achievementApiName}」の解除に失敗しました");
+            DebugLogger.LogError($"{nameof(MonologueDisplayManager)}: Steam実績「{achievementApiName}」の解除に失敗しました");
         }
     }
 
@@ -318,7 +318,7 @@ public class MonologueDisplayManager : MonoBehaviour
     /// </summary>
     private IEnumerator FadeOutAndLoadScene()
     {
-        Debug.Log($"シーン '{nextSceneName}' への遷移を開始します。");
+        DebugLogger.Log($"シーン '{nextSceneName}' への遷移を開始します。");
 
         // フェードパネルがある場合はフェードアウト
         if (fadePanel != null)
@@ -352,11 +352,11 @@ public class MonologueDisplayManager : MonoBehaviour
             GameSaveManager.Instance.SetFromMonologueSceneFlag(true);
             GameSaveManager.Instance.SaveGame();
 
-            Debug.Log("MonologueDisplayManager: MonologueSceneからの遷移フラグを設定しました");
+            DebugLogger.Log("MonologueDisplayManager: MonologueSceneからの遷移フラグを設定しました");
         }
         else
         {
-            Debug.LogWarning("MonologueDisplayManager: GameSaveManagerが見つからないため、fromMonologueSceneフラグを設定できませんでした");
+            DebugLogger.LogWarning("MonologueDisplayManager: GameSaveManagerが見つからないため、fromMonologueSceneフラグを設定できませんでした");
         }
 
         // TitleTextChangerForMonologueSceneにフラグを設定（新規追加）
@@ -379,7 +379,7 @@ public class MonologueDisplayManager : MonoBehaviour
     {
         if (debugMode)
         {
-            Debug.Log($"{nameof(MonologueDisplayManager)}: {message}");
+            DebugLogger.Log($"{nameof(MonologueDisplayManager)}: {message}");
         }
     }
 

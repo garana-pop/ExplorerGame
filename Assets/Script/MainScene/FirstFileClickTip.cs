@@ -52,7 +52,7 @@ public class FirstFileClickTip : MonoBehaviour
 
         if (targetImage == null)
         {
-            Debug.LogWarning($"{nameof(FirstFileClickTip)}: Image コンポーネントが見つかりません");
+            DebugLogger.LogWarning($"{nameof(FirstFileClickTip)}: Image コンポーネントが見つかりません");
             enabled = false;
             return;
         }
@@ -207,7 +207,7 @@ public class FirstFileClickTip : MonoBehaviour
         isEffectActive = true;
         blinkCoroutine = StartCoroutine(BlinkEffect());
 
-        Debug.Log($"{nameof(FirstFileClickTip)}: ヒント効果を開始しました - {gameObject.name}");
+        DebugLogger.Log($"{nameof(FirstFileClickTip)}: ヒント効果を開始しました - {gameObject.name}");
     }
 
     /// <summary>
@@ -262,7 +262,7 @@ public class FirstFileClickTip : MonoBehaviour
             }
         }
 
-        Debug.Log($"{nameof(FirstFileClickTip)}: ヒント効果を停止しました - {gameObject.name}");
+        DebugLogger.Log($"{nameof(FirstFileClickTip)}: ヒント効果を停止しました - {gameObject.name}");
 
         // コンポーネントを無効化
         enabled = false;
@@ -358,7 +358,7 @@ public class FirstFileClickTip : MonoBehaviour
         if (hasBeenClicked_FirstFileClickTip) return;
 
         hasBeenClicked_FirstFileClickTip = true;
-        Debug.Log($"{nameof(FirstFileClickTip)}: ファイルがダブルクリックされました - {gameObject.name}");
+        DebugLogger.Log($"{nameof(FirstFileClickTip)}: ファイルがダブルクリックされました - {gameObject.name}");
 
         // 効果を停止
         StopEffect();

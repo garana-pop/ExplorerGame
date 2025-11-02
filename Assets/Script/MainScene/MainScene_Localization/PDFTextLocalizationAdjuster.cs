@@ -45,7 +45,7 @@ namespace ExplorerGame.UI
 
             if (textComponent == null)
             {
-                Debug.LogError($"{nameof(PDFTextLocalizationAdjuster)}: TextMeshProUGUIコンポーネントが見つかりません");
+                DebugLogger.LogError($"{nameof(PDFTextLocalizationAdjuster)}: TextMeshProUGUIコンポーネントが見つかりません");
                 enabled = false;
                 return;
             }
@@ -66,7 +66,7 @@ namespace ExplorerGame.UI
             }
             else
             {
-                Debug.LogWarning($"{nameof(PDFTextLocalizationAdjuster)}: LocalizationManagerが見つかりません");
+                DebugLogger.LogWarning($"{nameof(PDFTextLocalizationAdjuster)}: LocalizationManagerが見つかりません");
             }
         }
 
@@ -98,7 +98,7 @@ namespace ExplorerGame.UI
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(PDFTextLocalizationAdjuster)}: 元の値を保存しました - " +
+                DebugLogger.Log($"{nameof(PDFTextLocalizationAdjuster)}: 元の値を保存しました - " +
                     $"Position: {originalPosition}, FontSize: {originalFontSize}");
             }
         }
@@ -155,7 +155,7 @@ namespace ExplorerGame.UI
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(PDFTextLocalizationAdjuster)}: 日本語設定を適用しました");
+                DebugLogger.Log($"{nameof(PDFTextLocalizationAdjuster)}: 日本語設定を適用しました");
             }
         }
 
@@ -183,7 +183,7 @@ namespace ExplorerGame.UI
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(PDFTextLocalizationAdjuster)}: 英語設定を適用しました - " +
+                DebugLogger.Log($"{nameof(PDFTextLocalizationAdjuster)}: 英語設定を適用しました - " +
                     $"Position: {englishPosition}, FontSize: {englishFontSize}");
             }
         }
@@ -195,7 +195,7 @@ namespace ExplorerGame.UI
         private void ResetToOriginalValues()
         {
             ApplyJapaneseSettings();
-            Debug.Log($"{nameof(PDFTextLocalizationAdjuster)}: 元の値にリセットしました");
+            DebugLogger.Log($"{nameof(PDFTextLocalizationAdjuster)}: 元の値にリセットしました");
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace ExplorerGame.UI
                 }
             }
 
-            Debug.Log($"{nameof(PDFTextLocalizationAdjuster)}: 現在の値を英語設定として保存しました");
+            DebugLogger.Log($"{nameof(PDFTextLocalizationAdjuster)}: 現在の値を英語設定として保存しました");
         }
 
 #if UNITY_EDITOR

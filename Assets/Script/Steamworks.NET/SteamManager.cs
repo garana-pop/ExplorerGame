@@ -91,7 +91,7 @@ public class SteamManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(SteamManager)}: Steam APIをシャットダウンしました");
+                DebugLogger.Log($"{nameof(SteamManager)}: Steam APIをシャットダウンしました");
             }
         }
     }
@@ -113,7 +113,7 @@ public class SteamManager : MonoBehaviour
                 isSteamRunning = true;
                 isInitialized = true;
 
-                Debug.Log($"[Steamworks.NET] SteamAPI_Init() success");
+                DebugLogger.Log($"[Steamworks.NET] SteamAPI_Init() success");
 
                 // ユーザー統計情報受信コールバックの登録
                 m_UserStatsReceived = Callback<UserStatsReceived_t>.Create(OnUserStatsReceived);
@@ -123,21 +123,21 @@ public class SteamManager : MonoBehaviour
 
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(SteamManager)}: Steam API初期化成功");
-                    Debug.Log($"{nameof(SteamManager)}: App ID: {SteamUtils.GetAppID()}");
-                    Debug.Log($"{nameof(SteamManager)}: ユーザー名: {SteamFriends.GetPersonaName()}");
+                    DebugLogger.Log($"{nameof(SteamManager)}: Steam API初期化成功");
+                    DebugLogger.Log($"{nameof(SteamManager)}: App ID: {SteamUtils.GetAppID()}");
+                    DebugLogger.Log($"{nameof(SteamManager)}: ユーザー名: {SteamFriends.GetPersonaName()}");
                 }
             }
             else
             {
-                Debug.LogWarning($"{nameof(SteamManager)}: Steam API初期化失敗 - Steamクライアントが起動していない可能性があります");
+                DebugLogger.LogWarning($"{nameof(SteamManager)}: Steam API初期化失敗 - Steamクライアントが起動していない可能性があります");
                 isInitialized = false;
                 isSteamRunning = false;
             }
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"{nameof(SteamManager)}: Steam API初期化中にエラーが発生: {e.Message}");
+            DebugLogger.LogError($"{nameof(SteamManager)}: Steam API初期化中にエラーが発生: {e.Message}");
             isInitialized = false;
             isSteamRunning = false;
         }
@@ -154,12 +154,12 @@ public class SteamManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(SteamManager)}: ユーザー統計情報を受信しました");
+                DebugLogger.Log($"{nameof(SteamManager)}: ユーザー統計情報を受信しました");
             }
         }
         else
         {
-            Debug.LogWarning($"{nameof(SteamManager)}: ユーザー統計情報の受信に失敗: {pCallback.m_eResult}");
+            DebugLogger.LogWarning($"{nameof(SteamManager)}: ユーザー統計情報の受信に失敗: {pCallback.m_eResult}");
         }
     }
 
@@ -180,12 +180,12 @@ public class SteamManager : MonoBehaviour
             {
                 if (handle != SteamAPICall_t.Invalid)
                 {
-                    Debug.Log($"{nameof(SteamManager)}: ユーザー統計情報のリクエストを送信しました");
-                    Debug.Log($"{nameof(SteamManager)}: SteamID: {steamID}");
+                    DebugLogger.Log($"{nameof(SteamManager)}: ユーザー統計情報のリクエストを送信しました");
+                    DebugLogger.Log($"{nameof(SteamManager)}: SteamID: {steamID}");
                 }
                 else
                 {
-                    Debug.LogWarning($"{nameof(SteamManager)}: ユーザー統計情報のリクエストに失敗しました");
+                    DebugLogger.LogWarning($"{nameof(SteamManager)}: ユーザー統計情報のリクエストに失敗しました");
                 }
             }
         }
@@ -258,14 +258,14 @@ public class SteamManager : MonoBehaviour
     {
         if (IsInitialized())
         {
-            Debug.Log($"Steam初期化: 成功");
-            Debug.Log($"App ID: {GetAppID()}");
-            Debug.Log($"ユーザー名: {GetUserName()}");
-            Debug.Log($"ユーザー統計情報: {(userStatsReceived ? "受信済み" : "未受信")}");
+            DebugLogger.Log($"Steam初期化: 成功");
+            DebugLogger.Log($"App ID: {GetAppID()}");
+            DebugLogger.Log($"ユーザー名: {GetUserName()}");
+            DebugLogger.Log($"ユーザー統計情報: {(userStatsReceived ? "受信済み" : "未受信")}");
         }
         else
         {
-            Debug.Log($"Steam初期化: 失敗");
+            DebugLogger.Log($"Steam初期化: 失敗");
         }
     }
 #endif

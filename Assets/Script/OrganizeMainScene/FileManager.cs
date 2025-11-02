@@ -48,7 +48,7 @@ public class FileManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(FileManager)}: インスペクターから{defaultFileItems.Count}個のファイルアイテムを設定しました");
+                DebugLogger.Log($"{nameof(FileManager)}: インスペクターから{defaultFileItems.Count}個のファイルアイテムを設定しました");
             }
         }
     }
@@ -99,14 +99,14 @@ public class FileManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(FileManager)}: インスペクター設定により{totalFileCount}個のファイルアイテムを収集しました");
+                DebugLogger.Log($"{nameof(FileManager)}: インスペクター設定により{totalFileCount}個のファイルアイテムを収集しました");
             }
             return;
         }
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(FileManager)}: {totalFileCount}個のファイルアイテムを収集しました");
+            DebugLogger.Log($"{nameof(FileManager)}: {totalFileCount}個のファイルアイテムを収集しました");
         }
     }
 
@@ -168,7 +168,7 @@ public class FileManager : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(FileManager)}: {deletedFiles.Count}個の削除済みファイルを設定しました");
+            DebugLogger.Log($"{nameof(FileManager)}: {deletedFiles.Count}個の削除済みファイルを設定しました");
         }
     }
 
@@ -248,7 +248,7 @@ public class FileManager : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.Log($"{nameof(FileManager)}: ファイル '{fileName}' は既に削除済みです");
+                DebugLogger.Log($"{nameof(FileManager)}: ファイル '{fileName}' は既に削除済みです");
             }
             return false;
         }
@@ -258,7 +258,7 @@ public class FileManager : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.LogWarning($"{nameof(FileManager)}: ファイル '{fileName}' が見つかりません");
+                DebugLogger.LogWarning($"{nameof(FileManager)}: ファイル '{fileName}' が見つかりません");
             }
             return false;
         }
@@ -295,7 +295,7 @@ public class FileManager : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(FileManager)}: ファイル '{fileName}' を削除しました");
+            DebugLogger.Log($"{nameof(FileManager)}: ファイル '{fileName}' を削除しました");
         }
     }
 
@@ -316,7 +316,7 @@ public class FileManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(FileManager)}: ファイル '{fileName}' は既に破棄されていましたが、削除状態を更新しました");
+                DebugLogger.Log($"{nameof(FileManager)}: ファイル '{fileName}' は既に破棄されていましたが、削除状態を更新しました");
             }
             yield break;
         }

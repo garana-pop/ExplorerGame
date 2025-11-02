@@ -15,8 +15,8 @@ public class FilesystemTestClass : MonoBehaviour
     void Start()
     {
         // Filesystemテスト用のログ出力
-        Debug.Log($"{nameof(FilesystemTestClass)}: Filesystemテストクラスが正常に作成されました");
-        Debug.Log($"{nameof(FilesystemTestClass)}: テストメッセージ: {testMessage}");
+        DebugLogger.Log($"{nameof(FilesystemTestClass)}: Filesystemテストクラスが正常に作成されました");
+        DebugLogger.Log($"{nameof(FilesystemTestClass)}: テストメッセージ: {testMessage}");
     }
 
     /// <summary>
@@ -26,9 +26,9 @@ public class FilesystemTestClass : MonoBehaviour
     [ContextMenu("ファイルシステムテスト実行")]
     public void RunFilesystemTest()
     {
-        Debug.Log($"{nameof(FilesystemTestClass)}: ファイルシステムテストを実行中...");
-        Debug.Log($"{nameof(FilesystemTestClass)}: ファイル作成テスト成功");
-        Debug.Log($"{nameof(FilesystemTestClass)}: ConversationFatherAndDaughterフォルダへの配置完了");
+        DebugLogger.Log($"{nameof(FilesystemTestClass)}: ファイルシステムテストを実行中...");
+        DebugLogger.Log($"{nameof(FilesystemTestClass)}: ファイル作成テスト成功");
+        DebugLogger.Log($"{nameof(FilesystemTestClass)}: ConversationFatherAndDaughterフォルダへの配置完了");
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public class FilesystemTestClass : MonoBehaviour
         if (!string.IsNullOrEmpty(newMessage))
         {
             testMessage = newMessage;
-            Debug.Log($"{nameof(FilesystemTestClass)}: テストメッセージが変更されました: {testMessage}");
+            DebugLogger.Log($"{nameof(FilesystemTestClass)}: テストメッセージが変更されました: {testMessage}");
         }
     }
 
@@ -52,7 +52,7 @@ public class FilesystemTestClass : MonoBehaviour
         // 一定間隔でテストログを出力
         if (Time.time % SHOW_LOG_INTERVAL < Time.deltaTime)
         {
-            Debug.Log($"{nameof(FilesystemTestClass)}: 定期テストログ - 現在時刻: {Time.time:F2}秒");
+            DebugLogger.Log($"{nameof(FilesystemTestClass)}: 定期テストログ - 現在時刻: {Time.time:F2}秒");
         }
     }
 }

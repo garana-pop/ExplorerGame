@@ -86,7 +86,7 @@ public class WindowResizeManager : MonoBehaviour
 
             SetWindowLong(windowHandle, GWL_STYLE, style);
 
-            Debug.Log("ウィンドウのリサイズを無効化しました");
+            DebugLogger.Log("ウィンドウのリサイズを無効化しました");
         }
 #endif
     }
@@ -99,7 +99,7 @@ public class WindowResizeManager : MonoBehaviour
     public void SetWindowSize(int width, int height)
     {
         Screen.SetResolution(width, height, false);
-        //Debug.Log($"ウィンドウサイズを {width}x{height} に変更しました");
+        //DebugLogger.Log($"ウィンドウサイズを {width}x{height} に変更しました");
 
         // 解像度変更後にリサイズ無効化を再適用
         StartCoroutine(ReapplyResizeDisableAfterDelay());
@@ -133,6 +133,6 @@ public class WindowResizeManager : MonoBehaviour
     [System.Obsolete("このメソッドは使用されません。ウィンドウリサイズは常に無効です。")]
     public void SetWindowResizable(bool resizable)
     {
-        Debug.LogWarning("SetWindowResizable は無効化されています。ウィンドウリサイズは常に無効です。");
+        DebugLogger.LogWarning("SetWindowResizable は無効化されています。ウィンドウリサイズは常に無効です。");
     }
 }

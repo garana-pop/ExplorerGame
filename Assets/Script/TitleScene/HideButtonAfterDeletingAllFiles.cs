@@ -15,13 +15,13 @@ public class HideButtonAfterDeletingAllFiles : MonoBehaviour
     {
         // GameSaveManagerから全ファイル完全削除フラグを取得
         allFilesDeleted = GameSaveManager.Instance.GetAllFilesCompletelyDeleted();
-        //Debug.Log("HideButtonAfterDeletingAllFiles : allFilesDeletedフラグ" + allFilesDeleted);
+        //DebugLogger.Log("HideButtonAfterDeletingAllFiles : allFilesDeletedフラグ" + allFilesDeleted);
 
         // OrganizeMainSceneで全ファイル削除後、確認ダイアログで"はい"押下時
         // または、game_save.jsonのallFilesCompletelyDeletedフラグがtrueの場合
         if (OrganizeMainSceneController.returnScene == true || allFilesDeleted == true)
         {
-            //Debug.Log("HideButtonAfterDeletingAllFiles : Buttonを非表示にする");
+            //DebugLogger.Log("HideButtonAfterDeletingAllFiles : Buttonを非表示にする");
 
             // このスクリプトがアタッチされているButtonを非表示にする
             gameObject.SetActive(false);

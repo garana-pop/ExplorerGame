@@ -45,7 +45,7 @@ public class FolderButtonScript : MonoBehaviour
             if (parts.Length > 1)
             {
                 folderName = parts[1].Trim();
-                Debug.Log($"フォルダー名をゲームオブジェクト名から自動設定: {folderName}");
+                DebugLogger.Log($"フォルダー名をゲームオブジェクト名から自動設定: {folderName}");
 
                 // フォルダーラベルにも設定
                 if (folderLabel != null)
@@ -108,7 +108,7 @@ public class FolderButtonScript : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"フォルダー「{folderName}」にはfilePanel設定がありません");
+            DebugLogger.LogWarning($"フォルダー「{folderName}」にはfilePanel設定がありません");
         }
     }
 
@@ -164,7 +164,7 @@ public class FolderButtonScript : MonoBehaviour
                 gameObject.SetActive(true);
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(FolderButtonScript)}: フォルダー {folderName} を強制的にアクティブ化");
+                    DebugLogger.Log($"{nameof(FolderButtonScript)}: フォルダー {folderName} を強制的にアクティブ化");
                 }
             }
 
@@ -233,7 +233,7 @@ public class FolderButtonScript : MonoBehaviour
             // 既にアクティブ化されたフォルダは非表示にしない
             if (debugMode)
             {
-                Debug.Log($"{nameof(FolderButtonScript)}: フォルダー {folderName} は既にアクティブ化されているため、非表示にしません");
+                DebugLogger.Log($"{nameof(FolderButtonScript)}: フォルダー {folderName} は既にアクティブ化されているため、非表示にしません");
             }
         }
     }
@@ -259,7 +259,7 @@ public class FolderButtonScript : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.LogWarning($"{nameof(FolderButtonScript)}: SteamAchievementManagerが存在しません。実績解除できませんでした。");
+                DebugLogger.LogWarning($"{nameof(FolderButtonScript)}: SteamAchievementManagerが存在しません。実績解除できませんでした。");
             }
             return;
         }
@@ -272,7 +272,7 @@ public class FolderButtonScript : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.Log($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」に対応するSteam実績はありません。");
+                DebugLogger.Log($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」に対応するSteam実績はありません。");
             }
             return;
         }
@@ -282,7 +282,7 @@ public class FolderButtonScript : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.Log($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」の実績は既に解除済みです。");
+                DebugLogger.Log($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」の実績は既に解除済みです。");
             }
             return;
         }
@@ -292,11 +292,11 @@ public class FolderButtonScript : MonoBehaviour
 
         if (success)
         {
-            Debug.Log($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」のSteam実績を解除しました（API: {achievementApiName}）");
+            DebugLogger.Log($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」のSteam実績を解除しました（API: {achievementApiName}）");
         }
         else
         {
-            Debug.LogError($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」のSteam実績解除に失敗しました（API: {achievementApiName}）");
+            DebugLogger.LogError($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」のSteam実績解除に失敗しました（API: {achievementApiName}）");
         }
     }
 

@@ -85,7 +85,7 @@ public class ImageRevealer : MonoBehaviour
     private void OnTransformParentChanged()
     {
         if (debugMode)
-            Debug.Log($"ImageRevealer '{fileName}': 親オブジェクトが変更されました");
+            DebugLogger.Log($"ImageRevealer '{fileName}': 親オブジェクトが変更されました");
 
         // 親が変わった時も状態を再評価
         UpdateVisualState();
@@ -94,7 +94,7 @@ public class ImageRevealer : MonoBehaviour
         if (transform.parent != null && transform.parent.name.Contains("DraggingCanvas"))
         {
             if (debugMode)
-                Debug.Log($"ImageRevealer '{fileName}': DraggingCanvasに移動しました");
+                DebugLogger.Log($"ImageRevealer '{fileName}': DraggingCanvasに移動しました");
 
             // パズル完了チェックを強制的に実行
             ForceCheckTxtPuzzleCompletion();
@@ -210,7 +210,7 @@ public class ImageRevealer : MonoBehaviour
             mosaicContainer.SetActive(false);
 
             if (debugMode)
-                Debug.Log($"ImageRevealer '{fileName}': モザイクを永続的に非表示にしました");
+                DebugLogger.Log($"ImageRevealer '{fileName}': モザイクを永続的に非表示にしました");
         }
 
         // 完成画像を表示
@@ -219,7 +219,7 @@ public class ImageRevealer : MonoBehaviour
             originalImage.SetActive(true);
 
             if (debugMode)
-                Debug.Log($"ImageRevealer '{fileName}': オリジナル画像を表示しました");
+                DebugLogger.Log($"ImageRevealer '{fileName}': オリジナル画像を表示しました");
         }
 
         // 次のフォルダーを解放
@@ -242,7 +242,7 @@ public class ImageRevealer : MonoBehaviour
             }
 
             if (debugMode)
-                Debug.Log($"ImageRevealer '{fileName}': 次のフォルダーを解放しました");
+                DebugLogger.Log($"ImageRevealer '{fileName}': 次のフォルダーを解放しました");
         }
 
         // 効果音再生
@@ -285,13 +285,13 @@ public class ImageRevealer : MonoBehaviour
     public void ForceCheckTxtPuzzleCompletion()
     {
         if (debugMode)
-            Debug.Log($"ImageRevealer '{fileName}': TXTパズル完了を強制チェックします");
+            DebugLogger.Log($"ImageRevealer '{fileName}': TXTパズル完了を強制チェックします");
 
         // TXTパズルが完了していれば強制的に表示
         if (linkedTxtPuzzleManager != null && linkedTxtPuzzleManager.IsPuzzleCompleted())
         {
             if (debugMode)
-                Debug.Log($"ImageRevealer '{fileName}': TXTパズルが完了しています - 画像表示を強制します");
+                DebugLogger.Log($"ImageRevealer '{fileName}': TXTパズルが完了しています - 画像表示を強制します");
 
             RevealImage();
         }
@@ -299,9 +299,9 @@ public class ImageRevealer : MonoBehaviour
         {
             // TXTパズルマネージャーの状態を詳細ログ
             if (linkedTxtPuzzleManager == null)
-                Debug.Log($"ImageRevealer '{fileName}': リンクされたTXTパズルマネージャーがありません");
+                DebugLogger.Log($"ImageRevealer '{fileName}': リンクされたTXTパズルマネージャーがありません");
             else
-                Debug.Log($"ImageRevealer '{fileName}': TXTパズルの完了状態: {linkedTxtPuzzleManager.IsPuzzleCompleted()}");
+                DebugLogger.Log($"ImageRevealer '{fileName}': TXTパズルの完了状態: {linkedTxtPuzzleManager.IsPuzzleCompleted()}");
         }
     }
 
@@ -325,7 +325,7 @@ public class ImageRevealer : MonoBehaviour
                 linkedTxtPuzzleManager = FindFirstObjectByType<TxtPuzzleManager>();
 
                 if (linkedTxtPuzzleManager != null && debugMode)
-                    Debug.Log($"ImageRevealer '{fileName}': シーン内でTxtPuzzleManagerを見つけました: {linkedTxtPuzzleManager.name}");
+                    DebugLogger.Log($"ImageRevealer '{fileName}': シーン内でTxtPuzzleManagerを見つけました: {linkedTxtPuzzleManager.name}");
             }
         }
 
@@ -333,7 +333,7 @@ public class ImageRevealer : MonoBehaviour
         if (linkedTxtPuzzleManager != null && linkedTxtPuzzleManager.IsPuzzleCompleted())
         {
             if (debugMode)
-                Debug.Log($"ImageRevealer '{fileName}': TXTパズルが完了しているため画像を表示します");
+                DebugLogger.Log($"ImageRevealer '{fileName}': TXTパズルが完了しているため画像を表示します");
 
             // 画像を表示
             RevealImage();
@@ -372,7 +372,7 @@ public class ImageRevealer : MonoBehaviour
             GameSaveManager.Instance.SaveGame();
 
             if (debugMode)
-                Debug.Log($"画像表示完了: {fileName} - ゲーム状態を保存しました");
+                DebugLogger.Log($"画像表示完了: {fileName} - ゲーム状態を保存しました");
         }
     }
 
@@ -414,7 +414,7 @@ public class ImageRevealer : MonoBehaviour
             ShowRevealedImage();
 
             if (debugMode)
-                Debug.Log($"ImageRevealer '{fileName}': セーブデータから復元 - 画像表示状態");
+                DebugLogger.Log($"ImageRevealer '{fileName}': セーブデータから復元 - 画像表示状態");
         }
         else
         {

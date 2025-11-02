@@ -91,7 +91,7 @@ public class TitleTextChangerForMonologueScene : MonoBehaviour
 
         if (ShouldExecuteTitleChange())
         {
-            if (debugMode) Debug.Log("TitleTextChangerForMonologueScene: タイトル変更を開始します");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForMonologueScene: タイトル変更を開始します");
             StartCoroutine(StartTitleChange());
         }
     }
@@ -136,7 +136,7 @@ public class TitleTextChangerForMonologueScene : MonoBehaviour
         {
             // LocalizationManagerが存在しない場合は日本語をデフォルトとする
             newTitleText = newTitleText_Japanese;
-            if (debugMode) Debug.LogWarning("TitleTextChangerForMonologueScene: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+            if (debugMode) DebugLogger.LogWarning("TitleTextChangerForMonologueScene: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
             return;
         }
 
@@ -147,12 +147,12 @@ public class TitleTextChangerForMonologueScene : MonoBehaviour
         if (currentLanguageCode == "en")
         {
             newTitleText = newTitleText_English;
-            if (debugMode) Debug.Log("TitleTextChangerForMonologueScene: 英語テキストを適用");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForMonologueScene: 英語テキストを適用");
         }
         else
         {
             newTitleText = newTitleText_Japanese;
-            if (debugMode) Debug.Log("TitleTextChangerForMonologueScene: 日本語テキストを適用");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForMonologueScene: 日本語テキストを適用");
         }
     }
 
@@ -167,7 +167,7 @@ public class TitleTextChangerForMonologueScene : MonoBehaviour
             if (localizeEvent != null)
             {
                 localizeEvent.enabled = false;
-                if (debugMode) Debug.Log("TitleTextChangerForMonologueScene: LocalizeStringEventを無効化しました");
+                if (debugMode) DebugLogger.Log("TitleTextChangerForMonologueScene: LocalizeStringEventを無効化しました");
             }
         }
     }
@@ -176,20 +176,20 @@ public class TitleTextChangerForMonologueScene : MonoBehaviour
     {
         if (debugMode && forceExecute)
         {
-            Debug.Log("TitleTextChangerForMonologueScene: 強制実行モードでタイトル変更を実行");
+            DebugLogger.Log("TitleTextChangerForMonologueScene: 強制実行モードでタイトル変更を実行");
             return true;
         }
 
         if (titleChangedToLast)
         {
-            if (debugMode) Debug.Log("TitleTextChangerForMonologueScene: 既にタイトル変更済みです");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForMonologueScene: 既にタイトル変更済みです");
             return false;
         }
 
         if (shouldExecuteOnNextLoad)
         {
             shouldExecuteOnNextLoad = false;
-            if (debugMode) Debug.Log("TitleTextChangerForMonologueScene: shouldExecuteOnNextLoadフラグを検出");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForMonologueScene: shouldExecuteOnNextLoadフラグを検出");
             return true;
         }
 
@@ -197,7 +197,7 @@ public class TitleTextChangerForMonologueScene : MonoBehaviour
         GameSaveManager saveManager = GameSaveManager.Instance;
         if (saveManager != null && saveManager.GetAllDialoguesCompletedFlag())
         {
-            if (debugMode) Debug.Log("TitleTextChangerForMonologueScene: 全ダイアログ完了フラグを検出");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForMonologueScene: 全ダイアログ完了フラグを検出");
             return true;
         }
 
@@ -238,13 +238,13 @@ public class TitleTextChangerForMonologueScene : MonoBehaviour
             // デバッグログを追加
             if (debugMode)
             {
-                Debug.Log($"TitleTextChangerForMonologueScene: 効果音チェック - soundEnabled={soundEnabled}");
+                DebugLogger.Log($"TitleTextChangerForMonologueScene: 効果音チェック - soundEnabled={soundEnabled}");
             }
 
             // SoundEffectManagerを使用した効果音再生
             if (soundEnabled && SoundEffectManager.Instance != null)
             {
-                if (debugMode) Debug.Log("TitleTextChangerForMonologueScene: 効果音を再生します");
+                if (debugMode) DebugLogger.Log("TitleTextChangerForMonologueScene: 効果音を再生します");
                 SoundEffectManager.Instance.PlayTypeSound();
             }
 
@@ -264,7 +264,7 @@ public class TitleTextChangerForMonologueScene : MonoBehaviour
         {
             saveManager.SetAfterChangeToLastFlag(true);
             saveManager.SaveGame();
-            if (debugMode) Debug.Log("TitleTextChangerForMonologueScene: タイトル変更フラグを保存しました");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForMonologueScene: タイトル変更フラグを保存しました");
         }
 
         // ボタンを再度有効化
@@ -359,7 +359,7 @@ public class TitleTextChangerForMonologueScene : MonoBehaviour
             if (debugMode)
             {
                 string state = interactable ? "有効" : "無効";
-                Debug.Log($"TitleTextChangerForMonologueScene: MenuContainerのボタンを{state}にしました");
+                DebugLogger.Log($"TitleTextChangerForMonologueScene: MenuContainerのボタンを{state}にしました");
             }
         }
     }

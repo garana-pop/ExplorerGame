@@ -80,7 +80,7 @@ public class ConversationTransitionController : MonoBehaviour
             this.enabled = false;
             if (debugMode)
             {
-                Debug.Log($"{nameof(ConversationTransitionController)}: afterChangeToLastフラグのため無効化");
+                DebugLogger.Log($"{nameof(ConversationTransitionController)}: afterChangeToLastフラグのため無効化");
             }
             return;
         }
@@ -100,7 +100,7 @@ public class ConversationTransitionController : MonoBehaviour
         if (isTransitioning)
         {
             if (debugMode)
-                Debug.Log("ConversationTransitionController: 既に遷移処理中です。新しい遷移をスキップします。");
+                DebugLogger.Log("ConversationTransitionController: 既に遷移処理中です。新しい遷移をスキップします。");
             return;
         }
 
@@ -108,7 +108,7 @@ public class ConversationTransitionController : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "TitleScene")
         {
             if (debugMode)
-                Debug.LogWarning("ConversationTransitionController: 既に別のシーンに遷移しています。処理を中断します。");
+                DebugLogger.LogWarning("ConversationTransitionController: 既に別のシーンに遷移しています。処理を中断します。");
             return;
         }
 
@@ -175,14 +175,14 @@ public class ConversationTransitionController : MonoBehaviour
         gameSaveManager = GameSaveManager.Instance;
         if (gameSaveManager == null)
         {
-            Debug.LogWarning("ConversationTransitionController: GameSaveManagerが見つかりません");
+            DebugLogger.LogWarning("ConversationTransitionController: GameSaveManagerが見つかりません");
         }
 
         // MainMenuControllerの取得
         mainMenuController = FindFirstObjectByType<MainMenuController>();
         if (mainMenuController == null)
         {
-            Debug.LogWarning("ConversationTransitionController: MainMenuControllerが見つかりません");
+            DebugLogger.LogWarning("ConversationTransitionController: MainMenuControllerが見つかりません");
         }
     }
 
@@ -193,7 +193,7 @@ public class ConversationTransitionController : MonoBehaviour
     {
         if (startButton == null)
         {
-            Debug.LogError("ConversationTransitionController: 「思い出す」ボタンが見つかりません");
+            DebugLogger.LogError("ConversationTransitionController: 「思い出す」ボタンが見つかりません");
             return;
         }
 
@@ -205,7 +205,7 @@ public class ConversationTransitionController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log("ConversationTransitionController: 「思い出す」ボタンのイベントを拡張しました");
+            DebugLogger.Log("ConversationTransitionController: 「思い出す」ボタンのイベントを拡張しました");
         }
     }
 
@@ -226,7 +226,7 @@ public class ConversationTransitionController : MonoBehaviour
         if (isTransitioning)
         {
             if (debugMode)
-                Debug.Log("ConversationTransitionController: 既に遷移中です");
+                DebugLogger.Log("ConversationTransitionController: 既に遷移中です");
             return;
         }
 
@@ -234,14 +234,14 @@ public class ConversationTransitionController : MonoBehaviour
         RememberButtonTextChangerForHer textChanger = FindFirstObjectByType<RememberButtonTextChangerForHer>();
         if (textChanger != null && textChanger.DataResetPanelControllerBoot)
         {
-            if (debugMode) Debug.Log("ConversationTransitionController: DataResetPanelControllerBootフラグがtrueのため、スタートボタン処理をスキップします");
+            if (debugMode) DebugLogger.Log("ConversationTransitionController: DataResetPanelControllerBootフラグがtrueのため、スタートボタン処理をスキップします");
             return; // 即座リターンで遷移処理を停止
         }
 
         // afterChangeToLastフラグをチェック（追加）
         if (gameSaveManager != null && gameSaveManager.GetAfterChangeToLastFlag())
         {
-            if (debugMode) Debug.Log("ConversationTransitionController: afterChangeToLastフラグがtrueのため、TitleTextChangerにボタン処理を委譲します");
+            if (debugMode) DebugLogger.Log("ConversationTransitionController: afterChangeToLastフラグがtrueのため、TitleTextChangerにボタン処理を委譲します");
             // TitleTextChangerに処理を委譲し、このメソッドは終了
             return;
         }
@@ -269,7 +269,7 @@ public class ConversationTransitionController : MonoBehaviour
         RememberButtonTextChangerForHer textChanger = FindFirstObjectByType<RememberButtonTextChangerForHer>();
         if (textChanger != null && textChanger.DataResetPanelControllerBoot)
         {
-            if (debugMode) Debug.Log("ConversationTransitionController: DataResetPanelControllerBootフラグがtrueのため、遷移処理を中止します");
+            if (debugMode) DebugLogger.Log("ConversationTransitionController: DataResetPanelControllerBootフラグがtrueのため、遷移処理を中止します");
             isTransitioning = false;
             if (startButton != null) startButton.interactable = true;
             yield break; // コルーチンを終了
@@ -286,7 +286,7 @@ public class ConversationTransitionController : MonoBehaviour
             if (requireSaveDataForConversation && !saveExists)
             {
                 if (debugMode)
-                    Debug.Log("ConversationTransitionController: セーブデータが存在しないため、通常の遷移ロジックを使用します");
+                    DebugLogger.Log("ConversationTransitionController: セーブデータが存在しないため、通常の遷移ロジックを使用します");
 
                 // 新規ゲームの場合、endOpeningSceneFlagをfalseに初期化
                 if (gameSaveManager != null)
@@ -296,7 +296,7 @@ public class ConversationTransitionController : MonoBehaviour
                     // セーブは行わない（OpeningScene完了時に行うため）
 
                     if (debugMode)
-                        Debug.Log("ConversationTransitionController: 新規ゲームとして初期化し、endOpeningSceneFlagをfalseに設定");
+                        DebugLogger.Log("ConversationTransitionController: 新規ゲームとして初期化し、endOpeningSceneFlagをfalseに設定");
                 }
 
                 targetScene = defaultOpeningSceneName;
@@ -317,9 +317,9 @@ public class ConversationTransitionController : MonoBehaviour
 
                     if (debugMode)
                     {
-                        Debug.Log($"ConversationTransitionController: セーブデータ読み込み成功");
-                        Debug.Log($"ConversationTransitionController: afterChangeToHerMemoryフラグ = {afterChangeFlag}");
-                        Debug.Log($"ConversationTransitionController: endOpeningSceneフラグ = {isOpeningCompleted}");
+                        DebugLogger.Log($"ConversationTransitionController: セーブデータ読み込み成功");
+                        DebugLogger.Log($"ConversationTransitionController: afterChangeToHerMemoryフラグ = {afterChangeFlag}");
+                        DebugLogger.Log($"ConversationTransitionController: endOpeningSceneフラグ = {isOpeningCompleted}");
                     }
 
                     // afterChangeToHerMemoryフラグがtrueの場合は会話シーンへ
@@ -327,7 +327,7 @@ public class ConversationTransitionController : MonoBehaviour
                     {
                         targetScene = conversationSceneName;
                         if (debugMode)
-                            Debug.Log("ConversationTransitionController: フラグがtrueのため、会話シーンに遷移します");
+                            DebugLogger.Log("ConversationTransitionController: フラグがtrueのため、会話シーンに遷移します");
                     }
                     // afterChangeToHerMemoryフラグがfalseの場合
                     else
@@ -338,14 +338,14 @@ public class ConversationTransitionController : MonoBehaviour
                             // OpeningScene完了済みならMainSceneへ
                             targetScene = normalGameSceneName; // MainScene
                             if (debugMode)
-                                Debug.Log("ConversationTransitionController: OpeningScene完了済み。MainSceneへ遷移");
+                                DebugLogger.Log("ConversationTransitionController: OpeningScene完了済み。MainSceneへ遷移");
                         }
                         else
                         {
                             // OpeningScene未完了ならOpeningSceneへ
                             targetScene = defaultOpeningSceneName;
                             if (debugMode)
-                                Debug.Log("ConversationTransitionController: OpeningScene未完了。OpeningSceneへ遷移");
+                                DebugLogger.Log("ConversationTransitionController: OpeningScene未完了。OpeningSceneへ遷移");
                         }
                     }
 
@@ -354,7 +354,7 @@ public class ConversationTransitionController : MonoBehaviour
                 else
                 {
                     if (debugMode)
-                        Debug.Log("ConversationTransitionController: セーブデータの読み込みに失敗、オープニングシーンに遷移");
+                        DebugLogger.Log("ConversationTransitionController: セーブデータの読み込みに失敗、オープニングシーンに遷移");
                     targetScene = defaultOpeningSceneName;
                     transitionSuccessful = true;
                 }
@@ -362,14 +362,14 @@ public class ConversationTransitionController : MonoBehaviour
             else
             {
                 if (debugMode)
-                    Debug.Log("ConversationTransitionController: セーブデータが存在しません、オープニングシーンに遷移");
+                    DebugLogger.Log("ConversationTransitionController: セーブデータが存在しません、オープニングシーンに遷移");
                 targetScene = defaultOpeningSceneName;
                 transitionSuccessful = true;
             }
         }
         catch (System.Exception ex)
         {
-            Debug.LogError($"ConversationTransitionController: シーン判定中にエラー: {ex.Message}");
+            DebugLogger.LogError($"ConversationTransitionController: シーン判定中にエラー: {ex.Message}");
             targetScene = defaultOpeningSceneName;
             transitionSuccessful = false;
         }
@@ -382,7 +382,7 @@ public class ConversationTransitionController : MonoBehaviour
 
         // 最終的なシーン名を再確認（念のため）
         if (debugMode)
-            Debug.Log($"ConversationTransitionController: 最終的な遷移先: {targetScene}");
+            DebugLogger.Log($"ConversationTransitionController: 最終的な遷移先: {targetScene}");
 
         yield return StartCoroutine(LoadSceneAsync(targetScene));
 
@@ -391,8 +391,8 @@ public class ConversationTransitionController : MonoBehaviour
         if (debugMode)
         {
             string status = transitionSuccessful ? "成功" : "失敗";
-            Debug.Log($"ConversationTransitionController: シーン遷移完了 ({status})");
-            Debug.Log($"ConversationTransitionController: 最終的な遷移先 = {targetScene}");
+            DebugLogger.Log($"ConversationTransitionController: シーン遷移完了 ({status})");
+            DebugLogger.Log($"ConversationTransitionController: 最終的な遷移先 = {targetScene}");
         }
     }
 
@@ -406,7 +406,7 @@ public class ConversationTransitionController : MonoBehaviour
         // afterChangeToLastフラグをチェック
         if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
         {
-            if (debugMode) Debug.Log("ConversationTransitionController: afterChangeToLastフラグがtrueのため、シーン遷移をスキップします");
+            if (debugMode) DebugLogger.Log("ConversationTransitionController: afterChangeToLastフラグがtrueのため、シーン遷移をスキップします");
             yield break; // afterChangeToLastがtrueの場合はシーン遷移を停止
         }
 
@@ -423,14 +423,14 @@ public class ConversationTransitionController : MonoBehaviour
         RememberButtonTextChangerForHer textChanger = FindFirstObjectByType<RememberButtonTextChangerForHer>();
         if (textChanger != null && textChanger.DataResetPanelControllerBoot)
         {
-            if (debugMode) Debug.Log("ConversationTransitionController: CheckFlagAndTransition開始時にDataResetPanelControllerBootフラグがtrueのため、処理を停止します");
+            if (debugMode) DebugLogger.Log("ConversationTransitionController: CheckFlagAndTransition開始時にDataResetPanelControllerBootフラグがtrueのため、処理を停止します");
             yield break; // コルーチンを終了
         }
 
         // afterChangeToLastフラグの再チェック
         if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
         {
-            if (debugMode) Debug.Log("ConversationTransitionController: CheckFlagAndTransition開始時にafterChangeToLastフラグがtrueのため、処理を停止します");
+            if (debugMode) DebugLogger.Log("ConversationTransitionController: CheckFlagAndTransition開始時にafterChangeToLastフラグがtrueのため、処理を停止します");
             yield break; // コルーチンを終了
         }
 
@@ -446,7 +446,7 @@ public class ConversationTransitionController : MonoBehaviour
             if (requireSaveDataForConversation && !saveExists)
             {
                 if (debugMode)
-                    Debug.Log("ConversationTransitionController: セーブデータが存在しないため、通常の遷移ロジックを使用します");
+                    DebugLogger.Log("ConversationTransitionController: セーブデータが存在しないため、通常の遷移ロジックを使用します");
 
                 targetScene = defaultOpeningSceneName;
                 transitionSuccessful = true;
@@ -463,8 +463,8 @@ public class ConversationTransitionController : MonoBehaviour
 
                     if (debugMode)
                     {
-                        Debug.Log($"ConversationTransitionController: セーブデータ読み込み成功");
-                        Debug.Log($"ConversationTransitionController: afterChangeToHerMemoryフラグ = {afterChangeFlag}");
+                        DebugLogger.Log($"ConversationTransitionController: セーブデータ読み込み成功");
+                        DebugLogger.Log($"ConversationTransitionController: afterChangeToHerMemoryフラグ = {afterChangeFlag}");
                     }
 
                     // フラグがfalseの場合は必ず通常の遷移を行う
@@ -477,27 +477,27 @@ public class ConversationTransitionController : MonoBehaviour
                         {
                             targetScene = normalGameSceneName; // MainScene
                             if (debugMode)
-                                Debug.Log("ConversationTransitionController: OpeningScene完了済み。MainSceneへ移行");
+                                DebugLogger.Log("ConversationTransitionController: OpeningScene完了済み。MainSceneへ移行");
                         }
                         else
                         {
                             targetScene = defaultOpeningSceneName;
                             if (debugMode)
-                                Debug.Log("ConversationTransitionController: フラグがfalseのため、オープニングシーンに遷移します");
+                                DebugLogger.Log("ConversationTransitionController: フラグがfalseのため、オープニングシーンに遷移します");
                         }
                     }
                     else if (afterChangeFlag || forceConversationScene)
                     {
                         targetScene = conversationSceneName;
                         if (debugMode)
-                            Debug.Log("ConversationTransitionController: フラグがtrueのため、会話シーンに遷移します");
+                            DebugLogger.Log("ConversationTransitionController: フラグがtrueのため、会話シーンに遷移します");
                     }
                     else
                     {
                         // どちらの条件にも当てはまらない場合のフォールバック
                         targetScene = defaultOpeningSceneName;
                         if (debugMode)
-                            Debug.Log("ConversationTransitionController: デフォルトでオープニングシーンに遷移します");
+                            DebugLogger.Log("ConversationTransitionController: デフォルトでオープニングシーンに遷移します");
                     }
 
                     transitionSuccessful = true;
@@ -505,7 +505,7 @@ public class ConversationTransitionController : MonoBehaviour
                 else
                 {
                     if (debugMode)
-                        Debug.Log("ConversationTransitionController: セーブデータの読み込みに失敗、オープニングシーンに遷移");
+                        DebugLogger.Log("ConversationTransitionController: セーブデータの読み込みに失敗、オープニングシーンに遷移");
                     targetScene = defaultOpeningSceneName;
                     transitionSuccessful = true;
                 }
@@ -513,14 +513,14 @@ public class ConversationTransitionController : MonoBehaviour
             else
             {
                 if (debugMode)
-                    Debug.Log("ConversationTransitionController: セーブデータが存在しません、オープニングシーンに遷移");
+                    DebugLogger.Log("ConversationTransitionController: セーブデータが存在しません、オープニングシーンに遷移");
                 targetScene = defaultOpeningSceneName;
                 transitionSuccessful = true;
             }
         }
         catch (System.Exception ex)
         {
-            Debug.LogError($"ConversationTransitionController: シーン判定中にエラー: {ex.Message}");
+            DebugLogger.LogError($"ConversationTransitionController: シーン判定中にエラー: {ex.Message}");
             targetScene = defaultOpeningSceneName;
             transitionSuccessful = false;
         }
@@ -538,8 +538,8 @@ public class ConversationTransitionController : MonoBehaviour
         if (debugMode)
         {
             string status = transitionSuccessful ? "成功" : "エラー回復";
-            Debug.Log($"ConversationTransitionController: シーン遷移完了 ({status})");
-            Debug.Log($"ConversationTransitionController: 最終的な遷移先 = {targetScene}");
+            DebugLogger.Log($"ConversationTransitionController: シーン遷移完了 ({status})");
+            DebugLogger.Log($"ConversationTransitionController: 最終的な遷移先 = {targetScene}");
         }
     }
 
@@ -555,18 +555,18 @@ public class ConversationTransitionController : MonoBehaviour
             {
                 bool exists = gameSaveManager.SaveDataExists();
                 if (debugMode)
-                    Debug.Log($"ConversationTransitionController: GameSaveManagerでのセーブデータ存在確認: {exists}");
+                    DebugLogger.Log($"ConversationTransitionController: GameSaveManagerでのセーブデータ存在確認: {exists}");
                 return exists;
             }
 
             // GameSaveManagerが存在しない場合はfalse
             if (debugMode)
-                Debug.Log("ConversationTransitionController: GameSaveManagerが存在しないため、セーブデータなしと判定");
+                DebugLogger.Log("ConversationTransitionController: GameSaveManagerが存在しないため、セーブデータなしと判定");
             return false;
         }
         catch (System.Exception ex)
         {
-            Debug.LogError($"ConversationTransitionController: セーブデータ存在チェック中にエラー: {ex.Message}");
+            DebugLogger.LogError($"ConversationTransitionController: セーブデータ存在チェック中にエラー: {ex.Message}");
             return false;
         }
     }
@@ -598,7 +598,7 @@ public class ConversationTransitionController : MonoBehaviour
     private IEnumerator LoadSceneAsync(string sceneName)
     {
         if (debugMode)
-            Debug.Log($"ConversationTransitionController: シーン '{sceneName}' を読み込み中...");
+            DebugLogger.Log($"ConversationTransitionController: シーン '{sceneName}' を読み込み中...");
 
         // 非同期ロードを開始
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
@@ -606,7 +606,7 @@ public class ConversationTransitionController : MonoBehaviour
         // asyncLoadがnullでないことを確認
         if (asyncLoad == null)
         {
-            Debug.LogError($"ConversationTransitionController: シーン '{sceneName}' の読み込みに失敗しました");
+            DebugLogger.LogError($"ConversationTransitionController: シーン '{sceneName}' の読み込みに失敗しました");
             yield break;
         }
 
@@ -619,7 +619,7 @@ public class ConversationTransitionController : MonoBehaviour
             // 進捗を表示（0～0.9の範囲）
             float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
             if (debugMode)
-                Debug.Log($"読み込み進捗: {progress * 100:F0}%");
+                DebugLogger.Log($"読み込み進捗: {progress * 100:F0}%");
 
             // ロードが90%完了したら（実際には完了している）
             if (asyncLoad.progress >= 0.9f)
@@ -635,14 +635,14 @@ public class ConversationTransitionController : MonoBehaviour
                 asyncLoad.allowSceneActivation = true;
 
                 if (debugMode)
-                    Debug.Log($"ConversationTransitionController: シーン '{sceneName}' をアクティブ化しました");
+                    DebugLogger.Log($"ConversationTransitionController: シーン '{sceneName}' をアクティブ化しました");
             }
 
             yield return null;
         }
 
         if (debugMode)
-            Debug.Log($"ConversationTransitionController: シーン '{sceneName}' の読み込みが完了しました");
+            DebugLogger.Log($"ConversationTransitionController: シーン '{sceneName}' の読み込みが完了しました");
     }
 
     /// <summary>
@@ -665,7 +665,7 @@ public class ConversationTransitionController : MonoBehaviour
         Canvas canvas = FindFirstObjectByType<Canvas>();
         if (canvas == null)
         {
-            Debug.LogWarning("ConversationTransitionController: Canvasが見つからないため、フェードパネルを作成できません");
+            DebugLogger.LogWarning("ConversationTransitionController: Canvasが見つからないため、フェードパネルを作成できません");
             return;
         }
 
@@ -695,7 +695,7 @@ public class ConversationTransitionController : MonoBehaviour
         fadeObj.SetActive(false);
 
         if (debugMode)
-            Debug.Log("ConversationTransitionController: フェードパネルを動的に作成しました");
+            DebugLogger.Log("ConversationTransitionController: フェードパネルを動的に作成しました");
     }
 
     /// <summary>
@@ -709,7 +709,7 @@ public class ConversationTransitionController : MonoBehaviour
         if (requireSaveDataForConversation && !CheckSaveDataExists())
         {
             if (debugMode)
-                Debug.Log("ConversationTransitionController: セーブデータが存在しないため、会話シーン対象外");
+                DebugLogger.Log("ConversationTransitionController: セーブデータが存在しないため、会話シーン対象外");
             return false;
         }
 
@@ -727,7 +727,7 @@ public class ConversationTransitionController : MonoBehaviour
     {
         forceConversationScene = true;
         if (debugMode)
-            Debug.Log("ConversationTransitionController: 強制会話シーンフラグを有効にしました");
+            DebugLogger.Log("ConversationTransitionController: 強制会話シーンフラグを有効にしました");
     }
 
     /// <summary>
@@ -738,7 +738,7 @@ public class ConversationTransitionController : MonoBehaviour
     {
         forceConversationScene = false;
         if (debugMode)
-            Debug.Log("ConversationTransitionController: 通常シーンフラグにリセットしました");
+            DebugLogger.Log("ConversationTransitionController: 通常シーンフラグにリセットしました");
     }
 
     /// <summary>
@@ -755,7 +755,7 @@ public class ConversationTransitionController : MonoBehaviour
         {
             conversationSceneName = sceneName;
             if (debugMode)
-                Debug.Log($"ConversationTransitionController: 会話シーン名を '{sceneName}' に設定しました");
+                DebugLogger.Log($"ConversationTransitionController: 会話シーン名を '{sceneName}' に設定しました");
         }
     }
 
@@ -768,7 +768,7 @@ public class ConversationTransitionController : MonoBehaviour
         {
             normalGameSceneName = sceneName;
             if (debugMode)
-                Debug.Log($"ConversationTransitionController: 通常ゲームシーン名を '{sceneName}' に設定しました");
+                DebugLogger.Log($"ConversationTransitionController: 通常ゲームシーン名を '{sceneName}' に設定しました");
         }
     }
 
@@ -782,12 +782,12 @@ public class ConversationTransitionController : MonoBehaviour
         bool afterChangeFlag = gameSaveManager?.GetAfterChangeToHerMemoryFlag() ?? false;
         bool eligible = IsConversationSceneEligible();
 
-        Debug.Log($"=== ConversationTransitionController 状態 ===");
-        Debug.Log($"セーブデータ存在: {saveDataExists}");
-        Debug.Log($"AfterChangeフラグ: {afterChangeFlag}");
-        Debug.Log($"会話シーン対象: {eligible}");
-        Debug.Log($"強制会話シーン: {forceConversationScene}");
-        Debug.Log($"遷移中: {isTransitioning}");
-        Debug.Log($"==============================");
+        DebugLogger.Log($"=== ConversationTransitionController 状態 ===");
+        DebugLogger.Log($"セーブデータ存在: {saveDataExists}");
+        DebugLogger.Log($"AfterChangeフラグ: {afterChangeFlag}");
+        DebugLogger.Log($"会話シーン対象: {eligible}");
+        DebugLogger.Log($"強制会話シーン: {forceConversationScene}");
+        DebugLogger.Log($"遷移中: {isTransitioning}");
+        DebugLogger.Log($"==============================");
     }
 }

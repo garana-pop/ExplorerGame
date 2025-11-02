@@ -96,7 +96,7 @@ public class DaughterRequestGlitchEffect : MonoBehaviour
         targetImage = GetComponent<Image>();
         if (targetImage == null)
         {
-            Debug.LogError($"[DaughterRequestGlitchEffect] {gameObject.name}にImageコンポーネントが見つかりません");
+            DebugLogger.LogError($"[DaughterRequestGlitchEffect] {gameObject.name}にImageコンポーネントが見つかりません");
             enabled = false;
             return;
         }
@@ -168,7 +168,7 @@ public class DaughterRequestGlitchEffect : MonoBehaviour
 
         if (enableDebugLog)
         {
-            Debug.Log($"[DaughterRequestGlitchEffect] エフェクト強度を{intensity}に設定");
+            DebugLogger.Log($"[DaughterRequestGlitchEffect] エフェクト強度を{intensity}に設定");
         }
     }
 
@@ -237,7 +237,7 @@ public class DaughterRequestGlitchEffect : MonoBehaviour
 
         if (enableDebugLog)
         {
-            Debug.Log($"[DaughterRequestGlitchEffect] エフェクト開始: {gameObject.name}");
+            DebugLogger.Log($"[DaughterRequestGlitchEffect] エフェクト開始: {gameObject.name}");
         }
     }
 

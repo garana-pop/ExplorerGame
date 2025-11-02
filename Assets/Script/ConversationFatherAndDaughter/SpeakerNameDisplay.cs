@@ -75,7 +75,7 @@ namespace ConversationFatherAndDaughter
                 dialogueDataLoader = FindObjectOfType<DialogueDataLoader>();
                 if (dialogueDataLoader == null)
                 {
-                    Debug.LogError($"{nameof(SpeakerNameDisplay)}: DialogueDataLoaderが見つかりません");
+                    DebugLogger.LogError($"{nameof(SpeakerNameDisplay)}: DialogueDataLoaderが見つかりません");
                 }
             }
 
@@ -128,7 +128,7 @@ namespace ConversationFatherAndDaughter
 
                 if (leftSpeakerNameText == null)
                 {
-                    Debug.LogWarning($"{nameof(SpeakerNameDisplay)}: 左側の話者名テキストが見つかりません");
+                    DebugLogger.LogWarning($"{nameof(SpeakerNameDisplay)}: 左側の話者名テキストが見つかりません");
                 }
             }
 
@@ -147,7 +147,7 @@ namespace ConversationFatherAndDaughter
 
                 if (rightSpeakerNameText == null)
                 {
-                    Debug.LogWarning($"{nameof(SpeakerNameDisplay)}: 右側の話者名テキストが見つかりません");
+                    DebugLogger.LogWarning($"{nameof(SpeakerNameDisplay)}: 右側の話者名テキストが見つかりません");
                 }
             }
         }
@@ -162,11 +162,11 @@ namespace ConversationFatherAndDaughter
                 currentDialogueEntries = dialogueDataLoader.GetDialogueEntries();
                 if (currentDialogueEntries == null || currentDialogueEntries.Count == 0)
                 {
-                    Debug.LogWarning($"{nameof(SpeakerNameDisplay)}: セリフデータが読み込まれていません");
+                    DebugLogger.LogWarning($"{nameof(SpeakerNameDisplay)}: セリフデータが読み込まれていません");
                 }
                 else
                 {
-                    Debug.Log($"{nameof(SpeakerNameDisplay)}: {currentDialogueEntries.Count}件のセリフデータを読み込みました");
+                    DebugLogger.Log($"{nameof(SpeakerNameDisplay)}: {currentDialogueEntries.Count}件のセリフデータを読み込みました");
                 }
             }
         }
@@ -251,7 +251,7 @@ namespace ConversationFatherAndDaughter
             }
             else
             {
-                Debug.LogWarning($"{nameof(SpeakerNameDisplay)}: 話者 '{speakerName}' の配置設定が見つかりません");
+                DebugLogger.LogWarning($"{nameof(SpeakerNameDisplay)}: 話者 '{speakerName}' の配置設定が見つかりません");
                 ClearBothSpeakerNames();
                 if (highlightController != null)
                 {

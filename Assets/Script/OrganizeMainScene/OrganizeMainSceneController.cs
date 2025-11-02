@@ -35,7 +35,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
                 if (instance == null && Application.isPlaying)
                 {
-                    Debug.LogWarning("OrganizeMainSceneController: インスタンスが見つかりません。新規作成します。");
+                    DebugLogger.LogWarning("OrganizeMainSceneController: インスタンスが見つかりません。新規作成します。");
                     GameObject go = new GameObject("OrganizeMainSceneController");
                     instance = go.AddComponent<OrganizeMainSceneController>();
                 }
@@ -190,7 +190,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(OrganizeMainSceneController)}: インスタンスを設定しました");
+                DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: インスタンスを設定しました");
             }
         }
         else if (instance != this)
@@ -198,7 +198,7 @@ public class OrganizeMainSceneController : MonoBehaviour
             // 既存のインスタンスがある場合は自身を破棄
             if (debugMode)
             {
-                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: 既存のインスタンスが存在します。このオブジェクトを破棄します。");
+                DebugLogger.LogWarning($"{nameof(OrganizeMainSceneController)}: 既存のインスタンスが存在します。このオブジェクトを破棄します。");
             }
             Destroy(gameObject);
             return;
@@ -214,7 +214,7 @@ public class OrganizeMainSceneController : MonoBehaviour
             localizationManager = LocalizationManager.Instance;
             if (localizationManager == null && debugMode)
             {
-                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: LocalizationManagerが見つかりません");
+                DebugLogger.LogWarning($"{nameof(OrganizeMainSceneController)}: LocalizationManagerが見つかりません");
             }
         }
 
@@ -243,7 +243,7 @@ public class OrganizeMainSceneController : MonoBehaviour
         if (localizationManager != null)
         {
             currentLanguage = localizationManager.GetCurrentLanguageCode();
-            Debug.Log("OrganizeMainSceneController : 現在の言語コード " + currentLanguage);
+            DebugLogger.Log("OrganizeMainSceneController : 現在の言語コード " + currentLanguage);
         }
 
         // 言語コードが英語の場合、クリックメッセージを英語テキストに設定
@@ -336,7 +336,7 @@ public class OrganizeMainSceneController : MonoBehaviour
     {
         if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: シーン初期化開始");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: シーン初期化開始");
         }
 
         // マネージャーの取得
@@ -356,7 +356,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: シーン初期化完了");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: シーン初期化完了");
         }
     }
 
@@ -381,7 +381,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
                 if (debugMode && retryCount == 1)
                 {
-                    Debug.Log($"{nameof(OrganizeMainSceneController)}: GameSaveManagerを待機中...");
+                    DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: GameSaveManagerを待機中...");
                 }
             }
         }
@@ -400,12 +400,12 @@ public class OrganizeMainSceneController : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerを新規作成しました");
+                DebugLogger.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerを新規作成しました");
             }
         }
         else if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: GameSaveManagerを取得しました（試行回数: {retryCount + 1}）");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: GameSaveManagerを取得しました（試行回数: {retryCount + 1}）");
         }
 
         // SoundEffectManagerの取得
@@ -414,7 +414,7 @@ public class OrganizeMainSceneController : MonoBehaviour
             soundManager = SoundEffectManager.Instance;
             if (soundManager == null && debugMode)
             {
-                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: SoundEffectManagerが見つかりません");
+                DebugLogger.LogWarning($"{nameof(OrganizeMainSceneController)}: SoundEffectManagerが見つかりません");
             }
         }
 
@@ -466,7 +466,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: UI初期化完了");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: UI初期化完了");
         }
     }
 
@@ -500,7 +500,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: 総ファイル数: {OrganizeMainScene_totalFileCount}");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: 総ファイル数: {OrganizeMainScene_totalFileCount}");
         }
     }
 
@@ -522,7 +522,7 @@ public class OrganizeMainSceneController : MonoBehaviour
             {
                 if (debugMode)
                 {
-                    Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerが設定されていません");
+                    DebugLogger.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerが設定されていません");
                 }
                 return;
             }
@@ -556,14 +556,14 @@ public class OrganizeMainSceneController : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(OrganizeMainSceneController)}: 削除済みファイル数: {deletedFileCount}");
-                Debug.Log($"{nameof(OrganizeMainSceneController)}: 全ファイル削除フラグ: {allFilesDeleted}");
+                DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: 削除済みファイル数: {deletedFileCount}");
+                DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: 全ファイル削除フラグ: {allFilesDeleted}");
             }
         }
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: セーブデータ読み込み完了");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: セーブデータ読み込み完了");
         }
     }
 
@@ -578,7 +578,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: アプリケーション終了時にセーブデータを保存しました");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: アプリケーション終了時にセーブデータを保存しました");
         }
     }
 
@@ -596,7 +596,7 @@ public class OrganizeMainSceneController : MonoBehaviour
             {
                 if (debugMode)
                 {
-                    Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerが設定されていません");
+                    DebugLogger.LogWarning($"{nameof(OrganizeMainSceneController)}: GameSaveManagerが設定されていません");
                 }
                 return;
             }
@@ -612,7 +612,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: セーブデータ保存完了");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: セーブデータ保存完了");
         }
     }
 
@@ -633,7 +633,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         if (removedCount > 0)
         {
-            Debug.Log($"CleanUpFileList: {removedCount} 個の破棄されたオブジェクトの参照をリストから削除しました。");
+            DebugLogger.Log($"CleanUpFileList: {removedCount} 個の破棄されたオブジェクトの参照をリストから削除しました。");
         }
     }
 
@@ -682,7 +682,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: ファイル '{fileName}' を削除しました（{deletedFileCount}/{OrganizeMainScene_totalFileCount}）");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: ファイル '{fileName}' を削除しました（{deletedFileCount}/{OrganizeMainScene_totalFileCount}）");
         }
 
     }
@@ -738,7 +738,7 @@ public class OrganizeMainSceneController : MonoBehaviour
     {
         if (allFilesDeleted == true)
         {
-            Debug.Log("OrganizeMainSceneController : allFilesDeletedフラグ " + allFilesDeleted);
+            DebugLogger.Log("OrganizeMainSceneController : allFilesDeletedフラグ " + allFilesDeleted);
             ShowAllFilesDeleteConfirmation();
         }
 
@@ -774,7 +774,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: 全ファイル削除確認ダイアログを表示");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: 全ファイル削除確認ダイアログを表示");
         }
     }
 
@@ -798,7 +798,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         //// イベント発火（nullチェックしてから呼び出す）
         //OrganizeButtonHidden?.Invoke(returnScene);
-        //Debug.Log($"OrganizeMainSceneController: イベント発火しました → {returnScene}");
+        //DebugLogger.Log($"OrganizeMainSceneController: イベント発火しました → {returnScene}");
 
         SceneManager.LoadScene(returnSceneName);
     }
@@ -818,7 +818,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: 全ファイル削除をキャンセル");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: 全ファイル削除をキャンセル");
         }
     }
 
@@ -847,7 +847,7 @@ public class OrganizeMainSceneController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(OrganizeMainSceneController)}: 全ファイル完全削除完了");
+            DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: 全ファイル完全削除完了");
         }
     }
 
@@ -894,7 +894,7 @@ public class OrganizeMainSceneController : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.Log($"{nameof(OrganizeMainSceneController)}: 実績は既に解除済みです");
+                DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: 実績は既に解除済みです");
             }
             return;
         }
@@ -902,7 +902,7 @@ public class OrganizeMainSceneController : MonoBehaviour
         // SteamAchievementManagerの存在確認
         if (SteamAchievementManager.Instance == null)
         {
-            Debug.LogError($"{nameof(OrganizeMainSceneController)}: SteamAchievementManagerが利用できません");
+            DebugLogger.LogError($"{nameof(OrganizeMainSceneController)}: SteamAchievementManagerが利用できません");
             return;
         }
 
@@ -913,13 +913,13 @@ public class OrganizeMainSceneController : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.Log($"{nameof(OrganizeMainSceneController)}: Steam実績「{achievementApiName}」を正常に解除しました");
+                DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: Steam実績「{achievementApiName}」を正常に解除しました");
             }
             isAchievementUnlocked = true;
         }
         else
         {
-            Debug.LogError($"{nameof(OrganizeMainSceneController)}: Steam実績「{achievementApiName}」の解除に失敗しました");
+            DebugLogger.LogError($"{nameof(OrganizeMainSceneController)}: Steam実績「{achievementApiName}」の解除に失敗しました");
         }
     }
 
@@ -933,7 +933,7 @@ public class OrganizeMainSceneController : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.Log($"{nameof(OrganizeMainSceneController)}: 手動で実績解除を実行");
+                DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: 手動で実績解除を実行");
             }
             UnlockSteamAchievement();
         }
@@ -950,7 +950,7 @@ public class OrganizeMainSceneController : MonoBehaviour
             isAchievementUnlocked = false;
             if (debugMode)
             {
-                Debug.Log($"{nameof(OrganizeMainSceneController)}: 実績解除状態をリセットしました");
+                DebugLogger.Log($"{nameof(OrganizeMainSceneController)}: 実績解除状態をリセットしました");
             }
         }
     }

@@ -129,7 +129,7 @@ public class TxtPuzzleManager : MonoBehaviour
 
         if (expectedSpeakerField == null)
         {
-            Debug.LogWarning($"TxtPuzzleManager: expectedSpeakerフィールドが見つかりません");
+            DebugLogger.LogWarning($"TxtPuzzleManager: expectedSpeakerフィールドが見つかりません");
             return;
         }
 
@@ -152,7 +152,7 @@ public class TxtPuzzleManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"TxtPuzzleManager: {fieldName}フィールドが見つかりません");
+            DebugLogger.LogWarning($"TxtPuzzleManager: {fieldName}フィールドが見つかりません");
         }
     }
 
@@ -194,7 +194,7 @@ public class TxtPuzzleManager : MonoBehaviour
             string languageCode = newLocale.Identifier.Code;
             UpdateSpeakerNamesBasedOnLanguage();
 
-            Debug.Log($"TxtPuzzleManager '{fileName}': 言語が '{languageCode}' に変更されました");
+            DebugLogger.Log($"TxtPuzzleManager '{fileName}': 言語が '{languageCode}' に変更されました");
         }
     }
 
@@ -541,7 +541,7 @@ public class TxtPuzzleManager : MonoBehaviour
 
                 // 未完了の場合もアイコンを更新
                 UpdateLinkedFileIcon(false);
-                Debug.Log($"TxtPuzzle '{fileName}': 未完了状態アイコンを適用しました");
+                DebugLogger.Log($"TxtPuzzle '{fileName}': 未完了状態アイコンを適用しました");
             }
         }
         else
@@ -561,7 +561,7 @@ public class TxtPuzzleManager : MonoBehaviour
         if (linkedFileIcon != null)
         {
             linkedFileIcon.SetPuzzleCompletedState(completed);
-            Debug.Log($"TxtPuzzleManager: linkedFileIconの状態を更新 - {fileName}: 完了={completed}");
+            DebugLogger.Log($"TxtPuzzleManager: linkedFileIconの状態を更新 - {fileName}: 完了={completed}");
         }
     }
 
@@ -705,7 +705,7 @@ public class TxtPuzzleManager : MonoBehaviour
 
         if (!allCorrect)
         {
-            Debug.Log($"TxtPuzzle '{fileName}': 一部のエリアが正解状態でなかったため再適用しました");
+            DebugLogger.Log($"TxtPuzzle '{fileName}': 一部のエリアが正解状態でなかったため再適用しました");
         }
     }
 

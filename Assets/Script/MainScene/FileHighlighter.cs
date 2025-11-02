@@ -55,7 +55,7 @@ public class FileHighlighter : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
         else
         {
-            Debug.LogError($"{gameObject.name} にImageコンポーネントがありません");
+            DebugLogger.LogError($"{gameObject.name} にImageコンポーネントがありません");
         }
     }
 

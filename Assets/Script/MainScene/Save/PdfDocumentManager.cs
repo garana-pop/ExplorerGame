@@ -78,7 +78,7 @@ public class PdfDocumentManager : MonoBehaviour
         if (isDocumentCompleted)
         {
             globalCompletionStateCache[fileName] = true;
-            //Debug.Log($"PDF '{fileName}': 完了状態をグローバルキャッシュに保存しました");
+            //DebugLogger.Log($"PDF '{fileName}': 完了状態をグローバルキャッシュに保存しました");
         }
     }
 
@@ -155,7 +155,7 @@ public class PdfDocumentManager : MonoBehaviour
         // ゲーム状態を保存
         SaveGameState();
 
-        Debug.Log($"PDF '{fileName}' のすべてのキーワードが表示されました。完了状態を保存します。");
+        DebugLogger.Log($"PDF '{fileName}' のすべてのキーワードが表示されました。完了状態を保存します。");
     }
 
     /// <summary>
@@ -207,7 +207,7 @@ public class PdfDocumentManager : MonoBehaviour
             targetObject = nextFolderOrFile;
             if (targetObject == null)
             {
-                Debug.Log($"PDF '{fileName}': 次のフォルダー/ファイルが設定されていません");
+                DebugLogger.Log($"PDF '{fileName}': 次のフォルダー/ファイルが設定されていません");
                 return;
             }
         }
@@ -252,7 +252,7 @@ public class PdfDocumentManager : MonoBehaviour
         {
             // 自動的にHiddenKeywordsを探す
             hiddenKeywords = new List<HiddenKeyword>(GetComponentsInChildren<HiddenKeyword>(true));
-            Debug.Log($"PDF '{fileName}': {hiddenKeywords.Count}個のHiddenKeywordを自動検出しました");
+            DebugLogger.Log($"PDF '{fileName}': {hiddenKeywords.Count}個のHiddenKeywordを自動検出しました");
         }
 
         // キーワードが見つからない場合はさらに広く検索
@@ -273,7 +273,7 @@ public class PdfDocumentManager : MonoBehaviour
                 }
             }
 
-            Debug.Log($"PDF '{fileName}': LineTextから{hiddenKeywords.Count}個のHiddenKeywordを検出しました");
+            DebugLogger.Log($"PDF '{fileName}': LineTextから{hiddenKeywords.Count}個のHiddenKeywordを検出しました");
         }
 
         foreach (var keyword in hiddenKeywords)
@@ -282,7 +282,7 @@ public class PdfDocumentManager : MonoBehaviour
             {
                 // 表示状態を強制的に設定（すでに表示されていても再度適用）
                 keyword.ForceReveal();
-                // Debug.Log($"PDF '{fileName}': キーワード '{keyword.GetHiddenWord()}' を強制表示しました");
+                // DebugLogger.Log($"PDF '{fileName}': キーワード '{keyword.GetHiddenWord()}' を強制表示しました");
             }
         }
 
@@ -318,7 +318,7 @@ public class PdfDocumentManager : MonoBehaviour
                 // 次のフォルダーを確実にアクティブ化
                 EnsureNextFolderActive();
 
-                //Debug.Log($"PDF '{fileName}': 完了状態から復元し、すべてのキーワードを表示しました");
+                //DebugLogger.Log($"PDF '{fileName}': 完了状態から復元し、すべてのキーワードを表示しました");
             }
             // 個別のキーワード表示状態を復元
             else if (fileData.revealedKeywords != null && fileData.revealedKeywords.Length > 0)
@@ -336,7 +336,7 @@ public class PdfDocumentManager : MonoBehaviour
                     if (keyword != null && revealedWordsSet.Contains(keyword.GetHiddenWord()))
                     {
                         keyword.ForceReveal();
-                        Debug.Log($"PDF '{fileName}': キーワード '{keyword.GetHiddenWord()}' の状態を復元しました");
+                        DebugLogger.Log($"PDF '{fileName}': キーワード '{keyword.GetHiddenWord()}' の状態を復元しました");
                     }
                 }
 
@@ -415,7 +415,7 @@ public class PdfDocumentManager : MonoBehaviour
         // 既に完了状態の場合は変更不要
         if (isDocumentCompleted && !completed)
         {
-            Debug.Log($"PDF '{fileName}': 既に完了しているため、非完了状態には設定しません");
+            DebugLogger.Log($"PDF '{fileName}': 既に完了しているため、非完了状態には設定しません");
             return;
         }
 
@@ -441,7 +441,7 @@ public class PdfDocumentManager : MonoBehaviour
     //    // 既に完了状態の場合は変更不可
     //    if (isDocumentCompleted && !completed)
     //    {
-    //        Debug.Log($"PDF '{fileName}': 既に完了しているため、非完了状態には設定しません");
+    //        DebugLogger.Log($"PDF '{fileName}': 既に完了しているため、非完了状態には設定しません");
     //        return;
     //    }
 
@@ -464,7 +464,7 @@ public class PdfDocumentManager : MonoBehaviour
     //    else if (completed && isDocumentCompleted)
     //    {
     //        // 既に完了状態の場合は何もしない（ただしログは出す）
-    //        //Debug.Log($"PDF '{fileName}': すでに完了状態です");
+    //        //DebugLogger.Log($"PDF '{fileName}': すでに完了状態です");
     //    }
     //}
 

@@ -159,12 +159,12 @@ public class SoundEffectManager : MonoBehaviour
                 if (saveData?.audioSettings != null)
                 {
                     loadedVolume = saveData.audioSettings.seVolume;
-                    //Debug.Log($"SoundEffectManager: game_save.jsonからSE音量読み込み: {loadedVolume}");
+                    //DebugLogger.Log($"SoundEffectManager: game_save.jsonからSE音量読み込み: {loadedVolume}");
                 }
             }
             catch (System.Exception e)
             {
-                Debug.LogWarning($"SoundEffectManager: game_save.json読み込みエラー: {e.Message}");
+                DebugLogger.LogWarning($"SoundEffectManager: game_save.json読み込みエラー: {e.Message}");
             }
         }
 
@@ -172,7 +172,7 @@ public class SoundEffectManager : MonoBehaviour
         currentSEVolume = loadedVolume;
         ApplyVolume();
 
-        //Debug.Log($"SoundEffectManager: 最終SE音量: {currentSEVolume}");
+        //DebugLogger.Log($"SoundEffectManager: 最終SE音量: {currentSEVolume}");
     }
 
 
@@ -343,11 +343,11 @@ public class SoundEffectManager : MonoBehaviour
                     // game_save.jsonに保存
                     GameSaveManager.Instance.UpdateAudioSettings(bgmVolume, currentSEVolume, masterVolume);
                     GameSaveManager.Instance.SaveAudioSettingsOnly();
-                    //Debug.Log($"SoundEffectManager: SE音量をgame_save.jsonに保存: {currentSEVolume}");
+                    //DebugLogger.Log($"SoundEffectManager: SE音量をgame_save.jsonに保存: {currentSEVolume}");
                 }
                 catch (System.Exception e)
                 {
-                    Debug.LogWarning($"SoundEffectManager: game_save.jsonへの保存エラー: {e.Message}");
+                    DebugLogger.LogWarning($"SoundEffectManager: game_save.jsonへの保存エラー: {e.Message}");
                 }
             }
         }
@@ -528,7 +528,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (sfxAudioSource == null)
         {
-            Debug.LogWarning("AudioSource がセットされていません");
+            DebugLogger.LogWarning("AudioSource がセットされていません");
             return;
         }
 
@@ -544,7 +544,7 @@ public class SoundEffectManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"効果音 '{soundKey}' が見つかりません");
+            DebugLogger.LogWarning($"効果音 '{soundKey}' が見つかりません");
         }
     }
 
@@ -555,7 +555,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (sfxAudioSource == null)
         {
-            Debug.LogWarning("AudioSource がセットされていません");
+            DebugLogger.LogWarning("AudioSource がセットされていません");
             return;
         }
 
@@ -572,7 +572,7 @@ public class SoundEffectManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"効果音 '{soundKey}' が見つかりません");
+            DebugLogger.LogWarning($"効果音 '{soundKey}' が見つかりません");
         }
     }
 
@@ -583,7 +583,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (sfxAudioSource == null)
         {
-            Debug.LogWarning("AudioSource がセットされていません");
+            DebugLogger.LogWarning("AudioSource がセットされていません");
             return;
         }
 
@@ -606,7 +606,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (sfxAudioSource == null)
         {
-            Debug.LogWarning("AudioSource がセットされていません");
+            DebugLogger.LogWarning("AudioSource がセットされていません");
             return;
         }
 

@@ -111,7 +111,7 @@ namespace ConversationFatherAndDaughter
             }
             else
             {
-                Debug.LogWarning($"{nameof(CharacterHighlightController)}: 左側キャラクターオブジェクトが設定されていません");
+                DebugLogger.LogWarning($"{nameof(CharacterHighlightController)}: 左側キャラクターオブジェクトが設定されていません");
             }
 
             // 右側キャラクターのコンポーネント取得
@@ -128,7 +128,7 @@ namespace ConversationFatherAndDaughter
             }
             else
             {
-                Debug.LogWarning($"{nameof(CharacterHighlightController)}: 右側キャラクターオブジェクトが設定されていません");
+                DebugLogger.LogWarning($"{nameof(CharacterHighlightController)}: 右側キャラクターオブジェクトが設定されていません");
             }
         }
 
@@ -196,7 +196,7 @@ namespace ConversationFatherAndDaughter
 
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(CharacterHighlightController)}: {speakerName} をハイライト表示");
+                    DebugLogger.Log($"{nameof(CharacterHighlightController)}: {speakerName} をハイライト表示");
                 }
             }
             else
@@ -206,7 +206,7 @@ namespace ConversationFatherAndDaughter
 
                 if (debugMode)
                 {
-                    Debug.LogWarning($"{nameof(CharacterHighlightController)}: 話者 '{speakerName}' のマッピングが見つかりません");
+                    DebugLogger.LogWarning($"{nameof(CharacterHighlightController)}: 話者 '{speakerName}' のマッピングが見つかりません");
                 }
             }
         }
@@ -325,7 +325,7 @@ namespace ConversationFatherAndDaughter
             // 一致しなかった場合のデバッグ表示
             if (debugMode)
             {
-                Debug.LogWarning($"{nameof(CharacterHighlightController)}: マッピングが見つかりません speakerName={speakerName}, languageCode={currentLanguageCode}");
+                DebugLogger.LogWarning($"{nameof(CharacterHighlightController)}: マッピングが見つかりません speakerName={speakerName}, languageCode={currentLanguageCode}");
             }
             return null;
         }
@@ -356,7 +356,7 @@ namespace ConversationFatherAndDaughter
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(CharacterHighlightController)}: 言語が {newLanguageCode} に変更されました");
+                DebugLogger.Log($"{nameof(CharacterHighlightController)}: 言語が {newLanguageCode} に変更されました");
             }
         }
     }

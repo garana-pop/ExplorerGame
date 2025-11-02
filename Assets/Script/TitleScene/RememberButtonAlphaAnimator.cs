@@ -115,7 +115,7 @@ public class RememberButtonAlphaAnimator : MonoBehaviour
             titleTextChanger = FindFirstObjectByType<TitleTextChanger>();
             if (titleTextChanger == null && !forceStart)
             {
-                Debug.LogError("RememberButtonAlphaAnimator: TitleTextChangerが見つかりません。");
+                DebugLogger.LogError("RememberButtonAlphaAnimator: TitleTextChangerが見つかりません。");
                 enabled = false;
                 return;
             }
@@ -145,7 +145,7 @@ public class RememberButtonAlphaAnimator : MonoBehaviour
             {
                 string reason = forceStart ? "強制開始" :
                 lastAfterChangeFlag ? "AfterChangeフラグがtrue" : "TextChangerフラグがtrue";
-                Debug.Log($"RememberButtonAlphaAnimator: {reason}のためアニメーション開始");
+                DebugLogger.Log($"RememberButtonAlphaAnimator: {reason}のためアニメーション開始");
             }
 
             StartAnimation();
@@ -205,7 +205,7 @@ public class RememberButtonAlphaAnimator : MonoBehaviour
                 {
                     if (debugMode)
                     {
-                        Debug.Log($"RememberButtonAlphaAnimator: {reason} - アニメーション開始");
+                        DebugLogger.Log($"RememberButtonAlphaAnimator: {reason} - アニメーション開始");
                     }
 
                     hasStartedAnimation = true;
@@ -264,7 +264,7 @@ public class RememberButtonAlphaAnimator : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log("RememberButtonAlphaAnimator: アニメーション開始");
+            DebugLogger.Log("RememberButtonAlphaAnimator: アニメーション開始");
         }
 
         isAnimating = true;
@@ -287,7 +287,7 @@ public class RememberButtonAlphaAnimator : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log("RememberButtonAlphaAnimator: アニメーション停止");
+            DebugLogger.Log("RememberButtonAlphaAnimator: アニメーション停止");
         }
 
         isAnimating = false;
@@ -455,12 +455,12 @@ public class RememberButtonAlphaAnimator : MonoBehaviour
         bool afterChangeFlag = GetAfterChangeToHerMemoryFlag();
         bool textChangerFlag = GetTitleTextChangerFlag();
 
-        Debug.Log($"=== RememberButtonAlphaAnimator フラグ状態 ===");
-        Debug.Log($"AfterChangeToHerMemory: {afterChangeFlag}");
-        Debug.Log($"TitleTextChanger HasChanged: {textChangerFlag}");
-        Debug.Log($"アニメーション中: {isAnimating}");
-        Debug.Log($"開始済み: {hasStartedAnimation}");
-        Debug.Log($"=====================================");
+        DebugLogger.Log($"=== RememberButtonAlphaAnimator フラグ状態 ===");
+        DebugLogger.Log($"AfterChangeToHerMemory: {afterChangeFlag}");
+        DebugLogger.Log($"TitleTextChanger HasChanged: {textChangerFlag}");
+        DebugLogger.Log($"アニメーション中: {isAnimating}");
+        DebugLogger.Log($"開始済み: {hasStartedAnimation}");
+        DebugLogger.Log($"=====================================");
     }
 
     /// <summary>
@@ -512,7 +512,7 @@ public class RememberButtonAlphaAnimator : MonoBehaviour
             if (shouldAnimate && !isAnimating)
             {
                 if (debugMode)
-                    Debug.Log("RememberButtonAlphaAnimator: OnEnable - フラグがtrueのためアニメーション開始");
+                    DebugLogger.Log("RememberButtonAlphaAnimator: OnEnable - フラグがtrueのためアニメーション開始");
 
                 StartAnimation();
             }

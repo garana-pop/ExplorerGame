@@ -83,11 +83,11 @@ public class TitleSceneSettingsManager : BaseSettingsManager
                     var manager = WindowResizeManager.Instance;
                     if (manager != null)
                     {
-                        Debug.Log("WindowResizeManagerを作成し、リサイズを無効化しました");
+                        DebugLogger.Log("WindowResizeManagerを作成し、リサイズを無効化しました");
                     }
                 }
 
-                //Debug.Log($"保存された解像度を適用: {resolution.x}x{resolution.y}");
+                //DebugLogger.Log($"保存された解像度を適用: {resolution.x}x{resolution.y}");
             }
         }
         else
@@ -105,10 +105,10 @@ public class TitleSceneSettingsManager : BaseSettingsManager
                 var manager = WindowResizeManager.Instance;
                 if (manager != null)
                 {
-                    Debug.Log("WindowResizeManagerを作成し、リサイズを無効化しました");
+                    DebugLogger.Log("WindowResizeManagerを作成し、リサイズを無効化しました");
                 }
             }
-            //Debug.Log("デフォルト解像度を適用: 1280x720");
+            //DebugLogger.Log("デフォルト解像度を適用: 1280x720");
         }
     }
 
@@ -165,7 +165,7 @@ public class TitleSceneSettingsManager : BaseSettingsManager
         int monitorWidth = Screen.currentResolution.width;
         int monitorHeight = Screen.currentResolution.height;
 
-        Debug.Log($"モニター解像度: {monitorWidth}×{monitorHeight}");
+        DebugLogger.Log($"モニター解像度: {monitorWidth}×{monitorHeight}");
 
         // 選択された解像度がモニターサイズを超えているか確認
         for (int i = desiredIndex; i < resolutionPresets.Length; i++)
@@ -236,12 +236,12 @@ public class TitleSceneSettingsManager : BaseSettingsManager
                 }
                 else
                 {
-                    Debug.Log("game_save.jsonにaudioSettingsがありません");
+                    DebugLogger.Log("game_save.jsonにaudioSettingsがありません");
                 }
             }
             catch (System.Exception e)
             {
-                Debug.LogWarning($"game_save.json読み込みエラー: {e.Message}");
+                DebugLogger.LogWarning($"game_save.json読み込みエラー: {e.Message}");
             }
         }
 
@@ -286,7 +286,7 @@ public class TitleSceneSettingsManager : BaseSettingsManager
         }
         else
         {
-            Debug.LogWarning("BGM AudioSourceが見つかりません！");
+            DebugLogger.LogWarning("BGM AudioSourceが見つかりません！");
         }
 
         // MainMenuControllerのbackgroundAudioSourceも直接更新（確実性のため）
@@ -337,11 +337,11 @@ public class TitleSceneSettingsManager : BaseSettingsManager
             {
                 GameSaveManager.Instance.UpdateAudioSettings(currentBgmVolume, currentSeVolume, masterVolume);
                 GameSaveManager.Instance.SaveAudioSettingsOnly();
-                Debug.Log("game_save.jsonに音量設定を保存");
+                DebugLogger.Log("game_save.jsonに音量設定を保存");
             }
             catch (System.Exception e)
             {
-                Debug.LogWarning($"game_save.jsonへの保存エラー: {e.Message}");
+                DebugLogger.LogWarning($"game_save.jsonへの保存エラー: {e.Message}");
             }
         }
     }

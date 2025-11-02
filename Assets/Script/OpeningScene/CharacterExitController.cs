@@ -23,7 +23,7 @@ public class CharacterExitController : MonoBehaviour
             leftCharacter = GameObject.Find("LeftCharacter");
             if (leftCharacter == null)
             {
-                Debug.LogWarning("CharacterExitController: LeftCharacterが見つかりません。");
+                DebugLogger.LogWarning("CharacterExitController: LeftCharacterが見つかりません。");
             }
         }
 
@@ -47,7 +47,7 @@ public class CharacterExitController : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.Log("CharacterExitController: exitコマンドを検出しました。LeftCharacterを非表示にします。");
+                DebugLogger.Log("CharacterExitController: exitコマンドを検出しました。LeftCharacterを非表示にします。");
             }
 
             // キャラクターを非表示
@@ -110,7 +110,7 @@ public class CharacterExitController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log("CharacterExitController: キャラクターがフェードアウトしました");
+            DebugLogger.Log("CharacterExitController: キャラクターがフェードアウトしました");
         }
     }
 

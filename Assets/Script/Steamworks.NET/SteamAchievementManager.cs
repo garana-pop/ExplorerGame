@@ -394,7 +394,7 @@ public class SteamAchievementManager : MonoBehaviour
         }
 
         uint numAchievements = SteamUserStats.GetNumAchievements();
-        Debug.Log($"===== ÀÑˆê—— ({numAchievements}ŒÂ) =====");
+        DebugLogger.Log($"===== ÀÑˆê—— ({numAchievements}ŒÂ) =====");
 
         for (uint i = 0; i < numAchievements; i++)
         {
@@ -402,7 +402,7 @@ public class SteamAchievementManager : MonoBehaviour
             bool achieved = false;
             SteamUserStats.GetAchievement(achievementName, out achieved);
 
-            Debug.Log($"{i + 1}. {achievementName}: {(achieved ? "‰ğœÏ‚İ" : "–¢‰ğœ")}");
+            DebugLogger.Log($"{i + 1}. {achievementName}: {(achieved ? "‰ğœÏ‚İ" : "–¢‰ğœ")}");
         }
     }
 #endif
@@ -415,18 +415,18 @@ public class SteamAchievementManager : MonoBehaviour
     {
         if (debugMode)
         {
-            Debug.Log($"[SteamAchievementManager] {message}");
+            DebugLogger.Log($"[SteamAchievementManager] {message}");
         }
     }
 
     private void LogWarning(string message)
     {
-        Debug.LogWarning($"[SteamAchievementManager] {message}");
+        DebugLogger.LogWarning($"[SteamAchievementManager] {message}");
     }
 
     private void LogError(string message)
     {
-        Debug.LogError($"[SteamAchievementManager] {message}");
+        DebugLogger.LogError($"[SteamAchievementManager] {message}");
     }
 
     #endregion

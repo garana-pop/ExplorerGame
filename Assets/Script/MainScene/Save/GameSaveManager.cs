@@ -154,7 +154,7 @@ public class GameSaveManager : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"GameSaveManager: 解像度インデックスを {index} に設定しました");
+            DebugLogger.Log($"GameSaveManager: 解像度インデックスを {index} に設定しました");
         }
     }
 
@@ -192,7 +192,7 @@ public class GameSaveManager : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(GameSaveManager)}: ウィンドウ位置を設定しました - ({x}, {y})");
+            DebugLogger.Log($"{nameof(GameSaveManager)}: ウィンドウ位置を設定しました - ({x}, {y})");
         }
     }
 
@@ -246,7 +246,7 @@ public class GameSaveManager : MonoBehaviour
 
                     if (debugMode)
                     {
-                        Debug.Log($"{nameof(GameSaveManager)}: ウィンドウ位置のみ保存しました - ({loadedData.windowPosition.x}, {loadedData.windowPosition.y})");
+                        DebugLogger.Log($"{nameof(GameSaveManager)}: ウィンドウ位置のみ保存しました - ({loadedData.windowPosition.x}, {loadedData.windowPosition.y})");
                     }
                     return;
                 }
@@ -265,12 +265,12 @@ public class GameSaveManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(GameSaveManager)}: ウィンドウ位置を新規保存しました");
+                DebugLogger.Log($"{nameof(GameSaveManager)}: ウィンドウ位置を新規保存しました");
             }
         }
         catch (Exception e)
         {
-            Debug.LogError($"{nameof(GameSaveManager)}: ウィンドウ位置の保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
+            DebugLogger.LogError($"{nameof(GameSaveManager)}: ウィンドウ位置の保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
         }
     }
 
@@ -293,7 +293,7 @@ public class GameSaveManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"GameSaveManager: AfterChangeToHisFutureフラグを {value} に設定しました");
+                DebugLogger.Log($"GameSaveManager: AfterChangeToHisFutureフラグを {value} に設定しました");
             }
 
             // 変更があった場合はセーブ
@@ -318,13 +318,13 @@ public class GameSaveManager : MonoBehaviour
 
                 if (debugMode)
                 {
-                    Debug.Log($"GameSaveManager: AfterChangeToHisFutureフラグ({currentSaveData.afterChangeToHisFuture})を保存しました");
+                    DebugLogger.Log($"GameSaveManager: AfterChangeToHisFutureフラグ({currentSaveData.afterChangeToHisFuture})を保存しました");
                 }
             }
         }
         catch (Exception ex)
         {
-            Debug.LogError($"GameSaveManager: AfterChangeToHisFutureフラグ保存中にエラー: {ex.Message}");
+            DebugLogger.LogError($"GameSaveManager: AfterChangeToHisFutureフラグ保存中にエラー: {ex.Message}");
         }
     }
 
@@ -388,7 +388,7 @@ public class GameSaveManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("GameSaveManager: currentSaveDataがnullのため、fromMonologueSceneフラグを設定できませんでした");
+            DebugLogger.LogWarning("GameSaveManager: currentSaveDataがnullのため、fromMonologueSceneフラグを設定できませんでした");
         }
     }
 
@@ -402,7 +402,7 @@ public class GameSaveManager : MonoBehaviour
             return currentSaveData.fromMonologueScene;
         }
 
-        Debug.LogWarning("GameSaveManager: currentSaveDataがnullのため、fromMonologueSceneフラグを取得できませんでした");
+        DebugLogger.LogWarning("GameSaveManager: currentSaveDataがnullのため、fromMonologueSceneフラグを取得できませんでした");
         return false;
     }
 
@@ -456,7 +456,7 @@ public class GameSaveManager : MonoBehaviour
                                 }
 
                                 if (debugMode)
-                                    Debug.Log($"記録フォルダー内の完了状態PDF '{child.name}' をアクティブ化しました");
+                                    DebugLogger.Log($"記録フォルダー内の完了状態PDF '{child.name}' をアクティブ化しました");
                             }
                         }
                     }
@@ -484,7 +484,7 @@ public class GameSaveManager : MonoBehaviour
                                 }
 
                                 if (debugMode)
-                                    Debug.Log($"願いフォルダー内の完了状態PDF '{child.name}' をアクティブ化しました");
+                                    DebugLogger.Log($"願いフォルダー内の完了状態PDF '{child.name}' をアクティブ化しました");
                             }
                         }
                     }
@@ -493,7 +493,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.LogError($"PDFファイルのアクティブ化中にエラー: {ex.Message}");
+            DebugLogger.LogError($"PDFファイルのアクティブ化中にエラー: {ex.Message}");
         }
     }
 
@@ -533,7 +533,7 @@ public class GameSaveManager : MonoBehaviour
                                     {
                                         go.SetActive(true);
                                         if (debugMode)
-                                            Debug.Log($"完了状態PDFパネル '{go.name}' を強制的にアクティブ化しました");
+                                            DebugLogger.Log($"完了状態PDFパネル '{go.name}' を強制的にアクティブ化しました");
                                     }
                                 }
                             }
@@ -559,7 +559,7 @@ public class GameSaveManager : MonoBehaviour
                             {
                                 panelTransform.gameObject.SetActive(true);
                                 if (debugMode)
-                                    Debug.Log($"PDFパネル '{panelTransform.name}' をアクティブ化しました");
+                                    DebugLogger.Log($"PDFパネル '{panelTransform.name}' をアクティブ化しました");
                             }
                         }
                     }
@@ -568,7 +568,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError($"PDFパネルのアクティブ化中にエラー: {ex.Message}");
+            DebugLogger.LogError($"PDFパネルのアクティブ化中にエラー: {ex.Message}");
         }
     }
 
@@ -577,7 +577,7 @@ public class GameSaveManager : MonoBehaviour
         // 既にデータが存在する場合は初期化しない
         if (currentSaveData != null)
         {
-            Debug.Log("GameSaveManager: 既存のセーブデータが存在するため、初期化をスキップします");
+            DebugLogger.Log("GameSaveManager: 既存のセーブデータが存在するため、初期化をスキップします");
             return;
         }
 
@@ -618,11 +618,11 @@ public class GameSaveManager : MonoBehaviour
             currentSaveData.saveTimestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
 
             // 修正: 各データ収集メソッドをtry-catchで囲む
-            try { CollectTxtPuzzleState(); } catch (Exception ex) { Debug.LogError($"TXTデータ収集中にエラー: {ex.Message}"); }
-            try { CollectImageRevealerState(); } catch (Exception ex) { Debug.LogError($"画像データ収集中にエラー: {ex.Message}"); }
-            try { CollectPdfDocumentState(); } catch (Exception ex) { Debug.LogError($"PDFデータ収集中にエラー: {ex.Message}"); }
-            try { CollectFolderState(); } catch (Exception ex) { Debug.LogError($"フォルダー状態収集中にエラー: {ex.Message}"); }
-            try { CollectAudioSettings(); } catch (Exception ex) { Debug.LogError($"音声設定収集中にエラー: {ex.Message}"); }
+            try { CollectTxtPuzzleState(); } catch (Exception ex) { DebugLogger.LogError($"TXTデータ収集中にエラー: {ex.Message}"); }
+            try { CollectImageRevealerState(); } catch (Exception ex) { DebugLogger.LogError($"画像データ収集中にエラー: {ex.Message}"); }
+            try { CollectPdfDocumentState(); } catch (Exception ex) { DebugLogger.LogError($"PDFデータ収集中にエラー: {ex.Message}"); }
+            try { CollectFolderState(); } catch (Exception ex) { DebugLogger.LogError($"フォルダー状態収集中にエラー: {ex.Message}"); }
+            try { CollectAudioSettings(); } catch (Exception ex) { DebugLogger.LogError($"音声設定収集中にエラー: {ex.Message}"); }
 
             // デバッグ用の出力
             if (debugMode)
@@ -632,12 +632,12 @@ public class GameSaveManager : MonoBehaviour
                 int pdfCount = currentSaveData.fileProgress.pdf?.Count ?? 0;
                 int folderCount = currentSaveData.folderState?.displayedFolders?.Length ?? 0;
 
-                Debug.Log($"収集したデータ - TXT: {txtCount}件, PNG: {pngCount}件, PDF: {pdfCount}件, 表示フォルダー: {folderCount}件");
+                DebugLogger.Log($"収集したデータ - TXT: {txtCount}件, PNG: {pngCount}件, PDF: {pdfCount}件, 表示フォルダー: {folderCount}件");
             }
         }
         catch (Exception ex)
         {
-            Debug.LogError($"ゲーム状態の収集中にエラーが発生しました: {ex.Message}");
+            DebugLogger.LogError($"ゲーム状態の収集中にエラーが発生しました: {ex.Message}");
         }
     }
 
@@ -659,11 +659,11 @@ public class GameSaveManager : MonoBehaviour
                 string txtJson = File.ReadAllText(txtProgressPath);
                 existingData = JsonHelper.FromJson<string, TxtFileData>(txtJson);
                 if (debugMode)
-                    Debug.Log($"既存のTXTデータを読み込みました: {existingData.Count}件");
+                    DebugLogger.Log($"既存のTXTデータを読み込みました: {existingData.Count}件");
             }
             catch (Exception ex)
             {
-                Debug.LogError($"既存TXTデータの読み込みエラー: {ex.Message}");
+                DebugLogger.LogError($"既存TXTデータの読み込みエラー: {ex.Message}");
             }
         }
 
@@ -713,13 +713,13 @@ public class GameSaveManager : MonoBehaviour
                     currentSaveData.fileProgress.txt[fileData.fileName] = fileData;
 
                     if (debugMode)
-                        Debug.Log($"TXTファイル '{fileData.fileName}' を保存: 完了={fileData.isCompleted}, 解答={fileData.solvedMatches}/{fileData.totalMatches}");
+                        DebugLogger.Log($"TXTファイル '{fileData.fileName}' を保存: 完了={fileData.isCompleted}, 解答={fileData.solvedMatches}/{fileData.totalMatches}");
                 }
             }
         }
 
         if (debugMode)
-            Debug.Log($"合計 {currentSaveData.fileProgress.txt.Count} 件のTXTデータを保存します");
+            DebugLogger.Log($"合計 {currentSaveData.fileProgress.txt.Count} 件のTXTデータを保存します");
     }
 
     private void CollectImageRevealerState()
@@ -746,13 +746,13 @@ public class GameSaveManager : MonoBehaviour
                     currentSaveData.fileProgress.png[fileProgress.fileName] = fileProgress;
 
                     if (debugMode)
-                        Debug.Log($"画像データを収集: {fileProgress.fileName}, レベル: {fileProgress.currentLevel}/{fileProgress.maxLevel}");
+                        DebugLogger.Log($"画像データを収集: {fileProgress.fileName}, レベル: {fileProgress.currentLevel}/{fileProgress.maxLevel}");
                 }
             }
         }
         else if (debugMode)
         {
-            Debug.LogWarning("ImageRevealerが見つかりません");
+            DebugLogger.LogWarning("ImageRevealerが見つかりません");
         }
     }
 
@@ -808,7 +808,7 @@ public class GameSaveManager : MonoBehaviour
                                 }
 
                                 if (debugMode)
-                                    Debug.Log($"記録FilePanel内の完了状態PDF '{child.name}' をアクティブ化しました");
+                                    DebugLogger.Log($"記録FilePanel内の完了状態PDF '{child.name}' をアクティブ化しました");
 
                                 break;
                             }
@@ -834,7 +834,7 @@ public class GameSaveManager : MonoBehaviour
                                 }
 
                                 if (debugMode)
-                                    Debug.Log($"願いFilePanel内の完了状態PDF '{child.name}' をアクティブ化しました");
+                                    DebugLogger.Log($"願いFilePanel内の完了状態PDF '{child.name}' をアクティブ化しました");
 
                                 break;
                             }
@@ -860,7 +860,7 @@ public class GameSaveManager : MonoBehaviour
                                 }
 
                                 if (debugMode)
-                                    Debug.Log($"完了状態PDF '{fileObj.name}' をアクティブ化しました");
+                                    DebugLogger.Log($"完了状態PDF '{fileObj.name}' をアクティブ化しました");
 
                                 break;
                             }
@@ -871,7 +871,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError($"完了状態PDFファイルのアクティブ化中にエラー: {ex.Message}");
+            DebugLogger.LogError($"完了状態PDFファイルのアクティブ化中にエラー: {ex.Message}");
         }
     }
     private void CollectPdfDocumentState()
@@ -913,14 +913,14 @@ public class GameSaveManager : MonoBehaviour
                     {
                         fileProgress.isCompleted = true;
                         if (debugMode)
-                            Debug.Log($"PDF '{fileProgress.fileName}' は以前完了していたため、完了状態を維持します");
+                            DebugLogger.Log($"PDF '{fileProgress.fileName}' は以前完了していたため、完了状態を維持します");
                     }
 
                     // 現在完了している場合も状態を更新
                     if (pdfManager.IsDocumentCompleted() && !fileProgress.isCompleted)
                     {
                         fileProgress.isCompleted = true;
-                        Debug.Log($"PDF '{fileProgress.fileName}' の完了状態を修正しました: true");
+                        DebugLogger.Log($"PDF '{fileProgress.fileName}' の完了状態を修正しました: true");
                     }
 
                     currentSaveData.fileProgress.pdf[fileProgress.fileName] = fileProgress;
@@ -928,14 +928,14 @@ public class GameSaveManager : MonoBehaviour
                     if (debugMode)
                     {
                         int revealedCount = fileProgress.revealedKeywords?.Length ?? 0;
-                        Debug.Log($"PDFデータを収集: {fileProgress.fileName}, キーワード: {revealedCount}/{fileProgress.totalKeywords}");
+                        DebugLogger.Log($"PDFデータを収集: {fileProgress.fileName}, キーワード: {revealedCount}/{fileProgress.totalKeywords}");
                     }
                 }
             }
         }
         else if (debugMode)
         {
-            Debug.LogWarning("PdfDocumentManagerが見つかりません");
+            DebugLogger.LogWarning("PdfDocumentManagerが見つかりません");
         }
 
         // シーン内に存在しないPDFで完了状態だったものも復元
@@ -953,7 +953,7 @@ public class GameSaveManager : MonoBehaviour
                 };
 
                 if (debugMode)
-                    Debug.Log($"シーン内に存在しないPDF '{entry.Key}' の完了状態を復元しました");
+                    DebugLogger.Log($"シーン内に存在しないPDF '{entry.Key}' の完了状態を復元しました");
             }
         }
     }
@@ -990,7 +990,7 @@ public class GameSaveManager : MonoBehaviour
                 {
                     displayedFolders.Add(folderName);
                     if (debugMode)
-                        Debug.Log($"表示フォルダーを検出: {folderName}");
+                        DebugLogger.Log($"表示フォルダーを検出: {folderName}");
                 }
 
                 // アクティブ化履歴の収集（追加）
@@ -998,7 +998,7 @@ public class GameSaveManager : MonoBehaviour
                 {
                     activatedFolders.Add(folderName);
                     if (debugMode)
-                        Debug.Log($"アクティブ化履歴フォルダーを検出: {folderName}");
+                        DebugLogger.Log($"アクティブ化履歴フォルダーを検出: {folderName}");
                 }
 
                 // アクティブフォルダーを収集
@@ -1006,13 +1006,13 @@ public class GameSaveManager : MonoBehaviour
                 {
                     activeFolder = folderName;
                     if (debugMode)
-                        Debug.Log($"アクティブフォルダーを検出: {folderName}");
+                        DebugLogger.Log($"アクティブフォルダーを検出: {folderName}");
                 }
             }
         }
         else if (debugMode)
         {
-            Debug.LogWarning("FolderButtonScriptが見つかりません");
+            DebugLogger.LogWarning("FolderButtonScriptが見つかりません");
         }
 
         // 収集したフォルダー状態を設定
@@ -1030,7 +1030,7 @@ public class GameSaveManager : MonoBehaviour
             // game_save.jsonから読み込んだ値を保持
             if (debugMode)
             {
-                Debug.Log("game_save.jsonから読み込んだ値を保持");
+                DebugLogger.Log("game_save.jsonから読み込んだ値を保持");
             }
 
             return;
@@ -1089,7 +1089,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"セーブデータの保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
+            DebugLogger.LogError($"セーブデータの保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
         }
     }
 
@@ -1106,7 +1106,7 @@ public class GameSaveManager : MonoBehaviour
             if (!File.Exists(SaveFilePath))
             {
                 if (debugMode)
-                    Debug.Log("セーブファイルが見つかりません。新規ゲームとして開始します。");
+                    DebugLogger.Log("セーブファイルが見つかりません。新規ゲームとして開始します。");
                 return false;
             }
 
@@ -1115,7 +1115,7 @@ public class GameSaveManager : MonoBehaviour
 
             if (loadedData == null)
             {
-                Debug.LogError("セーブデータの読み込みに失敗しました。データの形式が不正です。");
+                DebugLogger.LogError("セーブデータの読み込みに失敗しました。データの形式が不正です。");
                 return false;
             }
 
@@ -1154,11 +1154,11 @@ public class GameSaveManager : MonoBehaviour
                     loadedData.fileProgress.txt = JsonHelper.FromJson<string, TxtFileData>(txtJson);
 
                     if (debugMode)
-                        Debug.Log($"TXTデータを読み込みました: {loadedData.fileProgress.txt.Count}件");
+                        DebugLogger.Log($"TXTデータを読み込みました: {loadedData.fileProgress.txt.Count}件");
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"TXTデータの読み込みに失敗: {e.Message}");
+                    DebugLogger.LogError($"TXTデータの読み込みに失敗: {e.Message}");
                 }
             }
 
@@ -1171,11 +1171,11 @@ public class GameSaveManager : MonoBehaviour
                     loadedData.fileProgress.png = JsonHelper.FromJson<string, PngFileData>(pngJson);
 
                     if (debugMode)
-                        Debug.Log($"PNGデータを読み込みました: {loadedData.fileProgress.png.Count}件");
+                        DebugLogger.Log($"PNGデータを読み込みました: {loadedData.fileProgress.png.Count}件");
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"PNGデータの読み込みに失敗: {e.Message}");
+                    DebugLogger.LogError($"PNGデータの読み込みに失敗: {e.Message}");
                 }
             }
 
@@ -1195,18 +1195,18 @@ public class GameSaveManager : MonoBehaviour
                         {
                             entry.Value.isCompleted = true;
                             if (debugMode)
-                                Debug.Log($"PDF '{entry.Key}' は以前完了していたため、完了状態を維持します");
+                                DebugLogger.Log($"PDF '{entry.Key}' は以前完了していたため、完了状態を維持します");
                         }
                     }
 
                     loadedData.fileProgress.pdf = loadedPdfData;
 
                     if (debugMode)
-                        Debug.Log($"PDFデータを読み込みました: {loadedData.fileProgress.pdf.Count}件");
+                        DebugLogger.Log($"PDFデータを読み込みました: {loadedData.fileProgress.pdf.Count}件");
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"PDFデータの読み込みに失敗: {e.Message}");
+                    DebugLogger.LogError($"PDFデータの読み込みに失敗: {e.Message}");
                 }
             }
 
@@ -1224,7 +1224,7 @@ public class GameSaveManager : MonoBehaviour
                     };
 
                     if (debugMode)
-                        Debug.Log($"読み込まれなかったPDF '{entry.Key}' の完了状態を復元しました");
+                        DebugLogger.Log($"読み込まれなかったPDF '{entry.Key}' の完了状態を復元しました");
                 }
             }
 
@@ -1249,7 +1249,7 @@ public class GameSaveManager : MonoBehaviour
             if (loadedData.afterChangeToHerMemory)
             {
                 if (debugMode)
-                    Debug.Log($"セーブデータからAfterChangeToHerMemoryフラグを読み込み: {loadedData.afterChangeToHerMemory}");
+                    DebugLogger.Log($"セーブデータからAfterChangeToHerMemoryフラグを読み込み: {loadedData.afterChangeToHerMemory}");
             }
 
             currentSaveData = loadedData;
@@ -1259,13 +1259,13 @@ public class GameSaveManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"セーブデータからAfterChangeToHerMemoryフラグを読み込み: {hasAfterChangeFlag}");
+                DebugLogger.Log($"セーブデータからAfterChangeToHerMemoryフラグを読み込み: {hasAfterChangeFlag}");
             }
             return true;
         }
         catch (Exception e)
         {
-            Debug.LogError($"セーブデータの読み込み中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
+            DebugLogger.LogError($"セーブデータの読み込み中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
             return false;
         }
     }
@@ -1329,7 +1329,7 @@ public class GameSaveManager : MonoBehaviour
 
             // PDFデータを最初に適用
             try { ApplyPdfDocumentState(); }
-            catch (Exception ex) { Debug.LogError($"PDFデータ適用中にエラー: {ex.Message}"); }
+            catch (Exception ex) { DebugLogger.LogError($"PDFデータ適用中にエラー: {ex.Message}"); }
 
             // TXTデータの適用
             try
@@ -1338,17 +1338,17 @@ public class GameSaveManager : MonoBehaviour
                 // TXT進捗適用後にFileIconChangeの状態を同期
                 StartCoroutine(SyncFileIconStatesAfterTxtLoad());
             }
-            catch (Exception ex) { Debug.LogError($"TXTデータ適用中にエラー: {ex.Message}"); }
+            catch (Exception ex) { DebugLogger.LogError($"TXTデータ適用中にエラー: {ex.Message}"); }
 
             // 残りのデータを適用
             try { ApplyImageRevealerState(); }
-            catch (Exception ex) { Debug.LogError($"画像データ適用中にエラー: {ex.Message}"); }
+            catch (Exception ex) { DebugLogger.LogError($"画像データ適用中にエラー: {ex.Message}"); }
 
             try { ApplyFolderState(); }
-            catch (Exception ex) { Debug.LogError($"フォルダー状態適用中にエラー: {ex.Message}"); }
+            catch (Exception ex) { DebugLogger.LogError($"フォルダー状態適用中にエラー: {ex.Message}"); }
 
             try { ApplyAudioSettings(); }
-            catch (Exception ex) { Debug.LogError($"音声設定適用中にエラー: {ex.Message}"); }
+            catch (Exception ex) { DebugLogger.LogError($"音声設定適用中にエラー: {ex.Message}"); }
 
             // 完了したPDFの次のフォルダーを確実にアクティブに
             try
@@ -1357,25 +1357,25 @@ public class GameSaveManager : MonoBehaviour
                 // 少し遅延させて確実に適用
                 StartCoroutine(DelayedPdfFolderActivation());
             }
-            catch (Exception ex) { Debug.LogError($"PDFフォルダー有効化中にエラー: {ex.Message}"); }
+            catch (Exception ex) { DebugLogger.LogError($"PDFフォルダー有効化中にエラー: {ex.Message}"); }
 
             try { EnsureTxtNextFoldersActive(); }
-            catch (Exception ex) { Debug.LogError($"TXTフォルダー有効化中にエラー: {ex.Message}"); }
+            catch (Exception ex) { DebugLogger.LogError($"TXTフォルダー有効化中にエラー: {ex.Message}"); }
 
             // PDFパネルの詳細有効化
             try { EnsurePdfPanelsActive(); }
-            catch (Exception ex) { Debug.LogError($"PDFパネル詳細有効化中にエラー: {ex.Message}"); }
+            catch (Exception ex) { DebugLogger.LogError($"PDFパネル詳細有効化中にエラー: {ex.Message}"); }
 
             // 追加: 完了状態のPDFパネルを強制的にアクティブ化
             try { ForceActivateCompletedPdfPanels(); }
-            catch (Exception ex) { Debug.LogError($"完了状態PDFパネル強制有効化中にエラー: {ex.Message}"); }
+            catch (Exception ex) { DebugLogger.LogError($"完了状態PDFパネル強制有効化中にエラー: {ex.Message}"); }
 
             initialLoadCompleted = true;
             return true;
         }
         catch (Exception e)
         {
-            Debug.LogError($"セーブデータの適用中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
+            DebugLogger.LogError($"セーブデータの適用中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
             return false;
         }
     }
@@ -1412,14 +1412,14 @@ public class GameSaveManager : MonoBehaviour
 
                     if (debugMode)
                     {
-                        Debug.Log($"GameSaveManager: FileIconChangeを同期（マッピング使用） - {mapping.fileIconChange.gameObject.name}");
+                        DebugLogger.Log($"GameSaveManager: FileIconChangeを同期（マッピング使用） - {mapping.fileIconChange.gameObject.name}");
                     }
                 }
             }
         }
         else
         {
-            Debug.LogWarning("txtToIconMappingsが設定されていません。手動で設定するか、GameSaveManagerのインスペクターでマッピングを追加してください。");
+            DebugLogger.LogWarning("txtToIconMappingsが設定されていません。手動で設定するか、GameSaveManagerのインスペクターでマッピングを追加してください。");
         }
     }
 
@@ -1468,7 +1468,7 @@ public class GameSaveManager : MonoBehaviour
                     {
                         pdfManager.gameObject.SetActive(true);
                         if (debugMode)
-                            Debug.Log($"PDF '{fileName}' オブジェクトを強制的にアクティブ化しました");
+                            DebugLogger.Log($"PDF '{fileName}' オブジェクトを強制的にアクティブ化しました");
                     }
 
                     // 完了状態を強制設定（自動セーブ無効）
@@ -1478,7 +1478,7 @@ public class GameSaveManager : MonoBehaviour
                     pdfManager.EnsureNextFolderActive();
 
                     if (debugMode)
-                        Debug.Log($"PDF '{fileName}' は完了状態です。次のフォルダーを確実にアクティブ化しました（自動セーブ無効）。");
+                        DebugLogger.Log($"PDF '{fileName}' は完了状態です。次のフォルダーを確実にアクティブ化しました（自動セーブ無効）。");
                 }
             }
         }
@@ -1489,7 +1489,7 @@ public class GameSaveManager : MonoBehaviour
         if (currentSaveData.fileProgress.txt == null || currentSaveData.fileProgress.txt.Count == 0)
         {
             if (debugMode)
-                Debug.Log("適用するTXTデータがありません");
+                DebugLogger.Log("適用するTXTデータがありません");
             return;
         }
 
@@ -1514,16 +1514,16 @@ public class GameSaveManager : MonoBehaviour
                     appliedCount++;
 
                     if (debugMode)
-                        Debug.Log($"TXTファイル '{fileName}' の進捗を適用しました");
+                        DebugLogger.Log($"TXTファイル '{fileName}' の進捗を適用しました");
                 }
             }
 
             if (debugMode)
-                Debug.Log($"合計 {appliedCount} 件のTXTデータを適用しました");
+                DebugLogger.Log($"合計 {appliedCount} 件のTXTデータを適用しました");
         }
         else if (debugMode)
         {
-            Debug.LogWarning("TxtPuzzleManagerが見つからないためTXTデータを適用できません");
+            DebugLogger.LogWarning("TxtPuzzleManagerが見つからないためTXTデータを適用できません");
         }
     }
 
@@ -1532,7 +1532,7 @@ public class GameSaveManager : MonoBehaviour
         if (currentSaveData.fileProgress.png == null || currentSaveData.fileProgress.png.Count == 0)
         {
             if (debugMode)
-                Debug.Log("適用するPNGデータがありません");
+                DebugLogger.Log("適用するPNGデータがありません");
             return;
         }
 
@@ -1560,11 +1560,11 @@ public class GameSaveManager : MonoBehaviour
             }
 
             if (debugMode)
-                Debug.Log($"PNGデータを適用しました: {appliedCount}件");
+                DebugLogger.Log($"PNGデータを適用しました: {appliedCount}件");
         }
         else if (debugMode)
         {
-            Debug.LogWarning("ImageRevealerが見つからないためPNGデータを適用できません");
+            DebugLogger.LogWarning("ImageRevealerが見つからないためPNGデータを適用できません");
         }
     }
 
@@ -1573,7 +1573,7 @@ public class GameSaveManager : MonoBehaviour
         if (currentSaveData.fileProgress.pdf == null || currentSaveData.fileProgress.pdf.Count == 0)
         {
             if (debugMode)
-                Debug.Log("適用するPDFデータがありません");
+                DebugLogger.Log("適用するPDFデータがありません");
             return;
         }
 
@@ -1590,7 +1590,7 @@ public class GameSaveManager : MonoBehaviour
                 {
                     panel.SetActive(true);
                     if (debugMode)
-                        Debug.Log($"PDFパネル '{panel.name}' を強制的にアクティブ化しました");
+                        DebugLogger.Log($"PDFパネル '{panel.name}' を強制的にアクティブ化しました");
                 }
             }
 
@@ -1628,7 +1628,7 @@ public class GameSaveManager : MonoBehaviour
                             {
                                 parent.gameObject.SetActive(true);
                                 if (debugMode)
-                                    Debug.Log($"PDF '{fileName}' の親パネル '{parent.name}' を強制的にアクティブ化しました");
+                                    DebugLogger.Log($"PDF '{fileName}' の親パネル '{parent.name}' を強制的にアクティブ化しました");
                             }
 
                             // 強制的に完了状態を設定（自動セーブ無効）
@@ -1640,16 +1640,16 @@ public class GameSaveManager : MonoBehaviour
                 }
 
                 if (debugMode)
-                    Debug.Log($"PDFデータを適用しました: {appliedCount}件（自動セーブ無効）");
+                    DebugLogger.Log($"PDFデータを適用しました: {appliedCount}件（自動セーブ無効）");
             }
             else if (debugMode)
             {
-                Debug.LogWarning("PdfDocumentManagerが見つからないためPDFデータを適用できません");
+                DebugLogger.LogWarning("PdfDocumentManagerが見つからないためPDFデータを適用できません");
             }
         }
         catch (Exception ex)
         {
-            Debug.LogError($"PDFデータ適用中にエラー: {ex.Message}");
+            DebugLogger.LogError($"PDFデータ適用中にエラー: {ex.Message}");
         }
     }
 
@@ -1660,7 +1660,7 @@ public class GameSaveManager : MonoBehaviour
             currentSaveData.folderState.displayedFolders.Length == 0)
         {
             if (debugMode)
-                Debug.Log("適用するフォルダー状態がありません");
+                DebugLogger.Log("適用するフォルダー状態がありません");
             return;
         }
 
@@ -1671,7 +1671,7 @@ public class GameSaveManager : MonoBehaviour
         if (folderScripts.Count == 0)
         {
             if (debugMode)
-                Debug.LogWarning("FolderButtonScriptが見つからないためフォルダー状態を適用できません");
+                DebugLogger.LogWarning("FolderButtonScriptが見つからないためフォルダー状態を適用できません");
             return;
         }
 
@@ -1713,7 +1713,7 @@ public class GameSaveManager : MonoBehaviour
             {
                 folderScript.SetActivatedState(true);
                 if (debugMode)
-                    Debug.Log($"フォルダーのアクティブ化履歴を適用: {folderName}");
+                    DebugLogger.Log($"フォルダーのアクティブ化履歴を適用: {folderName}");
             }
 
             // 表示状態の適用
@@ -1721,7 +1721,7 @@ public class GameSaveManager : MonoBehaviour
             {
                 folderScript.gameObject.SetActive(true);
                 if (debugMode)
-                    Debug.Log($"フォルダーボタンを表示: {folderName}");
+                    DebugLogger.Log($"フォルダーボタンを表示: {folderName}");
             }
 
             // ファイルパネルの初期状態は非表示に設定
@@ -1740,7 +1740,7 @@ public class GameSaveManager : MonoBehaviour
             StartCoroutine(DelayedToggleFolder(activeFolderScript));
 
             if (debugMode)
-                Debug.Log($"アクティブフォルダーを設定: {activeFolder}");
+                DebugLogger.Log($"アクティブフォルダーを設定: {activeFolder}");
         }
         else if (folderMap.TryGetValue(defaultActiveFolder, out FolderButtonScript defaultFolderScript))
         {
@@ -1816,14 +1816,14 @@ public class GameSaveManager : MonoBehaviour
             if (File.Exists(SaveFilePath))
             {
                 File.Delete(SaveFilePath);
-                Debug.Log("セーブデータを削除しました");
+                DebugLogger.Log("セーブデータを削除しました");
             }
 
             InitializeSaveData();
         }
         catch (Exception e)
         {
-            Debug.LogError($"セーブデータの削除中にエラーが発生しました: {e.Message}");
+            DebugLogger.LogError($"セーブデータの削除中にエラーが発生しました: {e.Message}");
         }
     }
 
@@ -1835,7 +1835,7 @@ public class GameSaveManager : MonoBehaviour
         folderScripts.Clear();
         folderScripts.AddRange(FindObjectsByType<FolderButtonScript>(FindObjectsInactive.Include, FindObjectsSortMode.None));
 
-        Debug.Log($"==== 現在のフォルダー状態 ====");
+        DebugLogger.Log($"==== 現在のフォルダー状態 ====");
         foreach (var folder in folderScripts)
         {
             if (folder == null) continue;
@@ -1844,9 +1844,9 @@ public class GameSaveManager : MonoBehaviour
             bool isActive = folder.IsActive();
             bool isDisplayed = folder.gameObject.activeSelf;
 
-            Debug.Log($"フォルダー: {folderName}, 表示中: {isDisplayed}, アクティブ: {isActive}");
+            DebugLogger.Log($"フォルダー: {folderName}, 表示中: {isDisplayed}, アクティブ: {isActive}");
         }
-        Debug.Log($"==========================");
+        DebugLogger.Log($"==========================");
     }
 
     public bool SaveDataExists() => File.Exists(SaveFilePath);
@@ -1883,7 +1883,7 @@ public class GameSaveManager : MonoBehaviour
                     File.WriteAllText(SaveFilePath, JsonUtility.ToJson(loadedData, true));
 
                     if (debugMode)
-                        Debug.Log($"音量設定のみ保存しました: BGM={loadedData.audioSettings.bgmVolume}, SE={loadedData.audioSettings.seVolume}, Master={loadedData.audioSettings.masterVolume}");
+                        DebugLogger.Log($"音量設定のみ保存しました: BGM={loadedData.audioSettings.bgmVolume}, SE={loadedData.audioSettings.seVolume}, Master={loadedData.audioSettings.masterVolume}");
 
                     return;
                 }
@@ -1908,7 +1908,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"音量設定の保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
+            DebugLogger.LogError($"音量設定の保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
         }
     }
 
@@ -1928,7 +1928,7 @@ public class GameSaveManager : MonoBehaviour
     {
         if (currentSaveData == null)
         {
-            Debug.LogWarning("GameSaveManager: セーブデータが存在しません。初期化します");
+            DebugLogger.LogWarning("GameSaveManager: セーブデータが存在しません。初期化します");
             InitializeSaveData();
         }
 
@@ -1937,31 +1937,31 @@ public class GameSaveManager : MonoBehaviour
 
         // 即座にセーブ
         SaveGame();
-        Debug.Log("GameSaveManager: MainScene移行時の自動セーブを実行しました");
+        DebugLogger.Log("GameSaveManager: MainScene移行時の自動セーブを実行しました");
     }
 
     public void SetEndOpeningSceneFlag(bool value)
     {
         if (currentSaveData == null)
         {
-            Debug.LogWarning("GameSaveManager: セーブデータが初期化されていません");
+            DebugLogger.LogWarning("GameSaveManager: セーブデータが初期化されていません");
             InitializeSaveData();
         }
 
         currentSaveData.endOpeningScene = value;
-        Debug.Log($"GameSaveManager: endOpeningSceneフラグを{value}に設定しました");
+        DebugLogger.Log($"GameSaveManager: endOpeningSceneフラグを{value}に設定しました");
     }
 
     public bool GetEndOpeningSceneFlag()
     {
         if (currentSaveData == null)
         {
-            Debug.LogWarning("GameSaveManager: セーブデータが存在しません。falseを返します");
+            DebugLogger.LogWarning("GameSaveManager: セーブデータが存在しません。falseを返します");
             return false;
         }
 
         bool flagValue = currentSaveData.endOpeningScene;
-        Debug.Log($"GameSaveManager: endOpeningSceneフラグの値は{flagValue}です");
+        DebugLogger.Log($"GameSaveManager: endOpeningSceneフラグの値は{flagValue}です");
         return flagValue;
     }
 
@@ -1984,7 +1984,7 @@ public class GameSaveManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"GameSaveManager: AfterChangeToHerMemoryフラグを {value} に設定しました");
+                DebugLogger.Log($"GameSaveManager: AfterChangeToHerMemoryフラグを {value} に設定しました");
             }
 
             // 値に関係なく変更があった場合はセーブ
@@ -2010,13 +2010,13 @@ public class GameSaveManager : MonoBehaviour
 
                 if (debugMode)
                 {
-                    Debug.Log($"GameSaveManager: AfterChangeToHerMemoryフラグ({currentSaveData.afterChangeToHerMemory})を保存しました");
+                    DebugLogger.Log($"GameSaveManager: AfterChangeToHerMemoryフラグ({currentSaveData.afterChangeToHerMemory})を保存しました");
                 }
             }
         }
         catch (Exception ex)
         {
-            Debug.LogError($"GameSaveManager: AfterChangeフラグ保存中にエラー: {ex.Message}");
+            DebugLogger.LogError($"GameSaveManager: AfterChangeフラグ保存中にエラー: {ex.Message}");
         }
     }
 
@@ -2043,13 +2043,13 @@ public class GameSaveManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"GameSaveManager: AfterChangeToHerMemoryフラグ付きでデータを強制保存しました");
-                Debug.Log($"保存されたフラグ値: {currentSaveData.afterChangeToHerMemory}");
+                DebugLogger.Log($"GameSaveManager: AfterChangeToHerMemoryフラグ付きでデータを強制保存しました");
+                DebugLogger.Log($"保存されたフラグ値: {currentSaveData.afterChangeToHerMemory}");
             }
         }
         catch (Exception ex)
         {
-            Debug.LogError($"GameSaveManager: フラグ付きセーブ中にエラー: {ex.Message}");
+            DebugLogger.LogError($"GameSaveManager: フラグ付きセーブ中にエラー: {ex.Message}");
         }
     }
 
@@ -2085,7 +2085,7 @@ public class GameSaveManager : MonoBehaviour
             currentSaveData.afterChangeToLast = value;
             if (debugMode)
             {
-                Debug.Log($"GameSaveManager: AfterChangeToLastフラグを{value}に設定しました");
+                DebugLogger.Log($"GameSaveManager: AfterChangeToLastフラグを{value}に設定しました");
             }
         }
     }
@@ -2127,7 +2127,7 @@ public class GameSaveManager : MonoBehaviour
             if (File.Exists(SaveFilePath))
             {
                 File.Delete(SaveFilePath);
-                Debug.Log("セーブデータを削除しました: " + SaveFilePath);
+                DebugLogger.Log("セーブデータを削除しました: " + SaveFilePath);
             }
 
             // 個別のJSONファイルも削除
@@ -2148,12 +2148,12 @@ public class GameSaveManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log("すべてのセーブデータを削除し、初期化しました");
+                DebugLogger.Log("すべてのセーブデータを削除し、初期化しました");
             }
         }
         catch (Exception ex)
         {
-            Debug.LogError($"セーブデータ削除中にエラー: {ex.Message}");
+            DebugLogger.LogError($"セーブデータ削除中にエラー: {ex.Message}");
         }
     }
 
@@ -2177,7 +2177,7 @@ public class GameSaveManager : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"音量設定を更新: Master={masterVolume}, BGM={bgmVolume}, SE={seVolume}");
+            DebugLogger.Log($"音量設定を更新: Master={masterVolume}, BGM={bgmVolume}, SE={seVolume}");
         }
     }
 
@@ -2195,7 +2195,7 @@ public class GameSaveManager : MonoBehaviour
     [ContextMenu("Debug: Show AfterChangeToHerMemory Flag")]
     public void DebugShowAfterChangeFlag()
     {
-        Debug.Log($"AfterChangeToHerMemoryフラグ: {GetAfterChangeToHerMemoryFlag()}");
+        DebugLogger.Log($"AfterChangeToHerMemoryフラグ: {GetAfterChangeToHerMemoryFlag()}");
     }
 
     /// <summary>
@@ -2232,7 +2232,7 @@ public class GameSaveManager : MonoBehaviour
         // メモリ上のフラグをリセット
         hasAfterChangeFlag = false;
 
-        Debug.Log("GameSaveManager: すべてのフラグを初期化しました");
+        DebugLogger.Log("GameSaveManager: すべてのフラグを初期化しました");
     }
 
     /// <summary>
@@ -2241,10 +2241,10 @@ public class GameSaveManager : MonoBehaviour
     [ContextMenu("Debug: Show Flag Status")]
     public void ShowFlagStatus()
     {
-        Debug.Log($"=== フラグ状態 ===");
-        Debug.Log($"hasAfterChangeFlag: {hasAfterChangeFlag}");
-        Debug.Log($"セーブデータ afterChangeToHerMemory: {currentSaveData?.afterChangeToHerMemory}");
-        Debug.Log($"================");
+        DebugLogger.Log($"=== フラグ状態 ===");
+        DebugLogger.Log($"hasAfterChangeFlag: {hasAfterChangeFlag}");
+        DebugLogger.Log($"セーブデータ afterChangeToHerMemory: {currentSaveData?.afterChangeToHerMemory}");
+        DebugLogger.Log($"================");
     }
 
     #region OrganizeSceneData管理
@@ -2268,7 +2268,7 @@ public class GameSaveManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataを新規作成しました");
+                DebugLogger.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataを新規作成しました");
             }
         }
 
@@ -2283,7 +2283,7 @@ public class GameSaveManager : MonoBehaviour
     {
         if (data == null)
         {
-            Debug.LogError($"{nameof(GameSaveManager)}: 保存するOrganizeSceneDataがnullです");
+            DebugLogger.LogError($"{nameof(GameSaveManager)}: 保存するOrganizeSceneDataがnullです");
             return;
         }
 
@@ -2304,7 +2304,7 @@ public class GameSaveManager : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataを保存しました（削除ファイル数: {data.GetDeletedFileCount()}）");
+            DebugLogger.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataを保存しました（削除ファイル数: {data.GetDeletedFileCount()}）");
         }
     }
 
@@ -2326,12 +2326,12 @@ public class GameSaveManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataをファイルに保存しました");
+                DebugLogger.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataをファイルに保存しました");
             }
         }
         catch (Exception e)
         {
-            Debug.LogError($"{nameof(GameSaveManager)}: OrganizeSceneData保存中にエラーが発生しました: {e.Message}");
+            DebugLogger.LogError($"{nameof(GameSaveManager)}: OrganizeSceneData保存中にエラーが発生しました: {e.Message}");
         }
     }
 
@@ -2357,7 +2357,7 @@ public class GameSaveManager : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(GameSaveManager)}: ファイル '{fileName}' を削除済みとしてマークしました");
+            DebugLogger.Log($"{nameof(GameSaveManager)}: ファイル '{fileName}' を削除済みとしてマークしました");
         }
     }
 
@@ -2386,7 +2386,7 @@ public class GameSaveManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(GameSaveManager)}: ファイル '{fileName}' を復元しました");
+                DebugLogger.Log($"{nameof(GameSaveManager)}: ファイル '{fileName}' を復元しました");
             }
         }
 
@@ -2435,7 +2435,7 @@ public class GameSaveManager : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(GameSaveManager)}: 全ファイル完全削除フラグを{value}に設定しました");
+            DebugLogger.Log($"{nameof(GameSaveManager)}: 全ファイル完全削除フラグを{value}に設定しました");
         }
     }
 
@@ -2466,7 +2466,7 @@ public class GameSaveManager : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataをリセットしました");
+                DebugLogger.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataをリセットしました");
             }
         }
     }
@@ -2497,7 +2497,7 @@ public class GameSaveManager : MonoBehaviour
 
                     if (debugMode)
                     {
-                        Debug.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataバックアップを読み込みました");
+                        DebugLogger.Log($"{nameof(GameSaveManager)}: OrganizeSceneDataバックアップを読み込みました");
                     }
 
                     return true;
@@ -2506,7 +2506,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"{nameof(GameSaveManager)}: OrganizeSceneDataバックアップ読み込み中にエラー: {e.Message}");
+            DebugLogger.LogError($"{nameof(GameSaveManager)}: OrganizeSceneDataバックアップ読み込み中にエラー: {e.Message}");
         }
 
         return false;

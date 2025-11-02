@@ -60,7 +60,7 @@ public class FirstFileOpenTip : MonoBehaviour, IPointerClickHandler
             }
             else
             {
-                Debug.LogWarning($"{nameof(FirstFileOpenTip)}: DraggingCanvasが見つかりません");
+                DebugLogger.LogWarning($"{nameof(FirstFileOpenTip)}: DraggingCanvasが見つかりません");
                 enabled = false;
                 return;
             }
@@ -85,7 +85,7 @@ public class FirstFileOpenTip : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            Debug.LogWarning($"{nameof(FirstFileOpenTip)}: ヒントオブジェクトが設定されていません");
+            DebugLogger.LogWarning($"{nameof(FirstFileOpenTip)}: ヒントオブジェクトが設定されていません");
             enabled = false;
         }
     }
@@ -154,7 +154,7 @@ public class FirstFileOpenTip : MonoBehaviour, IPointerClickHandler
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(FirstFileOpenTip)}: ダブルクリックを検出 - {gameObject.name}");
+            DebugLogger.Log($"{nameof(FirstFileOpenTip)}: ダブルクリックを検出 - {gameObject.name}");
         }
     }
 
@@ -231,7 +231,7 @@ public class FirstFileOpenTip : MonoBehaviour, IPointerClickHandler
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(FirstFileOpenTip)}: ヒントを表示しました - {gameObject.name}");
+            DebugLogger.Log($"{nameof(FirstFileOpenTip)}: ヒントを表示しました - {gameObject.name}");
         }
     }
 
@@ -283,7 +283,7 @@ public class FirstFileOpenTip : MonoBehaviour, IPointerClickHandler
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(FirstFileOpenTip)}: ヒントを非表示にしました - {gameObject.name}");
+            DebugLogger.Log($"{nameof(FirstFileOpenTip)}: ヒントを非表示にしました - {gameObject.name}");
         }
     }
 

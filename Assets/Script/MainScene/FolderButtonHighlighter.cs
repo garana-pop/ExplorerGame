@@ -16,13 +16,13 @@ public class FolderButtonHighlighter : MonoBehaviour, IPointerEnterHandler, IPoi
         if (folderImage != null)
         {
             originalColor = folderImage.color; // 元の色を保存
-            //Debug.Log("元の色を保存");
+            //DebugLogger.Log("元の色を保存");
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //Debug.Log("OnPointerEnter: ハイライト");
+        //DebugLogger.Log("OnPointerEnter: ハイライト");
         folderImage.color = highlightColor; // マウスオーバー時にハイライト
     }
 
@@ -32,13 +32,13 @@ public class FolderButtonHighlighter : MonoBehaviour, IPointerEnterHandler, IPoi
         if (this != activeFolder)
         {
             folderImage.color = originalColor;
-            //Debug.Log("OnPointerExit: 元の色に戻す");
+            //DebugLogger.Log("OnPointerExit: 元の色に戻す");
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Debug.Log("OnPointerClick: フォルダーを選択");
+        //DebugLogger.Log("OnPointerClick: フォルダーを選択");
 
         //  以前のアクティブフォルダーの色をリセット
         if (activeFolder != null && activeFolder != this)

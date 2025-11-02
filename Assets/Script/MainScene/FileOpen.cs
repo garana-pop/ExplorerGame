@@ -24,14 +24,14 @@ public class FileOpen : MonoBehaviour, IPointerClickHandler
             draggingCanvas = GameObject.Find("DraggingCanvas")?.GetComponent<Canvas>();
             if (draggingCanvas == null)
             {
-                Debug.LogError("DraggingCanvasが見つかりません。インスペクターで設定してください");
+                DebugLogger.LogError("DraggingCanvasが見つかりません。インスペクターで設定してください");
             }
         }
 
         // オーバーレイの設定確認
         if (overlay == null)
         {
-            Debug.LogWarning("Overlayが設定されていません。操作ブロックが機能しません");
+            DebugLogger.LogWarning("Overlayが設定されていません。操作ブロックが機能しません");
         }
         else
         {
@@ -44,7 +44,7 @@ public class FileOpen : MonoBehaviour, IPointerClickHandler
             panelRectTransform = infoPanel.GetComponent<RectTransform>();
             if (panelRectTransform == null)
             {
-                Debug.LogError("InfoPanelにRectTransformがありません");
+                DebugLogger.LogError("InfoPanelにRectTransformがありません");
             }
             originalParent = infoPanel.transform.parent; // 元の親を記録
             SetActiveRecursive(infoPanel, false); // 子を含めて非アクティブに
@@ -232,7 +232,7 @@ public class FileOpen : MonoBehaviour, IPointerClickHandler
 
             // 確実にアクティブにする
             nextFolder.SetActive(true);
-            //Debug.Log($"次のフォルダーを再アクティブ化: {nextFolder.name}, 以前のアクティブ状態: {wasActive}");
+            //DebugLogger.Log($"次のフォルダーを再アクティブ化: {nextFolder.name}, 以前のアクティブ状態: {wasActive}");
 
             // FolderButtonScriptとFolderActivationGuardの両方を設定
             FolderButtonScript folderScript = nextFolder.GetComponent<FolderButtonScript>();
@@ -250,7 +250,7 @@ public class FileOpen : MonoBehaviour, IPointerClickHandler
                     folderScript.filePanel.SetActive(true);
                 }
 
-                //Debug.Log($"フォルダーボタンスクリプトを更新: {folderScript.GetFolderName()}");
+                //DebugLogger.Log($"フォルダーボタンスクリプトを更新: {folderScript.GetFolderName()}");
             }
 
             FolderActivationGuard guard = nextFolder.GetComponent<FolderActivationGuard>();
@@ -298,7 +298,7 @@ public class FileOpen : MonoBehaviour, IPointerClickHandler
                 if (nextFolder != null)
                 {
                     nextFolder.SetActive(true);
-                    Debug.Log($"フォルダー {nextFolder.name} を強制的にアクティブにしました");
+                    DebugLogger.Log($"フォルダー {nextFolder.name} を強制的にアクティブにしました");
                 }
             }
         }

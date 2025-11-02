@@ -4411,7 +4411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &134521568
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6921,7 +6921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &225275251
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -8969,7 +8969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &285553600
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -10095,7 +10095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &303051890
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -11321,7 +11321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &340256719
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -14049,7 +14049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &397304722
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -16819,7 +16819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &457180100
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -17404,7 +17404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &468570197
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -22067,6 +22067,7 @@ MonoBehaviour:
   deleteAllMessage: "\u3059\u3079\u3066\u306E\u30D5\u30A1\u30A4\u30EB\u3092\u5B8C\u5168\u306B\u524A\u9664\u3057\u307E\u3059\u304B\uFF1F"
   deleteAllEnglishMessage: Are you sure you want to permanently delete all files?
   dialogAnimationDuration: 0.3
+  achievementApiName: TheBeginningOfTheEnd_10_ACHIEVEMENTS_UNLOCK
   debugMode: 1
   localizationManager: {fileID: 1045601161}
 --- !u!114 &594733860
@@ -27311,7 +27312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &781600099
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -32065,7 +32066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &906156806
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -41124,7 +41125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &1135279526
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -43823,7 +43824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &1192700305
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -47085,7 +47086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &1280279525
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -50840,7 +50841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &1373222112
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -54598,7 +54599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &1477200857
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -57672,7 +57673,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2472479029551589378, guid: fe55a4e2f22339843b12c88f24cea54c, type: 3}
+  m_Sprite: {fileID: -6785844433194024976, guid: 98116cb4df6b6f044b4f9e640426dd08, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -58238,7 +58239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &1570041097
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -59562,7 +59563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &1606000842
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -63552,7 +63553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &1729506667
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -72011,7 +72012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &1935878438
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -78027,7 +78028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FileDragging: 0
-  draggingAlpha: 0.01
+  draggingAlpha: 0.2
 --- !u!225 &2092124232
 CanvasGroup:
   m_ObjectHideFlags: 0

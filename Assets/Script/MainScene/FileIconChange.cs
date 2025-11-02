@@ -227,7 +227,7 @@ public class FileIconChange : MonoBehaviour
         {
             ApplyCompletedSprite();
 
-            Debug.Log($"FileIconChange: セーブデータから完了状態を復元 - {gameObject.name}");
+            DebugLogger.Log($"FileIconChange: セーブデータから完了状態を復元 - {gameObject.name}");
         }
         else
         {
@@ -250,7 +250,7 @@ public class FileIconChange : MonoBehaviour
         }
         else if (puzzleManager != null)
         {
-            Debug.LogError("FileIconChange: TxtPuzzleManagerが設定されていません。");
+            DebugLogger.LogError("FileIconChange: TxtPuzzleManagerが設定されていません。");
         }
     }
 }

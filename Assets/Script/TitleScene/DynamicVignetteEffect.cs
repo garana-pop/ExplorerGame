@@ -91,7 +91,7 @@ public class DynamicVignetteEffect : MonoBehaviour
             effectMaterial = new Material(Shader.Find("UI/Default"));
             if (effectMaterial == null)
             {
-                Debug.LogError("UIシェーダーが見つかりませんでした。");
+                DebugLogger.LogError("UIシェーダーが見つかりませんでした。");
                 useSimpleVignette = true;
                 CreateSimpleVignetteOverlay();
                 return;
@@ -102,18 +102,18 @@ public class DynamicVignetteEffect : MonoBehaviour
             {
                 effectMaterial.mainTexture = targetImage.sprite.texture;
                 targetImage.material = effectMaterial;
-                Debug.Log("カスタムマテリアルを適用しました");
+                DebugLogger.Log("カスタムマテリアルを適用しました");
             }
             else
             {
-                Debug.LogError("Image コンポーネントにスプライトが設定されていません。");
+                DebugLogger.LogError("Image コンポーネントにスプライトが設定されていません。");
                 useSimpleVignette = true;
                 CreateSimpleVignetteOverlay();
             }
         }
         catch (System.Exception e)
         {
-            Debug.LogError("カスタムマテリアルの作成に失敗しました: " + e.Message);
+            DebugLogger.LogError("カスタムマテリアルの作成に失敗しました: " + e.Message);
             useSimpleVignette = true;
             CreateSimpleVignetteOverlay();
         }

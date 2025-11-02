@@ -90,7 +90,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
         // TextTyperが見つからない場合の警告
         if (textTyper == null)
         {
-            Debug.LogError("ClickToTransitionScene: TextTyperコンポーネントが見つかりません。インスペクターで設定するか、同じGameObjectにアタッチしてください。");
+            DebugLogger.LogError("ClickToTransitionScene: TextTyperコンポーネントが見つかりません。インスペクターで設定するか、同じGameObjectにアタッチしてください。");
             enabled = false;
             return;
         }
@@ -98,7 +98,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
         // 遷移先シーン名の検証
         if (string.IsNullOrEmpty(targetSceneName))
         {
-            Debug.LogWarning("ClickToTransitionScene: 遷移先シーン名が設定されていません。");
+            DebugLogger.LogWarning("ClickToTransitionScene: 遷移先シーン名が設定されていません。");
         }
 
         // TextTyperの完了イベントに登録
@@ -106,7 +106,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
 
         if (debugMode)
         {
-            Debug.Log("ClickToTransitionScene: 初期化完了。TextTyperの完了を待機中...");
+            DebugLogger.Log("ClickToTransitionScene: 初期化完了。TextTyperの完了を待機中...");
         }
     }
 
@@ -126,7 +126,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
     {
         if (debugMode)
         {
-            Debug.Log("ClickToTransitionScene: タイピング完了を検知しました。");
+            DebugLogger.Log("ClickToTransitionScene: タイピング完了を検知しました。");
         }
 
         isTypingCompleted = true;
@@ -155,7 +155,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
 
         if (debugMode)
         {
-            Debug.Log("ClickToTransitionScene: クリック受付開始。画面クリックでシーン遷移します。");
+            DebugLogger.Log("ClickToTransitionScene: クリック受付開始。画面クリックでシーン遷移します。");
         }
     }
 
@@ -168,14 +168,14 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
         {
             if (debugMode)
             {
-                Debug.Log("ClickToTransitionScene: まだクリック受付していません。");
+                DebugLogger.Log("ClickToTransitionScene: まだクリック受付していません。");
             }
             return;
         }
 
         if (debugMode)
         {
-            Debug.Log("ClickToTransitionScene: クリックを検知。シーン遷移を開始します。");
+            DebugLogger.Log("ClickToTransitionScene: クリックを検知。シーン遷移を開始します。");
         }
 
         // 重複クリック防止
@@ -228,7 +228,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
     {
         if (string.IsNullOrEmpty(targetSceneName))
         {
-            Debug.LogError("ClickToTransitionScene: 遷移先シーン名が設定されていません。");
+            DebugLogger.LogError("ClickToTransitionScene: 遷移先シーン名が設定されていません。");
             return;
         }
 
@@ -241,11 +241,11 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
 
             if (debugMode)
             {
-                Debug.Log("ClickToTransitionScene: DaughterRequestからTitleSceneへの遷移フラグを設定しました。");
+                DebugLogger.Log("ClickToTransitionScene: DaughterRequestからTitleSceneへの遷移フラグを設定しました。");
             }
         }
 
-        Debug.Log(targetSceneName + "に移行します。");
+        DebugLogger.Log(targetSceneName + "に移行します。");
         LoadSceneDirectly();
     }
 
@@ -267,7 +267,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
         }
         catch (System.Exception ex)
         {
-            Debug.LogError($"ClickToTransitionScene: シーン遷移中にエラーが発生しました: {ex.Message}");
+            DebugLogger.LogError($"ClickToTransitionScene: シーン遷移中にエラーが発生しました: {ex.Message}");
         }
     }
 
@@ -286,7 +286,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
 
         if (debugMode)
         {
-            Debug.Log("ClickToTransitionScene: クリック受付を強制有効化しました。");
+            DebugLogger.Log("ClickToTransitionScene: クリック受付を強制有効化しました。");
         }
     }
 
@@ -303,7 +303,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
         targetSceneName = sceneName;
         if (debugMode)
         {
-            Debug.Log($"ClickToTransitionScene: 遷移先シーンを '{sceneName}' に変更しました。");
+            DebugLogger.Log($"ClickToTransitionScene: 遷移先シーンを '{sceneName}' に変更しました。");
         }
     }
 }

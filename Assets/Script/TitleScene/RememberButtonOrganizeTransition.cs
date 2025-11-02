@@ -30,7 +30,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
 
         if (targetButton == null)
         {
-            Debug.LogError($"{nameof(RememberButtonOrganizeTransition)}: Buttonコンポーネントが見つかりません");
+            DebugLogger.LogError($"{nameof(RememberButtonOrganizeTransition)}: Buttonコンポーネントが見つかりません");
         }
 
         // ConversationTransitionControllerの取得（追加）
@@ -78,7 +78,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
             conversationController.enabled = false;
             if (debugMode)
             {
-                Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: ConversationTransitionControllerを無効化しました");
+                DebugLogger.Log($"{nameof(RememberButtonOrganizeTransition)}: ConversationTransitionControllerを無効化しました");
             }
         }
 
@@ -91,7 +91,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: OrganizeMainSceneへの遷移ボタンを設定しました");
+            DebugLogger.Log($"{nameof(RememberButtonOrganizeTransition)}: OrganizeMainSceneへの遷移ボタンを設定しました");
         }
     }
 
@@ -110,7 +110,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: リスナーを再設定しました");
+                DebugLogger.Log($"{nameof(RememberButtonOrganizeTransition)}: リスナーを再設定しました");
             }
         }
     }
@@ -122,7 +122,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
     {
         if (debugMode)
         {
-            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: {targetSceneName}への遷移を開始します");
+            DebugLogger.Log($"{nameof(RememberButtonOrganizeTransition)}: {targetSceneName}への遷移を開始します");
         }
 
         // 効果音再生
@@ -148,7 +148,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.LogError($"{nameof(RememberButtonOrganizeTransition)}: シーン遷移エラー: {ex.Message}");
+            DebugLogger.LogError($"{nameof(RememberButtonOrganizeTransition)}: シーン遷移エラー: {ex.Message}");
             targetButton.interactable = true;
         }
     }
@@ -169,7 +169,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
     {
         if (debugMode)
         {
-            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: ボタンがクリックされました");
+            DebugLogger.Log($"{nameof(RememberButtonOrganizeTransition)}: ボタンがクリックされました");
         }
 
         // 効果音再生
@@ -189,7 +189,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
     {
         if (debugMode)
         {
-            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: {targetSceneName}への遷移を開始");
+            DebugLogger.Log($"{nameof(RememberButtonOrganizeTransition)}: {targetSceneName}への遷移を開始");
         }
 
         // 二重遷移防止
@@ -214,7 +214,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: afterChangeToLastフラグが設定されていません");
+                DebugLogger.Log($"{nameof(RememberButtonOrganizeTransition)}: afterChangeToLastフラグが設定されていません");
             }
             return;
         }
@@ -227,7 +227,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(RememberButtonOrganizeTransition)}: OrganizeMainSceneへの遷移を設定しました");
+            DebugLogger.Log($"{nameof(RememberButtonOrganizeTransition)}: OrganizeMainSceneへの遷移を設定しました");
         }
     }
 }

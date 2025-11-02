@@ -116,7 +116,7 @@ public class HerMainSceneSettingsManager : MonoBehaviour
 
             if (portraitFilePanel != null && debugMode)
             {
-                Debug.Log("HerMainSceneSettingsManager: 似顔絵.FilePanelを自動検出しました");
+                DebugLogger.Log("HerMainSceneSettingsManager: 似顔絵.FilePanelを自動検出しました");
             }
         }
     }
@@ -616,7 +616,7 @@ public class HerMainSceneSettingsManager : MonoBehaviour
             {
                 if (debugMode)
                 {
-                    Debug.Log("HerMainSceneSettingsManager: 似顔絵表示中のため設定画面を開きません");
+                    DebugLogger.Log("HerMainSceneSettingsManager: 似顔絵表示中のため設定画面を開きません");
                 }
                 return;
             }
@@ -714,12 +714,12 @@ public class HerMainSceneSettingsManager : MonoBehaviour
 
             if (portraitFilePanel == null && debugMode)
             {
-                Debug.LogWarning("HerMainSceneSettingsManager: 似顔絵.FilePanelが見つかりません");
+                DebugLogger.LogWarning("HerMainSceneSettingsManager: 似顔絵.FilePanelが見つかりません");
             }
 
             if (portraitFilePanel != null && debugMode)
             {
-                Debug.Log("HerMainSceneSettingsManager: 似顔絵.FilePanelを自動検出しました");
+                DebugLogger.Log("HerMainSceneSettingsManager: 似顔絵.FilePanelを自動検出しました");
             }
         }
 
@@ -730,11 +730,11 @@ public class HerMainSceneSettingsManager : MonoBehaviour
         {
             if (portraitFilePanel != null)
             {
-                Debug.Log($"HerMainSceneSettingsManager: 似顔絵パネル状態チェック - アクティブ: {isPortraitPanelActive}");
+                DebugLogger.Log($"HerMainSceneSettingsManager: 似顔絵パネル状態チェック - アクティブ: {isPortraitPanelActive}");
             }
             else
             {
-                Debug.Log("HerMainSceneSettingsManager: 似顔絵パネルが見つからないため、false を返します");
+                DebugLogger.Log("HerMainSceneSettingsManager: 似顔絵パネルが見つからないため、false を返します");
             }
         }
 
@@ -750,7 +750,7 @@ public class HerMainSceneSettingsManager : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"HerMainSceneSettingsManager: 似顔絵パネルが設定されました: {panel?.name}");
+            DebugLogger.Log($"HerMainSceneSettingsManager: 似顔絵パネルが設定されました: {panel?.name}");
         }
     }
 

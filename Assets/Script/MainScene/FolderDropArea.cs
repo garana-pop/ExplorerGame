@@ -33,13 +33,13 @@
 //                if (canvasGroup != null)
 //                {
 //                    canvasGroup.blocksRaycasts = true;
-//                    //Debug.Log($"{droppedFile.name}のblocksRaycastsがtrueに設定されました");
+//                    //DebugLogger.Log($"{droppedFile.name}のblocksRaycastsがtrueに設定されました");
 //                    canvasGroup.alpha = 1f; // ドロップ後に透明度を元に戻す
-//                    //Debug.Log($"{droppedFile.name}の透明度を元に戻しました。FolderDropAreaで");
+//                    //DebugLogger.Log($"{droppedFile.name}の透明度を元に戻しました。FolderDropAreaで");
 //                }
 //                else
 //                {
-//                    //Debug.LogWarning($"{droppedFile.name}にCanvasGroupがありません");
+//                    //DebugLogger.LogWarning($"{droppedFile.name}にCanvasGroupがありません");
 //                }
 //            }
 //        }
@@ -49,11 +49,11 @@
 //        if (fileImage != null)
 //        {
 //            fileImage.color = Color.white; // 白色に設定
-//            //Debug.Log($"{droppedFile.name}の色を白色に変更しました");
+//            //DebugLogger.Log($"{droppedFile.name}の色を白色に変更しました");
 //        }
 //        else
 //        {
-//            Debug.LogWarning($"{droppedFile.name}にImageコンポーネントがありません");
+//            DebugLogger.LogWarning($"{droppedFile.name}にImageコンポーネントがありません");
 //        }
 
 //    }
@@ -103,13 +103,13 @@ public class FolderDropArea : MonoBehaviour, IDropHandler
                 if (canvasGroup != null)
                 {
                     canvasGroup.blocksRaycasts = true;
-                    //Debug.Log($"{droppedFile.name}のblocksRaycastsがtrueに設定されました");
+                    //DebugLogger.Log($"{droppedFile.name}のblocksRaycastsがtrueに設定されました");
                     canvasGroup.alpha = 1f; // ドロップ後に透明度を元に戻す
-                    //Debug.Log($"{droppedFile.name}の透明度を元に戻しました。FolderDropAreaで");
+                    //DebugLogger.Log($"{droppedFile.name}の透明度を元に戻しました。FolderDropAreaで");
                 }
                 else
                 {
-                    //Debug.LogWarning($"{droppedFile.name}にCanvasGroupがありません");
+                    //DebugLogger.LogWarning($"{droppedFile.name}にCanvasGroupがありません");
                 }
             }
         }
@@ -119,11 +119,11 @@ public class FolderDropArea : MonoBehaviour, IDropHandler
         if (fileImage != null)
         {
             fileImage.color = Color.white; // 白色に設定
-            //Debug.Log($"{droppedFile.name}の色を白色に変更しました");
+            //DebugLogger.Log($"{droppedFile.name}の色を白色に変更しました");
         }
         else
         {
-            Debug.LogWarning($"{droppedFile.name}にImageコンポーネントがありません");
+            DebugLogger.LogWarning($"{droppedFile.name}にImageコンポーネントがありません");
         }
     }
 }

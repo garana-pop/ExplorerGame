@@ -61,7 +61,7 @@ public class TextTyper : MonoBehaviour
             textComponent = GetComponent<TMP_Text>();
             if (textComponent == null)
             {
-                Debug.LogError("TextTyper: TextMeshProコンポーネントが見つかりません。コンポーネントをアタッチするか、インスペクターで設定してください。");
+                DebugLogger.LogError("TextTyper: TextMeshProコンポーネントが見つかりません。コンポーネントをアタッチするか、インスペクターで設定してください。");
                 enabled = false;
                 return;
             }
@@ -97,7 +97,7 @@ public class TextTyper : MonoBehaviour
         // LocalizationManagerが存在しない場合は何もしない
         if (localizationManager == null)
         {
-            Debug.LogWarning("TextTyper: LocalizationManagerが見つかりません。デフォルトテキストを使用します。");
+            DebugLogger.LogWarning("TextTyper: LocalizationManagerが見つかりません。デフォルトテキストを使用します。");
             return;
         }
 
@@ -111,11 +111,11 @@ public class TextTyper : MonoBehaviour
             if (!string.IsNullOrEmpty(EnglishText))
             {
                 fullText = EnglishText;
-                Debug.Log($"TextTyper: 英語モードのため、テキストを切り替えました");
+                DebugLogger.Log($"TextTyper: 英語モードのため、テキストを切り替えました");
             }
             else
             {
-                Debug.LogWarning("TextTyper: 英語テキストが設定されていません。デフォルトテキストを使用します。");
+                DebugLogger.LogWarning("TextTyper: 英語テキストが設定されていません。デフォルトテキストを使用します。");
             }
         }
         // 日本語の場合は何もしない（デフォルトのfullTextを使用）
@@ -260,7 +260,7 @@ public class TextTyper : MonoBehaviour
             // 英語モードで、EnglishTextが設定されている場合は無視
             if (!string.IsNullOrEmpty(EnglishText))
             {
-                Debug.Log("TextTyper: 英語モードでは、インスペクターで設定されたEnglishTextを使用します");
+                DebugLogger.Log("TextTyper: 英語モードでは、インスペクターで設定されたEnglishTextを使用します");
                 return;
             }
         }

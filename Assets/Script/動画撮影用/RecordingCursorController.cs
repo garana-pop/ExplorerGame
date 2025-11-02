@@ -63,7 +63,7 @@ public class RecordingCursorController : MonoBehaviour
 
             if (Application.isEditor)
             {
-                Debug.Log($"{nameof(RecordingCursorController)}: カーソルを録画可能モード(ForceSoftware)に設定しました");
+                DebugLogger.Log($"{nameof(RecordingCursorController)}: カーソルを録画可能モード(ForceSoftware)に設定しました");
             }
         }
     }
@@ -107,7 +107,7 @@ public class RecordingCursorController : MonoBehaviour
 
         if (Application.isEditor)
         {
-            Debug.Log($"{nameof(RecordingCursorController)}: カーソル設定を通常モード(Auto)に戻しました");
+            DebugLogger.Log($"{nameof(RecordingCursorController)}: カーソル設定を通常モード(Auto)に戻しました");
         }
     }
 

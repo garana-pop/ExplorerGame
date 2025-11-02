@@ -31,12 +31,12 @@ public class MonologueDataLoader : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"MonologueDataLoader: 言語変更イベントに登録しました");
+                DebugLogger.Log($"MonologueDataLoader: 言語変更イベントに登録しました");
             }
         }
         else if (debugMode)
         {
-            Debug.LogWarning("MonologueDataLoader: LocalizationManagerが見つかりません");
+            DebugLogger.LogWarning("MonologueDataLoader: LocalizationManagerが見つかりません");
         }
     }
 
@@ -62,7 +62,7 @@ public class MonologueDataLoader : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"MonologueDataLoader: 言語が {newLocale.Identifier.Code} に変更されました");
+            DebugLogger.Log($"MonologueDataLoader: 言語が {newLocale.Identifier.Code} に変更されました");
         }
     }
 
@@ -78,7 +78,7 @@ public class MonologueDataLoader : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.LogWarning("MonologueDataLoader: LocalizationManagerが見つかりません。日本語ファイルを使用します");
+                DebugLogger.LogWarning("MonologueDataLoader: LocalizationManagerが見つかりません。日本語ファイルを使用します");
             }
             return;
         }
@@ -94,7 +94,7 @@ public class MonologueDataLoader : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"MonologueDataLoader: 英語ファイル '{fileName}' を使用します");
+                DebugLogger.Log($"MonologueDataLoader: 英語ファイル '{fileName}' を使用します");
             }
         }
         else
@@ -104,7 +104,7 @@ public class MonologueDataLoader : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"MonologueDataLoader: 日本語ファイル '{fileName}' を使用します");
+                DebugLogger.Log($"MonologueDataLoader: 日本語ファイル '{fileName}' を使用します");
             }
         }
     }
@@ -124,7 +124,7 @@ public class MonologueDataLoader : MonoBehaviour
 
             if (textAsset == null)
             {
-                Debug.LogError($"セリフファイル '{fileName}' が見つかりません。");
+                DebugLogger.LogError($"セリフファイル '{fileName}' が見つかりません。");
                 return dialogues;
             }
 
@@ -141,19 +141,19 @@ public class MonologueDataLoader : MonoBehaviour
 
                     if (debugMode)
                     {
-                        Debug.Log($"読み込んだセリフ: {trimmedLine}");
+                        DebugLogger.Log($"読み込んだセリフ: {trimmedLine}");
                     }
                 }
             }
 
             if (debugMode)
             {
-                Debug.Log($"合計 {dialogues.Count} のセリフを読み込みました。");
+                DebugLogger.Log($"合計 {dialogues.Count} のセリフを読み込みました。");
             }
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"セリフデータの読み込み中にエラーが発生しました: {e.Message}");
+            DebugLogger.LogError($"セリフデータの読み込み中にエラーが発生しました: {e.Message}");
         }
 
         return dialogues;

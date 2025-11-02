@@ -40,7 +40,7 @@ public class PngFileIconChange : MonoBehaviour
             iconImage = GetComponent<Image>();
             if (iconImage == null)
             {
-                Debug.LogError("PngFileIconChange: Imageコンポーネントが見つかりません。このスクリプトはImageコンポーネントがアタッチされたオブジェクトに追加してください。");
+                DebugLogger.LogError("PngFileIconChange: Imageコンポーネントが見つかりません。このスクリプトはImageコンポーネントがアタッチされたオブジェクトに追加してください。");
                 enabled = false;
                 return;
             }
@@ -131,7 +131,7 @@ public class PngFileIconChange : MonoBehaviour
                 targetFileIconChange = fileIconChange;
                 if (debugMode)
                 {
-                    Debug.Log($"PngFileIconChange: 親階層からFileIconChangeを自動検出しました: {current.name}");
+                    DebugLogger.Log($"PngFileIconChange: 親階層からFileIconChangeを自動検出しました: {current.name}");
                 }
                 return;
             }
@@ -154,7 +154,7 @@ public class PngFileIconChange : MonoBehaviour
                     targetFileIconChange = fileIconChange;
                     if (debugMode)
                     {
-                        Debug.Log($"PngFileIconChange: 名前の類似性からFileIconChangeを自動検出しました: {otherName}");
+                        DebugLogger.Log($"PngFileIconChange: 名前の類似性からFileIconChangeを自動検出しました: {otherName}");
                     }
                     return;
                 }
@@ -162,7 +162,7 @@ public class PngFileIconChange : MonoBehaviour
         }
 
         // それでも見つからない場合は警告
-        Debug.LogWarning("PngFileIconChange: 監視対象のFileIconChangeが見つかりませんでした。インスペクターで手動設定してください。");
+        DebugLogger.LogWarning("PngFileIconChange: 監視対象のFileIconChangeが見つかりませんでした。インスペクターで手動設定してください。");
     }
 
     /// <summary>
@@ -230,7 +230,7 @@ public class PngFileIconChange : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"PngFileIconChange: アイコンを完了状態に変更しました - {gameObject.name}");
+                DebugLogger.Log($"PngFileIconChange: アイコンを完了状態に変更しました - {gameObject.name}");
             }
         }
     }
@@ -279,7 +279,7 @@ public class PngFileIconChange : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"PngFileIconChange: SetCompleted({completed}) - {gameObject.name}");
+            DebugLogger.Log($"PngFileIconChange: SetCompleted({completed}) - {gameObject.name}");
         }
     }
 

@@ -67,7 +67,7 @@ public class NarrationSoundController : MonoBehaviour
         var manager = SoundEffectManager.Instance;
         if (manager == null)
         {
-            Debug.LogError($"{nameof(NarrationSoundController)}: SoundEffectManager‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
+            DebugLogger.LogError($"{nameof(NarrationSoundController)}: SoundEffectManager‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
             return;
         }
 
@@ -75,7 +75,7 @@ public class NarrationSoundController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(NarrationSoundController)}: Œø‰Ê‰¹ '{soundKey}' ‚ğÄ¶‚µ‚Ü‚µ‚½ (Volume: {soundVolume})");
+            DebugLogger.Log($"{nameof(NarrationSoundController)}: Œø‰Ê‰¹ '{soundKey}' ‚ğÄ¶‚µ‚Ü‚µ‚½ (Volume: {soundVolume})");
         }
     }
 

@@ -87,7 +87,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
 
         if (debugMode)
         {
-            Debug.Log($"HiddenKeyword '{currentDisplayWord}' OnEnable: isRevealed={isRevealed}");
+            DebugLogger.Log($"HiddenKeyword '{currentDisplayWord}' OnEnable: isRevealed={isRevealed}");
         }
     }
 
@@ -134,7 +134,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
 
         if (debugMode)
         {
-            Debug.Log($"HiddenKeyword: 言語が {newLocale.Identifier.Code} に変更されました。現在の表示単語: {currentDisplayWord}");
+            DebugLogger.Log($"HiddenKeyword: 言語が {newLocale.Identifier.Code} に変更されました。現在の表示単語: {currentDisplayWord}");
         }
     }
 
@@ -149,7 +149,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
             currentDisplayWord = hiddenWord;
             if (debugMode)
             {
-                Debug.LogWarning($"{nameof(HiddenKeyword)}: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+                DebugLogger.LogWarning($"{nameof(HiddenKeyword)}: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
             }
             return;
         }
@@ -165,7 +165,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(HiddenKeyword)}: 英語モード - 表示単語: {currentDisplayWord}");
+                DebugLogger.Log($"{nameof(HiddenKeyword)}: 英語モード - 表示単語: {currentDisplayWord}");
             }
         }
         else
@@ -175,7 +175,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(HiddenKeyword)}: 日本語モード - 表示単語: {currentDisplayWord}");
+                DebugLogger.Log($"{nameof(HiddenKeyword)}: 日本語モード - 表示単語: {currentDisplayWord}");
             }
         }
     }
@@ -210,7 +210,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
 
             if (debugMode)
             {
-                Debug.Log($"HiddenKeyword '{currentDisplayWord}': インスペクターで設定されたTextMeshProUGUIコンポーネントを使用します");
+                DebugLogger.Log($"HiddenKeyword '{currentDisplayWord}': インスペクターで設定されたTextMeshProUGUIコンポーネントを使用します");
             }
 
             return;
@@ -219,7 +219,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
         // インスペクターで設定されていない場合
         if (textComponentReference == null)
         {
-            Debug.LogWarning($"HiddenKeyword '{currentDisplayWord}': インスペクターでTextMeshProUGUIコンポーネントが設定されていません");
+            DebugLogger.LogWarning($"HiddenKeyword '{currentDisplayWord}': インスペクターでTextMeshProUGUIコンポーネントが設定されていません");
         }
     }
 
@@ -255,7 +255,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
 
         if (documentManager == null && debugMode)
         {
-            Debug.LogWarning($"HiddenKeyword '{currentDisplayWord}': PdfDocumentManagerを見つけられませんでした");
+            DebugLogger.LogWarning($"HiddenKeyword '{currentDisplayWord}': PdfDocumentManagerを見つけられませんでした");
         }
     }
 
@@ -307,7 +307,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
             }
             else
             {
-                Debug.LogWarning($"隠しキーワード '{currentDisplayWord}' のPdfDocumentManagerが見つかりません");
+                DebugLogger.LogWarning($"隠しキーワード '{currentDisplayWord}' のPdfDocumentManagerが見つかりません");
             }
         }
     }
@@ -331,7 +331,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
 
         if (debugMode)
         {
-            Debug.Log($"HiddenKeyword '{currentDisplayWord}' を強制的に表示状態にしました");
+            DebugLogger.Log($"HiddenKeyword '{currentDisplayWord}' を強制的に表示状態にしました");
         }
     }
 
@@ -350,7 +350,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
 
             if (debugMode)
             {
-                Debug.Log($"HiddenKeyword '{currentDisplayWord}': 表示状態を適用しました");
+                DebugLogger.Log($"HiddenKeyword '{currentDisplayWord}': 表示状態を適用しました");
             }
 
             // 背景の透明度を調整
@@ -376,7 +376,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
 
             if (debugMode)
             {
-                Debug.Log($"HiddenKeyword '{currentDisplayWord}': 隠し状態を適用しました");
+                DebugLogger.Log($"HiddenKeyword '{currentDisplayWord}': 隠し状態を適用しました");
             }
         }
     }

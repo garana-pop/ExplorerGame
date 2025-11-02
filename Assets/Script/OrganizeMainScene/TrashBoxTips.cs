@@ -107,7 +107,7 @@ public class TrashBoxTips : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxTips)}: 初期化完了");
+            DebugLogger.Log($"{nameof(TrashBoxTips)}: 初期化完了");
         }
 
         // LocalizationManagerの取得
@@ -116,7 +116,7 @@ public class TrashBoxTips : MonoBehaviour
             localizationManager = LocalizationManager.Instance;
             if (localizationManager == null && debugMode)
             {
-                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: LocalizationManagerが見つかりません");
+                DebugLogger.LogWarning($"{nameof(OrganizeMainSceneController)}: LocalizationManagerが見つかりません");
             }
         }
     }
@@ -130,7 +130,7 @@ public class TrashBoxTips : MonoBehaviour
         sceneController = OrganizeMainSceneController.Instance;
         if (sceneController == null && debugMode)
         {
-            Debug.LogWarning($"{nameof(TrashBoxTips)}: OrganizeMainSceneControllerが見つかりません");
+            DebugLogger.LogWarning($"{nameof(TrashBoxTips)}: OrganizeMainSceneControllerが見つかりません");
         }
 
         // メッセージパネルを初期状態で非表示に設定
@@ -140,7 +140,7 @@ public class TrashBoxTips : MonoBehaviour
         if (localizationManager != null)
         {
             currentLanguage = localizationManager.GetCurrentLanguageCode();
-            Debug.Log("TrashBoxTips : 現在の言語コード " + currentLanguage);
+            DebugLogger.Log("TrashBoxTips : 現在の言語コード " + currentLanguage);
         }
 
         // メッセージを現在の言語に更新（日本語の場合は何もしない）
@@ -148,7 +148,7 @@ public class TrashBoxTips : MonoBehaviour
         {
             string clickEnglishMessage = "Click the trash bin to delete files.";
             SetClickMessage(clickEnglishMessage);
-            Debug.Log("TrashBoxTips : 英語メッセージに更新 " + clickEnglishMessage);
+            DebugLogger.Log("TrashBoxTips : 英語メッセージに更新 " + clickEnglishMessage);
         }
 
         // TrashBoxDisplayManagerのクリックイベントを監視
@@ -191,7 +191,7 @@ public class TrashBoxTips : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxTips)}: 設定値検証完了");
+            DebugLogger.Log($"{nameof(TrashBoxTips)}: 設定値検証完了");
         }
     }
 
@@ -231,7 +231,7 @@ public class TrashBoxTips : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxTips)}: UI初期化完了");
+            DebugLogger.Log($"{nameof(TrashBoxTips)}: UI初期化完了");
         }
     }
 
@@ -282,7 +282,7 @@ public class TrashBoxTips : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.LogWarning($"{nameof(TrashBoxTips)}: 空のメッセージが指定されました");
+                DebugLogger.LogWarning($"{nameof(TrashBoxTips)}: 空のメッセージが指定されました");
             }
             return;
         }
@@ -334,7 +334,7 @@ public class TrashBoxTips : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxTips)}: メッセージ表示 - {message}");
+            DebugLogger.Log($"{nameof(TrashBoxTips)}: メッセージ表示 - {message}");
         }
 
         // 指定時間待機
@@ -351,7 +351,7 @@ public class TrashBoxTips : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxTips)}: メッセージ非表示");
+            DebugLogger.Log($"{nameof(TrashBoxTips)}: メッセージ非表示");
         }
     }
 
@@ -373,7 +373,7 @@ public class TrashBoxTips : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxTips)}: メッセージを強制非表示にしました");
+            DebugLogger.Log($"{nameof(TrashBoxTips)}: メッセージを強制非表示にしました");
         }
     }
 
@@ -399,7 +399,7 @@ public class TrashBoxTips : MonoBehaviour
     /// <param name="isAllFilesDeleted"></param>
     private void AllFilesDeletedHandler(bool isAllFilesDeleted)
     {
-        Debug.Log($"{nameof(TrashBoxTips)}:全ファイル削除イベント受け取り成功");
+        DebugLogger.Log($"{nameof(TrashBoxTips)}:全ファイル削除イベント受け取り成功");
 
         // 全ファイル削除フラグを立てる
         allFileDeletde_TrashBoxTips = true;
@@ -530,7 +530,7 @@ public class TrashBoxTips : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(TrashBoxTips)}: クリックメッセージを更新 - {newMessage}");
+                DebugLogger.Log($"{nameof(TrashBoxTips)}: クリックメッセージを更新 - {newMessage}");
             }
         }
     }
@@ -545,7 +545,7 @@ public class TrashBoxTips : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxTips)}: メッセージ表示時間を更新 - {messageDisplayTime}秒");
+            DebugLogger.Log($"{nameof(TrashBoxTips)}: メッセージ表示時間を更新 - {messageDisplayTime}秒");
         }
     }
 
@@ -561,7 +561,7 @@ public class TrashBoxTips : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxTips)}: フェード時間を更新 - In:{fadeInTime}秒, Out:{fadeOutTime}秒");
+            DebugLogger.Log($"{nameof(TrashBoxTips)}: フェード時間を更新 - In:{fadeInTime}秒, Out:{fadeOutTime}秒");
         }
     }
 
@@ -580,7 +580,7 @@ public class TrashBoxTips : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxTips)}: メッセージUI参照を更新しました");
+            DebugLogger.Log($"{nameof(TrashBoxTips)}: メッセージUI参照を更新しました");
         }
     }
 

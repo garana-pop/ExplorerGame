@@ -84,7 +84,7 @@ public class PortraitDeletionManager : MonoBehaviour
         saveManager = GameSaveManager.Instance;
         if (saveManager == null && debugMode)
         {
-            Debug.LogWarning("PortraitDeletionManager: GameSaveManagerが見つかりません");
+            DebugLogger.LogWarning("PortraitDeletionManager: GameSaveManagerが見つかりません");
         }
     }
 
@@ -146,7 +146,7 @@ public class PortraitDeletionManager : MonoBehaviour
         if (isProcessingDeletion)
         {
             if (debugMode)
-                Debug.Log("PortraitDeletionManager: 削除処理中のため、確認ダイアログを表示できません");
+                DebugLogger.Log("PortraitDeletionManager: 削除処理中のため、確認ダイアログを表示できません");
             return;
         }
 
@@ -158,11 +158,11 @@ public class PortraitDeletionManager : MonoBehaviour
             PlaySound(null); // デフォルトのクリック音
 
             if (debugMode)
-                Debug.Log("PortraitDeletionManager: 削除確認ダイアログを表示しました");
+                DebugLogger.Log("PortraitDeletionManager: 削除確認ダイアログを表示しました");
         }
         else
         {
-            Debug.LogError("PortraitDeletionManager: 削除確認パネルが設定されていません");
+            DebugLogger.LogError("PortraitDeletionManager: 削除確認パネルが設定されていません");
         }
     }
 
@@ -196,7 +196,7 @@ public class PortraitDeletionManager : MonoBehaviour
         StartCoroutine(ProcessDeletion());
 
         if (debugMode)
-            Debug.Log("PortraitDeletionManager: 削除処理を開始します");
+            DebugLogger.Log("PortraitDeletionManager: 削除処理を開始します");
     }
 
     /// <summary>
@@ -211,7 +211,7 @@ public class PortraitDeletionManager : MonoBehaviour
         HideDeletionConfirmation();
 
         if (debugMode)
-            Debug.Log("PortraitDeletionManager: 削除をキャンセルしました");
+            DebugLogger.Log("PortraitDeletionManager: 削除をキャンセルしました");
     }
 
     /// <summary>
@@ -233,7 +233,7 @@ public class PortraitDeletionManager : MonoBehaviour
             saveManager.SaveGame();
 
             if (debugMode)
-                Debug.Log("PortraitDeletionManager: afterChangeToHisFutureフラグを設定し、セーブデータを更新しました");
+                DebugLogger.Log("PortraitDeletionManager: afterChangeToHisFutureフラグを設定し、セーブデータを更新しました");
         }
 
         // 少し待機
@@ -244,7 +244,7 @@ public class PortraitDeletionManager : MonoBehaviour
 
         // 修正箇所: コルーチンを正しく呼び出す
         if (debugMode)
-            Debug.Log($"PortraitDeletionManager: {nextSceneName}へ遷移を開始します");
+            DebugLogger.Log($"PortraitDeletionManager: {nextSceneName}へ遷移を開始します");
 
         // TransitionToNextScene()がコルーチンの場合
         yield return StartCoroutine(TransitionToNextScene());
@@ -277,7 +277,7 @@ public class PortraitDeletionManager : MonoBehaviour
     {
         // デバッグログ追加
         if (debugMode)
-            Debug.Log("PortraitDeletionManager: TransitionToNextScene開始");
+            DebugLogger.Log("PortraitDeletionManager: TransitionToNextScene開始");
 
         // 遅延時間を待つ
         yield return new WaitForSeconds(sceneTransitionDelay);
@@ -287,7 +287,7 @@ public class PortraitDeletionManager : MonoBehaviour
 
         // デバッグログ追加
         if (debugMode)
-            Debug.Log($"PortraitDeletionManager: SceneManager.LoadScene({nextSceneName})を実行");
+            DebugLogger.Log($"PortraitDeletionManager: SceneManager.LoadScene({nextSceneName})を実行");
 
         // シーン遷移
         SceneManager.LoadScene(nextSceneName);

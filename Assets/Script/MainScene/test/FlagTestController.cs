@@ -32,8 +32,8 @@ public class FlagTestController : MonoBehaviour
 
         if (showDebugInfo)
         {
-            Debug.Log("FlagTestController: テスト開始準備完了");
-            Debug.Log($"GameSaveManager存在確認: {GameSaveManager.Instance != null}");
+            DebugLogger.Log("FlagTestController: テスト開始準備完了");
+            DebugLogger.Log($"GameSaveManager存在確認: {GameSaveManager.Instance != null}");
         }
     }
 
@@ -46,7 +46,7 @@ public class FlagTestController : MonoBehaviour
         if (GameSaveManager.Instance == null)
         {
             UpdateResultText("エラー: GameSaveManagerが見つかりません");
-            Debug.LogError("FlagTestController: GameSaveManagerが存在しません");
+            DebugLogger.LogError("FlagTestController: GameSaveManagerが存在しません");
             return;
         }
 
@@ -54,12 +54,12 @@ public class FlagTestController : MonoBehaviour
         {
             GameSaveManager.Instance.SetEndOpeningSceneFlag(value);
             UpdateResultText($"フラグを{value}に設定しました");
-            Debug.Log($"FlagTestController: SetEndOpeningSceneFlag({value})を実行");
+            DebugLogger.Log($"FlagTestController: SetEndOpeningSceneFlag({value})を実行");
         }
         catch (System.Exception e)
         {
             UpdateResultText($"エラー: {e.Message}");
-            Debug.LogError($"FlagTestController: SetFlag({value})でエラー - {e.Message}");
+            DebugLogger.LogError($"FlagTestController: SetFlag({value})でエラー - {e.Message}");
         }
     }
 
@@ -71,7 +71,7 @@ public class FlagTestController : MonoBehaviour
         if (GameSaveManager.Instance == null)
         {
             UpdateResultText("エラー: GameSaveManagerが見つかりません");
-            Debug.LogError("FlagTestController: GameSaveManagerが存在しません");
+            DebugLogger.LogError("FlagTestController: GameSaveManagerが存在しません");
             return;
         }
 
@@ -79,12 +79,12 @@ public class FlagTestController : MonoBehaviour
         {
             bool flagValue = GameSaveManager.Instance.GetEndOpeningSceneFlag();
             UpdateResultText($"現在のフラグ値: {flagValue}");
-            Debug.Log($"FlagTestController: GetEndOpeningSceneFlag()の結果 = {flagValue}");
+            DebugLogger.Log($"FlagTestController: GetEndOpeningSceneFlag()の結果 = {flagValue}");
         }
         catch (System.Exception e)
         {
             UpdateResultText($"エラー: {e.Message}");
-            Debug.LogError($"FlagTestController: GetFlag()でエラー - {e.Message}");
+            DebugLogger.LogError($"FlagTestController: GetFlag()でエラー - {e.Message}");
         }
     }
 
@@ -96,24 +96,24 @@ public class FlagTestController : MonoBehaviour
     {
         if (GameSaveManager.Instance == null)
         {
-            Debug.LogError("FlagTestController: GameSaveManagerが存在しません");
+            DebugLogger.LogError("FlagTestController: GameSaveManagerが存在しません");
             return;
         }
 
-        Debug.Log("=== セーブデータ状況確認 ===");
-        Debug.Log($"セーブデータ存在: {GameSaveManager.Instance.SaveDataExists()}");
+        DebugLogger.Log("=== セーブデータ状況確認 ===");
+        DebugLogger.Log($"セーブデータ存在: {GameSaveManager.Instance.SaveDataExists()}");
 
         if (GameSaveManager.Instance.SaveDataExists())
         {
             GameSaveManager.Instance.LoadGame();
             bool flagValue = GameSaveManager.Instance.GetEndOpeningSceneFlag();
-            Debug.Log($"endOpeningSceneフラグ: {flagValue}");
+            DebugLogger.Log($"endOpeningSceneフラグ: {flagValue}");
         }
         else
         {
-            Debug.Log("セーブデータが存在しないため、フラグ値は確認できません");
+            DebugLogger.Log("セーブデータが存在しないため、フラグ値は確認できません");
         }
-        Debug.Log("=========================");
+        DebugLogger.Log("=========================");
     }
 
     /// <summary>
@@ -141,12 +141,12 @@ public class FlagTestController : MonoBehaviour
             if (System.IO.File.Exists(filePath))
             {
                 System.IO.File.Delete(filePath);
-                Debug.Log("FlagTestController: セーブファイルを削除しました");
+                DebugLogger.Log("FlagTestController: セーブファイルを削除しました");
                 UpdateResultText("セーブデータをリセットしました");
             }
             else
             {
-                Debug.Log("FlagTestController: セーブファイルが存在しませんでした");
+                DebugLogger.Log("FlagTestController: セーブファイルが存在しませんでした");
                 UpdateResultText("削除対象のセーブファイルがありません");
             }
         }

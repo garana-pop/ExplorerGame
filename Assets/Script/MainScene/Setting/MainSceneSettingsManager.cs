@@ -114,7 +114,7 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
             draggingCanvas = GameObject.Find("DraggingCanvas")?.GetComponent<Canvas>();
             if (draggingCanvas == null)
             {
-                Debug.LogWarning("DraggingCanvasが見つかりません。設定パネルの最前面表示が機能しない可能性があります。");
+                DebugLogger.LogWarning("DraggingCanvasが見つかりません。設定パネルの最前面表示が機能しない可能性があります。");
             }
         }
     }
@@ -636,16 +636,16 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
             }
             else
             {
-                Debug.Log("LoadSettingsFromGameSave: game_save.jsonにaudioSettingsが存在しません");
+                DebugLogger.Log("LoadSettingsFromGameSave: game_save.jsonにaudioSettingsが存在しません");
             }
         }
         else
         {
-            Debug.LogWarning("LoadSettingsFromGameSave: GameSaveManager.Instanceがnullです");
+            DebugLogger.LogWarning("LoadSettingsFromGameSave: GameSaveManager.Instanceがnullです");
         }
 
         // game_save.jsonにデータがない場合はPlayerPrefsから読み込み
-        Debug.Log("LoadSettingsFromGameSave: PlayerPrefsから読み込みます");
+        DebugLogger.Log("LoadSettingsFromGameSave: PlayerPrefsから読み込みます");
         LoadSettings();
     }
 
@@ -662,7 +662,7 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
         }
         else
         {
-            Debug.LogWarning("SaveVolumeToGameSave: GameSaveManager.Instanceがnullです");
+            DebugLogger.LogWarning("SaveVolumeToGameSave: GameSaveManager.Instanceがnullです");
         }
     }
 
@@ -720,11 +720,11 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
         if (GameSaveManager.Instance != null)
         {
             GameSaveManager.Instance.SaveGame();
-            Debug.Log("ゲームの状態を保存しました");
+            DebugLogger.Log("ゲームの状態を保存しました");
         }
         else
         {
-            Debug.LogWarning("GameSaveManagerが見つかりません。ゲームの状態を保存できませんでした。");
+            DebugLogger.LogWarning("GameSaveManagerが見つかりません。ゲームの状態を保存できませんでした。");
         }
     }
 

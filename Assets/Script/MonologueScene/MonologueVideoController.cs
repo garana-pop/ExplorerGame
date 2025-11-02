@@ -107,7 +107,7 @@ public class MonologueVideoController : MonoBehaviour
         }
 
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: 初期化完了");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: 初期化完了");
     }
 
     private void Update()
@@ -154,7 +154,7 @@ public class MonologueVideoController : MonoBehaviour
         videoPlayer.isLooping = false;
 
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: VideoPlayer設定完了");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: VideoPlayer設定完了");
     }
 
     /// <summary>
@@ -180,7 +180,7 @@ public class MonologueVideoController : MonoBehaviour
             videoDisplay.texture = renderTexture;
 
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: RenderTexture作成完了");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: RenderTexture作成完了");
     }
 
     /// <summary>
@@ -190,7 +190,7 @@ public class MonologueVideoController : MonoBehaviour
     {
         if (invertMaterial == null)
         {
-            Debug.LogWarning($"{nameof(MonologueVideoController)}: 色調反転マテリアルが設定されていません");
+            DebugLogger.LogWarning($"{nameof(MonologueVideoController)}: 色調反転マテリアルが設定されていません");
             return;
         }
 
@@ -207,7 +207,7 @@ public class MonologueVideoController : MonoBehaviour
         UpdateMaterialProperties();
 
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: マテリアル初期化完了");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: マテリアル初期化完了");
     }
 
     #endregion
@@ -222,7 +222,7 @@ public class MonologueVideoController : MonoBehaviour
     {
         if (videoClips == null || clipIndex < 0 || clipIndex >= videoClips.Length)
         {
-            Debug.LogError($"{nameof(MonologueVideoController)}: 無効な動画インデックス: {clipIndex}");
+            DebugLogger.LogError($"{nameof(MonologueVideoController)}: 無効な動画インデックス: {clipIndex}");
             return;
         }
 
@@ -244,7 +244,7 @@ public class MonologueVideoController : MonoBehaviour
         videoPlayer.Play();
 
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: 動画再生開始 - {videoClips[clipIndex].name}");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: 動画再生開始 - {videoClips[clipIndex].name}");
     }
 
     /// <summary>
@@ -259,7 +259,7 @@ public class MonologueVideoController : MonoBehaviour
         }
 
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: 動画停止");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: 動画停止");
     }
 
     /// <summary>
@@ -302,7 +302,7 @@ public class MonologueVideoController : MonoBehaviour
                 videoPlayer.Play();
 
                 if (debugMode)
-                    Debug.Log($"{nameof(MonologueVideoController)}: ループ終了位置に到達。開始位置 {loopStartTime}秒 に戻ります");
+                    DebugLogger.Log($"{nameof(MonologueVideoController)}: ループ終了位置に到達。開始位置 {loopStartTime}秒 に戻ります");
             }
         }
         else if (!isInLoopRange && videoPlayer.time >= loopStartTime && videoPlayer.time < loopEndTime)
@@ -310,7 +310,7 @@ public class MonologueVideoController : MonoBehaviour
             isInLoopRange = true;
 
             if (debugMode)
-                Debug.Log($"{nameof(MonologueVideoController)}: ループ範囲に入りました");
+                DebugLogger.Log($"{nameof(MonologueVideoController)}: ループ範囲に入りました");
         }
     }
 
@@ -328,7 +328,7 @@ public class MonologueVideoController : MonoBehaviour
         UpdateMaterialProperties();
 
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: 色調反転強度変更 - {invertAmount}");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: 色調反転強度変更 - {invertAmount}");
     }
 
     /// <summary>
@@ -385,7 +385,7 @@ public class MonologueVideoController : MonoBehaviour
         SetInvertAmount(targetAmount);
 
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: 色調反転アニメーション完了");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: 色調反転アニメーション完了");
     }
 
     /// <summary>
@@ -411,7 +411,7 @@ public class MonologueVideoController : MonoBehaviour
     private void OnVideoPrepared(VideoPlayer vp)
     {
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: 動画準備完了 - {vp.clip.name}");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: 動画準備完了 - {vp.clip.name}");
 
         // ループ開始位置から再生する場合の処理
         if (!playFromBeginning)
@@ -420,7 +420,7 @@ public class MonologueVideoController : MonoBehaviour
             isInLoopRange = true;
 
             if (debugMode)
-                Debug.Log($"{nameof(MonologueVideoController)}: ループ開始位置 {loopStartTime}秒 から再生開始");
+                DebugLogger.Log($"{nameof(MonologueVideoController)}: ループ開始位置 {loopStartTime}秒 から再生開始");
         }
     }
 
@@ -441,7 +441,7 @@ public class MonologueVideoController : MonoBehaviour
     private void OnVideoEnd(VideoPlayer vp)
     {
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: 動画終了 - {endAction}");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: 動画終了 - {endAction}");
 
         switch (endAction)
         {
@@ -501,7 +501,7 @@ public class MonologueVideoController : MonoBehaviour
         }
 
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: リソースクリーンアップ完了");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: リソースクリーンアップ完了");
     }
 
     #endregion
@@ -519,7 +519,7 @@ public class MonologueVideoController : MonoBehaviour
         loopEndTime = Mathf.Max((float)loopStartTime, (float)endTime);
 
         if (debugMode)
-            Debug.Log($"{nameof(MonologueVideoController)}: ループ範囲を {loopStartTime}秒 - {loopEndTime}秒 に設定");
+            DebugLogger.Log($"{nameof(MonologueVideoController)}: ループ範囲を {loopStartTime}秒 - {loopEndTime}秒 に設定");
     }
 
     #endregion

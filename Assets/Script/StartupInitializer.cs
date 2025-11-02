@@ -20,7 +20,7 @@ public class StartupInitializer : MonoBehaviour
         // WindowResizeManagerのインスタンスを作成（存在しない場合）
         if (WindowResizeManager.Instance == null)
         {
-            Debug.Log("WindowResizeManagerを初期化しています...");
+            DebugLogger.Log("WindowResizeManagerを初期化しています...");
         }
 
     }

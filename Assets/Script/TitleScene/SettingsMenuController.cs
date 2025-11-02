@@ -63,7 +63,7 @@ public class SettingsMenuController : MonoBehaviour
         // WindowResizeManagerが存在することを確認
         if (WindowResizeManager.Instance == null)
         {
-            Debug.LogWarning("WindowResizeManagerが見つかりません。自動的に作成します。");
+            DebugLogger.LogWarning("WindowResizeManagerが見つかりません。自動的に作成します。");
         }
 
         // パネルの初期化
@@ -116,18 +116,18 @@ public class SettingsMenuController : MonoBehaviour
                 Screen.SetResolution(selectedResolution.x, selectedResolution.y, false);
 
                 // WindowResizeManagerのインスタンスを作成して、リサイズを無効化
-                Debug.LogWarning("WindowResizeManagerが存在しないため、新規作成します");
+                DebugLogger.LogWarning("WindowResizeManagerが存在しないため、新規作成します");
                 var manager = WindowResizeManager.Instance;
                 if (manager != null)
                 {
                     // インスタンス作成時に自動的にリサイズ無効化される
-                    Debug.Log("WindowResizeManagerを作成し、リサイズを無効化しました");
+                    DebugLogger.Log("WindowResizeManagerを作成し、リサイズを無効化しました");
                 }
             }
 
             if (debugMode)
             {
-                Debug.Log($"解像度を {selectedResolution.x}x{selectedResolution.y} に変更");
+                DebugLogger.Log($"解像度を {selectedResolution.x}x{selectedResolution.y} に変更");
             }
 
             // GameSaveManagerに解像度インデックスを保存
@@ -155,7 +155,7 @@ public class SettingsMenuController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"UI更新完了 - 現在の解像度: {Screen.width}×{Screen.height}");
+            DebugLogger.Log($"UI更新完了 - 現在の解像度: {Screen.width}×{Screen.height}");
         }
     }
 
@@ -170,7 +170,7 @@ public class SettingsMenuController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"現在の解像度: {currentWidth}×{currentHeight}");
+            DebugLogger.Log($"現在の解像度: {currentWidth}×{currentHeight}");
         }
 
         // 現在の解像度に対応するボタンのテキスト色を変更
@@ -194,7 +194,7 @@ public class SettingsMenuController : MonoBehaviour
 
                 if (debugMode)
                 {
-                    Debug.Log($"現在の解像度ボタンのテキスト色変更: {width}×{height}");
+                    DebugLogger.Log($"現在の解像度ボタンのテキスト色変更: {width}×{height}");
                 }
 
                 break;
@@ -213,7 +213,7 @@ public class SettingsMenuController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"モニター解像度: {monitorWidth}×{monitorHeight}");
+            DebugLogger.Log($"モニター解像度: {monitorWidth}×{monitorHeight}");
         }
 
         // 選択された解像度がモニターサイズを超えているか確認
@@ -254,7 +254,7 @@ public class SettingsMenuController : MonoBehaviour
             }
             else if (debugMode)
             {
-                Debug.LogWarning($"ボタン {button.name} にTextMeshProUGUIコンポーネントが見つかりません");
+                DebugLogger.LogWarning($"ボタン {button.name} にTextMeshProUGUIコンポーネントが見つかりません");
             }
         }
     }
@@ -393,7 +393,7 @@ public class SettingsMenuController : MonoBehaviour
 
                     if (debugMode)
                     {
-                        Debug.Log($"保存された解像度を適用: {savedResolution.x}×{savedResolution.y}");
+                        DebugLogger.Log($"保存された解像度を適用: {savedResolution.x}×{savedResolution.y}");
                     }
                 }
 
@@ -521,7 +521,7 @@ public class SettingsMenuController : MonoBehaviour
         }
 
         if (debugMode)
-            Debug.Log($"BGM音量変更: {value}");
+            DebugLogger.Log($"BGM音量変更: {value}");
     }
 
     /// <summary>
@@ -554,7 +554,7 @@ public class SettingsMenuController : MonoBehaviour
         }
 
         if (debugMode)
-            Debug.Log($"SE音量変更: {value}");
+            DebugLogger.Log($"SE音量変更: {value}");
     }
 
     /// <summary>
@@ -583,6 +583,6 @@ public class SettingsMenuController : MonoBehaviour
         }
 
         if (debugMode)
-            Debug.Log($"マスター音量変更: {value}");
+            DebugLogger.Log($"マスター音量変更: {value}");
     }
 }

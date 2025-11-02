@@ -159,19 +159,19 @@ public class ConversationSceneController : MonoBehaviour
     public void SetSettingsOpen(bool isOpen)
     {
         isSettingsOpen = isOpen;
-        Debug.Log($"ConversationSceneController: Settings panel is now {(isOpen ? "open" : "closed")}");
+        DebugLogger.Log($"ConversationSceneController: Settings panel is now {(isOpen ? "open" : "closed")}");
     }
 
     private void ValidateComponents()
     {
         if (dialogueScrollView == null || contentPanel == null)
         {
-            Debug.LogError("DialogueScrollView or ContentPanel not set");
+            DebugLogger.LogError("DialogueScrollView or ContentPanel not set");
         }
 
         if (continueIndicator == null)
         {
-            Debug.LogError("ContinueIndicator not set");
+            DebugLogger.LogError("ContinueIndicator not set");
         }
 
         // CharacterDisplayController
@@ -202,7 +202,7 @@ public class ConversationSceneController : MonoBehaviour
         // dialogueEntriesが空の場合はエラーログを出力
         if (dialogueEntries == null || dialogueEntries.Count == 0)
         {
-            Debug.LogError("ConversationSceneController: 会話データが読み込めませんでした。");
+            DebugLogger.LogError("ConversationSceneController: 会話データが読み込めませんでした。");
             // 必要に応じてデフォルトの会話データを設定
             dialogueEntries = new List<DialogueEntry>();
         }
@@ -310,7 +310,7 @@ public class ConversationSceneController : MonoBehaviour
             if (exitController == null)
             {
                 exitController = gameObject.AddComponent<CharacterExitController>();
-                Debug.Log("Exit Controllerが見つからなかったため、新しく追加しました。");
+                DebugLogger.Log("Exit Controllerが見つからなかったため、新しく追加しました。");
             }
         }
     }
@@ -547,7 +547,7 @@ public class ConversationSceneController : MonoBehaviour
         // 似顔絵.pngファイルを削除
         if (gameSaveManager != null)
         {
-            Debug.Log("似顔絵.pngを削除します");
+            DebugLogger.Log("似顔絵.pngを削除します");
             //gameSaveManager.DeletePortraitFile();
             // メインシーンの似顔絵ファイルを削除
             // これはGameSaveManagerで処理する必要がある

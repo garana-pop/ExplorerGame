@@ -70,7 +70,7 @@ namespace ExplorerGame.Localization
             }
             else
             {
-                Debug.LogError($"{nameof(LocalizationManager)}: LocalizationSettings初期化失敗");
+                DebugLogger.LogError($"{nameof(LocalizationManager)}: LocalizationSettings初期化失敗");
             }
         }
 
@@ -84,7 +84,7 @@ namespace ExplorerGame.Localization
             {
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(LocalizationManager)}: Localeが未選択のため、デフォルト（日本語）を返却");
+                    DebugLogger.Log($"{nameof(LocalizationManager)}: Localeが未選択のため、デフォルト（日本語）を返却");
                 }
                 return JAPANESE_CODE; // デフォルト
             }
@@ -110,7 +110,7 @@ namespace ExplorerGame.Localization
 
             if (debugMode)
             {
-                Debug.LogWarning($"{nameof(LocalizationManager)}: 言語コード '{languageCode}' に対応するLocaleが見つかりません");
+                DebugLogger.LogWarning($"{nameof(LocalizationManager)}: 言語コード '{languageCode}' に対応するLocaleが見つかりません");
             }
 
             return null;
@@ -126,7 +126,7 @@ namespace ExplorerGame.Localization
             // 言語コードの妥当性チェック
             if (languageCode != JAPANESE_CODE && languageCode != ENGLISH_CODE)
             {
-                Debug.LogWarning($"{nameof(LocalizationManager)}: 無効な言語コード: {languageCode}");
+                DebugLogger.LogWarning($"{nameof(LocalizationManager)}: 無効な言語コード: {languageCode}");
                 yield break;
             }
 
@@ -134,7 +134,7 @@ namespace ExplorerGame.Localization
             Locale newLocale = GetLocaleByCode(languageCode);
             if (newLocale == null)
             {
-                Debug.LogError($"{nameof(LocalizationManager)}: 言語コード '{languageCode}' のLocaleを取得できません");
+                DebugLogger.LogError($"{nameof(LocalizationManager)}: 言語コード '{languageCode}' のLocaleを取得できません");
                 yield break;
             }
 
@@ -143,7 +143,7 @@ namespace ExplorerGame.Localization
             {
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(LocalizationManager)}: 既に言語 '{languageCode}' が選択されています");
+                    DebugLogger.Log($"{nameof(LocalizationManager)}: 既に言語 '{languageCode}' が選択されています");
                 }
                 yield break;
             }
@@ -170,7 +170,7 @@ namespace ExplorerGame.Localization
         {
             if (languageCode != JAPANESE_CODE && languageCode != ENGLISH_CODE)
             {
-                Debug.LogWarning($"{nameof(LocalizationManager)}: 無効な言語コード: {languageCode}");
+                DebugLogger.LogWarning($"{nameof(LocalizationManager)}: 無効な言語コード: {languageCode}");
                 return;
             }
 
@@ -178,7 +178,7 @@ namespace ExplorerGame.Localization
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(LocalizationManager)}: 言語{languageCode}を一時保存");
+                DebugLogger.Log($"{nameof(LocalizationManager)}: 言語{languageCode}を一時保存");
             }
         }
 
@@ -190,7 +190,7 @@ namespace ExplorerGame.Localization
         {
             if (string.IsNullOrEmpty(preparedLanguageCode))
             {
-                Debug.LogWarning($"{nameof(LocalizationManager)}: 適用する言語設定がありません");
+                DebugLogger.LogWarning($"{nameof(LocalizationManager)}: 適用する言語設定がありません");
                 return;
             }
 
@@ -212,14 +212,14 @@ namespace ExplorerGame.Localization
             // 引数チェック
             if (string.IsNullOrEmpty(key))
             {
-                Debug.LogError($"{nameof(LocalizationManager)}: キーが空またはnullです");
+                DebugLogger.LogError($"{nameof(LocalizationManager)}: キーが空またはnullです");
                 callback?.Invoke(key);
                 yield break;
             }
 
             if (callback == null)
             {
-                Debug.LogWarning($"{nameof(LocalizationManager)}: コールバックがnullです");
+                DebugLogger.LogWarning($"{nameof(LocalizationManager)}: コールバックがnullです");
                 yield break;
             }
 
@@ -233,7 +233,7 @@ namespace ExplorerGame.Localization
             // デバッグログ
             if (debugMode)
             {
-                Debug.Log($"{nameof(LocalizationManager)}: キー '{key}' のテキスト取得を開始");
+                DebugLogger.Log($"{nameof(LocalizationManager)}: キー '{key}' のテキスト取得を開始");
             }
 
             // 非同期でテキスト取得
@@ -245,16 +245,16 @@ namespace ExplorerGame.Localization
             {
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(LocalizationManager)}: キー '{key}' → '{handle.Result}'");
+                    DebugLogger.Log($"{nameof(LocalizationManager)}: キー '{key}' → '{handle.Result}'");
                 }
                 callback.Invoke(handle.Result);
             }
             else
             {
-                Debug.LogError($"{nameof(LocalizationManager)}: キー '{key}' のテキスト取得に失敗");
+                DebugLogger.LogError($"{nameof(LocalizationManager)}: キー '{key}' のテキスト取得に失敗");
                 if (handle.OperationException != null)
                 {
-                    Debug.LogError($"エラー詳細: {handle.OperationException.Message}");
+                    DebugLogger.LogError($"エラー詳細: {handle.OperationException.Message}");
                 }
 
                 // フォールバック処理（キーをそのまま返す）
@@ -274,21 +274,21 @@ namespace ExplorerGame.Localization
             // 引数チェック
             if (string.IsNullOrEmpty(tableName))
             {
-                Debug.LogError($"{nameof(LocalizationManager)}: テーブル名が空またはnullです");
+                DebugLogger.LogError($"{nameof(LocalizationManager)}: テーブル名が空またはnullです");
                 callback?.Invoke(key);
                 yield break;
             }
 
             if (string.IsNullOrEmpty(key))
             {
-                Debug.LogError($"{nameof(LocalizationManager)}: キーが空またはnullです");
+                DebugLogger.LogError($"{nameof(LocalizationManager)}: キーが空またはnullです");
                 callback?.Invoke(key);
                 yield break;
             }
 
             if (callback == null)
             {
-                Debug.LogWarning($"{nameof(LocalizationManager)}: コールバックがnullです");
+                DebugLogger.LogWarning($"{nameof(LocalizationManager)}: コールバックがnullです");
                 yield break;
             }
 
@@ -302,7 +302,7 @@ namespace ExplorerGame.Localization
             // デバッグログ
             if (debugMode)
             {
-                Debug.Log($"{nameof(LocalizationManager)}: テーブル '{tableName}' からキー '{key}' のテキスト取得を開始");
+                DebugLogger.Log($"{nameof(LocalizationManager)}: テーブル '{tableName}' からキー '{key}' のテキスト取得を開始");
             }
 
             // 非同期でテキスト取得
@@ -314,16 +314,16 @@ namespace ExplorerGame.Localization
             {
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(LocalizationManager)}: キー '{key}' → '{handle.Result}'");
+                    DebugLogger.Log($"{nameof(LocalizationManager)}: キー '{key}' → '{handle.Result}'");
                 }
                 callback.Invoke(handle.Result);
             }
             else
             {
-                Debug.LogError($"{nameof(LocalizationManager)}: テーブル '{tableName}' のキー '{key}' のテキスト取得に失敗");
+                DebugLogger.LogError($"{nameof(LocalizationManager)}: テーブル '{tableName}' のキー '{key}' のテキスト取得に失敗");
                 if (handle.OperationException != null)
                 {
-                    Debug.LogError($"エラー詳細: {handle.OperationException.Message}");
+                    DebugLogger.LogError($"エラー詳細: {handle.OperationException.Message}");
                 }
 
                 // フォールバック処理
@@ -348,7 +348,7 @@ namespace ExplorerGame.Localization
 
                     if (debugMode)
                     {
-                        Debug.Log($"{nameof(LocalizationManager)}: セーブデータから言語 '{savedLanguageCode}' を読み込みました");
+                        DebugLogger.Log($"{nameof(LocalizationManager)}: セーブデータから言語 '{savedLanguageCode}' を読み込みました");
                     }
                 }
             }
@@ -370,7 +370,7 @@ namespace ExplorerGame.Localization
 
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(LocalizationManager)}: 言語 '{languageCode}' をセーブデータに保存しました");
+                    DebugLogger.Log($"{nameof(LocalizationManager)}: 言語 '{languageCode}' をセーブデータに保存しました");
                 }
             }
         }
@@ -394,17 +394,17 @@ namespace ExplorerGame.Localization
         {
             StartCoroutine(GetLocalizedString("Test-Key-001", (result) =>
             {
-                Debug.Log($"GetLocalizedString結果: '{result}'");
+                DebugLogger.Log($"GetLocalizedString結果: '{result}'");
             }));
         }
 
         [ContextMenu("Show Current Language")]
         void ShowCurrentLanguage()
         {
-            Debug.Log($"現在の言語コード: {GetCurrentLanguageCode()}");
+            DebugLogger.Log($"現在の言語コード: {GetCurrentLanguageCode()}");
             if (LocalizationSettings.SelectedLocale != null)
             {
-                Debug.Log($"現在のLocale: {LocalizationSettings.SelectedLocale.name}");
+                DebugLogger.Log($"現在のLocale: {LocalizationSettings.SelectedLocale.name}");
             }
         }
 
@@ -412,10 +412,10 @@ namespace ExplorerGame.Localization
         void ListAvailableLocales()
         {
             var locales = LocalizationSettings.AvailableLocales.Locales;
-            Debug.Log($"利用可能なLocale数: {locales.Count}");
+            DebugLogger.Log($"利用可能なLocale数: {locales.Count}");
             foreach (var locale in locales)
             {
-                Debug.Log($"- {locale.Identifier.Code}: {locale.name}");
+                DebugLogger.Log($"- {locale.Identifier.Code}: {locale.name}");
             }
         }
 #endif

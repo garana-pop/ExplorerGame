@@ -73,7 +73,7 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxDisplayManager)}: 初期化完了");
+            DebugLogger.Log($"{nameof(TrashBoxDisplayManager)}: 初期化完了");
         }
     }
 
@@ -110,12 +110,12 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(TrashBoxDisplayManager)}: ゴミ箱がクリックされました - メッセージを表示");
+                DebugLogger.Log($"{nameof(TrashBoxDisplayManager)}: ゴミ箱がクリックされました - メッセージを表示");
             }
         }
         else if (debugMode)
         {
-            Debug.LogWarning($"{nameof(TrashBoxDisplayManager)}: TrashBoxTipsコンポーネントが見つかりません");
+            DebugLogger.LogWarning($"{nameof(TrashBoxDisplayManager)}: TrashBoxTipsコンポーネントが見つかりません");
         }
     }
 
@@ -147,7 +147,7 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(TrashBoxDisplayManager)}: ゴミ箱が開きました");
+                DebugLogger.Log($"{nameof(TrashBoxDisplayManager)}: ゴミ箱が開きました");
             }
         }
     }
@@ -165,7 +165,7 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(TrashBoxDisplayManager)}: ファイルがドロップされました");
+                DebugLogger.Log($"{nameof(TrashBoxDisplayManager)}: ファイルがドロップされました");
             }
         }
         waitingForMouseUp = false;
@@ -196,7 +196,7 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(TrashBoxDisplayManager)}: ゴミ箱が閉じました");
+                DebugLogger.Log($"{nameof(TrashBoxDisplayManager)}: ゴミ箱が閉じました");
             }
         }
     }
@@ -211,7 +211,7 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
 
         if (debugMode && isDragging)
         {
-            Debug.Log($"{nameof(TrashBoxDisplayManager)}: ファイルのドラッグが開始されました");
+            DebugLogger.Log($"{nameof(TrashBoxDisplayManager)}: ファイルのドラッグが開始されました");
         }
     }
 
@@ -247,7 +247,7 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxDisplayManager)}: マウスオーバースプライトを更新しました");
+            DebugLogger.Log($"{nameof(TrashBoxDisplayManager)}: マウスオーバースプライトを更新しました");
         }
     }
 
@@ -261,7 +261,7 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
 
         if (debugMode)
         {
-            Debug.Log($"{nameof(TrashBoxDisplayManager)}: 表示領域拡張値を更新 - {imageDisplayHeightValue}");
+            DebugLogger.Log($"{nameof(TrashBoxDisplayManager)}: 表示領域拡張値を更新 - {imageDisplayHeightValue}");
         }
     }
 

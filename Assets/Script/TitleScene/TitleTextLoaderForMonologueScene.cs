@@ -46,7 +46,7 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
 
         if (titleText == null)
         {
-            Debug.LogError("TitleTextLoaderForMonologueScene: TextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
+            DebugLogger.LogError("TitleTextLoaderForMonologueScene: TextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
             enabled = false;
             return;
         }
@@ -78,7 +78,7 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
         if (titleTextChangerForMonologue != null)
         {
             titleTextChangerForMonologue.SetSoundEnabled(false);
-            if (debugMode) Debug.Log("TitleTextLoaderForMonologueScene: 遅延実行で効果音を無効化しました");
+            if (debugMode) DebugLogger.Log("TitleTextLoaderForMonologueScene: 遅延実行で効果音を無効化しました");
         }
     }
 
@@ -141,7 +141,7 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
         if (debugMode && forceAllFlagsTrue)
         {
             shouldChangeFinal = true;
-            if (debugMode) Debug.Log("TitleTextLoaderForMonologueScene: デバッグモードで強制的にタイトルを変更");
+            if (debugMode) DebugLogger.Log("TitleTextLoaderForMonologueScene: デバッグモードで強制的にタイトルを変更");
         }
         else
         {
@@ -155,10 +155,10 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"TitleTextLoaderForMonologueScene: afterChangeToHerMemory = {herMemoryFlag}");
-                Debug.Log($"TitleTextLoaderForMonologueScene: afterChangeToHisFuture = {hisFutureFlag}");
-                Debug.Log($"TitleTextLoaderForMonologueScene: afterChangeToLast = {lastFlag}");
-                Debug.Log($"TitleTextLoaderForMonologueScene: 全フラグ条件 = {shouldChangeFinal}");
+                DebugLogger.Log($"TitleTextLoaderForMonologueScene: afterChangeToHerMemory = {herMemoryFlag}");
+                DebugLogger.Log($"TitleTextLoaderForMonologueScene: afterChangeToHisFuture = {hisFutureFlag}");
+                DebugLogger.Log($"TitleTextLoaderForMonologueScene: afterChangeToLast = {lastFlag}");
+                DebugLogger.Log($"TitleTextLoaderForMonologueScene: 全フラグ条件 = {shouldChangeFinal}");
             }
 
         }
@@ -180,8 +180,8 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log("TitleTextLoaderForMonologueScene: 現在の言語コード" + currentLanguageCode);
-                Debug.Log($"TitleTextLoaderForMonologueScene: タイトルを '{textToApply}' に設定しました");
+                DebugLogger.Log("TitleTextLoaderForMonologueScene: 現在の言語コード" + currentLanguageCode);
+                DebugLogger.Log($"TitleTextLoaderForMonologueScene: タイトルを '{textToApply}' に設定しました");
             }
         }
     }
@@ -212,7 +212,7 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) Debug.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToHerMemoryフラグを取得できませんでした");
+        if (debugMode) DebugLogger.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToHerMemoryフラグを取得できませんでした");
         return false;
     }
 
@@ -228,7 +228,7 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) Debug.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToHisFutureフラグを取得できませんでした");
+        if (debugMode) DebugLogger.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToHisFutureフラグを取得できませんでした");
         return false;
     }
 
@@ -250,7 +250,7 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) Debug.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToLastフラグを取得できませんでした");
+        if (debugMode) DebugLogger.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToLastフラグを取得できませんでした");
         return false;
     }
 }

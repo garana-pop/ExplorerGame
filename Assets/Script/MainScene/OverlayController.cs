@@ -17,7 +17,7 @@ public class OverlayController : MonoBehaviour
             overlayObject = transform.Find("Overlay")?.gameObject;
             if (overlayObject == null)
             {
-                Debug.LogWarning("OverlayController: Overlayオブジェクトが見つかりません。インスペクターで設定してください。");
+                DebugLogger.LogWarning("OverlayController: Overlayオブジェクトが見つかりません。インスペクターで設定してください。");
                 enabled = false; // スクリプトを無効化
                 return;
             }

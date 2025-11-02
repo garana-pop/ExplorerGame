@@ -15,7 +15,7 @@ public class ClickToBlockRaycasts : MonoBehaviour, IPointerDownHandler, IPointer
     // マウスボタンが押されたとき
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("ポインターダウン検知");
+        DebugLogger.Log("ポインターダウン検知");
         // ボタンが押された時にblocksRaycastsをtrueに設定
         if (canvasGroup != null)
         {
@@ -26,7 +26,7 @@ public class ClickToBlockRaycasts : MonoBehaviour, IPointerDownHandler, IPointer
     // マウスボタンが離されたとき
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("ポインターアップ検知");
+        DebugLogger.Log("ポインターアップ検知");
         // ボタンが離された時にblocksRaycastsをtrueに戻す
         if (canvasGroup != null)
         {

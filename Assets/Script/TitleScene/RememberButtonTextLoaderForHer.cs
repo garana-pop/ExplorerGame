@@ -59,7 +59,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
 
         if (buttonText == null)
         {
-            Debug.LogError("RememberButtonTextLoaderForHer: 思い出すボタンのTextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
+            DebugLogger.LogError("RememberButtonTextLoaderForHer: 思い出すボタンのTextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
             enabled = false;
             return;
         }
@@ -147,7 +147,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) Debug.LogWarning("RememberButtonTextLoaderForHer: GameSaveManagerが存在しないため、afterChangeToHerMemoryフラグを取得できませんでした");
+        if (debugMode) DebugLogger.LogWarning("RememberButtonTextLoaderForHer: GameSaveManagerが存在しないため、afterChangeToHerMemoryフラグを取得できませんでした");
         return false;
     }
 
@@ -163,7 +163,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) Debug.LogWarning("RememberButtonTextLoaderForHer: GameSaveManagerが存在しないため、afterChangeToHisFutureフラグを取得できませんでした");
+        if (debugMode) DebugLogger.LogWarning("RememberButtonTextLoaderForHer: GameSaveManagerが存在しないため、afterChangeToHisFutureフラグを取得できませんでした");
         return false;
     }
 
@@ -175,7 +175,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
         // afterChangeToLastフラグがtrueの場合は処理をスキップ
         //if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
         //{
-        //    if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: afterChangeToLastがtrueのため処理をスキップします");
+        //    if (debugMode) DebugLogger.Log("RememberButtonTextLoaderForHer: afterChangeToLastがtrueのため処理をスキップします");
         //    return;
         //}
 
@@ -185,7 +185,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
         if (debugMode && forceChangedText)
         {
             shouldChangeText = true;
-            if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: デバッグモードで強制的にテキストを変更");
+            if (debugMode) DebugLogger.Log("RememberButtonTextLoaderForHer: デバッグモードで強制的にテキストを変更");
         }
         else
         {
@@ -198,9 +198,9 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"RememberButtonTextLoaderForHer: afterChangeToHerMemory = {herMemoryFlag}");
-                Debug.Log($"RememberButtonTextLoaderForHer: afterChangeToHisFuture = {hisFutureFlag}");
-                Debug.Log($"RememberButtonTextLoaderForHer: 両フラグ条件 = {shouldChangeText}");
+                DebugLogger.Log($"RememberButtonTextLoaderForHer: afterChangeToHerMemory = {herMemoryFlag}");
+                DebugLogger.Log($"RememberButtonTextLoaderForHer: afterChangeToHisFuture = {hisFutureFlag}");
+                DebugLogger.Log($"RememberButtonTextLoaderForHer: 両フラグ条件 = {shouldChangeText}");
             }
         }
 
@@ -226,7 +226,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
         if (localizeStringEvent != null)
         {
             localizeStringEvent.enabled = false;
-            if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: LocalizeStringEventを無効化");
+            if (debugMode) DebugLogger.Log("RememberButtonTextLoaderForHer: LocalizeStringEventを無効化");
         }
 
         // ボタンテキストを設定
@@ -235,7 +235,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
             buttonText.text = textToApply;
             if (debugMode)
             {
-                Debug.Log($"RememberButtonTextLoaderForHer: ボタンテキストを「{textToApply}」に設定 (言語: {currentLanguageCode})");
+                DebugLogger.Log($"RememberButtonTextLoaderForHer: ボタンテキストを「{textToApply}」に設定 (言語: {currentLanguageCode})");
             }
         }
 
@@ -248,7 +248,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
                 button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(() =>
                 {
-                    if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: MonologueSceneへ遷移します");
+                    if (debugMode) DebugLogger.Log("RememberButtonTextLoaderForHer: MonologueSceneへ遷移します");
                     UnityEngine.SceneManagement.SceneManager.LoadScene("MonologueScene");
                 });
             }
@@ -261,17 +261,17 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
             if (currentLanguageCode == "ja")
             {
                 buttonText.text = "整理する";
-                if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: ボタンテキストを「整理する」に設定");
+                if (debugMode) DebugLogger.Log("RememberButtonTextLoaderForHer: ボタンテキストを「整理する」に設定");
             }
             else if (currentLanguageCode == "en")
             {
                 buttonText.text = "Organize";
-                if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: ボタンテキストを「Organize」に設定");
+                if (debugMode) DebugLogger.Log("RememberButtonTextLoaderForHer: ボタンテキストを「Organize」に設定");
             }
             else
             {
                 buttonText.text = "整理する"; // デフォルトは日本語
-                if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: 言語コード取得失敗のため、ボタンテキストをデフォルトの「整理する」に設定");
+                if (debugMode) DebugLogger.Log("RememberButtonTextLoaderForHer: 言語コード取得失敗のため、ボタンテキストをデフォルトの「整理する」に設定");
             }
 
             Button button = buttonText.GetComponentInParent<Button>();
@@ -280,7 +280,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
                 button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(() =>
                 {
-                    if (debugMode) Debug.Log("RememberButtonTextLoaderForHer: OrganizeMainSceneへ遷移します");
+                    if (debugMode) DebugLogger.Log("RememberButtonTextLoaderForHer: OrganizeMainSceneへ遷移します");
                     UnityEngine.SceneManagement.SceneManager.LoadScene("OrganizeMainScene");
                 });
             }

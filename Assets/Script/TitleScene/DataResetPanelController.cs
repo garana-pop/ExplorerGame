@@ -71,7 +71,7 @@ public class DataResetPanelController : MonoBehaviour
             bool afterChangeToLastFlag = GameSaveManager.Instance.GetAfterChangeToLastFlag();
             if (afterChangeToLastFlag)
             {
-                if (debugMode) Debug.Log("DataResetPanelController: ゲームロード時にafterChangeToLastフラグがtrueを検出");
+                if (debugMode) DebugLogger.Log("DataResetPanelController: ゲームロード時にafterChangeToLastフラグがtrueを検出");
                 // フラグの状態を保持（ボタンクリック時に使用）
             }
         }
@@ -97,7 +97,7 @@ public class DataResetPanelController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("DataResetPanelController: 思い出すボタンが設定されていません");
+            DebugLogger.LogError("DataResetPanelController: 思い出すボタンが設定されていません");
         }
     }
 
@@ -116,7 +116,7 @@ public class DataResetPanelController : MonoBehaviour
         {
             shouldShowPanel = true;
             reason = "DataResetPanelControllerBootフラグがtrue";
-            if (debugMode) Debug.Log($"DataResetPanelController: {reason}");
+            if (debugMode) DebugLogger.Log($"DataResetPanelController: {reason}");
         }
 
         // GameSaveManagerのafterChangeToLastフラグをチェック
@@ -127,19 +127,19 @@ public class DataResetPanelController : MonoBehaviour
             {
                 shouldShowPanel = true;
                 reason = "afterChangeToLastフラグがtrue";
-                if (debugMode) Debug.Log($"DataResetPanelController: {reason}");
+                if (debugMode) DebugLogger.Log($"DataResetPanelController: {reason}");
             }
         }
 
         // パネル表示判定
         if (shouldShowPanel)
         {
-            if (debugMode) Debug.Log($"DataResetPanelController: {reason}のため、データ初期化確認パネルを表示します");
+            if (debugMode) DebugLogger.Log($"DataResetPanelController: {reason}のため、データ初期化確認パネルを表示します");
             ShowDataResetPanel();
         }
         else
         {
-            if (debugMode) Debug.Log("DataResetPanelController: パネル表示条件を満たしていません");
+            if (debugMode) DebugLogger.Log("DataResetPanelController: パネル表示条件を満たしていません");
         }
     }
 
@@ -154,23 +154,23 @@ public class DataResetPanelController : MonoBehaviour
     //        if (!settingsPanel.activeSelf)
     //        {
     //            settingsPanel.SetActive(true);
-    //            if (debugMode) Debug.Log("DataResetPanelController: 設定パネルをアクティブにしました");
+    //            if (debugMode) DebugLogger.Log("DataResetPanelController: 設定パネルをアクティブにしました");
     //        }
     //    }
     //    else
     //    {
-    //        Debug.LogWarning("DataResetPanelController: 設定パネルが設定されていません");
+    //        DebugLogger.LogWarning("DataResetPanelController: 設定パネルが設定されていません");
     //    }
 
     //    // その後、データ初期化確認パネルを表示
     //    if (dataResetConfirmationPanel != null)
     //    {
     //        dataResetConfirmationPanel.SetActive(true);
-    //        if (debugMode) Debug.Log("DataResetPanelController: データ初期化確認パネルを表示しました");
+    //        if (debugMode) DebugLogger.Log("DataResetPanelController: データ初期化確認パネルを表示しました");
     //    }
     //    else
     //    {
-    //        Debug.LogError("DataResetPanelController: データ初期化確認パネルが設定されていません");
+    //        DebugLogger.LogError("DataResetPanelController: データ初期化確認パネルが設定されていません");
     //    }
     //}
     private void ShowDataResetPanel()
@@ -187,12 +187,12 @@ public class DataResetPanelController : MonoBehaviour
             if (!settingsPanel.activeSelf)
             {
                 settingsPanel.SetActive(true);
-                if (debugMode) Debug.Log("DataResetPanelController: 設定パネルをアクティブにしました");
+                if (debugMode) DebugLogger.Log("DataResetPanelController: 設定パネルをアクティブにしました");
             }
         }
         else
         {
-            Debug.LogWarning("DataResetPanelController: 設定パネルが設定されていません");
+            DebugLogger.LogWarning("DataResetPanelController: 設定パネルが設定されていません");
         }
 
         // 1フレーム待機（重要）
@@ -202,11 +202,11 @@ public class DataResetPanelController : MonoBehaviour
         if (dataResetConfirmationPanel != null)
         {
             dataResetConfirmationPanel.SetActive(true);
-            if (debugMode) Debug.Log("DataResetPanelController: データ初期化確認パネルを表示しました");
+            if (debugMode) DebugLogger.Log("DataResetPanelController: データ初期化確認パネルを表示しました");
         }
         else
         {
-            Debug.LogError("DataResetPanelController: データ初期化確認パネルが設定されていません");
+            DebugLogger.LogError("DataResetPanelController: データ初期化確認パネルが設定されていません");
         }
     }
 
@@ -219,7 +219,7 @@ public class DataResetPanelController : MonoBehaviour
         {
             dataResetConfirmationPanel.SetActive(false);
 
-            if (debugMode) Debug.Log("DataResetPanelController: データ初期化確認パネルを非表示にしました");
+            if (debugMode) DebugLogger.Log("DataResetPanelController: データ初期化確認パネルを非表示にしました");
         }
     }
 
@@ -228,30 +228,30 @@ public class DataResetPanelController : MonoBehaviour
     /// </summary>
     private void CheckAndLogFlags()
     {
-        Debug.Log("=== DataResetPanelController フラグ状態 ===");
+        DebugLogger.Log("=== DataResetPanelController フラグ状態 ===");
 
         // RememberButtonTextChangerForHerのフラグ
         RememberButtonTextChangerForHer textChanger = FindFirstObjectByType<RememberButtonTextChangerForHer>();
         if (textChanger != null)
         {
-            Debug.Log($"DataResetPanelControllerBootフラグ: {textChanger.DataResetPanelControllerBoot}");
+            DebugLogger.Log($"DataResetPanelControllerBootフラグ: {textChanger.DataResetPanelControllerBoot}");
         }
         else
         {
-            Debug.Log("RememberButtonTextChangerForHerが見つかりません");
+            DebugLogger.Log("RememberButtonTextChangerForHerが見つかりません");
         }
 
         // GameSaveManagerのフラグ
         if (GameSaveManager.Instance != null)
         {
-            Debug.Log($"afterChangeToLastフラグ: {GameSaveManager.Instance.GetAfterChangeToLastFlag()}");
+            DebugLogger.Log($"afterChangeToLastフラグ: {GameSaveManager.Instance.GetAfterChangeToLastFlag()}");
         }
         else
         {
-            Debug.Log("GameSaveManagerが見つかりません");
+            DebugLogger.Log("GameSaveManagerが見つかりません");
         }
 
-        Debug.Log("=====================================");
+        DebugLogger.Log("=====================================");
     }
 
     private void OnDestroy()

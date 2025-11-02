@@ -141,7 +141,7 @@ public class SpeakerNameTransitionController : MonoBehaviour
             }
 
             if (leftNameText == null)
-                Debug.LogWarning("左側キャラクターの名前テキスト(TextMeshProUGUI)が設定されていません。");
+                DebugLogger.LogWarning("左側キャラクターの名前テキスト(TextMeshProUGUI)が設定されていません。");
         }
 
         // 右側の名前テキストの確認
@@ -159,7 +159,7 @@ public class SpeakerNameTransitionController : MonoBehaviour
             }
 
             if (rightNameText == null)
-                Debug.LogWarning("右側キャラクターの名前テキスト(TextMeshProUGUI)が設定されていません。");
+                DebugLogger.LogWarning("右側キャラクターの名前テキスト(TextMeshProUGUI)が設定されていません。");
         }
     }
 
@@ -204,7 +204,7 @@ public class SpeakerNameTransitionController : MonoBehaviour
 
                 if (debugMode)
                 {
-                    Debug.Log($"話者名変更コマンド実行: {commandKey} " + $"({setting.GetBeforeName()} → {setting.GetAfterName()})");
+                    DebugLogger.Log($"話者名変更コマンド実行: {commandKey} " + $"({setting.GetBeforeName()} → {setting.GetAfterName()})");
                 }
 
                 break;
@@ -325,7 +325,7 @@ public class SpeakerNameTransitionController : MonoBehaviour
         textComponent.color = originalTextColor;
 
         if (debugMode)
-            Debug.Log($"名前変更完了: {fromName} → {toName}");
+            DebugLogger.Log($"名前変更完了: {fromName} → {toName}");
 
         // 話者名変更中フラグを下ろす
         IsTransitioning = false;

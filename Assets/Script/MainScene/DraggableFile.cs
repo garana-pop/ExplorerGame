@@ -44,7 +44,7 @@ public class DraggableFile : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         draggingCanvas = GameObject.Find("DraggingCanvas").GetComponent<Canvas>(); // ƒV[ƒ“‚©‚çæ“¾
         if (draggingCanvas == null)
         {
-            Debug.LogError("DraggingCanvas‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
+            DebugLogger.LogError("DraggingCanvas‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
         }
     }
 

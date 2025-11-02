@@ -50,7 +50,7 @@ public class DialoguePanelPositioner : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log("DialoguePanelPositioner: 初期化完了");
+            DebugLogger.Log("DialoguePanelPositioner: 初期化完了");
         }
     }
 
@@ -76,7 +76,7 @@ public class DialoguePanelPositioner : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"セリフ配置 #{entryCount}: 「{entry.speaker}」 - {entry.dialogue.Substring(0, Mathf.Min(20, entry.dialogue.Length))}...");
+            DebugLogger.Log($"セリフ配置 #{entryCount}: 「{entry.speaker}」 - {entry.dialogue.Substring(0, Mathf.Min(20, entry.dialogue.Length))}...");
         }
 
         // 話者に応じた配置を適用
@@ -103,7 +103,7 @@ public class DialoguePanelPositioner : MonoBehaviour
 
         if (texts.Length == 0)
         {
-            Debug.LogError("テキストコンポーネントが見つかりません");
+            DebugLogger.LogError("テキストコンポーネントが見つかりません");
             return;
         }
 
@@ -146,7 +146,7 @@ public class DialoguePanelPositioner : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"テキスト強制設定: {text.name}, テキスト=\"{text.text.Substring(0, Mathf.Min(20, text.text.Length))}...\", 色={text.color}, サイズ={text.fontSize}");
+                DebugLogger.Log($"テキスト強制設定: {text.name}, テキスト=\"{text.text.Substring(0, Mathf.Min(20, text.text.Length))}...\", 色={text.color}, サイズ={text.fontSize}");
             }
         }
 
@@ -157,7 +157,7 @@ public class DialoguePanelPositioner : MonoBehaviour
             if (!parent.gameObject.activeSelf)
             {
                 parent.gameObject.SetActive(true);
-                Debug.Log($"非アクティブな親オブジェクトをアクティブ化: {parent.name}");
+                DebugLogger.Log($"非アクティブな親オブジェクトをアクティブ化: {parent.name}");
             }
             parent = parent.parent;
         }
@@ -167,7 +167,7 @@ public class DialoguePanelPositioner : MonoBehaviour
         if (canvasGroup != null && canvasGroup.alpha < 1f)
         {
             canvasGroup.alpha = 1f;
-            Debug.Log("CanvasGroupの透明度を1に設定");
+            DebugLogger.Log("CanvasGroupの透明度を1に設定");
         }
     }
 
@@ -199,7 +199,7 @@ public class DialoguePanelPositioner : MonoBehaviour
         RectTransform rectTransform = dialogueObject.GetComponent<RectTransform>();
         if (rectTransform == null)
         {
-            Debug.LogError("RectTransformがありません");
+            DebugLogger.LogError("RectTransformがありません");
             return;
         }
 
@@ -236,7 +236,7 @@ public class DialoguePanelPositioner : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"位置設定: {alignment}, X位置: {rectTransform.anchoredPosition.x}, サイズ: {rectTransform.sizeDelta}");
+            DebugLogger.Log($"位置設定: {alignment}, X位置: {rectTransform.anchoredPosition.x}, サイズ: {rectTransform.sizeDelta}");
         }
     }
 

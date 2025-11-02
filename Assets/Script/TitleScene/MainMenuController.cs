@@ -90,7 +90,7 @@ public class MainMenuController : MonoBehaviour
         GameSaveManager saveManager = GameSaveManager.Instance;
         if (saveManager == null)
         {
-            Debug.LogWarning("MainMenuController: GameSaveManagerが見つかりません");
+            DebugLogger.LogWarning("MainMenuController: GameSaveManagerが見つかりません");
             return;
         }
 
@@ -99,7 +99,7 @@ public class MainMenuController : MonoBehaviour
         //if (fromMonologue)
         //{
         //    rememberButton.SetActive(false);
-        //    Debug.Log("MainMenuController: 思い出すボタンを非表示にしました");
+        //    DebugLogger.Log("MainMenuController: 思い出すボタンを非表示にしました");
 
         //    saveManager.SaveGame();
         //}
@@ -172,7 +172,7 @@ public class MainMenuController : MonoBehaviour
         else
         {
             // ConversationTransitionControllerが見つからない場合のフォールバック
-            Debug.LogWarning("MainMenuController: ConversationTransitionControllerが見つかりません。直接シーン遷移を行います。");
+            DebugLogger.LogWarning("MainMenuController: ConversationTransitionControllerが見つかりません。直接シーン遷移を行います。");
 
             // セーブデータの存在をチェック
             if (GameSaveManager.Instance != null)

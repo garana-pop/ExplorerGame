@@ -91,7 +91,7 @@ public class CharacterDisplayController : MonoBehaviour
                 character.characterImage = character.characterObject.GetComponent<Image>();
                 if (character.characterImage == null)
                 {
-                    Debug.LogWarning($"キャラクター {character.characterName} の Image コンポーネントが見つかりません");
+                    DebugLogger.LogWarning($"キャラクター {character.characterName} の Image コンポーネントが見つかりません");
                 }
             }
 
@@ -101,7 +101,7 @@ public class CharacterDisplayController : MonoBehaviour
                 character.nameText = character.characterObject.GetComponentInChildren<TextMeshProUGUI>();
                 if (character.nameText == null)
                 {
-                    Debug.LogWarning($"キャラクター {character.characterName} の TextMeshProUGUI コンポーネントが見つかりません");
+                    DebugLogger.LogWarning($"キャラクター {character.characterName} の TextMeshProUGUI コンポーネントが見つかりません");
                 }
             }
         }
@@ -277,7 +277,7 @@ public class CharacterDisplayController : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.LogWarning($"話者名 '{speakerName}' に一致するキャラクターが見つかりません");
+                DebugLogger.LogWarning($"話者名 '{speakerName}' に一致するキャラクターが見つかりません");
             }
             return;
         }
@@ -351,7 +351,7 @@ public class CharacterDisplayController : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"キャラクターをハイライト: {speakerName}");
+            DebugLogger.Log($"キャラクターをハイライト: {speakerName}");
         }
     }
 
@@ -488,7 +488,7 @@ public class CharacterDisplayController : MonoBehaviour
     {
         if (string.IsNullOrEmpty(characterName) || characterObject == null)
         {
-            Debug.LogError("キャラクター名とゲームオブジェクトは必須です");
+            DebugLogger.LogError("キャラクター名とゲームオブジェクトは必須です");
             return;
         }
 
@@ -497,7 +497,7 @@ public class CharacterDisplayController : MonoBehaviour
         {
             if (character.characterName.Equals(characterName, System.StringComparison.OrdinalIgnoreCase))
             {
-                Debug.LogWarning($"同じ名前のキャラクター '{characterName}' は既に登録されています");
+                DebugLogger.LogWarning($"同じ名前のキャラクター '{characterName}' は既に登録されています");
                 return;
             }
         }
@@ -564,7 +564,7 @@ public class CharacterDisplayController : MonoBehaviour
 
         //if (debugMode)
         //{
-        //    Debug.Log($"キャラクターを追加: {characterName}");
+        //    DebugLogger.Log($"キャラクターを追加: {characterName}");
         //}
     }
 

@@ -55,7 +55,7 @@ public class TitleTextLoader : MonoBehaviour
 
         if (titleText == null)
         {
-            Debug.LogError("TitleTextLoader: TextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
+            DebugLogger.LogError("TitleTextLoader: TextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
             enabled = false;
             return;
         }
@@ -91,7 +91,7 @@ public class TitleTextLoader : MonoBehaviour
         localizationManager = FindFirstObjectByType<LocalizationManager>();
         if (localizationManager == null && debugMode)
         {
-            Debug.LogWarning("TitleTextLoader: LocalizationManagerが見つかりません");
+            DebugLogger.LogWarning("TitleTextLoader: LocalizationManagerが見つかりません");
         }
     }
 
@@ -122,7 +122,7 @@ public class TitleTextLoader : MonoBehaviour
     {
         if (debugMode)
         {
-            Debug.Log($"TitleTextLoader: 言語が変更されました: {newLocale.Identifier.Code}");
+            DebugLogger.Log($"TitleTextLoader: 言語が変更されました: {newLocale.Identifier.Code}");
         }
 
         // 現在の設定で再適用
@@ -141,7 +141,7 @@ public class TitleTextLoader : MonoBehaviour
         }
 
         if (debugMode)
-            Debug.Log("TitleTextLoader: GameSaveManagerが存在しないため、false を返します");
+            DebugLogger.Log("TitleTextLoader: GameSaveManagerが存在しないため、false を返します");
         return false;
     }
 
@@ -154,7 +154,7 @@ public class TitleTextLoader : MonoBehaviour
         // afterChangeToLastフラグがtrueの場合は処理をスキップ
         if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
         {
-            if (debugMode) Debug.Log("TitleTextLoader: afterChangeToLastがtrueのため処理をスキップします");
+            if (debugMode) DebugLogger.Log("TitleTextLoader: afterChangeToLastがtrueのため処理をスキップします");
             return;
         }
 
@@ -164,8 +164,8 @@ public class TitleTextLoader : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"TitleTextLoader: afterChangeToHerMemoryフラグ = {afterChangeFlag}");
-                Debug.Log($"TitleTextLoader: 現在のタイトルテキスト = '{titleText?.text}'");
+                DebugLogger.Log($"TitleTextLoader: afterChangeToHerMemoryフラグ = {afterChangeFlag}");
+                DebugLogger.Log($"TitleTextLoader: 現在のタイトルテキスト = '{titleText?.text}'");
             }
 
             // フラグに基づいてテキストを設定
@@ -173,7 +173,7 @@ public class TitleTextLoader : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.LogError($"TitleTextLoader: タイトルテキスト設定中にエラー: {ex.Message}");
+            DebugLogger.LogError($"TitleTextLoader: タイトルテキスト設定中にエラー: {ex.Message}");
         }
     }
 
@@ -186,7 +186,7 @@ public class TitleTextLoader : MonoBehaviour
     {
         if (titleText == null)
         {
-            Debug.LogError("TitleTextLoader: titleTextがnullです");
+            DebugLogger.LogError("TitleTextLoader: titleTextがnullです");
             return;
         }
 
@@ -200,7 +200,7 @@ public class TitleTextLoader : MonoBehaviour
             localizeStringEvent.enabled = false;
             if (debugMode)
             {
-                Debug.Log("TitleTextLoader: Localize String Eventを無効化しました");
+                DebugLogger.Log("TitleTextLoader: Localize String Eventを無効化しました");
             }
         }
         else if (!useChangedTitle && localizeStringEvent != null)
@@ -209,7 +209,7 @@ public class TitleTextLoader : MonoBehaviour
             localizeStringEvent.enabled = true;
             if (debugMode)
             {
-                Debug.Log("TitleTextLoader: Localize String Eventを有効化しました");
+                DebugLogger.Log("TitleTextLoader: Localize String Eventを有効化しました");
             }
             return; // Localize String Eventに処理を任せる
         }
@@ -225,7 +225,7 @@ public class TitleTextLoader : MonoBehaviour
                 isEnglish = (currentLanguage == "en");
                 if (debugMode)
                 {
-                    Debug.Log($"TitleTextLoader: 現在の言語 = {currentLanguage}");
+                    DebugLogger.Log($"TitleTextLoader: 現在の言語 = {currentLanguage}");
                 }
             }
 
@@ -235,7 +235,7 @@ public class TitleTextLoader : MonoBehaviour
             // テキストが空でないことを確認
             if (string.IsNullOrEmpty(targetText))
             {
-                Debug.LogWarning($"TitleTextLoader: 設定するテキストが空です (isEnglish: {isEnglish})");
+                DebugLogger.LogWarning($"TitleTextLoader: 設定するテキストが空です (isEnglish: {isEnglish})");
                 // フォールバック
                 targetText = isEnglish ? "Memories of 'Her'" : "「彼女」の記憶";
             }
@@ -244,7 +244,7 @@ public class TitleTextLoader : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"TitleTextLoader: タイトルテキストを設定しました: '{targetText}' (変更後: {useChangedTitle}, 英語: {isEnglish})");
+                DebugLogger.Log($"TitleTextLoader: タイトルテキストを設定しました: '{targetText}' (変更後: {useChangedTitle}, 英語: {isEnglish})");
             }
         }
     }
@@ -301,13 +301,13 @@ public class TitleTextLoader : MonoBehaviour
             localizeEnabled = localizeStringEvent.enabled;
         }
 
-        Debug.Log($"=== TitleTextLoader フラグ状態 ===");
-        Debug.Log($"GameSaveManager: {gameSaveFlag}");
-        Debug.Log($"TitleTextChanger: {titleChangerFlag}");
-        Debug.Log($"LocalizeStringEvent有効: {localizeEnabled}");
-        Debug.Log($"現在のタイトル: '{titleText?.text}'");
-        Debug.Log($"変更後タイトル使用中: {isUsingChangedTitle}");
-        Debug.Log($"==============================");
+        DebugLogger.Log($"=== TitleTextLoader フラグ状態 ===");
+        DebugLogger.Log($"GameSaveManager: {gameSaveFlag}");
+        DebugLogger.Log($"TitleTextChanger: {titleChangerFlag}");
+        DebugLogger.Log($"LocalizeStringEvent有効: {localizeEnabled}");
+        DebugLogger.Log($"現在のタイトル: '{titleText?.text}'");
+        DebugLogger.Log($"変更後タイトル使用中: {isUsingChangedTitle}");
+        DebugLogger.Log($"==============================");
     }
 
     /// <summary>
@@ -327,9 +327,9 @@ public class TitleTextLoader : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"TitleTextLoader: TitleTextChangerから設定を更新しました");
-                Debug.Log($"通常テキスト: '{normalTitleText}'");
-                Debug.Log($"変更後テキスト: '{changedTitleText}'");
+                DebugLogger.Log($"TitleTextLoader: TitleTextChangerから設定を更新しました");
+                DebugLogger.Log($"通常テキスト: '{normalTitleText}'");
+                DebugLogger.Log($"変更後テキスト: '{changedTitleText}'");
             }
         }
     }

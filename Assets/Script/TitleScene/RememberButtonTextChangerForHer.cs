@@ -108,7 +108,7 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
             {
                 organizeMainSceneActive = true;
 
-                Debug.Log("OrganizeMainSceneActive が true になったのでイベント発火！");
+                DebugLogger.Log("OrganizeMainSceneActive が true になったのでイベント発火！");
                 OnOrganizeMainSceneActivated?.Invoke();
             }
             else
@@ -155,7 +155,7 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
 
         if (ShouldExecuteTextChange())
         {
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: ボタンテキスト変更を開始します");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: ボタンテキスト変更を開始します");
             StartCoroutine(StartTextChange());
         }
         CheckAndChangeButtonText();
@@ -265,17 +265,17 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     {
         if (debugMode)
         {
-            Debug.Log($"RememberButtonTextChangerForHer：ShouldExecuteTextChangeメソッドは呼ばれてる");
-            Debug.Log($"RememberButtonTextChangerForHer: shouldExecuteOnNextLoadフラグ:{shouldExecuteOnNextLoad}");
-            Debug.Log($"RememberButtonTextChangerForHer: shouldExecuteReverseChangeOnNextLoadフラグ:{shouldExecuteReverseChangeOnNextLoad}");
-            Debug.Log($"RememberButtonTextChangerForHer: buttonTextChangedForHerフラグ:{buttonTextChangedForHer}");
-            Debug.Log($"RememberButtonTextChangerForHer: isReverseModeフラグ:{isReverseMode}");
+            DebugLogger.Log($"RememberButtonTextChangerForHer：ShouldExecuteTextChangeメソッドは呼ばれてる");
+            DebugLogger.Log($"RememberButtonTextChangerForHer: shouldExecuteOnNextLoadフラグ:{shouldExecuteOnNextLoad}");
+            DebugLogger.Log($"RememberButtonTextChangerForHer: shouldExecuteReverseChangeOnNextLoadフラグ:{shouldExecuteReverseChangeOnNextLoad}");
+            DebugLogger.Log($"RememberButtonTextChangerForHer: buttonTextChangedForHerフラグ:{buttonTextChangedForHer}");
+            DebugLogger.Log($"RememberButtonTextChangerForHer: isReverseModeフラグ:{isReverseMode}");
         }
 
         // デバッグモード強制実行
         if (debugMode && forceExecute)
         {
-            Debug.Log("RememberButtonTextChangerForHer: 強制実行モードでテキスト変更を実行");
+            DebugLogger.Log("RememberButtonTextChangerForHer: 強制実行モードでテキスト変更を実行");
             return true;
         }
 
@@ -283,7 +283,7 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
         if (shouldExecuteReverseChangeOnNextLoad)
         {
             shouldExecuteReverseChangeOnNextLoad = false;
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 逆変換（MonologueScene → TitleScene）を実行");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: 逆変換（MonologueScene → TitleScene）を実行");
             OrganizeMainSceneActive = true;
             return true;
         }
@@ -292,14 +292,14 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
         if (shouldExecuteOnNextLoad)
         {
             shouldExecuteOnNextLoad = false;
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 通常変換（HerMainScene → TitleScene）を実行");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: 通常変換（HerMainScene → TitleScene）を実行");
             return true;
         }
 
         // すでに変更済みの場合はスキップ
         if (buttonTextChangedForHer && !isReverseMode)
         {
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: すでにテキスト変更済みです");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: すでにテキスト変更済みです");
             return false;
         }
 
@@ -311,7 +311,7 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     {
         shouldExecuteOnNextLoad = true;
         isReverseMode = false; // 通常変換モードに設定
-        Debug.Log("RememberButtonTextChangerForHer: 通常変換フラグを設定しました");
+        DebugLogger.Log("RememberButtonTextChangerForHer: 通常変換フラグを設定しました");
     }
 
     private IEnumerator StartTextChange()
@@ -327,7 +327,7 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
         if (localizeStringEvent != null)
         {
             localizeStringEvent.enabled = false;
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: LocalizeStringEventを無効化");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: LocalizeStringEventを無効化");
         }
 
         // 現在のテキストとターゲットテキストの長さを調整
@@ -360,17 +360,17 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
             buttonTextChangedForHer = false;
             isReverseMode = false; // 逆変換モードを解除
             DataResetPanelControllerBoot = true; //
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 逆変換により完了フラグとモードをリセットしました");
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: DataResetPanelControllerBootフラグ" + DataResetPanelControllerBoot + "に変更");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: 逆変換により完了フラグとモードをリセットしました");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: DataResetPanelControllerBootフラグ" + DataResetPanelControllerBoot + "に変更");
         }
         else if (setCompletionFlag && targetText == newButtonText)
         {
             // 通常変換の場合はフラグを設定
             buttonTextChangedForHer = true;
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 完了フラグを設定しました");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: 完了フラグを設定しました");
         }
 
-        if (debugMode) Debug.Log("RememberButtonTextChangerForHer: テキスト変更が完了しました");
+        if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: テキスト変更が完了しました");
     }
 
     private IEnumerator ChangeCharacter(int index, string targetText)
@@ -461,7 +461,7 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     {
         buttonTextChangedForHer = false;
 
-        if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 完了フラグをリセットしました");
+        if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: 完了フラグをリセットしました");
     }
 
     /// <summary>
@@ -480,11 +480,11 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
         // DataResetPanelControllerBootフラグチェックを最優先で実行
         if (DataResetPanelControllerBoot)
         {
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: DataResetPanelControllerBootフラグがtrueのため、シーン遷移をスキップします");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: DataResetPanelControllerBootフラグがtrueのため、シーン遷移をスキップします");
             return; // 早期リターンでシーン遷移処理を停止CheckAfterChangeToLastFlagAndProceed
         }
 
-        Debug.Log("RememberButtonTextChangerForHer:OnRememberButtonClickedメソッド起動");
+        DebugLogger.Log("RememberButtonTextChangerForHer:OnRememberButtonClickedメソッド起動");
 
         // 遅延してafterChangeToLastフラグをチェック
         StartCoroutine(CheckAfterChangeToLastFlagAndProceed());
@@ -495,12 +495,12 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
         // GameSaveManagerのロード完了を待つ
         yield return new WaitForSeconds(0.5f);
 
-        Debug.Log("RememberButtonTextChangerForHer-GetAfterChangeToLastFlag: " + GameSaveManager.Instance.GetAfterChangeToLastFlag());
+        DebugLogger.Log("RememberButtonTextChangerForHer-GetAfterChangeToLastFlag: " + GameSaveManager.Instance.GetAfterChangeToLastFlag());
 
         // afterChangeToLastフラグをチェック
         if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
         {
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: afterChangeToLastフラグがtrueのため、OrganizeMainSceneへ遷移設定開始");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: afterChangeToLastフラグがtrueのため、OrganizeMainSceneへ遷移設定開始");
 
             Button button = buttonText.GetComponentInParent<Button>();
             if (button != null)
@@ -508,14 +508,14 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
                 button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(() =>
                 {
-                    if (debugMode) Debug.Log("RememberButtonTextChangerForHer: OrganizeMainSceneへ遷移します");
+                    if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: OrganizeMainSceneへ遷移します");
                     UnityEngine.SceneManagement.SceneManager.LoadScene("OrganizeMainScene");
                 });
             }
         }
 
         // フラグがfalseまたは取得できない場合は既存のシーン遷移処理を継続
-        if (debugMode) Debug.Log($"RememberButtonTextChangerForHer: {targetSceneName}へ遷移します");
+        if (debugMode) DebugLogger.Log($"RememberButtonTextChangerForHer: {targetSceneName}へ遷移します");
         StartCoroutine(TransitionToMonologue());
     }
 
@@ -534,18 +534,18 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
         // コルーチン開始時にも再度フラグチェック
         if (DataResetPanelControllerBoot)
         {
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: TransitionToMonologue開始時にDataResetPanelControllerBootフラグがtrueのため、処理を停止します");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: TransitionToMonologue開始時にDataResetPanelControllerBootフラグがtrueのため、処理を停止します");
             yield break; // コルーチンを終了
         }
 
         // afterChangeToLastフラグの再チェック
         if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
         {
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: TransitionToMonologue開始時にafterChangeToLastフラグがtrueのため、処理を停止します");
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: TransitionToMonologue開始時にafterChangeToLastフラグがtrueのため、処理を停止します");
             yield break; // コルーチンを終了
         }
 
-        if (debugMode) Debug.Log("RememberButtonTextChangerForHer: シーン遷移処理を開始します");
+        if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: シーン遷移処理を開始します");
 
         // 遷移遅延（必要に応じてフェード処理などを追加可能）
         yield return new WaitForSeconds(transitionDelay);
@@ -561,8 +561,8 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
     {
         shouldExecuteReverseChangeOnNextLoad = true;
         isReverseMode = true; // 逆変換モードに設定
-        Debug.Log("RememberButtonTextChangerForHer-SetReverseTransitionFlag():shouldExecuteReverseChangeOnNextLoadフラグ：" + shouldExecuteReverseChangeOnNextLoad);
-        Debug.Log("RememberButtonTextChangerForHer: 逆変換モードに設定しました");
+        DebugLogger.Log("RememberButtonTextChangerForHer-SetReverseTransitionFlag():shouldExecuteReverseChangeOnNextLoadフラグ：" + shouldExecuteReverseChangeOnNextLoad);
+        DebugLogger.Log("RememberButtonTextChangerForHer: 逆変換モードに設定しました");
     }
 
     /// <summary>
@@ -579,29 +579,29 @@ public class RememberButtonTextChangerForHer : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"RememberButtonTextChangerForHer: isReverseModeフラグ: {isReverseMode}");
-            Debug.Log($"RememberButtonTextChangerForHer: 現在の言語コード: {currentLanguageCode}");
+            DebugLogger.Log($"RememberButtonTextChangerForHer: isReverseModeフラグ: {isReverseMode}");
+            DebugLogger.Log($"RememberButtonTextChangerForHer: 現在の言語コード: {currentLanguageCode}");
         }
 
         // フラグベースで判定
         if (isReverseMode && currentLanguageCode == "ja")
         {
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 逆変換モード - ターゲット: " + reverseTargetText);
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: 逆変換モード - ターゲット: " + reverseTargetText);
             return reverseTargetText; // "整理する"
         }
         else if (isReverseMode && currentLanguageCode == "en")
         {
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 逆変換モード - ターゲット: " + reverseTargetTextEnglish);
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: 逆変換モード - ターゲット: " + reverseTargetTextEnglish);
             return reverseTargetTextEnglish; // "Organize"
         }
         else if (!isReverseMode && currentLanguageCode == "en")
         {
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 通常変換モード - ターゲット: " + newButtonTextEnglish);
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: 通常変換モード - ターゲット: " + newButtonTextEnglish);
             return newButtonTextEnglish; // "Accept"
         }
         else
         {
-            if (debugMode) Debug.Log("RememberButtonTextChangerForHer: 通常変換モード - ターゲット: " + newButtonText);
+            if (debugMode) DebugLogger.Log("RememberButtonTextChangerForHer: 通常変換モード - ターゲット: " + newButtonText);
             return newButtonText; // "決意する"
         }
     }

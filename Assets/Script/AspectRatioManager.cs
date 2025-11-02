@@ -32,7 +32,7 @@ public class AspectRatioManager : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.LogWarning($"{nameof(AspectRatioManager)}: このクラスは無効化されています");
+            DebugLogger.LogWarning($"{nameof(AspectRatioManager)}: このクラスは無効化されています");
         }
     }
 

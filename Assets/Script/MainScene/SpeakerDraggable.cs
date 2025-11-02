@@ -22,7 +22,7 @@ public class SpeakerDraggable : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         draggingCanvas = GameObject.Find("DraggingCanvas").GetComponent<Canvas>();
         if (draggingCanvas == null)
         {
-            Debug.LogError("DraggingCanvasが見つかりません");
+            DebugLogger.LogError("DraggingCanvasが見つかりません");
         }
 
         // 自身のCanvasGroupの取得または追加
@@ -71,7 +71,7 @@ public class SpeakerDraggable : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         {
             // LocalizationManagerが存在しない場合は日本語をデフォルトとする
             speakerName = speakerName_Japanese;
-            Debug.LogWarning($"{nameof(SpeakerDraggable)}: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+            DebugLogger.LogWarning($"{nameof(SpeakerDraggable)}: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
             return;
         }
 

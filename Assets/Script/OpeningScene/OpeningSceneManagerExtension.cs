@@ -32,7 +32,7 @@ public class OpeningSceneManagerExtension : MonoBehaviour
             if (characterController == null)
             {
                 characterController = gameObject.AddComponent<CharacterDisplayController>();
-                Debug.Log("CharacterDisplayControllerをAddComponentで追加しました");
+                DebugLogger.Log("CharacterDisplayControllerをAddComponentで追加しました");
             }
         }
     }
@@ -75,7 +75,7 @@ public class OpeningSceneManagerExtension : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log("キャラクター設定を完了しました");
+            DebugLogger.Log("キャラクター設定を完了しました");
         }
     }
 
@@ -126,7 +126,7 @@ public class OpeningSceneManagerExtension : MonoBehaviour
 
         if (debugMode)
         {
-            Debug.Log($"ダイアログイベント: '{entry.speaker}' がセリフを話しています: '{entry.dialogue.Substring(0, Mathf.Min(20, entry.dialogue.Length))}...'");
+            DebugLogger.Log($"ダイアログイベント: '{entry.speaker}' がセリフを話しています: '{entry.dialogue.Substring(0, Mathf.Min(20, entry.dialogue.Length))}...'");
         }
     }
 

@@ -13,7 +13,7 @@ public class ExplorerController : MonoBehaviour, IDropHandler
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
         {
-            Debug.LogError("CanvasGroup component not found!");
+            DebugLogger.LogError("CanvasGroup component not found!");
             return;
         }
 
@@ -44,7 +44,7 @@ public class ExplorerController : MonoBehaviour, IDropHandler
             // 新しい親を記録
             lastParent = transform.parent;
 
-            Debug.Log("親オブジェクトの変更して、blocksRaycasts = trueにしたよ");
+            DebugLogger.Log("親オブジェクトの変更して、blocksRaycasts = trueにしたよ");
         }
     }
 

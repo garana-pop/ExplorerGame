@@ -104,7 +104,7 @@ public class DataResetManager : MonoBehaviour
     {
         if (messagePanel == null || messageText == null)
         {
-            Debug.LogWarning("DataResetManager: メッセージパネルまたはテキストが設定されていません");
+            DebugLogger.LogWarning("DataResetManager: メッセージパネルまたはテキストが設定されていません");
             yield break;
         }
 
@@ -126,7 +126,7 @@ public class DataResetManager : MonoBehaviour
             deletionMessage = "保存されていたデータはすべて削除されました";
         }
 
-        Debug.Log($"DataResetManager: 現在の言語コード: {currentLanguageCode}, 表示メッセージ: {deletionMessage}");
+        DebugLogger.Log($"DataResetManager: 現在の言語コード: {currentLanguageCode}, 表示メッセージ: {deletionMessage}");
 
         // メッセージテキストを設定
         messageText.text = deletionMessage;

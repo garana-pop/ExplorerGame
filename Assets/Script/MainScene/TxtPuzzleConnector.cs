@@ -247,7 +247,7 @@ public class TxtPuzzleConnector : MonoBehaviour
     {
         if (debugMode)
         {
-            Debug.Log($"[TxtPuzzleConnector] {message}");
+            DebugLogger.Log($"[TxtPuzzleConnector] {message}");
         }
     }
 }

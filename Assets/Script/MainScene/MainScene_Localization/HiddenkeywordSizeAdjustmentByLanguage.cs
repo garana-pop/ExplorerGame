@@ -84,7 +84,7 @@ public class HiddenkeywordSizeAdjustmentByLanguage : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: LocalizationManagerが見つかりません");
+            DebugLogger.LogWarning($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: LocalizationManagerが見つかりません");
         }
     }
 
@@ -155,7 +155,7 @@ public class HiddenkeywordSizeAdjustmentByLanguage : MonoBehaviour
         // LocalizationManagerから現在の言語コードを取得
         if (LocalizationManager.Instance == null)
         {
-            Debug.LogWarning($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: LocalizationManagerが存在しません。日本語設定として処理します");
+            DebugLogger.LogWarning($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: LocalizationManagerが存在しません。日本語設定として処理します");
             currentLanguageCode = JAPANESE_CODE;
         }
         else
@@ -237,7 +237,7 @@ public class HiddenkeywordSizeAdjustmentByLanguage : MonoBehaviour
     {
         currentLanguageCode = ENGLISH_CODE;
         ApplyLanguageSizeAdjustment();
-        Debug.Log($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: 英語サイズをテスト適用しました");
+        DebugLogger.Log($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: 英語サイズをテスト適用しました");
     }
 
     /// <summary>
@@ -248,7 +248,7 @@ public class HiddenkeywordSizeAdjustmentByLanguage : MonoBehaviour
     {
         currentLanguageCode = JAPANESE_CODE;
         ApplyLanguageSizeAdjustment();
-        Debug.Log($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: 日本語サイズをテスト適用しました");
+        DebugLogger.Log($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: 日本語サイズをテスト適用しました");
     }
 
     /// <summary>
@@ -264,7 +264,7 @@ public class HiddenkeywordSizeAdjustmentByLanguage : MonoBehaviour
                 // 親オブジェクトの現在サイズを保存
                 adjustment.englishParentSize = adjustment.targetParentObject.sizeDelta;
 
-                Debug.Log($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: {adjustment.targetParentObject.name}の現在サイズを英語サイズとして保存: {adjustment.englishParentSize}");
+                DebugLogger.Log($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: {adjustment.targetParentObject.name}の現在サイズを英語サイズとして保存: {adjustment.englishParentSize}");
 
                 // 子HiddenKeywordの現在のサイズを保存
                 if (adjustment.adjustChildHiddenKeyword && adjustment.childHiddenKeyword != null)
@@ -274,7 +274,7 @@ public class HiddenkeywordSizeAdjustmentByLanguage : MonoBehaviour
                     {
                         adjustment.englishChildSize = childRect.sizeDelta;
 
-                        Debug.Log($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: 子HiddenKeyword {adjustment.childHiddenKeyword.name}の現在サイズを英語サイズとして保存: {adjustment.englishChildSize}");
+                        DebugLogger.Log($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: 子HiddenKeyword {adjustment.childHiddenKeyword.name}の現在サイズを英語サイズとして保存: {adjustment.englishChildSize}");
                     }
                 }
             }
@@ -288,6 +288,6 @@ public class HiddenkeywordSizeAdjustmentByLanguage : MonoBehaviour
     private void RefreshChildHiddenKeywords()
     {
         FindChildHiddenKeywords();
-        Debug.Log($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: 子HiddenKeywordコンポーネントを再検索しました");
+        DebugLogger.Log($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: 子HiddenKeywordコンポーネントを再検索しました");
     }
 }

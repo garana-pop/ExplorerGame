@@ -52,7 +52,7 @@ public class TitleTextLoaderForHim : MonoBehaviour
 
         if (titleText == null)
         {
-            Debug.LogError("TitleTextLoaderForHim: TextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
+            DebugLogger.LogError("TitleTextLoaderForHim: TextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
             enabled = false;
             return;
         }
@@ -142,7 +142,7 @@ public class TitleTextLoaderForHim : MonoBehaviour
         // afterChangeToLastフラグがtrueの場合は処理をスキップ
         if (GameSaveManager.Instance != null && GameSaveManager.Instance.GetAfterChangeToLastFlag())
         {
-            if (debugMode) Debug.Log("TitleTextLoaderForHim: afterChangeToLastがtrueのため処理をスキップします");
+            if (debugMode) DebugLogger.Log("TitleTextLoaderForHim: afterChangeToLastがtrueのため処理をスキップします");
             return;
         }
 
@@ -152,7 +152,7 @@ public class TitleTextLoaderForHim : MonoBehaviour
         if (debugMode && forceChangedTitle)
         {
             shouldChangeTitle = true;
-            if (debugMode) Debug.Log("TitleTextLoaderForHim: デバッグモードで強制的にタイトルを変更");
+            if (debugMode) DebugLogger.Log("TitleTextLoaderForHim: デバッグモードで強制的にタイトルを変更");
         }
         else
         {
@@ -165,9 +165,9 @@ public class TitleTextLoaderForHim : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"TitleTextLoaderForHim: afterChangeToHerMemory = {herMemoryFlag}");
-                Debug.Log($"TitleTextLoaderForHim: afterChangeToHisFuture = {hisFutureFlag}");
-                Debug.Log($"TitleTextLoaderForHim: 両フラグ条件 = {shouldChangeTitle}");
+                DebugLogger.Log($"TitleTextLoaderForHim: afterChangeToHerMemory = {herMemoryFlag}");
+                DebugLogger.Log($"TitleTextLoaderForHim: afterChangeToHisFuture = {hisFutureFlag}");
+                DebugLogger.Log($"TitleTextLoaderForHim: 両フラグ条件 = {shouldChangeTitle}");
             }
         }
 
@@ -179,7 +179,7 @@ public class TitleTextLoaderForHim : MonoBehaviour
         if (shouldChangeTitle)
         {
             titleText.text = isEnglish ? changedTitleTextEnglish : changedTitleText;
-            if (debugMode) Debug.Log($"TitleTextLoaderForHim: タイトルを「{titleText.text}」に変更しました");
+            if (debugMode) DebugLogger.Log($"TitleTextLoaderForHim: タイトルを「{titleText.text}」に変更しました");
         }
     }
 
@@ -220,7 +220,7 @@ public class TitleTextLoaderForHim : MonoBehaviour
                         if (flagField != null)
                         {
                             bool flagValue = (bool)flagField.GetValue(saveData);
-                            if (debugMode) Debug.Log($"TitleTextLoaderForHim: afterChangeToHerMemoryフラグ = {flagValue}");
+                            if (debugMode) DebugLogger.Log($"TitleTextLoaderForHim: afterChangeToHerMemoryフラグ = {flagValue}");
                             return flagValue;
                         }
                     }
@@ -228,12 +228,12 @@ public class TitleTextLoaderForHim : MonoBehaviour
             }
             catch (System.Exception e)
             {
-                if (debugMode) Debug.LogError($"TitleTextLoaderForHim: フラグ取得エラー: {e.Message}");
+                if (debugMode) DebugLogger.LogError($"TitleTextLoaderForHim: フラグ取得エラー: {e.Message}");
             }
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) Debug.LogWarning("TitleTextLoaderForHim: afterChangeToHerMemoryフラグを取得できませんでした");
+        if (debugMode) DebugLogger.LogWarning("TitleTextLoaderForHim: afterChangeToHerMemoryフラグを取得できませんでした");
         return false;
     }
 
@@ -262,7 +262,7 @@ public class TitleTextLoaderForHim : MonoBehaviour
                         if (flagField != null)
                         {
                             bool flagValue = (bool)flagField.GetValue(saveData);
-                            if (debugMode) Debug.Log($"TitleTextLoaderForHim: afterChangeToHisFutureフラグ = {flagValue}");
+                            if (debugMode) DebugLogger.Log($"TitleTextLoaderForHim: afterChangeToHisFutureフラグ = {flagValue}");
                             return flagValue;
                         }
                     }
@@ -270,12 +270,12 @@ public class TitleTextLoaderForHim : MonoBehaviour
             }
             catch (System.Exception e)
             {
-                if (debugMode) Debug.LogError($"TitleTextLoaderForHim: フラグ取得エラー: {e.Message}");
+                if (debugMode) DebugLogger.LogError($"TitleTextLoaderForHim: フラグ取得エラー: {e.Message}");
             }
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) Debug.LogWarning("TitleTextLoaderForHim: afterChangeToHisFutureフラグを取得できませんでした");
+        if (debugMode) DebugLogger.LogWarning("TitleTextLoaderForHim: afterChangeToHisFutureフラグを取得できませんでした");
         return false;
     }
 

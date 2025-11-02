@@ -40,7 +40,7 @@ namespace ExplorerGame.UI
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(TitleLanguageController)}: 初期化完了");
+                DebugLogger.Log($"{nameof(TitleLanguageController)}: 初期化完了");
             }
         }
 
@@ -57,7 +57,7 @@ namespace ExplorerGame.UI
             }
             else
             {
-                Debug.LogWarning($"{nameof(TitleLanguageController)}: 日本語_Buttonが設定されていません");
+                DebugLogger.LogWarning($"{nameof(TitleLanguageController)}: 日本語_Buttonが設定されていません");
             }
 
             // Englishボタン
@@ -68,7 +68,7 @@ namespace ExplorerGame.UI
             }
             else
             {
-                Debug.LogWarning($"{nameof(TitleLanguageController)}: English_Buttonが設定されていません");
+                DebugLogger.LogWarning($"{nameof(TitleLanguageController)}: English_Buttonが設定されていません");
             }
 
             // SaveButton
@@ -79,7 +79,7 @@ namespace ExplorerGame.UI
             }
             else
             {
-                Debug.LogWarning($"{nameof(TitleLanguageController)}: SaveButtonが設定されていません");
+                DebugLogger.LogWarning($"{nameof(TitleLanguageController)}: SaveButtonが設定されていません");
             }
         }
 
@@ -96,7 +96,7 @@ namespace ExplorerGame.UI
 
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(TitleLanguageController)}: 初期言語設定: {currentLanguageCode}");
+                    DebugLogger.Log($"{nameof(TitleLanguageController)}: 初期言語設定: {currentLanguageCode}");
                 }
             }
         }
@@ -109,7 +109,7 @@ namespace ExplorerGame.UI
         {
             if (LocalizationManager.Instance == null)
             {
-                Debug.LogError($"{nameof(TitleLanguageController)}: LocalizationManagerが見つかりません");
+                DebugLogger.LogError($"{nameof(TitleLanguageController)}: LocalizationManagerが見つかりません");
                 return;
             }
 
@@ -125,7 +125,7 @@ namespace ExplorerGame.UI
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(TitleLanguageController)}: 言語 '{languageCode}' を一時選択");
+                DebugLogger.Log($"{nameof(TitleLanguageController)}: 言語 '{languageCode}' を一時選択");
             }
         }
 
@@ -136,7 +136,7 @@ namespace ExplorerGame.UI
         {
             if (LocalizationManager.Instance == null)
             {
-                Debug.LogError($"{nameof(TitleLanguageController)}: LocalizationManagerが見つかりません");
+                DebugLogger.LogError($"{nameof(TitleLanguageController)}: LocalizationManagerが見つかりません");
                 return;
             }
 
@@ -154,7 +154,7 @@ namespace ExplorerGame.UI
 
             if (debugMode)
             {
-                Debug.Log($"{nameof(TitleLanguageController)}: 言語設定を適用しました");
+                DebugLogger.Log($"{nameof(TitleLanguageController)}: 言語設定を適用しました");
             }
         }
 
@@ -213,7 +213,7 @@ namespace ExplorerGame.UI
 
                 if (debugMode)
                 {
-                    Debug.Log($"{nameof(TitleLanguageController)}: LanguagePanelを閉じました");
+                    DebugLogger.Log($"{nameof(TitleLanguageController)}: LanguagePanelを閉じました");
                 }
             }
         }

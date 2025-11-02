@@ -35,7 +35,7 @@ public class PdfFileIconChange : MonoBehaviour
             iconImage = GetComponent<Image>();
             if (iconImage == null)
             {
-                Debug.LogError("PdfFileIconChange: Imageコンポーネントが見つかりません。このスクリプトはImageコンポーネントがアタッチされたオブジェクトに追加してください。");
+                DebugLogger.LogError("PdfFileIconChange: Imageコンポーネントが見つかりません。このスクリプトはImageコンポーネントがアタッチされたオブジェクトに追加してください。");
                 enabled = false;
                 return;
             }
@@ -81,7 +81,7 @@ public class PdfFileIconChange : MonoBehaviour
                 pdfDocumentManager = manager;
                 if (debugMode)
                 {
-                    Debug.Log($"PdfFileIconChange: 親階層からPdfDocumentManagerを自動検出しました: {current.name}");
+                    DebugLogger.Log($"PdfFileIconChange: 親階層からPdfDocumentManagerを自動検出しました: {current.name}");
                 }
                 return;
             }
@@ -103,14 +103,14 @@ public class PdfFileIconChange : MonoBehaviour
                 pdfDocumentManager = manager;
                 if (debugMode)
                 {
-                    Debug.Log($"PdfFileIconChange: ファイルパネル内からPdfDocumentManagerを自動検出しました: {filePanel.name}");
+                    DebugLogger.Log($"PdfFileIconChange: ファイルパネル内からPdfDocumentManagerを自動検出しました: {filePanel.name}");
                 }
                 return;
             }
         }
 
         // それでも見つからない場合は警告
-        Debug.LogWarning("PdfFileIconChange: 参照するPdfDocumentManagerが見つかりませんでした。インスペクターで手動設定してください。");
+        DebugLogger.LogWarning("PdfFileIconChange: 参照するPdfDocumentManagerが見つかりませんでした。インスペクターで手動設定してください。");
     }
 
     /// <summary>
@@ -135,7 +135,7 @@ public class PdfFileIconChange : MonoBehaviour
                     iconImage.sprite = completedSprite;
                     if (debugMode)
                     {
-                        Debug.Log($"PdfFileIconChange: アイコンを完了状態に変更しました - {gameObject.name}");
+                        DebugLogger.Log($"PdfFileIconChange: アイコンを完了状態に変更しました - {gameObject.name}");
                     }
                 }
             }
@@ -147,7 +147,7 @@ public class PdfFileIconChange : MonoBehaviour
                     iconImage.sprite = defaultSprite;
                     if (debugMode)
                     {
-                        Debug.Log($"PdfFileIconChange: アイコンをデフォルト状態に変更しました - {gameObject.name}");
+                        DebugLogger.Log($"PdfFileIconChange: アイコンをデフォルト状態に変更しました - {gameObject.name}");
                     }
                 }
             }

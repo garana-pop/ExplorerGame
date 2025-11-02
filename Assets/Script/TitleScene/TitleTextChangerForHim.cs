@@ -96,7 +96,7 @@ public class TitleTextChangerForHim : MonoBehaviour
 
         if (ShouldExecuteTitleChange())
         {
-            if (debugMode) Debug.Log("TitleTextChangerForHim: タイトル変更を開始します");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForHim: タイトル変更を開始します");
             StartCoroutine(StartTitleChange());
         }
     }
@@ -141,7 +141,7 @@ public class TitleTextChangerForHim : MonoBehaviour
         {
             // LocalizationManagerが存在しない場合は日本語をデフォルトとする
             newTitleText = newTitleText_Japanese;
-            if (debugMode) Debug.LogWarning("TitleTextChangerForHim: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+            if (debugMode) DebugLogger.LogWarning("TitleTextChangerForHim: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
             return;
         }
 
@@ -152,12 +152,12 @@ public class TitleTextChangerForHim : MonoBehaviour
         if (currentLanguageCode == "en")
         {
             newTitleText = newTitleText_English;
-            if (debugMode) Debug.Log("TitleTextChangerForHim: 英語テキストを適用");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForHim: 英語テキストを適用");
         }
         else
         {
             newTitleText = newTitleText_Japanese;
-            if (debugMode) Debug.Log("TitleTextChangerForHim: 日本語テキストを適用");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForHim: 日本語テキストを適用");
         }
     }
 
@@ -172,7 +172,7 @@ public class TitleTextChangerForHim : MonoBehaviour
             if (localizeEvent != null)
             {
                 localizeEvent.enabled = false;
-                if (debugMode) Debug.Log("TitleTextChangerForHim: LocalizeStringEventを無効化しました");
+                if (debugMode) DebugLogger.Log("TitleTextChangerForHim: LocalizeStringEventを無効化しました");
             }
         }
     }
@@ -182,7 +182,7 @@ public class TitleTextChangerForHim : MonoBehaviour
         // MonologueSceneからの遷移フラグがtrueの場合は実行しない
         if (IsFromMonologueScene())
         {
-            if (debugMode) Debug.Log("TitleTextChangerForHim: MonologueSceneからの遷移のため、処理をスキップします");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForHim: MonologueSceneからの遷移のため、処理をスキップします");
             return false;
         }
 
@@ -190,26 +190,26 @@ public class TitleTextChangerForHim : MonoBehaviour
         GameSaveManager saveManager = GameSaveManager.Instance;
         if (saveManager != null && saveManager.GetAfterChangeToLastFlag())
         {
-            if (debugMode) Debug.Log("TitleTextChangerForHim: afterChangeToLastがtrueのため、処理をスキップします");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForHim: afterChangeToLastがtrueのため、処理をスキップします");
             return false;
         }
 
         if (debugMode && forceExecute)
         {
-            Debug.Log("TitleTextChangerForHim: 強制実行モードでタイトル変更を実行");
+            DebugLogger.Log("TitleTextChangerForHim: 強制実行モードでタイトル変更を実行");
             return true;
         }
 
         if (titleChangedToHisFuture)
         {
-            if (debugMode) Debug.Log("TitleTextChangerForHim: 既にタイトル変更済みです");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForHim: 既にタイトル変更済みです");
             return false;
         }
 
         if (shouldExecuteOnNextLoad)
         {
             shouldExecuteOnNextLoad = false;
-            if (debugMode) Debug.Log("TitleTextChangerForHim: shouldExecuteOnNextLoadフラグを検出");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForHim: shouldExecuteOnNextLoadフラグを検出");
             return true;
         }
 
@@ -217,7 +217,7 @@ public class TitleTextChangerForHim : MonoBehaviour
         GameSaveManager saveManager2 = GameSaveManager.Instance;
         if (saveManager2 != null && saveManager2.GetAfterChangeToHisFutureFlag())
         {
-            if (debugMode) Debug.Log("TitleTextChangerForHim: AfterChangeToHisFutureFlagフラグを検出");
+            if (debugMode) DebugLogger.Log("TitleTextChangerForHim: AfterChangeToHisFutureFlagフラグを検出");
             return true;
         }
 
@@ -290,7 +290,7 @@ public class TitleTextChangerForHim : MonoBehaviour
             {
                 saveManager.SetAfterChangeToHisFutureFlag(true);
                 saveManager.SaveGame();
-                if (debugMode) Debug.Log("TitleTextChangerForHim: タイトル変更フラグを保存しました");
+                if (debugMode) DebugLogger.Log("TitleTextChangerForHim: タイトル変更フラグを保存しました");
             }
         }
 
@@ -355,7 +355,7 @@ public class TitleTextChangerForHim : MonoBehaviour
             if (debugMode)
             {
                 string state = interactable ? "有効" : "無効";
-                Debug.Log($"TitleTextChangerForHim: MenuContainerのボタンを{state}にしました");
+                DebugLogger.Log($"TitleTextChangerForHim: MenuContainerのボタンを{state}にしました");
             }
         }
     }

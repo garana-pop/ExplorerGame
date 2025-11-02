@@ -48,7 +48,7 @@ public class FolderActivationGuard : MonoBehaviour
             {
                 folderScript.SetActivatedState(true);
                 if (debugMode)
-                    Debug.Log($"[FolderActivationGuard] 願いフォルダーを強制的にアクティブ化状態に設定しました");
+                    DebugLogger.Log($"[FolderActivationGuard] 願いフォルダーを強制的にアクティブ化状態に設定しました");
             }
         }
     }
@@ -62,7 +62,7 @@ public class FolderActivationGuard : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"[FolderActivationGuard] {folderName} が初めてアクティブになりました");
+                DebugLogger.Log($"[FolderActivationGuard] {folderName} が初めてアクティブになりました");
             }
         }
 
@@ -77,7 +77,7 @@ public class FolderActivationGuard : MonoBehaviour
         {
             if (debugMode)
             {
-                Debug.Log($"[FolderActivationGuard] {folderName} の非アクティブ化を防止します");
+                DebugLogger.Log($"[FolderActivationGuard] {folderName} の非アクティブ化を防止します");
             }
 
             // 次のフレームで再アクティブ化するためのフラグをセット
@@ -107,7 +107,7 @@ public class FolderActivationGuard : MonoBehaviour
 
             if (debugMode)
             {
-                Debug.Log($"[FolderActivationGuard] {folderName} を再アクティブ化しました");
+                DebugLogger.Log($"[FolderActivationGuard] {folderName} を再アクティブ化しました");
             }
         }
     }
