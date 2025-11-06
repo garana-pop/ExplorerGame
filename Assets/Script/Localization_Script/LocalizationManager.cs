@@ -331,37 +331,76 @@ namespace ExplorerGame.Localization
         /// <summary>
         /// 保存された言語設定を読み込んで適用
         /// </summary>
+        /// <summary>
+        /// 保存された言語設定を読み込んで適用
+        /// </summary>
         private void LoadLanguageSetting()
         {
-            // GameSaveManagerが存在する場合、セーブデータから言語を読み込み
+            // GameSaveManagerが存在する場合、セーブデータから言語を読み込む
             var saveManager = FindObjectOfType<GameSaveManager>();
             var saveData = saveManager != null ? saveManager.GetCurrentSaveData() : null;
 
             string languageCodeToApply = ENGLISH_CODE; // デフォルトは英語
 
-            if (saveManager != null && saveData != null)
+            if (saveManager != null)
             {
-                string savedLanguageCode = saveData.languageCode;
-                if (!string.IsNullOrEmpty(savedLanguageCode))
+                // セーブデータが全く存在しない場合（初回起動時）
+                if (saveData == null)
                 {
-                    StartCoroutine(ChangeLanguage(savedLanguageCode));
+                    // 新規セーブデータを作成する必要がある
+                    saveManager.InitializeNewGame();
+                    saveData = saveManager.GetCurrentSaveData();
 
-                    if (debugMode)
+                    if (saveData != null)
                     {
-                        DebugLogger.Log($"{nameof(LocalizationManager)}: セーブデータから言語 '{savedLanguageCode}' を読み込みました");
+                        // 英語設定を保存
+                        saveData.languageCode = ENGLISH_CODE;
+                        saveManager.SaveGame();
+
+                        if (debugMode)
+                        {
+                            Debug.Log($"{nameof(LocalizationManager)}: 初回起動のため英語設定で初期化しました");
+                        }
                     }
+
+                    // 英語を適用
+                    StartCoroutine(ChangeLanguage(ENGLISH_CODE));
                 }
                 else
                 {
-                    // セーブデータはあるが言語設定がない場合（初回起動）
-                    languageCodeToApply = ENGLISH_CODE;
-                    saveData.languageCode = ENGLISH_CODE;
-                    saveManager.SaveGame(); // 英語設定を保存
-
-                    if (debugMode)
+                    // セーブデータは存在するが言語設定がない場合
+                    if (string.IsNullOrEmpty(saveData.languageCode))
                     {
-                        Debug.Log($"{nameof(LocalizationManager)}: 初回起動のため英語を設定して保存");
+                        saveData.languageCode = ENGLISH_CODE;
+                        saveManager.SaveGame();
+
+                        if (debugMode)
+                        {
+                            Debug.Log($"{nameof(LocalizationManager)}: 言語設定がないため英語設定を保存");
+                        }
+
+                        StartCoroutine(ChangeLanguage(ENGLISH_CODE));
                     }
+                    else
+                    {
+                        // 保存された言語設定を適用
+                        StartCoroutine(ChangeLanguage(saveData.languageCode));
+
+                        if (debugMode)
+                        {
+                            DebugLogger.Log($"{nameof(LocalizationManager)}: セーブデータから言語 '{saveData.languageCode}' を読み込みました");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // GameSaveManagerが存在しない場合は英語をデフォルトとして適用
+                StartCoroutine(ChangeLanguage(ENGLISH_CODE));
+
+                if (debugMode)
+                {
+                    Debug.LogWarning($"{nameof(LocalizationManager)}: GameSaveManagerが存在しないため、デフォルトで英語を適用");
                 }
             }
         }

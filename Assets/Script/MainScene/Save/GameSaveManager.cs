@@ -2190,6 +2190,23 @@ public class GameSaveManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 新規ゲーム開始時の初期化
+    /// セーブデータが存在しない場合に呼び出される
+    /// </summary>
+    public void InitializeNewGame()
+    {
+        if (currentSaveData == null)
+        {
+            currentSaveData = new GameSaveData();
+
+            if (debugMode)
+            {
+                Debug.Log("GameSaveManager: 新規セーブデータを作成しました");
+            }
+        }
+    }
+
+    /// <summary>
     /// デバッグ用：AfterChangeToHerMemoryフラグの現在の状態をログ出力
     /// </summary>
     [ContextMenu("Debug: Show AfterChangeToHerMemory Flag")]
