@@ -60,7 +60,7 @@ public class FirstFileOpenTip : MonoBehaviour, IPointerClickHandler
             }
             else
             {
-                DebugLogger.LogWarning($"{nameof(FirstFileOpenTip)}: DraggingCanvasが見つかりません");
+                Debug.LogWarning($"{nameof(FirstFileOpenTip)}: DraggingCanvasが見つかりません");
                 enabled = false;
                 return;
             }
@@ -85,7 +85,7 @@ public class FirstFileOpenTip : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            DebugLogger.LogWarning($"{nameof(FirstFileOpenTip)}: ヒントオブジェクトが設定されていません");
+            Debug.LogWarning($"{nameof(FirstFileOpenTip)}: ヒントオブジェクトが設定されていません");
             enabled = false;
         }
     }

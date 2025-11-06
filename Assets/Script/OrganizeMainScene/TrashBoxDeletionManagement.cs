@@ -122,7 +122,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         steamAchievementManager = SteamAchievementManager.Instance;
         if (steamAchievementManager == null && debugMode)
         {
-            DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: SteamAchievementManagerが見つかりません");
+            Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: SteamAchievementManagerが見つかりません");
         }
 
         CountFiles();
@@ -166,14 +166,14 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         sceneController = OrganizeMainSceneController.Instance;
         if (sceneController == null && debugMode)
         {
-            DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: OrganizeMainSceneControllerが見つかりません");
+            Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: OrganizeMainSceneControllerが見つかりません");
         }
 
         // FileManagerを取得
         fileManager = FindFirstObjectByType<FileManager>();
         if (fileManager == null && debugMode)
         {
-            DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: FileManagerが見つかりません");
+            Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: FileManagerが見つかりません");
         }
     }
 
@@ -214,7 +214,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         {
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: ドロップオブジェクトがnullです");
+                Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: ドロップオブジェクトがnullです");
             }
             return;
         }
@@ -225,7 +225,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         {
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: ドロップされたオブジェクトはDraggableFileではありません");
+                Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: ドロップされたオブジェクトはDraggableFileではありません");
             }
             return;
         }
@@ -497,7 +497,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         }
         else if (debugMode)
         {
-            DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: OrganizeMainSceneControllerが見つかりません");
+            Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: OrganizeMainSceneControllerが見つかりません");
         }
 
         // FileManagerに削除を通知（必要に応じて）
@@ -573,7 +573,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
             }
             else if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: セーブデータの保存に失敗しました - どちらのマネージャーも見つかりません");
+                Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: セーブデータの保存に失敗しました - どちらのマネージャーも見つかりません");
             }
         }
     }
@@ -602,7 +602,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         {
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: ファイル復元機能が無効です");
+                Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: ファイル復元機能が無効です");
             }
             return false;
         }
@@ -611,7 +611,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         {
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: 復元対象ファイルが見つかりません - {fileName}");
+                Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: 復元対象ファイルが見つかりません - {fileName}");
             }
             return false;
         }
@@ -622,7 +622,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         {
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: 復元対象オブジェクトが見つかりません - {fileName}");
+                Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: 復元対象オブジェクトが見つかりません - {fileName}");
             }
             return false;
         }
@@ -664,7 +664,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         }
         catch (System.Exception e)
         {
-            DebugLogger.LogError($"{nameof(TrashBoxDeletionManagement)}: ファイル復元エラー - {e.Message}");
+            Debug.LogError($"{nameof(TrashBoxDeletionManagement)}: ファイル復元エラー - {e.Message}");
             return false;
         }
     }
@@ -679,7 +679,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         {
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: ファイル復元機能が無効です");
+                Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: ファイル復元機能が無効です");
             }
             return 0;
         }
@@ -723,7 +723,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         {
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(TrashBoxDeletionManagement)}: SteamAchievementManagerが利用できないため、実績解除をスキップします");
+                Debug.LogWarning($"{nameof(TrashBoxDeletionManagement)}: SteamAchievementManagerが利用できないため、実績解除をスキップします");
             }
             return;
         }
@@ -742,7 +742,7 @@ public class TrashBoxDeletionManagement : MonoBehaviour, IDropHandler
         }
         else
         {
-            DebugLogger.LogError($"{nameof(TrashBoxDeletionManagement)}: Steam実績「最初の一歩」の解除に失敗しました");
+            Debug.LogError($"{nameof(TrashBoxDeletionManagement)}: Steam実績「最初の一歩」の解除に失敗しました");
         }
     }
 

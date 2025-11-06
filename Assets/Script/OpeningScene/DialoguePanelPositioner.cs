@@ -103,7 +103,7 @@ public class DialoguePanelPositioner : MonoBehaviour
 
         if (texts.Length == 0)
         {
-            DebugLogger.LogError("テキストコンポーネントが見つかりません");
+            Debug.LogError("テキストコンポーネントが見つかりません");
             return;
         }
 
@@ -199,7 +199,7 @@ public class DialoguePanelPositioner : MonoBehaviour
         RectTransform rectTransform = dialogueObject.GetComponent<RectTransform>();
         if (rectTransform == null)
         {
-            DebugLogger.LogError("RectTransformがありません");
+            Debug.LogError("RectTransformがありません");
             return;
         }
 

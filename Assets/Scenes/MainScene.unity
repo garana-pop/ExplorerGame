@@ -38823,7 +38823,7 @@ GameObject:
   - component: {fileID: 869932629}
   - component: {fileID: 869932628}
   m_Layer: 5
-  m_Name: "\u89AA\u53CB\u304B\u3089\u306E\u5FE0\u544A.TXTFilePanel"
+  m_Name: "\u53CB\u4EBA\u304B\u3089\u306E\u5FE0\u544A.TXTFilePanel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100292,7 +100292,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 451790214057505158, guid: c567a09a10dd9fa4a85e502fcbb71791, type: 3}
       propertyPath: m_fontSize
-      value: 39.7
+      value: 39.65
       objectReference: {fileID: 0}
     - target: {fileID: 1166247800222013307, guid: c567a09a10dd9fa4a85e502fcbb71791, type: 3}
       propertyPath: nextFolderOrFile
@@ -100304,7 +100304,7 @@ PrefabInstance:
       objectReference: {fileID: 397304726}
     - target: {fileID: 1976020405071895108, guid: c567a09a10dd9fa4a85e502fcbb71791, type: 3}
       propertyPath: m_fontSize
-      value: 40.55
+      value: 40.35
       objectReference: {fileID: 0}
     - target: {fileID: 2091145765063629446, guid: c567a09a10dd9fa4a85e502fcbb71791, type: 3}
       propertyPath: fileOpen
@@ -100332,11 +100332,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3622279395886891717, guid: c567a09a10dd9fa4a85e502fcbb71791, type: 3}
       propertyPath: m_fontSize
-      value: 40.6
+      value: 40.25
       objectReference: {fileID: 0}
     - target: {fileID: 5620931913531828573, guid: c567a09a10dd9fa4a85e502fcbb71791, type: 3}
       propertyPath: m_fontSize
-      value: 40.85
+      value: 40.75
       objectReference: {fileID: 0}
     - target: {fileID: 6379489279516034844, guid: c567a09a10dd9fa4a85e502fcbb71791, type: 3}
       propertyPath: m_Pivot.x

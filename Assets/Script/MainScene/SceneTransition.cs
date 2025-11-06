@@ -34,7 +34,7 @@ public class SceneTransition : MonoBehaviour, IPointerClickHandler
     {
         if (string.IsNullOrEmpty(targetSceneName))
         {
-            DebugLogger.LogWarning("‘J€ЪђжѓVЃ[ѓ“–ј‚ЄђЭ’и‚і‚к‚Д‚ў‚Ь‚№‚сЃBѓCѓ“ѓXѓyѓNѓ^Ѓ[‚ЕђЭ’и‚µ‚Д‚­‚ѕ‚і‚ўЃB");
+            Debug.LogWarning("‘J€ЪђжѓVЃ[ѓ“–ј‚ЄђЭ’и‚і‚к‚Д‚ў‚Ь‚№‚сЃBѓCѓ“ѓXѓyѓNѓ^Ѓ[‚ЕђЭ’и‚µ‚Д‚­‚ѕ‚і‚ўЃB");
             return;
         }
 
@@ -128,7 +128,7 @@ public class SceneTransition : MonoBehaviour, IPointerClickHandler
         }
         catch (System.Exception ex)
         {
-            DebugLogger.LogError($"ѓVЃ[ѓ“‘J€Ъ’†‚ЙѓGѓ‰Ѓ[‚Є”­ђ¶‚µ‚Ь‚µ‚Ѕ: {ex.Message}");
+            Debug.LogError($"ѓVЃ[ѓ“‘J€Ъ’†‚ЙѓGѓ‰Ѓ[‚Є”­ђ¶‚µ‚Ь‚µ‚Ѕ: {ex.Message}");
         }
     }
 

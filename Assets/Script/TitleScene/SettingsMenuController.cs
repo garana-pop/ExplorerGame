@@ -63,7 +63,7 @@ public class SettingsMenuController : MonoBehaviour
         // WindowResizeManagerが存在することを確認
         if (WindowResizeManager.Instance == null)
         {
-            DebugLogger.LogWarning("WindowResizeManagerが見つかりません。自動的に作成します。");
+            Debug.LogWarning("WindowResizeManagerが見つかりません。自動的に作成します。");
         }
 
         // パネルの初期化
@@ -116,7 +116,7 @@ public class SettingsMenuController : MonoBehaviour
                 Screen.SetResolution(selectedResolution.x, selectedResolution.y, false);
 
                 // WindowResizeManagerのインスタンスを作成して、リサイズを無効化
-                DebugLogger.LogWarning("WindowResizeManagerが存在しないため、新規作成します");
+                Debug.LogWarning("WindowResizeManagerが存在しないため、新規作成します");
                 var manager = WindowResizeManager.Instance;
                 if (manager != null)
                 {
@@ -254,7 +254,7 @@ public class SettingsMenuController : MonoBehaviour
             }
             else if (debugMode)
             {
-                DebugLogger.LogWarning($"ボタン {button.name} にTextMeshProUGUIコンポーネントが見つかりません");
+                Debug.LogWarning($"ボタン {button.name} にTextMeshProUGUIコンポーネントが見つかりません");
             }
         }
     }

@@ -104,7 +104,7 @@ public class DataResetManager : MonoBehaviour
     {
         if (messagePanel == null || messageText == null)
         {
-            DebugLogger.LogWarning("DataResetManager: メッセージパネルまたはテキストが設定されていません");
+            Debug.LogWarning("DataResetManager: メッセージパネルまたはテキストが設定されていません");
             yield break;
         }
 

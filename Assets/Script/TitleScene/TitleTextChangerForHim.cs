@@ -139,9 +139,9 @@ public class TitleTextChangerForHim : MonoBehaviour
     {
         if (LocalizationManager.Instance == null)
         {
-            // LocalizationManagerが存在しない場合は日本語をデフォルトとする
-            newTitleText = newTitleText_Japanese;
-            if (debugMode) DebugLogger.LogWarning("TitleTextChangerForHim: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+            // LocalizationManagerが存在しない場合は英語をデフォルトとする
+            newTitleText = newTitleText_English;
+            if (debugMode) DebugLogger.LogWarning("TitleTextChangerForHim: LocalizationManagerが見つかりません。英語をデフォルトとして使用します。");
             return;
         }
 

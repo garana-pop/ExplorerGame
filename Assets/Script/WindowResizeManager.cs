@@ -133,6 +133,6 @@ public class WindowResizeManager : MonoBehaviour
     [System.Obsolete("このメソッドは使用されません。ウィンドウリサイズは常に無効です。")]
     public void SetWindowResizable(bool resizable)
     {
-        DebugLogger.LogWarning("SetWindowResizable は無効化されています。ウィンドウリサイズは常に無効です。");
+        Debug.LogWarning("SetWindowResizable は無効化されています。ウィンドウリサイズは常に無効です。");
     }
 }

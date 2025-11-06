@@ -30,7 +30,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
 
         if (targetButton == null)
         {
-            DebugLogger.LogError($"{nameof(RememberButtonOrganizeTransition)}: Buttonコンポーネントが見つかりません");
+            Debug.LogError($"{nameof(RememberButtonOrganizeTransition)}: Buttonコンポーネントが見つかりません");
         }
 
         // ConversationTransitionControllerの取得（追加）
@@ -148,7 +148,7 @@ public class RememberButtonOrganizeTransition : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            DebugLogger.LogError($"{nameof(RememberButtonOrganizeTransition)}: シーン遷移エラー: {ex.Message}");
+            Debug.LogError($"{nameof(RememberButtonOrganizeTransition)}: シーン遷移エラー: {ex.Message}");
             targetButton.interactable = true;
         }
     }

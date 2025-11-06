@@ -90,7 +90,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
         // TextTyperが見つからない場合の警告
         if (textTyper == null)
         {
-            DebugLogger.LogError("ClickToTransitionScene: TextTyperコンポーネントが見つかりません。インスペクターで設定するか、同じGameObjectにアタッチしてください。");
+            Debug.LogError("ClickToTransitionScene: TextTyperコンポーネントが見つかりません。インスペクターで設定するか、同じGameObjectにアタッチしてください。");
             enabled = false;
             return;
         }
@@ -98,7 +98,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
         // 遷移先シーン名の検証
         if (string.IsNullOrEmpty(targetSceneName))
         {
-            DebugLogger.LogWarning("ClickToTransitionScene: 遷移先シーン名が設定されていません。");
+            Debug.LogWarning("ClickToTransitionScene: 遷移先シーン名が設定されていません。");
         }
 
         // TextTyperの完了イベントに登録
@@ -228,7 +228,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
     {
         if (string.IsNullOrEmpty(targetSceneName))
         {
-            DebugLogger.LogError("ClickToTransitionScene: 遷移先シーン名が設定されていません。");
+            Debug.LogError("ClickToTransitionScene: 遷移先シーン名が設定されていません。");
             return;
         }
 
@@ -267,7 +267,7 @@ public class ClickToTransitionScene : MonoBehaviour, IPointerClickHandler
         }
         catch (System.Exception ex)
         {
-            DebugLogger.LogError($"ClickToTransitionScene: シーン遷移中にエラーが発生しました: {ex.Message}");
+            Debug.LogError($"ClickToTransitionScene: シーン遷移中にエラーが発生しました: {ex.Message}");
         }
     }
 

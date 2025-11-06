@@ -114,7 +114,7 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
             draggingCanvas = GameObject.Find("DraggingCanvas")?.GetComponent<Canvas>();
             if (draggingCanvas == null)
             {
-                DebugLogger.LogWarning("DraggingCanvasが見つかりません。設定パネルの最前面表示が機能しない可能性があります。");
+                Debug.LogWarning("DraggingCanvasが見つかりません。設定パネルの最前面表示が機能しない可能性があります。");
             }
         }
     }
@@ -641,7 +641,7 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
         }
         else
         {
-            DebugLogger.LogWarning("LoadSettingsFromGameSave: GameSaveManager.Instanceがnullです");
+            Debug.LogWarning("LoadSettingsFromGameSave: GameSaveManager.Instanceがnullです");
         }
 
         // game_save.jsonにデータがない場合はPlayerPrefsから読み込み
@@ -662,7 +662,7 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
         }
         else
         {
-            DebugLogger.LogWarning("SaveVolumeToGameSave: GameSaveManager.Instanceがnullです");
+            Debug.LogWarning("SaveVolumeToGameSave: GameSaveManager.Instanceがnullです");
         }
     }
 
@@ -724,7 +724,7 @@ public class MainSceneSettingsManager : MonoBehaviour, ISettingsManager
         }
         else
         {
-            DebugLogger.LogWarning("GameSaveManagerが見つかりません。ゲームの状態を保存できませんでした。");
+            Debug.LogWarning("GameSaveManagerが見つかりません。ゲームの状態を保存できませんでした。");
         }
     }
 

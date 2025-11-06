@@ -129,7 +129,7 @@ public class TxtPuzzleManager : MonoBehaviour
 
         if (expectedSpeakerField == null)
         {
-            DebugLogger.LogWarning($"TxtPuzzleManager: expectedSpeakerフィールドが見つかりません");
+            Debug.LogWarning($"TxtPuzzleManager: expectedSpeakerフィールドが見つかりません");
             return;
         }
 
@@ -152,7 +152,7 @@ public class TxtPuzzleManager : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogWarning($"TxtPuzzleManager: {fieldName}フィールドが見つかりません");
+            Debug.LogWarning($"TxtPuzzleManager: {fieldName}フィールドが見つかりません");
         }
     }
 

@@ -52,7 +52,7 @@ public class FirstFileClickTip : MonoBehaviour
 
         if (targetImage == null)
         {
-            DebugLogger.LogWarning($"{nameof(FirstFileClickTip)}: Image コンポーネントが見つかりません");
+            Debug.LogWarning($"{nameof(FirstFileClickTip)}: Image コンポーネントが見つかりません");
             enabled = false;
             return;
         }

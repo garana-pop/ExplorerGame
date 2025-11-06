@@ -75,7 +75,7 @@ namespace ConversationFatherAndDaughter
                 dialogueDataLoader = FindObjectOfType<DialogueDataLoader>();
                 if (dialogueDataLoader == null)
                 {
-                    DebugLogger.LogError($"{nameof(SpeakerNameDisplay)}: DialogueDataLoaderが見つかりません");
+                    Debug.LogError($"{nameof(SpeakerNameDisplay)}: DialogueDataLoaderが見つかりません");
                 }
             }
 
@@ -128,7 +128,7 @@ namespace ConversationFatherAndDaughter
 
                 if (leftSpeakerNameText == null)
                 {
-                    DebugLogger.LogWarning($"{nameof(SpeakerNameDisplay)}: 左側の話者名テキストが見つかりません");
+                    Debug.LogWarning($"{nameof(SpeakerNameDisplay)}: 左側の話者名テキストが見つかりません");
                 }
             }
 
@@ -147,7 +147,7 @@ namespace ConversationFatherAndDaughter
 
                 if (rightSpeakerNameText == null)
                 {
-                    DebugLogger.LogWarning($"{nameof(SpeakerNameDisplay)}: 右側の話者名テキストが見つかりません");
+                    Debug.LogWarning($"{nameof(SpeakerNameDisplay)}: 右側の話者名テキストが見つかりません");
                 }
             }
         }
@@ -162,7 +162,7 @@ namespace ConversationFatherAndDaughter
                 currentDialogueEntries = dialogueDataLoader.GetDialogueEntries();
                 if (currentDialogueEntries == null || currentDialogueEntries.Count == 0)
                 {
-                    DebugLogger.LogWarning($"{nameof(SpeakerNameDisplay)}: セリフデータが読み込まれていません");
+                    Debug.LogWarning($"{nameof(SpeakerNameDisplay)}: セリフデータが読み込まれていません");
                 }
                 else
                 {
@@ -251,7 +251,7 @@ namespace ConversationFatherAndDaughter
             }
             else
             {
-                DebugLogger.LogWarning($"{nameof(SpeakerNameDisplay)}: 話者 '{speakerName}' の配置設定が見つかりません");
+                Debug.LogWarning($"{nameof(SpeakerNameDisplay)}: 話者 '{speakerName}' の配置設定が見つかりません");
                 ClearBothSpeakerNames();
                 if (highlightController != null)
                 {

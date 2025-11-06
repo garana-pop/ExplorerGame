@@ -108,7 +108,7 @@ public class FolderButtonScript : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogWarning($"フォルダー「{folderName}」にはfilePanel設定がありません");
+            Debug.LogWarning($"フォルダー「{folderName}」にはfilePanel設定がありません");
         }
     }
 
@@ -259,7 +259,7 @@ public class FolderButtonScript : MonoBehaviour
         {
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(FolderButtonScript)}: SteamAchievementManagerが存在しません。実績解除できませんでした。");
+                Debug.LogWarning($"{nameof(FolderButtonScript)}: SteamAchievementManagerが存在しません。実績解除できませんでした。");
             }
             return;
         }
@@ -296,7 +296,7 @@ public class FolderButtonScript : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogError($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」のSteam実績解除に失敗しました（API: {achievementApiName}）");
+            Debug.LogError($"{nameof(FolderButtonScript)}: フォルダー「{folderName}」のSteam実績解除に失敗しました（API: {achievementApiName}）");
         }
     }
 

@@ -23,7 +23,7 @@ public class CharacterExitController : MonoBehaviour
             leftCharacter = GameObject.Find("LeftCharacter");
             if (leftCharacter == null)
             {
-                DebugLogger.LogWarning("CharacterExitController: LeftCharacter‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB");
+                Debug.LogWarning("CharacterExitController: LeftCharacter‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB");
             }
         }
 

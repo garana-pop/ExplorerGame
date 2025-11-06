@@ -46,7 +46,7 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
 
         if (titleText == null)
         {
-            DebugLogger.LogError("TitleTextLoaderForMonologueScene: TextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
+            Debug.LogError("TitleTextLoaderForMonologueScene: TextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
             enabled = false;
             return;
         }
@@ -212,7 +212,7 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) DebugLogger.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToHerMemoryフラグを取得できませんでした");
+        if (debugMode) Debug.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToHerMemoryフラグを取得できませんでした");
         return false;
     }
 
@@ -228,7 +228,7 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) DebugLogger.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToHisFutureフラグを取得できませんでした");
+        if (debugMode) Debug.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToHisFutureフラグを取得できませんでした");
         return false;
     }
 
@@ -250,7 +250,7 @@ public class TitleTextLoaderForMonologueScene : MonoBehaviour
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) DebugLogger.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToLastフラグを取得できませんでした");
+        if (debugMode) Debug.LogWarning("TitleTextLoaderForMonologueScene: GameSaveManagerが存在しないため、afterChangeToLastフラグを取得できませんでした");
         return false;
     }
 }

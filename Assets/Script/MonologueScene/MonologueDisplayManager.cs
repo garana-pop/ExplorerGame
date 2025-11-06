@@ -85,7 +85,7 @@ public class MonologueDisplayManager : MonoBehaviour
 
         if (dialogues.Count == 0)
         {
-            DebugLogger.LogError("セリフデータが読み込まれませんでした。");
+            Debug.LogError("セリフデータが読み込まれませんでした。");
             return;
         }
 
@@ -292,7 +292,7 @@ public class MonologueDisplayManager : MonoBehaviour
         // SteamAchievementManagerの存在確認
         if (SteamAchievementManager.Instance == null)
         {
-            DebugLogger.LogError($"{nameof(MonologueDisplayManager)}: SteamAchievementManagerが見つかりません");
+            Debug.LogError($"{nameof(MonologueDisplayManager)}: SteamAchievementManagerが見つかりません");
             return;
         }
 
@@ -306,7 +306,7 @@ public class MonologueDisplayManager : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogError($"{nameof(MonologueDisplayManager)}: Steam実績「{achievementApiName}」の解除に失敗しました");
+            Debug.LogError($"{nameof(MonologueDisplayManager)}: Steam実績「{achievementApiName}」の解除に失敗しました");
         }
     }
 
@@ -356,7 +356,7 @@ public class MonologueDisplayManager : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogWarning("MonologueDisplayManager: GameSaveManagerが見つからないため、fromMonologueSceneフラグを設定できませんでした");
+            Debug.LogWarning("MonologueDisplayManager: GameSaveManagerが見つからないため、fromMonologueSceneフラグを設定できませんでした");
         }
 
         // TitleTextChangerForMonologueSceneにフラグを設定（新規追加）

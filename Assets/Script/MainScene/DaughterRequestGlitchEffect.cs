@@ -96,7 +96,7 @@ public class DaughterRequestGlitchEffect : MonoBehaviour
         targetImage = GetComponent<Image>();
         if (targetImage == null)
         {
-            DebugLogger.LogError($"[DaughterRequestGlitchEffect] {gameObject.name}にImageコンポーネントが見つかりません");
+            Debug.LogError($"[DaughterRequestGlitchEffect] {gameObject.name}にImageコンポーネントが見つかりません");
             enabled = false;
             return;
         }

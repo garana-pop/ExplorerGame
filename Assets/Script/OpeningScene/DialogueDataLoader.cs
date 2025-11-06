@@ -42,7 +42,7 @@ public class DialogueDataLoader : MonoBehaviour
         // LocalizationManagerが存在しない場合は既存の処理にフォールバック
         if (LocalizationManager.Instance == null)
         {
-            DebugLogger.LogWarning("DialogueDataLoader: LocalizationManagerが見つかりません。デフォルトのテキストアセットを使用します。");
+            Debug.LogWarning("DialogueDataLoader: LocalizationManagerが見つかりません。デフォルトのテキストアセットを使用します。");
             if (dialogueTextAsset != null)
             {
                 LoadDialogueFromTextAsset(dialogueTextAsset);
@@ -61,18 +61,18 @@ public class DialogueDataLoader : MonoBehaviour
                 selectedTextAsset = dialogueTextAsset_Japanese;
                 if (selectedTextAsset == null)
                 {
-                    DebugLogger.LogWarning("DialogueDataLoader: 日本語テキストアセットが設定されていません。");
+                    Debug.LogWarning("DialogueDataLoader: 日本語テキストアセットが設定されていません。");
                 }
                 break;
             case "en":
                 selectedTextAsset = dialogueTextAsset_English;
                 if (selectedTextAsset == null)
                 {
-                    DebugLogger.LogWarning("DialogueDataLoader: 英語テキストアセットが設定されていません。");
+                    Debug.LogWarning("DialogueDataLoader: 英語テキストアセットが設定されていません。");
                 }
                 break;
             default:
-                DebugLogger.LogWarning($"DialogueDataLoader: 未対応の言語コード: {currentLanguageCode}");
+                Debug.LogWarning($"DialogueDataLoader: 未対応の言語コード: {currentLanguageCode}");
                 break;
         }
 
@@ -105,7 +105,7 @@ public class DialogueDataLoader : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogError("DialogueDataLoader: 読み込み可能なテキストアセットが見つかりません。");
+            Debug.LogError("DialogueDataLoader: 読み込み可能なテキストアセットが見つかりません。");
         }
     }
 
@@ -124,7 +124,7 @@ public class DialogueDataLoader : MonoBehaviour
     {
         if (textAsset == null)
         {
-            DebugLogger.LogError("DialogueDataLoader: テキストアセットが設定されていません。");
+            Debug.LogError("DialogueDataLoader: テキストアセットが設定されていません。");
             return new List<DialogueEntry>();
         }
 
@@ -142,7 +142,7 @@ public class DialogueDataLoader : MonoBehaviour
         TextAsset textAsset = Resources.Load<TextAsset>(resourcePath);
         if (textAsset == null)
         {
-            DebugLogger.LogError($"DialogueDataLoader: リソースが見つかりません: {resourcePath}");
+            Debug.LogError($"DialogueDataLoader: リソースが見つかりません: {resourcePath}");
             return new List<DialogueEntry>();
         }
 

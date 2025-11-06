@@ -57,9 +57,9 @@ public class GameSaveData
     /// 現在の言語設定コード
     /// "ja" = 日本語
     /// "en" = 英語
-    /// デフォルトは日本語
+    /// デフォルトは英語
     /// </summary>
-    public string languageCode = "ja";
+    public string languageCode = "en";
 
 
     /// <summary>

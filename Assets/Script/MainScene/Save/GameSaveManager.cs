@@ -270,7 +270,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            DebugLogger.LogError($"{nameof(GameSaveManager)}: ウィンドウ位置の保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
+            Debug.LogError($"{nameof(GameSaveManager)}: ウィンドウ位置の保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
         }
     }
 
@@ -324,7 +324,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            DebugLogger.LogError($"GameSaveManager: AfterChangeToHisFutureフラグ保存中にエラー: {ex.Message}");
+            Debug.LogError($"GameSaveManager: AfterChangeToHisFutureフラグ保存中にエラー: {ex.Message}");
         }
     }
 
@@ -388,7 +388,7 @@ public class GameSaveManager : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogWarning("GameSaveManager: currentSaveDataがnullのため、fromMonologueSceneフラグを設定できませんでした");
+            Debug.LogWarning("GameSaveManager: currentSaveDataがnullのため、fromMonologueSceneフラグを設定できませんでした");
         }
     }
 
@@ -402,7 +402,7 @@ public class GameSaveManager : MonoBehaviour
             return currentSaveData.fromMonologueScene;
         }
 
-        DebugLogger.LogWarning("GameSaveManager: currentSaveDataがnullのため、fromMonologueSceneフラグを取得できませんでした");
+        Debug.LogWarning("GameSaveManager: currentSaveDataがnullのため、fromMonologueSceneフラグを取得できませんでした");
         return false;
     }
 
@@ -493,7 +493,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            DebugLogger.LogError($"PDFファイルのアクティブ化中にエラー: {ex.Message}");
+            Debug.LogError($"PDFファイルのアクティブ化中にエラー: {ex.Message}");
         }
     }
 
@@ -568,7 +568,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            DebugLogger.LogError($"PDFパネルのアクティブ化中にエラー: {ex.Message}");
+            Debug.LogError($"PDFパネルのアクティブ化中にエラー: {ex.Message}");
         }
     }
 
@@ -618,11 +618,11 @@ public class GameSaveManager : MonoBehaviour
             currentSaveData.saveTimestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
 
             // 修正: 各データ収集メソッドをtry-catchで囲む
-            try { CollectTxtPuzzleState(); } catch (Exception ex) { DebugLogger.LogError($"TXTデータ収集中にエラー: {ex.Message}"); }
-            try { CollectImageRevealerState(); } catch (Exception ex) { DebugLogger.LogError($"画像データ収集中にエラー: {ex.Message}"); }
-            try { CollectPdfDocumentState(); } catch (Exception ex) { DebugLogger.LogError($"PDFデータ収集中にエラー: {ex.Message}"); }
-            try { CollectFolderState(); } catch (Exception ex) { DebugLogger.LogError($"フォルダー状態収集中にエラー: {ex.Message}"); }
-            try { CollectAudioSettings(); } catch (Exception ex) { DebugLogger.LogError($"音声設定収集中にエラー: {ex.Message}"); }
+            try { CollectTxtPuzzleState(); } catch (Exception ex) { Debug.LogError($"TXTデータ収集中にエラー: {ex.Message}"); }
+            try { CollectImageRevealerState(); } catch (Exception ex) { Debug.LogError($"画像データ収集中にエラー: {ex.Message}"); }
+            try { CollectPdfDocumentState(); } catch (Exception ex) { Debug.LogError($"PDFデータ収集中にエラー: {ex.Message}"); }
+            try { CollectFolderState(); } catch (Exception ex) { Debug.LogError($"フォルダー状態収集中にエラー: {ex.Message}"); }
+            try { CollectAudioSettings(); } catch (Exception ex) { Debug.LogError($"音声設定収集中にエラー: {ex.Message}"); }
 
             // デバッグ用の出力
             if (debugMode)
@@ -637,7 +637,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            DebugLogger.LogError($"ゲーム状態の収集中にエラーが発生しました: {ex.Message}");
+            Debug.LogError($"ゲーム状態の収集中にエラーが発生しました: {ex.Message}");
         }
     }
 
@@ -663,7 +663,7 @@ public class GameSaveManager : MonoBehaviour
             }
             catch (Exception ex)
             {
-                DebugLogger.LogError($"既存TXTデータの読み込みエラー: {ex.Message}");
+                Debug.LogError($"既存TXTデータの読み込みエラー: {ex.Message}");
             }
         }
 
@@ -752,7 +752,7 @@ public class GameSaveManager : MonoBehaviour
         }
         else if (debugMode)
         {
-            DebugLogger.LogWarning("ImageRevealerが見つかりません");
+            Debug.LogWarning("ImageRevealerが見つかりません");
         }
     }
 
@@ -871,7 +871,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            DebugLogger.LogError($"完了状態PDFファイルのアクティブ化中にエラー: {ex.Message}");
+            Debug.LogError($"完了状態PDFファイルのアクティブ化中にエラー: {ex.Message}");
         }
     }
     private void CollectPdfDocumentState()
@@ -935,7 +935,7 @@ public class GameSaveManager : MonoBehaviour
         }
         else if (debugMode)
         {
-            DebugLogger.LogWarning("PdfDocumentManagerが見つかりません");
+            Debug.LogWarning("PdfDocumentManagerが見つかりません");
         }
 
         // シーン内に存在しないPDFで完了状態だったものも復元
@@ -1012,7 +1012,7 @@ public class GameSaveManager : MonoBehaviour
         }
         else if (debugMode)
         {
-            DebugLogger.LogWarning("FolderButtonScriptが見つかりません");
+            Debug.LogWarning("FolderButtonScriptが見つかりません");
         }
 
         // 収集したフォルダー状態を設定
@@ -1089,7 +1089,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            DebugLogger.LogError($"セーブデータの保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
+            Debug.LogError($"セーブデータの保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
         }
     }
 
@@ -1115,7 +1115,7 @@ public class GameSaveManager : MonoBehaviour
 
             if (loadedData == null)
             {
-                DebugLogger.LogError("セーブデータの読み込みに失敗しました。データの形式が不正です。");
+                Debug.LogError("セーブデータの読み込みに失敗しました。データの形式が不正です。");
                 return false;
             }
 
@@ -1158,7 +1158,7 @@ public class GameSaveManager : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    DebugLogger.LogError($"TXTデータの読み込みに失敗: {e.Message}");
+                    Debug.LogError($"TXTデータの読み込みに失敗: {e.Message}");
                 }
             }
 
@@ -1175,7 +1175,7 @@ public class GameSaveManager : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    DebugLogger.LogError($"PNGデータの読み込みに失敗: {e.Message}");
+                    Debug.LogError($"PNGデータの読み込みに失敗: {e.Message}");
                 }
             }
 
@@ -1206,7 +1206,7 @@ public class GameSaveManager : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    DebugLogger.LogError($"PDFデータの読み込みに失敗: {e.Message}");
+                    Debug.LogError($"PDFデータの読み込みに失敗: {e.Message}");
                 }
             }
 
@@ -1265,7 +1265,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            DebugLogger.LogError($"セーブデータの読み込み中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
+            Debug.LogError($"セーブデータの読み込み中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
             return false;
         }
     }
@@ -1329,7 +1329,7 @@ public class GameSaveManager : MonoBehaviour
 
             // PDFデータを最初に適用
             try { ApplyPdfDocumentState(); }
-            catch (Exception ex) { DebugLogger.LogError($"PDFデータ適用中にエラー: {ex.Message}"); }
+            catch (Exception ex) { Debug.LogError($"PDFデータ適用中にエラー: {ex.Message}"); }
 
             // TXTデータの適用
             try
@@ -1338,17 +1338,17 @@ public class GameSaveManager : MonoBehaviour
                 // TXT進捗適用後にFileIconChangeの状態を同期
                 StartCoroutine(SyncFileIconStatesAfterTxtLoad());
             }
-            catch (Exception ex) { DebugLogger.LogError($"TXTデータ適用中にエラー: {ex.Message}"); }
+            catch (Exception ex) { Debug.LogError($"TXTデータ適用中にエラー: {ex.Message}"); }
 
             // 残りのデータを適用
             try { ApplyImageRevealerState(); }
-            catch (Exception ex) { DebugLogger.LogError($"画像データ適用中にエラー: {ex.Message}"); }
+            catch (Exception ex) { Debug.LogError($"画像データ適用中にエラー: {ex.Message}"); }
 
             try { ApplyFolderState(); }
-            catch (Exception ex) { DebugLogger.LogError($"フォルダー状態適用中にエラー: {ex.Message}"); }
+            catch (Exception ex) { Debug.LogError($"フォルダー状態適用中にエラー: {ex.Message}"); }
 
             try { ApplyAudioSettings(); }
-            catch (Exception ex) { DebugLogger.LogError($"音声設定適用中にエラー: {ex.Message}"); }
+            catch (Exception ex) { Debug.LogError($"音声設定適用中にエラー: {ex.Message}"); }
 
             // 完了したPDFの次のフォルダーを確実にアクティブに
             try
@@ -1357,25 +1357,25 @@ public class GameSaveManager : MonoBehaviour
                 // 少し遅延させて確実に適用
                 StartCoroutine(DelayedPdfFolderActivation());
             }
-            catch (Exception ex) { DebugLogger.LogError($"PDFフォルダー有効化中にエラー: {ex.Message}"); }
+            catch (Exception ex) { Debug.LogError($"PDFフォルダー有効化中にエラー: {ex.Message}"); }
 
             try { EnsureTxtNextFoldersActive(); }
-            catch (Exception ex) { DebugLogger.LogError($"TXTフォルダー有効化中にエラー: {ex.Message}"); }
+            catch (Exception ex) { Debug.LogError($"TXTフォルダー有効化中にエラー: {ex.Message}"); }
 
             // PDFパネルの詳細有効化
             try { EnsurePdfPanelsActive(); }
-            catch (Exception ex) { DebugLogger.LogError($"PDFパネル詳細有効化中にエラー: {ex.Message}"); }
+            catch (Exception ex) { Debug.LogError($"PDFパネル詳細有効化中にエラー: {ex.Message}"); }
 
             // 追加: 完了状態のPDFパネルを強制的にアクティブ化
             try { ForceActivateCompletedPdfPanels(); }
-            catch (Exception ex) { DebugLogger.LogError($"完了状態PDFパネル強制有効化中にエラー: {ex.Message}"); }
+            catch (Exception ex) { Debug.LogError($"完了状態PDFパネル強制有効化中にエラー: {ex.Message}"); }
 
             initialLoadCompleted = true;
             return true;
         }
         catch (Exception e)
         {
-            DebugLogger.LogError($"セーブデータの適用中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
+            Debug.LogError($"セーブデータの適用中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
             return false;
         }
     }
@@ -1419,7 +1419,7 @@ public class GameSaveManager : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogWarning("txtToIconMappingsが設定されていません。手動で設定するか、GameSaveManagerのインスペクターでマッピングを追加してください。");
+            Debug.LogWarning("txtToIconMappingsが設定されていません。手動で設定するか、GameSaveManagerのインスペクターでマッピングを追加してください。");
         }
     }
 
@@ -1523,7 +1523,7 @@ public class GameSaveManager : MonoBehaviour
         }
         else if (debugMode)
         {
-            DebugLogger.LogWarning("TxtPuzzleManagerが見つからないためTXTデータを適用できません");
+            Debug.LogWarning("TxtPuzzleManagerが見つからないためTXTデータを適用できません");
         }
     }
 
@@ -1564,7 +1564,7 @@ public class GameSaveManager : MonoBehaviour
         }
         else if (debugMode)
         {
-            DebugLogger.LogWarning("ImageRevealerが見つからないためPNGデータを適用できません");
+            Debug.LogWarning("ImageRevealerが見つからないためPNGデータを適用できません");
         }
     }
 
@@ -1644,12 +1644,12 @@ public class GameSaveManager : MonoBehaviour
             }
             else if (debugMode)
             {
-                DebugLogger.LogWarning("PdfDocumentManagerが見つからないためPDFデータを適用できません");
+                Debug.LogWarning("PdfDocumentManagerが見つからないためPDFデータを適用できません");
             }
         }
         catch (Exception ex)
         {
-            DebugLogger.LogError($"PDFデータ適用中にエラー: {ex.Message}");
+            Debug.LogError($"PDFデータ適用中にエラー: {ex.Message}");
         }
     }
 
@@ -1671,7 +1671,7 @@ public class GameSaveManager : MonoBehaviour
         if (folderScripts.Count == 0)
         {
             if (debugMode)
-                DebugLogger.LogWarning("FolderButtonScriptが見つからないためフォルダー状態を適用できません");
+                Debug.LogWarning("FolderButtonScriptが見つからないためフォルダー状態を適用できません");
             return;
         }
 
@@ -1823,7 +1823,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            DebugLogger.LogError($"セーブデータの削除中にエラーが発生しました: {e.Message}");
+            Debug.LogError($"セーブデータの削除中にエラーが発生しました: {e.Message}");
         }
     }
 
@@ -1908,7 +1908,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            DebugLogger.LogError($"音量設定の保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
+            Debug.LogError($"音量設定の保存中にエラーが発生しました: {e.Message}\n{e.StackTrace}");
         }
     }
 
@@ -1928,7 +1928,7 @@ public class GameSaveManager : MonoBehaviour
     {
         if (currentSaveData == null)
         {
-            DebugLogger.LogWarning("GameSaveManager: セーブデータが存在しません。初期化します");
+            Debug.LogWarning("GameSaveManager: セーブデータが存在しません。初期化します");
             InitializeSaveData();
         }
 
@@ -1944,7 +1944,7 @@ public class GameSaveManager : MonoBehaviour
     {
         if (currentSaveData == null)
         {
-            DebugLogger.LogWarning("GameSaveManager: セーブデータが初期化されていません");
+            Debug.LogWarning("GameSaveManager: セーブデータが初期化されていません");
             InitializeSaveData();
         }
 
@@ -1956,7 +1956,7 @@ public class GameSaveManager : MonoBehaviour
     {
         if (currentSaveData == null)
         {
-            DebugLogger.LogWarning("GameSaveManager: セーブデータが存在しません。falseを返します");
+            Debug.LogWarning("GameSaveManager: セーブデータが存在しません。falseを返します");
             return false;
         }
 
@@ -2016,7 +2016,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            DebugLogger.LogError($"GameSaveManager: AfterChangeフラグ保存中にエラー: {ex.Message}");
+            Debug.LogError($"GameSaveManager: AfterChangeフラグ保存中にエラー: {ex.Message}");
         }
     }
 
@@ -2049,7 +2049,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            DebugLogger.LogError($"GameSaveManager: フラグ付きセーブ中にエラー: {ex.Message}");
+            Debug.LogError($"GameSaveManager: フラグ付きセーブ中にエラー: {ex.Message}");
         }
     }
 
@@ -2153,7 +2153,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            DebugLogger.LogError($"セーブデータ削除中にエラー: {ex.Message}");
+            Debug.LogError($"セーブデータ削除中にエラー: {ex.Message}");
         }
     }
 
@@ -2283,7 +2283,7 @@ public class GameSaveManager : MonoBehaviour
     {
         if (data == null)
         {
-            DebugLogger.LogError($"{nameof(GameSaveManager)}: 保存するOrganizeSceneDataがnullです");
+            Debug.LogError($"{nameof(GameSaveManager)}: 保存するOrganizeSceneDataがnullです");
             return;
         }
 
@@ -2331,7 +2331,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            DebugLogger.LogError($"{nameof(GameSaveManager)}: OrganizeSceneData保存中にエラーが発生しました: {e.Message}");
+            Debug.LogError($"{nameof(GameSaveManager)}: OrganizeSceneData保存中にエラーが発生しました: {e.Message}");
         }
     }
 
@@ -2506,7 +2506,7 @@ public class GameSaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            DebugLogger.LogError($"{nameof(GameSaveManager)}: OrganizeSceneDataバックアップ読み込み中にエラー: {e.Message}");
+            Debug.LogError($"{nameof(GameSaveManager)}: OrganizeSceneDataバックアップ読み込み中にエラー: {e.Message}");
         }
 
         return false;

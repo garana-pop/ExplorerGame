@@ -58,12 +58,12 @@ public static class JsonHelper
                     }
                     else
                     {
-                        DebugLogger.LogWarning($"重複するキーがあります: {kvp.Key}");
+                        Debug.LogWarning($"重複するキーがあります: {kvp.Key}");
                     }
                 }
                 catch (Exception ex)
                 {
-                    DebugLogger.LogError($"Dictionary変換中にエラーが発生しました: {ex.Message}");
+                    Debug.LogError($"Dictionary変換中にエラーが発生しました: {ex.Message}");
                 }
             }
 
@@ -113,7 +113,7 @@ public static class JsonHelper
         }
         catch (Exception ex)
         {
-            DebugLogger.LogError($"Dictionary のJSON変換中にエラーが発生しました: {ex.Message}");
+            Debug.LogError($"Dictionary のJSON変換中にエラーが発生しました: {ex.Message}");
             return "{}";
         }
     }
@@ -141,7 +141,7 @@ public static class JsonHelper
         }
         catch (Exception ex)
         {
-            DebugLogger.LogError($"JSON からDictionary への変換中にエラーが発生しました: {ex.Message}");
+            Debug.LogError($"JSON からDictionary への変換中にエラーが発生しました: {ex.Message}");
             return new Dictionary<TKey, TValue>();
         }
     }

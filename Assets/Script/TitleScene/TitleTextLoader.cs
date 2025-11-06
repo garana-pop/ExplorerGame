@@ -55,7 +55,7 @@ public class TitleTextLoader : MonoBehaviour
 
         if (titleText == null)
         {
-            DebugLogger.LogError("TitleTextLoader: TextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
+            Debug.LogError("TitleTextLoader: TextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
             enabled = false;
             return;
         }
@@ -91,7 +91,7 @@ public class TitleTextLoader : MonoBehaviour
         localizationManager = FindFirstObjectByType<LocalizationManager>();
         if (localizationManager == null && debugMode)
         {
-            DebugLogger.LogWarning("TitleTextLoader: LocalizationManagerが見つかりません");
+            Debug.LogWarning("TitleTextLoader: LocalizationManagerが見つかりません");
         }
     }
 
@@ -173,7 +173,7 @@ public class TitleTextLoader : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            DebugLogger.LogError($"TitleTextLoader: タイトルテキスト設定中にエラー: {ex.Message}");
+            Debug.LogError($"TitleTextLoader: タイトルテキスト設定中にエラー: {ex.Message}");
         }
     }
 
@@ -186,7 +186,7 @@ public class TitleTextLoader : MonoBehaviour
     {
         if (titleText == null)
         {
-            DebugLogger.LogError("TitleTextLoader: titleTextがnullです");
+            Debug.LogError("TitleTextLoader: titleTextがnullです");
             return;
         }
 
@@ -235,7 +235,7 @@ public class TitleTextLoader : MonoBehaviour
             // テキストが空でないことを確認
             if (string.IsNullOrEmpty(targetText))
             {
-                DebugLogger.LogWarning($"TitleTextLoader: 設定するテキストが空です (isEnglish: {isEnglish})");
+                Debug.LogWarning($"TitleTextLoader: 設定するテキストが空です (isEnglish: {isEnglish})");
                 // フォールバック
                 targetText = isEnglish ? "Memories of 'Her'" : "「彼女」の記憶";
             }

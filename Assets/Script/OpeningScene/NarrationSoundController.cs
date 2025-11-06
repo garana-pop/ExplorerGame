@@ -67,7 +67,7 @@ public class NarrationSoundController : MonoBehaviour
         var manager = SoundEffectManager.Instance;
         if (manager == null)
         {
-            DebugLogger.LogError($"{nameof(NarrationSoundController)}: SoundEffectManager‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
+            Debug.LogError($"{nameof(NarrationSoundController)}: SoundEffectManager‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
             return;
         }
 

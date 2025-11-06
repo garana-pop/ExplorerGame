@@ -13,7 +13,7 @@ public class ExplorerController : MonoBehaviour, IDropHandler
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
         {
-            DebugLogger.LogError("CanvasGroup component not found!");
+            Debug.LogError("CanvasGroup component not found!");
             return;
         }
 

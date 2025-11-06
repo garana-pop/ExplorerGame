@@ -14,7 +14,7 @@ public class RecordingCursorController : MonoBehaviour
     [SerializeField] private Vector2 hotspot = Vector2.zero; // カーソルのホットスポット位置
 
     [Header("エディタ専用設定")]
-    [SerializeField] private bool onlyInEditor = true; // エディタでのみ有効にするか
+    [SerializeField] private bool onlyInEditor = false; // エディタでのみ有効にするか
 
     private void Awake()
     {

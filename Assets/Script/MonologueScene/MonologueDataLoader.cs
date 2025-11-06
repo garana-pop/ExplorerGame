@@ -36,7 +36,7 @@ public class MonologueDataLoader : MonoBehaviour
         }
         else if (debugMode)
         {
-            DebugLogger.LogWarning("MonologueDataLoader: LocalizationManagerが見つかりません");
+            Debug.LogWarning("MonologueDataLoader: LocalizationManagerが見つかりません");
         }
     }
 
@@ -78,7 +78,7 @@ public class MonologueDataLoader : MonoBehaviour
 
             if (debugMode)
             {
-                DebugLogger.LogWarning("MonologueDataLoader: LocalizationManagerが見つかりません。日本語ファイルを使用します");
+                Debug.LogWarning("MonologueDataLoader: LocalizationManagerが見つかりません。日本語ファイルを使用します");
             }
             return;
         }
@@ -124,7 +124,7 @@ public class MonologueDataLoader : MonoBehaviour
 
             if (textAsset == null)
             {
-                DebugLogger.LogError($"セリフファイル '{fileName}' が見つかりません。");
+                Debug.LogError($"セリフファイル '{fileName}' が見つかりません。");
                 return dialogues;
             }
 
@@ -153,7 +153,7 @@ public class MonologueDataLoader : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            DebugLogger.LogError($"セリフデータの読み込み中にエラーが発生しました: {e.Message}");
+            Debug.LogError($"セリフデータの読み込み中にエラーが発生しました: {e.Message}");
         }
 
         return dialogues;

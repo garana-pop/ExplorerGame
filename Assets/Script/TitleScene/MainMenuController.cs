@@ -90,7 +90,7 @@ public class MainMenuController : MonoBehaviour
         GameSaveManager saveManager = GameSaveManager.Instance;
         if (saveManager == null)
         {
-            DebugLogger.LogWarning("MainMenuController: GameSaveManagerが見つかりません");
+            Debug.LogWarning("MainMenuController: GameSaveManagerが見つかりません");
             return;
         }
 
@@ -172,7 +172,7 @@ public class MainMenuController : MonoBehaviour
         else
         {
             // ConversationTransitionControllerが見つからない場合のフォールバック
-            DebugLogger.LogWarning("MainMenuController: ConversationTransitionControllerが見つかりません。直接シーン遷移を行います。");
+            Debug.LogWarning("MainMenuController: ConversationTransitionControllerが見つかりません。直接シーン遷移を行います。");
 
             // セーブデータの存在をチェック
             if (GameSaveManager.Instance != null)

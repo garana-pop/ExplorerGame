@@ -124,7 +124,7 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
         {
             // LocalizationManagerが存在しない場合は日本語をデフォルトとする
             expectedSpeaker = expectedSpeaker_Japanese;
-            DebugLogger.LogWarning($"{nameof(SpeakerDropArea)}: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+            Debug.LogWarning($"{nameof(SpeakerDropArea)}: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
             return;
         }
 
@@ -602,7 +602,7 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
         }
         catch (System.Exception ex)
         {
-            DebugLogger.LogWarning($"フォント読み込みエラー: {ex.Message}");
+            Debug.LogWarning($"フォント読み込みエラー: {ex.Message}");
             FindAndAssignFont();
         }
 
@@ -655,7 +655,7 @@ public class SpeakerDropArea : MonoBehaviour, IDropHandler
         }
         catch (System.Exception ex)
         {
-            DebugLogger.LogError($"エリア: {gameObject.name} の正解状態設定中にエラー: {ex.Message}");
+            Debug.LogError($"エリア: {gameObject.name} の正解状態設定中にエラー: {ex.Message}");
         }
     }
 }

@@ -258,7 +258,7 @@ public class FileManager : MonoBehaviour
         {
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(FileManager)}: ファイル '{fileName}' が見つかりません");
+                Debug.LogWarning($"{nameof(FileManager)}: ファイル '{fileName}' が見つかりません");
             }
             return false;
         }

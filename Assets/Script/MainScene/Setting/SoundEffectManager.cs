@@ -164,7 +164,7 @@ public class SoundEffectManager : MonoBehaviour
             }
             catch (System.Exception e)
             {
-                DebugLogger.LogWarning($"SoundEffectManager: game_save.json読み込みエラー: {e.Message}");
+                Debug.LogWarning($"SoundEffectManager: game_save.json読み込みエラー: {e.Message}");
             }
         }
 
@@ -347,7 +347,7 @@ public class SoundEffectManager : MonoBehaviour
                 }
                 catch (System.Exception e)
                 {
-                    DebugLogger.LogWarning($"SoundEffectManager: game_save.jsonへの保存エラー: {e.Message}");
+                    Debug.LogWarning($"SoundEffectManager: game_save.jsonへの保存エラー: {e.Message}");
                 }
             }
         }
@@ -528,7 +528,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (sfxAudioSource == null)
         {
-            DebugLogger.LogWarning("AudioSource がセットされていません");
+            Debug.LogWarning("AudioSource がセットされていません");
             return;
         }
 
@@ -544,7 +544,7 @@ public class SoundEffectManager : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogWarning($"効果音 '{soundKey}' が見つかりません");
+            Debug.LogWarning($"効果音 '{soundKey}' が見つかりません");
         }
     }
 
@@ -555,7 +555,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (sfxAudioSource == null)
         {
-            DebugLogger.LogWarning("AudioSource がセットされていません");
+            Debug.LogWarning("AudioSource がセットされていません");
             return;
         }
 
@@ -572,7 +572,7 @@ public class SoundEffectManager : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogWarning($"効果音 '{soundKey}' が見つかりません");
+            Debug.LogWarning($"効果音 '{soundKey}' が見つかりません");
         }
     }
 
@@ -583,7 +583,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (sfxAudioSource == null)
         {
-            DebugLogger.LogWarning("AudioSource がセットされていません");
+            Debug.LogWarning("AudioSource がセットされていません");
             return;
         }
 
@@ -606,7 +606,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (sfxAudioSource == null)
         {
-            DebugLogger.LogWarning("AudioSource がセットされていません");
+            Debug.LogWarning("AudioSource がセットされていません");
             return;
         }
 

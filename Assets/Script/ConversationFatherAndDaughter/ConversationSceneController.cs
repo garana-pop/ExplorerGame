@@ -166,12 +166,12 @@ public class ConversationSceneController : MonoBehaviour
     {
         if (dialogueScrollView == null || contentPanel == null)
         {
-            DebugLogger.LogError("DialogueScrollView or ContentPanel not set");
+            Debug.LogError("DialogueScrollView or ContentPanel not set");
         }
 
         if (continueIndicator == null)
         {
-            DebugLogger.LogError("ContinueIndicator not set");
+            Debug.LogError("ContinueIndicator not set");
         }
 
         // CharacterDisplayController
@@ -202,7 +202,7 @@ public class ConversationSceneController : MonoBehaviour
         // dialogueEntriesが空の場合はエラーログを出力
         if (dialogueEntries == null || dialogueEntries.Count == 0)
         {
-            DebugLogger.LogError("ConversationSceneController: 会話データが読み込めませんでした。");
+            Debug.LogError("ConversationSceneController: 会話データが読み込めませんでした。");
             // 必要に応じてデフォルトの会話データを設定
             dialogueEntries = new List<DialogueEntry>();
         }

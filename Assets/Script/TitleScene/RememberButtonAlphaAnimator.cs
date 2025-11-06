@@ -115,7 +115,7 @@ public class RememberButtonAlphaAnimator : MonoBehaviour
             titleTextChanger = FindFirstObjectByType<TitleTextChanger>();
             if (titleTextChanger == null && !forceStart)
             {
-                DebugLogger.LogError("RememberButtonAlphaAnimator: TitleTextChanger‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB");
+                Debug.LogError("RememberButtonAlphaAnimator: TitleTextChanger‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB");
                 enabled = false;
                 return;
             }

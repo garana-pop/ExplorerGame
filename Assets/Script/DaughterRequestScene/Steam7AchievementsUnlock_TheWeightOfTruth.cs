@@ -184,7 +184,7 @@ public class Steam7AchievementsUnlock_TheWeightOfTruth : MonoBehaviour
     /// <param name="message">エラーメッセージ</param>
     private void LogError(string message)
     {
-        DebugLogger.LogError($"{nameof(Steam7AchievementsUnlock_TheWeightOfTruth)}: {message}");
+        Debug.LogError($"{nameof(Steam7AchievementsUnlock_TheWeightOfTruth)}: {message}");
     }
 
     #endregion

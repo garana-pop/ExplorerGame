@@ -24,14 +24,14 @@ public class FileOpen : MonoBehaviour, IPointerClickHandler
             draggingCanvas = GameObject.Find("DraggingCanvas")?.GetComponent<Canvas>();
             if (draggingCanvas == null)
             {
-                DebugLogger.LogError("DraggingCanvasが見つかりません。インスペクターで設定してください");
+                Debug.LogError("DraggingCanvasが見つかりません。インスペクターで設定してください");
             }
         }
 
         // オーバーレイの設定確認
         if (overlay == null)
         {
-            DebugLogger.LogWarning("Overlayが設定されていません。操作ブロックが機能しません");
+            Debug.LogWarning("Overlayが設定されていません。操作ブロックが機能しません");
         }
         else
         {
@@ -44,7 +44,7 @@ public class FileOpen : MonoBehaviour, IPointerClickHandler
             panelRectTransform = infoPanel.GetComponent<RectTransform>();
             if (panelRectTransform == null)
             {
-                DebugLogger.LogError("InfoPanelにRectTransformがありません");
+                Debug.LogError("InfoPanelにRectTransformがありません");
             }
             originalParent = infoPanel.transform.parent; // 元の親を記録
             SetActiveRecursive(infoPanel, false); // 子を含めて非アクティブに

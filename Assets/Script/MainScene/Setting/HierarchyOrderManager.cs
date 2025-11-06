@@ -53,7 +53,7 @@ public class HierarchyOrderManager : MonoBehaviour
             draggingCanvas = GameObject.Find("DraggingCanvas")?.GetComponent<Canvas>();
             if (draggingCanvas == null)
             {
-                DebugLogger.LogError("HierarchyOrderManager: DraggingCanvasが見つかりません。");
+                Debug.LogError("HierarchyOrderManager: DraggingCanvasが見つかりません。");
                 enabled = false;
                 return;
             }
@@ -65,7 +65,7 @@ public class HierarchyOrderManager : MonoBehaviour
             overlay = draggingCanvas.transform.Find("Overlay")?.gameObject;
             if (overlay == null)
             {
-                DebugLogger.LogWarning("HierarchyOrderManager: Overlayが見つかりません。DraggingCanvas/Overlayを作成してください。");
+                Debug.LogWarning("HierarchyOrderManager: Overlayが見つかりません。DraggingCanvas/Overlayを作成してください。");
             }
         }
 
@@ -76,7 +76,7 @@ public class HierarchyOrderManager : MonoBehaviour
             settingsPanel = FindObjectWithNameInCanvas("SettingsPanel");
             if (settingsPanel == null)
             {
-                DebugLogger.LogWarning("HierarchyOrderManager: SettingsPanelが見つかりません。手動で設定してください。");
+                Debug.LogWarning("HierarchyOrderManager: SettingsPanelが見つかりません。手動で設定してください。");
             }
         }
 
@@ -114,7 +114,7 @@ public class HierarchyOrderManager : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogWarning("HierarchyOrderManager: MainSceneSettingsManagerが見つかりません");
+            Debug.LogWarning("HierarchyOrderManager: MainSceneSettingsManagerが見つかりません");
         }
     }
 
@@ -176,7 +176,7 @@ public class HierarchyOrderManager : MonoBehaviour
     {
         if (draggingCanvas == null)
         {
-            DebugLogger.LogError("HierarchyOrderManager: DraggingCanvasが設定されていません");
+            Debug.LogError("HierarchyOrderManager: DraggingCanvasが設定されていません");
             return;
         }
 

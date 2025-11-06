@@ -115,7 +115,7 @@ public class TrashBoxDisplayManager : MonoBehaviour, IPointerClickHandler, IPoin
         }
         else if (debugMode)
         {
-            DebugLogger.LogWarning($"{nameof(TrashBoxDisplayManager)}: TrashBoxTipsコンポーネントが見つかりません");
+            Debug.LogWarning($"{nameof(TrashBoxDisplayManager)}: TrashBoxTipsコンポーネントが見つかりません");
         }
     }
 

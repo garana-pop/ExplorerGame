@@ -39,7 +39,7 @@
 //                }
 //                else
 //                {
-//                    //DebugLogger.LogWarning($"{droppedFile.name}にCanvasGroupがありません");
+//                    //Debug.LogWarning($"{droppedFile.name}にCanvasGroupがありません");
 //                }
 //            }
 //        }
@@ -53,7 +53,7 @@
 //        }
 //        else
 //        {
-//            DebugLogger.LogWarning($"{droppedFile.name}にImageコンポーネントがありません");
+//            Debug.LogWarning($"{droppedFile.name}にImageコンポーネントがありません");
 //        }
 
 //    }
@@ -109,7 +109,7 @@ public class FolderDropArea : MonoBehaviour, IDropHandler
                 }
                 else
                 {
-                    //DebugLogger.LogWarning($"{droppedFile.name}にCanvasGroupがありません");
+                    //Debug.LogWarning($"{droppedFile.name}にCanvasGroupがありません");
                 }
             }
         }
@@ -123,7 +123,7 @@ public class FolderDropArea : MonoBehaviour, IDropHandler
         }
         else
         {
-            DebugLogger.LogWarning($"{droppedFile.name}にImageコンポーネントがありません");
+            Debug.LogWarning($"{droppedFile.name}にImageコンポーネントがありません");
         }
     }
 }

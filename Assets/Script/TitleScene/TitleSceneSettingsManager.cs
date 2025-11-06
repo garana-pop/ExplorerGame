@@ -241,7 +241,7 @@ public class TitleSceneSettingsManager : BaseSettingsManager
             }
             catch (System.Exception e)
             {
-                DebugLogger.LogWarning($"game_save.json読み込みエラー: {e.Message}");
+                Debug.LogWarning($"game_save.json読み込みエラー: {e.Message}");
             }
         }
 
@@ -286,7 +286,7 @@ public class TitleSceneSettingsManager : BaseSettingsManager
         }
         else
         {
-            DebugLogger.LogWarning("BGM AudioSourceが見つかりません！");
+            Debug.LogWarning("BGM AudioSourceが見つかりません！");
         }
 
         // MainMenuControllerのbackgroundAudioSourceも直接更新（確実性のため）
@@ -341,7 +341,7 @@ public class TitleSceneSettingsManager : BaseSettingsManager
             }
             catch (System.Exception e)
             {
-                DebugLogger.LogWarning($"game_save.jsonへの保存エラー: {e.Message}");
+                Debug.LogWarning($"game_save.jsonへの保存エラー: {e.Message}");
             }
         }
     }

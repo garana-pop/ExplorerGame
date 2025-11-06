@@ -97,7 +97,7 @@ public class DataResetPanelController : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogError("DataResetPanelController: 思い出すボタンが設定されていません");
+            Debug.LogError("DataResetPanelController: 思い出すボタンが設定されていません");
         }
     }
 
@@ -159,7 +159,7 @@ public class DataResetPanelController : MonoBehaviour
     //    }
     //    else
     //    {
-    //        DebugLogger.LogWarning("DataResetPanelController: 設定パネルが設定されていません");
+    //        Debug.LogWarning("DataResetPanelController: 設定パネルが設定されていません");
     //    }
 
     //    // その後、データ初期化確認パネルを表示
@@ -170,7 +170,7 @@ public class DataResetPanelController : MonoBehaviour
     //    }
     //    else
     //    {
-    //        DebugLogger.LogError("DataResetPanelController: データ初期化確認パネルが設定されていません");
+    //        Debug.LogError("DataResetPanelController: データ初期化確認パネルが設定されていません");
     //    }
     //}
     private void ShowDataResetPanel()
@@ -192,7 +192,7 @@ public class DataResetPanelController : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogWarning("DataResetPanelController: 設定パネルが設定されていません");
+            Debug.LogWarning("DataResetPanelController: 設定パネルが設定されていません");
         }
 
         // 1フレーム待機（重要）
@@ -206,7 +206,7 @@ public class DataResetPanelController : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogError("DataResetPanelController: データ初期化確認パネルが設定されていません");
+            Debug.LogError("DataResetPanelController: データ初期化確認パネルが設定されていません");
         }
     }
 

@@ -20,7 +20,7 @@ public class SettingsButtonController : MonoBehaviour
         button = GetComponent<Button>();
         if (button == null)
         {
-            DebugLogger.LogError("SettingsButtonControllerはButtonコンポーネントがアタッチされているGameObjectに追加してください。");
+            Debug.LogError("SettingsButtonControllerはButtonコンポーネントがアタッチされているGameObjectに追加してください。");
             enabled = false;
             return;
         }
@@ -34,7 +34,7 @@ public class SettingsButtonController : MonoBehaviour
             settingsManager = FindAnyObjectByType<MainSceneSettingsManager>();
             if (settingsManager == null)
             {
-                DebugLogger.LogError("MainSceneSettingsManagerが見つかりません。シーン内にMainSceneSettingsManagerを追加してください。");
+                Debug.LogError("MainSceneSettingsManagerが見つかりません。シーン内にMainSceneSettingsManagerを追加してください。");
                 return;
             }
         }

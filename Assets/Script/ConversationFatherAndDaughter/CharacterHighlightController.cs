@@ -111,7 +111,7 @@ namespace ConversationFatherAndDaughter
             }
             else
             {
-                DebugLogger.LogWarning($"{nameof(CharacterHighlightController)}: 左側キャラクターオブジェクトが設定されていません");
+                Debug.LogWarning($"{nameof(CharacterHighlightController)}: 左側キャラクターオブジェクトが設定されていません");
             }
 
             // 右側キャラクターのコンポーネント取得
@@ -128,7 +128,7 @@ namespace ConversationFatherAndDaughter
             }
             else
             {
-                DebugLogger.LogWarning($"{nameof(CharacterHighlightController)}: 右側キャラクターオブジェクトが設定されていません");
+                Debug.LogWarning($"{nameof(CharacterHighlightController)}: 右側キャラクターオブジェクトが設定されていません");
             }
         }
 
@@ -206,7 +206,7 @@ namespace ConversationFatherAndDaughter
 
                 if (debugMode)
                 {
-                    DebugLogger.LogWarning($"{nameof(CharacterHighlightController)}: 話者 '{speakerName}' のマッピングが見つかりません");
+                    Debug.LogWarning($"{nameof(CharacterHighlightController)}: 話者 '{speakerName}' のマッピングが見つかりません");
                 }
             }
         }
@@ -325,7 +325,7 @@ namespace ConversationFatherAndDaughter
             // 一致しなかった場合のデバッグ表示
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(CharacterHighlightController)}: マッピングが見つかりません speakerName={speakerName}, languageCode={currentLanguageCode}");
+                Debug.LogWarning($"{nameof(CharacterHighlightController)}: マッピングが見つかりません speakerName={speakerName}, languageCode={currentLanguageCode}");
             }
             return null;
         }

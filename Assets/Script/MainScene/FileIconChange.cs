@@ -250,7 +250,7 @@ public class FileIconChange : MonoBehaviour
         }
         else if (puzzleManager != null)
         {
-            DebugLogger.LogError("FileIconChange: TxtPuzzleManager‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.LogError("FileIconChange: TxtPuzzleManager‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
         }
     }
 }

@@ -45,7 +45,7 @@ namespace ExplorerGame.UI
 
             if (textComponent == null)
             {
-                DebugLogger.LogError($"{nameof(PDFTextLocalizationAdjuster)}: TextMeshProUGUIコンポーネントが見つかりません");
+                Debug.LogError($"{nameof(PDFTextLocalizationAdjuster)}: TextMeshProUGUIコンポーネントが見つかりません");
                 enabled = false;
                 return;
             }
@@ -66,7 +66,7 @@ namespace ExplorerGame.UI
             }
             else
             {
-                DebugLogger.LogWarning($"{nameof(PDFTextLocalizationAdjuster)}: LocalizationManagerが見つかりません");
+                Debug.LogWarning($"{nameof(PDFTextLocalizationAdjuster)}: LocalizationManagerが見つかりません");
             }
         }
 

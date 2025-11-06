@@ -141,7 +141,7 @@ public class SpeakerNameTransitionController : MonoBehaviour
             }
 
             if (leftNameText == null)
-                DebugLogger.LogWarning("左側キャラクターの名前テキスト(TextMeshProUGUI)が設定されていません。");
+                Debug.LogWarning("左側キャラクターの名前テキスト(TextMeshProUGUI)が設定されていません。");
         }
 
         // 右側の名前テキストの確認
@@ -159,7 +159,7 @@ public class SpeakerNameTransitionController : MonoBehaviour
             }
 
             if (rightNameText == null)
-                DebugLogger.LogWarning("右側キャラクターの名前テキスト(TextMeshProUGUI)が設定されていません。");
+                Debug.LogWarning("右側キャラクターの名前テキスト(TextMeshProUGUI)が設定されていません。");
         }
     }
 

@@ -194,7 +194,7 @@ public class TitleTextChanger : MonoBehaviour
             // LocalizationManagerが存在しない場合は日本語をデフォルトとする
             originalTitleText = originalTitleText_Japanese;
             newTitleText = newTitleText_Japanese;
-            if (debugMode) DebugLogger.LogWarning("TitleTextChanger: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+            if (debugMode) Debug.LogWarning("TitleTextChanger: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
             return;
         }
 
@@ -243,7 +243,7 @@ public class TitleTextChanger : MonoBehaviour
         GameSaveManager saveManager = GameSaveManager.Instance;
         if (saveManager == null)
         {
-            if (debugMode) DebugLogger.LogWarning("TitleTextChanger: GameSaveManagerが見つかりません");
+            if (debugMode) Debug.LogWarning("TitleTextChanger: GameSaveManagerが見つかりません");
             return false;
         }
 

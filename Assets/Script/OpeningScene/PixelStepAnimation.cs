@@ -43,7 +43,7 @@ public class PixelStepAnimation : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         if (rectTransform == null)
         {
-            DebugLogger.LogError("PixelStepAnimation: RectTransformが見つかりません。UI要素にアタッチしてください。");
+            Debug.LogError("PixelStepAnimation: RectTransformが見つかりません。UI要素にアタッチしてください。");
             enabled = false;
             return;
         }

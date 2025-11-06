@@ -88,7 +88,7 @@ public class OpeningSceneController : MonoBehaviour
             bool isOpeningCompleted = GameSaveManager.Instance.GetEndOpeningSceneFlag();
             if (isOpeningCompleted)
             {
-                DebugLogger.LogWarning("OpeningSceneController: 既にOpeningSceneは完了しています。MainSceneへ遷移します。");
+                Debug.LogWarning("OpeningSceneController: 既にOpeningSceneは完了しています。MainSceneへ遷移します。");
                 SceneManager.LoadScene("MainScene");
                 return;
             }
@@ -114,7 +114,7 @@ public class OpeningSceneController : MonoBehaviour
         speakerNameController = FindFirstObjectByType<SpeakerNameTransitionController>();
         if (speakerNameController == null)
         {
-            DebugLogger.LogWarning("SpeakerNameTransitionControllerが見つかりません。");
+            Debug.LogWarning("SpeakerNameTransitionControllerが見つかりません。");
         }
     }
 
@@ -179,13 +179,13 @@ public class OpeningSceneController : MonoBehaviour
     {
         if (dialogueScrollView == null || contentPanel == null)
         {
-            DebugLogger.LogError("DialogueScrollView or ContentPanel not set");
+            Debug.LogError("DialogueScrollView or ContentPanel not set");
         }
 
         // Add warning for unset ContinueIndicator
         if (continueIndicator == null)
         {
-            DebugLogger.LogError("ContinueIndicator not set");
+            Debug.LogError("ContinueIndicator not set");
         }
     }
 
@@ -551,7 +551,7 @@ public class OpeningSceneController : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogError("OpeningSceneController: GameSaveManagerが見つかりません");
+            Debug.LogError("OpeningSceneController: GameSaveManagerが見つかりません");
         }
 
         if (fadePanel == null)

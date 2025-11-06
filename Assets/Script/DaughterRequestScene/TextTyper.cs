@@ -61,7 +61,7 @@ public class TextTyper : MonoBehaviour
             textComponent = GetComponent<TMP_Text>();
             if (textComponent == null)
             {
-                DebugLogger.LogError("TextTyper: TextMeshProコンポーネントが見つかりません。コンポーネントをアタッチするか、インスペクターで設定してください。");
+                Debug.LogError("TextTyper: TextMeshProコンポーネントが見つかりません。コンポーネントをアタッチするか、インスペクターで設定してください。");
                 enabled = false;
                 return;
             }
@@ -97,7 +97,7 @@ public class TextTyper : MonoBehaviour
         // LocalizationManagerが存在しない場合は何もしない
         if (localizationManager == null)
         {
-            DebugLogger.LogWarning("TextTyper: LocalizationManagerが見つかりません。デフォルトテキストを使用します。");
+            Debug.LogWarning("TextTyper: LocalizationManagerが見つかりません。デフォルトテキストを使用します。");
             return;
         }
 
@@ -115,7 +115,7 @@ public class TextTyper : MonoBehaviour
             }
             else
             {
-                DebugLogger.LogWarning("TextTyper: 英語テキストが設定されていません。デフォルトテキストを使用します。");
+                Debug.LogWarning("TextTyper: 英語テキストが設定されていません。デフォルトテキストを使用します。");
             }
         }
         // 日本語の場合は何もしない（デフォルトのfullTextを使用）

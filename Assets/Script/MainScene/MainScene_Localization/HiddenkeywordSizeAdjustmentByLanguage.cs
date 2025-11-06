@@ -84,7 +84,7 @@ public class HiddenkeywordSizeAdjustmentByLanguage : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogWarning($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: LocalizationManagerが見つかりません");
+            Debug.LogWarning($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: LocalizationManagerが見つかりません");
         }
     }
 
@@ -155,7 +155,7 @@ public class HiddenkeywordSizeAdjustmentByLanguage : MonoBehaviour
         // LocalizationManagerから現在の言語コードを取得
         if (LocalizationManager.Instance == null)
         {
-            DebugLogger.LogWarning($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: LocalizationManagerが存在しません。日本語設定として処理します");
+            Debug.LogWarning($"{nameof(HiddenkeywordSizeAdjustmentByLanguage)}: LocalizationManagerが存在しません。日本語設定として処理します");
             currentLanguageCode = JAPANESE_CODE;
         }
         else

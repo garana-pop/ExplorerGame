@@ -46,7 +46,7 @@ public class FlagTestController : MonoBehaviour
         if (GameSaveManager.Instance == null)
         {
             UpdateResultText("エラー: GameSaveManagerが見つかりません");
-            DebugLogger.LogError("FlagTestController: GameSaveManagerが存在しません");
+            Debug.LogError("FlagTestController: GameSaveManagerが存在しません");
             return;
         }
 
@@ -59,7 +59,7 @@ public class FlagTestController : MonoBehaviour
         catch (System.Exception e)
         {
             UpdateResultText($"エラー: {e.Message}");
-            DebugLogger.LogError($"FlagTestController: SetFlag({value})でエラー - {e.Message}");
+            Debug.LogError($"FlagTestController: SetFlag({value})でエラー - {e.Message}");
         }
     }
 
@@ -71,7 +71,7 @@ public class FlagTestController : MonoBehaviour
         if (GameSaveManager.Instance == null)
         {
             UpdateResultText("エラー: GameSaveManagerが見つかりません");
-            DebugLogger.LogError("FlagTestController: GameSaveManagerが存在しません");
+            Debug.LogError("FlagTestController: GameSaveManagerが存在しません");
             return;
         }
 
@@ -84,7 +84,7 @@ public class FlagTestController : MonoBehaviour
         catch (System.Exception e)
         {
             UpdateResultText($"エラー: {e.Message}");
-            DebugLogger.LogError($"FlagTestController: GetFlag()でエラー - {e.Message}");
+            Debug.LogError($"FlagTestController: GetFlag()でエラー - {e.Message}");
         }
     }
 
@@ -96,7 +96,7 @@ public class FlagTestController : MonoBehaviour
     {
         if (GameSaveManager.Instance == null)
         {
-            DebugLogger.LogError("FlagTestController: GameSaveManagerが存在しません");
+            Debug.LogError("FlagTestController: GameSaveManagerが存在しません");
             return;
         }
 

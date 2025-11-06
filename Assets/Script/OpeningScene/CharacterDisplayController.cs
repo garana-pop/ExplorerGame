@@ -91,7 +91,7 @@ public class CharacterDisplayController : MonoBehaviour
                 character.characterImage = character.characterObject.GetComponent<Image>();
                 if (character.characterImage == null)
                 {
-                    DebugLogger.LogWarning($"キャラクター {character.characterName} の Image コンポーネントが見つかりません");
+                    Debug.LogWarning($"キャラクター {character.characterName} の Image コンポーネントが見つかりません");
                 }
             }
 
@@ -101,7 +101,7 @@ public class CharacterDisplayController : MonoBehaviour
                 character.nameText = character.characterObject.GetComponentInChildren<TextMeshProUGUI>();
                 if (character.nameText == null)
                 {
-                    DebugLogger.LogWarning($"キャラクター {character.characterName} の TextMeshProUGUI コンポーネントが見つかりません");
+                    Debug.LogWarning($"キャラクター {character.characterName} の TextMeshProUGUI コンポーネントが見つかりません");
                 }
             }
         }
@@ -277,7 +277,7 @@ public class CharacterDisplayController : MonoBehaviour
         {
             if (debugMode)
             {
-                DebugLogger.LogWarning($"話者名 '{speakerName}' に一致するキャラクターが見つかりません");
+                Debug.LogWarning($"話者名 '{speakerName}' に一致するキャラクターが見つかりません");
             }
             return;
         }
@@ -488,7 +488,7 @@ public class CharacterDisplayController : MonoBehaviour
     {
         if (string.IsNullOrEmpty(characterName) || characterObject == null)
         {
-            DebugLogger.LogError("キャラクター名とゲームオブジェクトは必須です");
+            Debug.LogError("キャラクター名とゲームオブジェクトは必須です");
             return;
         }
 
@@ -497,7 +497,7 @@ public class CharacterDisplayController : MonoBehaviour
         {
             if (character.characterName.Equals(characterName, System.StringComparison.OrdinalIgnoreCase))
             {
-                DebugLogger.LogWarning($"同じ名前のキャラクター '{characterName}' は既に登録されています");
+                Debug.LogWarning($"同じ名前のキャラクター '{characterName}' は既に登録されています");
                 return;
             }
         }

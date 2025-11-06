@@ -116,7 +116,7 @@ public class TrashBoxTips : MonoBehaviour
             localizationManager = LocalizationManager.Instance;
             if (localizationManager == null && debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(OrganizeMainSceneController)}: LocalizationManagerが見つかりません");
+                Debug.LogWarning($"{nameof(OrganizeMainSceneController)}: LocalizationManagerが見つかりません");
             }
         }
     }
@@ -130,7 +130,7 @@ public class TrashBoxTips : MonoBehaviour
         sceneController = OrganizeMainSceneController.Instance;
         if (sceneController == null && debugMode)
         {
-            DebugLogger.LogWarning($"{nameof(TrashBoxTips)}: OrganizeMainSceneControllerが見つかりません");
+            Debug.LogWarning($"{nameof(TrashBoxTips)}: OrganizeMainSceneControllerが見つかりません");
         }
 
         // メッセージパネルを初期状態で非表示に設定
@@ -282,7 +282,7 @@ public class TrashBoxTips : MonoBehaviour
         {
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(TrashBoxTips)}: 空のメッセージが指定されました");
+                Debug.LogWarning($"{nameof(TrashBoxTips)}: 空のメッセージが指定されました");
             }
             return;
         }

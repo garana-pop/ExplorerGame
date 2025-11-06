@@ -29,7 +29,7 @@ public class BlinkEffect : MonoBehaviour
         // まぶたが設定されていなければログを表示
         if (topEyelid == null || bottomEyelid == null)
         {
-            DebugLogger.LogError("BlinkEffect: 上下のまぶたのRectTransformが設定されていません。インスペクターで設定してください。");
+            Debug.LogError("BlinkEffect: 上下のまぶたのRectTransformが設定されていません。インスペクターで設定してください。");
             enabled = false;
             return;
         }

@@ -108,7 +108,7 @@ public class ConversationTransitionController : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "TitleScene")
         {
             if (debugMode)
-                DebugLogger.LogWarning("ConversationTransitionController: 既に別のシーンに遷移しています。処理を中断します。");
+                Debug.LogWarning("ConversationTransitionController: 既に別のシーンに遷移しています。処理を中断します。");
             return;
         }
 
@@ -175,14 +175,14 @@ public class ConversationTransitionController : MonoBehaviour
         gameSaveManager = GameSaveManager.Instance;
         if (gameSaveManager == null)
         {
-            DebugLogger.LogWarning("ConversationTransitionController: GameSaveManagerが見つかりません");
+            Debug.LogWarning("ConversationTransitionController: GameSaveManagerが見つかりません");
         }
 
         // MainMenuControllerの取得
         mainMenuController = FindFirstObjectByType<MainMenuController>();
         if (mainMenuController == null)
         {
-            DebugLogger.LogWarning("ConversationTransitionController: MainMenuControllerが見つかりません");
+            Debug.LogWarning("ConversationTransitionController: MainMenuControllerが見つかりません");
         }
     }
 
@@ -193,7 +193,7 @@ public class ConversationTransitionController : MonoBehaviour
     {
         if (startButton == null)
         {
-            DebugLogger.LogError("ConversationTransitionController: 「思い出す」ボタンが見つかりません");
+            Debug.LogError("ConversationTransitionController: 「思い出す」ボタンが見つかりません");
             return;
         }
 
@@ -369,7 +369,7 @@ public class ConversationTransitionController : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            DebugLogger.LogError($"ConversationTransitionController: シーン判定中にエラー: {ex.Message}");
+            Debug.LogError($"ConversationTransitionController: シーン判定中にエラー: {ex.Message}");
             targetScene = defaultOpeningSceneName;
             transitionSuccessful = false;
         }
@@ -520,7 +520,7 @@ public class ConversationTransitionController : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            DebugLogger.LogError($"ConversationTransitionController: シーン判定中にエラー: {ex.Message}");
+            Debug.LogError($"ConversationTransitionController: シーン判定中にエラー: {ex.Message}");
             targetScene = defaultOpeningSceneName;
             transitionSuccessful = false;
         }
@@ -566,7 +566,7 @@ public class ConversationTransitionController : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            DebugLogger.LogError($"ConversationTransitionController: セーブデータ存在チェック中にエラー: {ex.Message}");
+            Debug.LogError($"ConversationTransitionController: セーブデータ存在チェック中にエラー: {ex.Message}");
             return false;
         }
     }
@@ -606,7 +606,7 @@ public class ConversationTransitionController : MonoBehaviour
         // asyncLoadがnullでないことを確認
         if (asyncLoad == null)
         {
-            DebugLogger.LogError($"ConversationTransitionController: シーン '{sceneName}' の読み込みに失敗しました");
+            Debug.LogError($"ConversationTransitionController: シーン '{sceneName}' の読み込みに失敗しました");
             yield break;
         }
 
@@ -665,7 +665,7 @@ public class ConversationTransitionController : MonoBehaviour
         Canvas canvas = FindFirstObjectByType<Canvas>();
         if (canvas == null)
         {
-            DebugLogger.LogWarning("ConversationTransitionController: Canvasが見つからないため、フェードパネルを作成できません");
+            Debug.LogWarning("ConversationTransitionController: Canvasが見つからないため、フェードパネルを作成できません");
             return;
         }
 

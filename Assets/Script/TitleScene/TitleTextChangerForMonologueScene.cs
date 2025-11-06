@@ -136,7 +136,7 @@ public class TitleTextChangerForMonologueScene : MonoBehaviour
         {
             // LocalizationManagerが存在しない場合は日本語をデフォルトとする
             newTitleText = newTitleText_Japanese;
-            if (debugMode) DebugLogger.LogWarning("TitleTextChangerForMonologueScene: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+            if (debugMode) Debug.LogWarning("TitleTextChangerForMonologueScene: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
             return;
         }
 

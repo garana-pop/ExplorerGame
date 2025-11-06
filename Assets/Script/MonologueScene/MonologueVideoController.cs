@@ -190,7 +190,7 @@ public class MonologueVideoController : MonoBehaviour
     {
         if (invertMaterial == null)
         {
-            DebugLogger.LogWarning($"{nameof(MonologueVideoController)}: 色調反転マテリアルが設定されていません");
+            Debug.LogWarning($"{nameof(MonologueVideoController)}: 色調反転マテリアルが設定されていません");
             return;
         }
 
@@ -222,7 +222,7 @@ public class MonologueVideoController : MonoBehaviour
     {
         if (videoClips == null || clipIndex < 0 || clipIndex >= videoClips.Length)
         {
-            DebugLogger.LogError($"{nameof(MonologueVideoController)}: 無効な動画インデックス: {clipIndex}");
+            Debug.LogError($"{nameof(MonologueVideoController)}: 無効な動画インデックス: {clipIndex}");
             return;
         }
 

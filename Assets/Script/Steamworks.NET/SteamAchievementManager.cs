@@ -421,12 +421,12 @@ public class SteamAchievementManager : MonoBehaviour
 
     private void LogWarning(string message)
     {
-        DebugLogger.LogWarning($"[SteamAchievementManager] {message}");
+        Debug.LogWarning($"[SteamAchievementManager] {message}");
     }
 
     private void LogError(string message)
     {
-        DebugLogger.LogError($"[SteamAchievementManager] {message}");
+        Debug.LogError($"[SteamAchievementManager] {message}");
     }
 
     #endregion

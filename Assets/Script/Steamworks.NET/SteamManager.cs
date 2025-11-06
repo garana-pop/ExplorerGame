@@ -130,14 +130,14 @@ public class SteamManager : MonoBehaviour
             }
             else
             {
-                DebugLogger.LogWarning($"{nameof(SteamManager)}: Steam API初期化失敗 - Steamクライアントが起動していない可能性があります");
+                Debug.LogWarning($"{nameof(SteamManager)}: Steam API初期化失敗 - Steamクライアントが起動していない可能性があります");
                 isInitialized = false;
                 isSteamRunning = false;
             }
         }
         catch (System.Exception e)
         {
-            DebugLogger.LogError($"{nameof(SteamManager)}: Steam API初期化中にエラーが発生: {e.Message}");
+            Debug.LogError($"{nameof(SteamManager)}: Steam API初期化中にエラーが発生: {e.Message}");
             isInitialized = false;
             isSteamRunning = false;
         }
@@ -159,7 +159,7 @@ public class SteamManager : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogWarning($"{nameof(SteamManager)}: ユーザー統計情報の受信に失敗: {pCallback.m_eResult}");
+            Debug.LogWarning($"{nameof(SteamManager)}: ユーザー統計情報の受信に失敗: {pCallback.m_eResult}");
         }
     }
 
@@ -185,7 +185,7 @@ public class SteamManager : MonoBehaviour
                 }
                 else
                 {
-                    DebugLogger.LogWarning($"{nameof(SteamManager)}: ユーザー統計情報のリクエストに失敗しました");
+                    Debug.LogWarning($"{nameof(SteamManager)}: ユーザー統計情報のリクエストに失敗しました");
                 }
             }
         }

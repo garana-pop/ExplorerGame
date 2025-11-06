@@ -149,7 +149,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
             currentDisplayWord = hiddenWord;
             if (debugMode)
             {
-                DebugLogger.LogWarning($"{nameof(HiddenKeyword)}: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
+                Debug.LogWarning($"{nameof(HiddenKeyword)}: LocalizationManagerが見つかりません。日本語をデフォルトとして使用します。");
             }
             return;
         }
@@ -219,7 +219,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
         // インスペクターで設定されていない場合
         if (textComponentReference == null)
         {
-            DebugLogger.LogWarning($"HiddenKeyword '{currentDisplayWord}': インスペクターでTextMeshProUGUIコンポーネントが設定されていません");
+            Debug.LogWarning($"HiddenKeyword '{currentDisplayWord}': インスペクターでTextMeshProUGUIコンポーネントが設定されていません");
         }
     }
 
@@ -255,7 +255,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
 
         if (documentManager == null && debugMode)
         {
-            DebugLogger.LogWarning($"HiddenKeyword '{currentDisplayWord}': PdfDocumentManagerを見つけられませんでした");
+            Debug.LogWarning($"HiddenKeyword '{currentDisplayWord}': PdfDocumentManagerを見つけられませんでした");
         }
     }
 
@@ -307,7 +307,7 @@ public class HiddenKeyword : MonoBehaviour, IPointerClickHandler
             }
             else
             {
-                DebugLogger.LogWarning($"隠しキーワード '{currentDisplayWord}' のPdfDocumentManagerが見つかりません");
+                Debug.LogWarning($"隠しキーワード '{currentDisplayWord}' のPdfDocumentManagerが見つかりません");
             }
         }
     }

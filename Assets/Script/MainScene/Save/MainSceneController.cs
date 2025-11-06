@@ -126,12 +126,12 @@ public class MainSceneController : MonoBehaviour
 
     private void LogWarning(string message)
     {
-        DebugLogger.LogWarning($"[MainSceneController] {message}");
+        Debug.LogWarning($"[MainSceneController] {message}");
     }
 
     private void LogError(string message)
     {
-        DebugLogger.LogError($"[MainSceneController] {message}");
+        Debug.LogError($"[MainSceneController] {message}");
     }
 
     /// <summary>

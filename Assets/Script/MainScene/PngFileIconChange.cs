@@ -40,7 +40,7 @@ public class PngFileIconChange : MonoBehaviour
             iconImage = GetComponent<Image>();
             if (iconImage == null)
             {
-                DebugLogger.LogError("PngFileIconChange: Imageコンポーネントが見つかりません。このスクリプトはImageコンポーネントがアタッチされたオブジェクトに追加してください。");
+                Debug.LogError("PngFileIconChange: Imageコンポーネントが見つかりません。このスクリプトはImageコンポーネントがアタッチされたオブジェクトに追加してください。");
                 enabled = false;
                 return;
             }
@@ -162,7 +162,7 @@ public class PngFileIconChange : MonoBehaviour
         }
 
         // それでも見つからない場合は警告
-        DebugLogger.LogWarning("PngFileIconChange: 監視対象のFileIconChangeが見つかりませんでした。インスペクターで手動設定してください。");
+        Debug.LogWarning("PngFileIconChange: 監視対象のFileIconChangeが見つかりませんでした。インスペクターで手動設定してください。");
     }
 
     /// <summary>

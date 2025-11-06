@@ -714,7 +714,7 @@ public class HerMainSceneSettingsManager : MonoBehaviour
 
             if (portraitFilePanel == null && debugMode)
             {
-                DebugLogger.LogWarning("HerMainSceneSettingsManager: Ž—ŠçŠG.FilePanel‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
+                Debug.LogWarning("HerMainSceneSettingsManager: Ž—ŠçŠG.FilePanel‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
             }
 
             if (portraitFilePanel != null && debugMode)

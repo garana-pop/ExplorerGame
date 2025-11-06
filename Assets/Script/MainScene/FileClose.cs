@@ -15,14 +15,14 @@ public class FileClose : MonoBehaviour
         closeButton = GetComponent<Button>();
         if (closeButton == null)
         {
-            DebugLogger.LogError("Buttonコンポーネントが見つかりません");
+            Debug.LogError("Buttonコンポーネントが見つかりません");
             return;
         }
 
         // FileOpenが設定されているか確認
         if (fileOpen == null)
         {
-            //DebugLogger.LogError("FileOpenがインスペクターで設定されていません");
+            //Debug.LogError("FileOpenがインスペクターで設定されていません");
             return;
         }
 

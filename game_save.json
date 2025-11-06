@@ -1,0 +1,38 @@
+{
+    "gameVersion": "1.0",
+    "saveTimestamp": "2025-11-06T02:18:12",
+    "folderState": {
+        "activeFolder": "思い出",
+        "displayedFolders": [
+            "思い出"
+        ],
+        "activatedFolders": []
+    },
+    "fileProgress": {},
+    "audioSettings": {
+        "masterVolume": 0.5009345412254334,
+        "bgmVolume": 0.5006577372550964,
+        "seVolume": 0.5066458582878113
+    },
+    "endOpeningScene": false,
+    "afterChangeToHerMemory": false,
+    "afterChangeToHisFuture": false,
+    "portraitDeleted": false,
+    "afterChangeToLast": false,
+    "fromMonologueScene": false,
+    "firstFileTipShown": false,
+    "resolutionIndex": 2,
+    "windowPosition": {
+        "x": -1,
+        "y": -1,
+        "isValid": false
+    },
+    "organizeSceneData": {
+        "deletedFiles": [],
+        "allFilesCompletelyDeleted": false,
+        "bgmChanged": false,
+        "steamAchievementUnlocked": false,
+        "lastModified": "2025-11-06T02:18:05"
+    },
+    "languageCode": "ja"
+}

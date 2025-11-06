@@ -59,7 +59,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
 
         if (buttonText == null)
         {
-            DebugLogger.LogError("RememberButtonTextLoaderForHer: 思い出すボタンのTextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
+            Debug.LogError("RememberButtonTextLoaderForHer: 思い出すボタンのTextMeshProコンポーネントが見つかりません。インスペクターで設定してください。");
             enabled = false;
             return;
         }
@@ -147,7 +147,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) DebugLogger.LogWarning("RememberButtonTextLoaderForHer: GameSaveManagerが存在しないため、afterChangeToHerMemoryフラグを取得できませんでした");
+        if (debugMode) Debug.LogWarning("RememberButtonTextLoaderForHer: GameSaveManagerが存在しないため、afterChangeToHerMemoryフラグを取得できませんでした");
         return false;
     }
 
@@ -163,7 +163,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
         }
 
         // フラグが取得できない場合はfalseを返す
-        if (debugMode) DebugLogger.LogWarning("RememberButtonTextLoaderForHer: GameSaveManagerが存在しないため、afterChangeToHisFutureフラグを取得できませんでした");
+        if (debugMode) Debug.LogWarning("RememberButtonTextLoaderForHer: GameSaveManagerが存在しないため、afterChangeToHisFutureフラグを取得できませんでした");
         return false;
     }
 
@@ -205,7 +205,7 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
         }
 
         // 現在の言語を取得
-        string currentLanguageCode = "ja"; // デフォルト
+        string currentLanguageCode = "en"; // デフォルト
         if (LocalizationManager.Instance != null)
         {
             currentLanguageCode = LocalizationManager.Instance.GetCurrentLanguageCode();
@@ -270,8 +270,8 @@ public class RememberButtonTextLoaderForHer : MonoBehaviour
             }
             else
             {
-                buttonText.text = "整理する"; // デフォルトは日本語
-                if (debugMode) DebugLogger.Log("RememberButtonTextLoaderForHer: 言語コード取得失敗のため、ボタンテキストをデフォルトの「整理する」に設定");
+                buttonText.text = "Organize"; // デフォルトは英語
+                if (debugMode) DebugLogger.Log("RememberButtonTextLoaderForHer: 言語コード取得失敗のため、ボタンテキストをデフォルトの「Organize」に設定");
             }
 
             Button button = buttonText.GetComponentInParent<Button>();

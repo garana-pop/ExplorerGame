@@ -35,7 +35,7 @@ public class PdfFileIconChange : MonoBehaviour
             iconImage = GetComponent<Image>();
             if (iconImage == null)
             {
-                DebugLogger.LogError("PdfFileIconChange: Imageコンポーネントが見つかりません。このスクリプトはImageコンポーネントがアタッチされたオブジェクトに追加してください。");
+                Debug.LogError("PdfFileIconChange: Imageコンポーネントが見つかりません。このスクリプトはImageコンポーネントがアタッチされたオブジェクトに追加してください。");
                 enabled = false;
                 return;
             }
@@ -110,7 +110,7 @@ public class PdfFileIconChange : MonoBehaviour
         }
 
         // それでも見つからない場合は警告
-        DebugLogger.LogWarning("PdfFileIconChange: 参照するPdfDocumentManagerが見つかりませんでした。インスペクターで手動設定してください。");
+        Debug.LogWarning("PdfFileIconChange: 参照するPdfDocumentManagerが見つかりませんでした。インスペクターで手動設定してください。");
     }
 
     /// <summary>

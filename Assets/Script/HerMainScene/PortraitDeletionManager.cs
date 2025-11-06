@@ -84,7 +84,7 @@ public class PortraitDeletionManager : MonoBehaviour
         saveManager = GameSaveManager.Instance;
         if (saveManager == null && debugMode)
         {
-            DebugLogger.LogWarning("PortraitDeletionManager: GameSaveManagerが見つかりません");
+            Debug.LogWarning("PortraitDeletionManager: GameSaveManagerが見つかりません");
         }
     }
 
@@ -162,7 +162,7 @@ public class PortraitDeletionManager : MonoBehaviour
         }
         else
         {
-            DebugLogger.LogError("PortraitDeletionManager: 削除確認パネルが設定されていません");
+            Debug.LogError("PortraitDeletionManager: 削除確認パネルが設定されていません");
         }
     }
 
