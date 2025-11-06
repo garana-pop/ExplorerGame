@@ -79,7 +79,7 @@ public class GameSaveData
         portraitDeleted = false;
         afterChangeToLast = false;
         fromMonologueScene = false;
-        languageCode = "ja";
+        languageCode = "en";
     }
 }
 
